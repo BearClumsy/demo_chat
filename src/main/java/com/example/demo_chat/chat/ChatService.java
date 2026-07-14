@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
@@ -74,6 +75,24 @@ public class ChatService {
               participantIds.add(userId);
               return chatHistoryRepository.save(
                   chatHistory.toBuilder().participantIds(participantIds).build());
+            });
+  }
+
+  /**
+   * @param chatId the chat to look up
+   * @param userId the user requesting access
+   * @return the chat, or empty if no chat has this id
+   * @throws AccessDeniedException if {@code userId} isn't a participant in the chat
+   */
+  public Mono<ChatHistory> getChatForParticipant(UUID chatId, UUID userId) {
+    return chatHistoryRepository
+        .findById(chatId)
+        .flatMap(
+            chatHistory -> {
+              if (!chatHistory.getParticipantIds().contains(userId)) {
+                return Mono.error(new AccessDeniedException("userId must be a chat participant"));
+              }
+              return Mono.just(chatHistory);
             });
   }
 

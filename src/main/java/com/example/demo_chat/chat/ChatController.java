@@ -1,5 +1,6 @@
 package com.example.demo_chat.chat;
 
+import com.example.demo_chat.rag.ChatPipelineService;
 import com.example.demo_chat.user.UserPrincipal;
 import jakarta.validation.Valid;
 import java.util.UUID;
@@ -20,6 +21,7 @@ import reactor.core.publisher.Mono;
 public class ChatController {
 
   private final ChatService chatService;
+  private final ChatPipelineService chatPipelineService;
 
   /**
    * @param principal the authenticated user starting the chat
@@ -51,6 +53,27 @@ public class ChatController {
     return chatService
         .addParticipant(chatId, request.userId())
         .map(chatHistory -> ResponseEntity.noContent().<Void>build())
+        .defaultIfEmpty(ResponseEntity.notFound().build());
+  }
+
+  /**
+   * @param principal the authenticated user sending the message
+   * @param chatId the chat to send the message into
+   * @param request the message text
+   * @return the RAG pipeline's reply and resulting dialogue status, or 404 if no chat has this id
+   * @throws AccessDeniedException if {@code principal} isn't a participant in the chat
+   */
+  @PostMapping("/{chatId}/messages")
+  public Mono<ResponseEntity<SendMessageResponse>> sendMessage(
+      @AuthenticationPrincipal UserPrincipal principal,
+      @PathVariable UUID chatId,
+      @Valid @RequestBody SendMessageRequest request) {
+    return chatService
+        .getChatForParticipant(chatId, principal.getId())
+        .flatMap(
+            chatHistory ->
+                chatPipelineService.handleMessage(chatId, principal.getId(), request.message()))
+        .map(ResponseEntity::ok)
         .defaultIfEmpty(ResponseEntity.notFound().build());
   }
 }

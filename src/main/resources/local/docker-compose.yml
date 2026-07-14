@@ -19,6 +19,10 @@ services:
     image: cassandra:5
     environment:
       CASSANDRA_CLUSTER_NAME: demo_chat
+      # Keep the heap small enough to fit alongside Postgres/Qdrant/Kafka on a memory-constrained
+      # local Docker VM; without this Cassandra's auto-sized heap gets OOM-killed (exit 137).
+      MAX_HEAP_SIZE: 512M
+      HEAP_NEWSIZE: 128M
     ports:
       - "9042:9042"
     volumes:

@@ -36,6 +36,7 @@ dependencies {
 	implementation 'org.flywaydb:flyway-database-postgresql'
 	implementation 'org.springframework.ai:spring-ai-markdown-document-reader'
 	implementation 'org.springframework.ai:spring-ai-starter-model-bedrock'
+	implementation 'org.springframework.ai:spring-ai-starter-model-bedrock-converse'
 	implementation 'org.springframework.ai:spring-ai-starter-model-chat-memory-repository-cassandra'
 	implementation 'org.springframework.ai:spring-ai-starter-vector-store-qdrant'
 	implementation 'org.springframework.ai:spring-ai-vector-store-advisor'

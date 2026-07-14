@@ -1,0 +1,15 @@
+{
+  "intent_id": "order_status",
+  "canonical_questions": [
+    "Where is my order?",
+    "Has my order shipped yet?",
+    "Order status",
+    "When will my package arrive?"
+  ],
+  "required_slots": ["order_id"],
+  "knowledge_snippet": "Orders typically ship within 1-2 business days and arrive within 3-7 business days depending on the shipping method chosen at checkout.",
+  "system_instruction": "Answer only about order/shipping status, use order_id for personalization.",
+  "allowed": true,
+  "answer_template": "For order {order_id}: it ships within 1-2 days and arrives within 3-7 days depending on shipping method.",
+  "escalation_fallback": "If the status is unclear, please contact a human agent."
+}

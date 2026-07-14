@@ -1,0 +1,14 @@
+{
+  "intent_id": "change_shipping_address",
+  "canonical_questions": [
+    "Can I change my shipping address?",
+    "I entered the wrong address for my order",
+    "How do I update the delivery address?"
+  ],
+  "required_slots": ["order_id"],
+  "knowledge_snippet": "You can update the shipping address for an order within 1 hour of placing it by contacting support with the order number; after that the order may already be in fulfillment.",
+  "system_instruction": "Answer only about changing a shipping address, use order_id for personalization.",
+  "allowed": true,
+  "answer_template": "For order {order_id}: address changes are only possible within 1 hour of placing the order.",
+  "escalation_fallback": "If the order may already be in fulfillment, please contact a human agent."
+}

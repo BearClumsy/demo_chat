@@ -19,14 +19,17 @@ src/
 │   │   ├── DemoChatApplication.java
 │   │   │
 │   │   ├── chat/                              # chat feature (package-by-feature)
-│   │   │   ├── ChatController.java             # POST /api/chats, POST /api/chats/{id}/participants
-│   │   │   ├── ChatService.java                 # startChat(), addParticipant()
+│   │   │   ├── ChatController.java             # POST /api/chats, POST /api/chats/{id}/participants,
+│   │   │   │                                    #   POST /api/chats/{id}/messages
+│   │   │   ├── ChatService.java                 # startChat(), addParticipant(), getChatForParticipant()
 │   │   │   ├── ChatHistory.java                  # Cassandra @Table("chat_history"), PK = user_id
 │   │   │   ├── ChatMessage.java                   # Cassandra @UserDefinedType, frozen list on ChatHistory
 │   │   │   ├── ChatHistoryRepository.java          # ReactiveCassandraRepository<ChatHistory, UUID>
 │   │   │   ├── MessageRequest.java                  # record: userId, message, datetime
 │   │   │   ├── ParticipantRequest.java               # record: userId
-│   │   │   └── StartChatRequest.java                  # record: currentUserId, participantIds, title, message
+│   │   │   ├── StartChatRequest.java                  # record: currentUserId, participantIds, title, message
+│   │   │   ├── SendMessageRequest.java                 # record: message (userId comes from the principal)
+│   │   │   └── SendMessageResponse.java                 # record: reply, status
 │   │   │
 │   │   ├── user/                               # user feature (package-by-feature)
 │   │   │   ├── UserController.java              # GET /api/users/{id}, POST /api/users
@@ -38,6 +41,27 @@ src/
 │   │   │   ├── CreateUserRequest.java                  # record: firstName, lastName, email, phone, login, password
 │   │   │   └── UserResponse.java                        # response DTO, excludes password
 │   │   │
+│   │   ├── rag/                                # RAG pipeline feature (package-by-feature, flat — see
+│   │   │   │                                    #   "Rationale" below for why this isn't service.<layer>.X)
+│   │   │   ├── ChatPipelineService.java          # orchestrator: normalize → retrieve → classify →
+│   │   │   │                                    #   scope-check → slot-fill → generate; persists
+│   │   │   │                                    #   DialogueState and appends to ChatHistory
+│   │   │   ├── QueryNormalizationService.java     # stage 1: raw message -> clean query (ChatClient)
+│   │   │   ├── KnowledgeRetrievalService.java      # stage 2: VectorStore.similaritySearch(), top-K
+│   │   │   ├── IntentClassificationService.java     # stage 3: ChatClient .entity(IntentClassification)
+│   │   │   ├── IntentClassification.java             # record: intentId, confidence (LLM structured output)
+│   │   │   ├── ScopeFilter.java                       # stage 4: threshold + whitelist -> in/out of scope
+│   │   │   ├── SlotFillingService.java                 # stage 5: IntentDefinition.requiredSlots() vs slots
+│   │   │   ├── PromptBuilder.java                       # stage 6: SYSTEM/CONTEXT/USER STATE/USER MESSAGE
+│   │   │   ├── AssembledPrompt.java                      # record: system, user
+│   │   │   ├── AnswerGenerationService.java               # stage 7: final answer + clarifying questions
+│   │   │   ├── IntentDefinition.java                       # record loaded from knowledge-base/intents/*.json
+│   │   │   ├── IntentDefinitionRegistry.java                # loads *.json at startup into Map<id, IntentDefinition>
+│   │   │   ├── KnowledgeBaseIndexer.java                     # ApplicationRunner: pushes intents into Qdrant
+│   │   │   ├── DialogueState.java                             # Cassandra @Table("dialogue_state"), PK = chat_id
+│   │   │   ├── DialogueStatus.java                             # enum: NEW/SLOT_FILLING/READY_TO_ANSWER/ANSWERED/OUT_OF_SCOPE
+│   │   │   └── DialogueStateRepository.java                     # ReactiveCassandraRepository<DialogueState, UUID>
+│   │   │
 │   │   ├── common/
 │   │   │   └── ValidationExceptionHandler.java   # @RestControllerAdvice — app-wide error mapping
 │   │   │                                          # (bean validation -> 400, IllegalArgumentException -> 400,
@@ -45,12 +69,17 @@ src/
 │   │   │
 │   │   └── config/
 │   │       ├── SecurityConfig.java               # @EnableWebFluxSecurity, HTTP Basic, permits POST /api/users
-│   │       └── PasswordEncoderConfig.java          # BCryptPasswordEncoder bean
+│   │       ├── PasswordEncoderConfig.java          # BCryptPasswordEncoder bean
+│   │       └── ChatClientConfig.java                # ChatClient bean over the autoconfigured Bedrock ChatModel
 │   │
 │   └── resources/
 │       ├── application.properties                # single properties file — no Spring Profiles yet
 │       ├── db/migration/
 │       │   └── V1__create_users_table.sql         # Flyway migration for demo_chat.users
+│       ├── knowledge-base/intents/
+│       │   └── *.json                              # 4 intents (refund_status, order_status,
+│       │                                            #   change_shipping_address, password_reset) — see
+│       │                                            #   vector-store-schema.md
 │       └── local/
 │           └── docker-compose.yml                 # postgres, cassandra, qdrant, kafka (local dev stack)
 │
@@ -59,24 +88,28 @@ src/
         └── DemoChatApplicationTests.java          # context-load smoke test only
 ```
 
-Not present yet (kept as planned design, not current structure): an `api`/`service`/`orchestration`/
-`domain`/`infrastructure` layered split, RAG pipeline services (normalization, retrieval, scope filter,
-slot filling, prompt builder, generation, guardrail), a `ChatOrchestrator`, `IntentDefinitionRegistry`,
-`DialogueState`/`DialogueStateService`, or a `knowledge-base/` resource tree. See
-[rag-pipeline.md](rag-pipeline.md) for that target design once the RAG feature is built.
+RAG pipeline services (Phase 1: normalize → retrieve → classify → scope-check → slot-fill → generate) are
+implemented in the `rag` package above. **Not present yet:** the output-side guardrail
+(`ResponseValidator`, Phase 2 per [roadmap.md](roadmap.md)), and an `api`/`service`/`orchestration`/
+`domain`/`infrastructure` layered split was never adopted (see Rationale below). See
+[rag-pipeline.md](rag-pipeline.md) for the stage-by-stage design and known Phase-1 simplifications.
 
 ## Rationale for the current layers
 
 | Package | Responsibility |
 |---|---|
-| `chat` | Chat creation and participant management — controller, service, Cassandra entity/repository, request DTOs |
+| `chat` | Chat creation, participant management, and sending messages — controller, service, Cassandra entity/repository, request DTOs |
 | `user` | User identity — controller, service, JPA entity/repository, Spring Security integration, request/response DTOs |
+| `rag` | RAG pipeline — flat package holding every pipeline stage, the knowledge-base registry/indexer, and dialogue state, rather than the `service.normalization.X`/`service.retrieval.X`/… layered naming in the original design notes (see below) |
 | `common` | Cross-cutting concerns not specific to one feature (currently just validation/error handling) |
-| `config` | Spring beans that aren't tied to one feature (security filter chain, password encoder) |
+| `config` | Spring beans that aren't tied to one feature (security filter chain, password encoder, chat client) |
 
-Package-by-feature (`chat/`, `user/`) was a deliberate choice over package-by-layer
+Package-by-feature (`chat/`, `user/`, `rag/`) was a deliberate choice over package-by-layer
 (`controller/`, `service/`, `repository/`) — see the Decisions section of the `User` and `Chat` feature
-notes in the Obsidian vault (`Features/User.md`, `Features/Chat.md`) for the reasoning.
+notes in the Obsidian vault (`Features/User.md`, `Features/Chat.md`) for the reasoning. `rag/` follows the
+same convention: [rag-pipeline.md](rag-pipeline.md)'s original stage-to-service table used a
+`service.<layer>.ClassName` layered naming, but that was never adopted — every RAG class lives flat in
+`rag/`, same as `chat/` and `user/`.
 
 ## Reactive boundaries
 
@@ -87,9 +120,13 @@ notes in the Obsidian vault (`Features/User.md`, `Features/Chat.md`) for the rea
   block the WebFlux event loop.
 - `ChatService.validateParticipantIds()` similarly bridges a blocking JPA lookup (`UserRepository`) onto
   `Mono` the same way, since chat participant validation depends on the (blocking) user store.
+- `rag/*` follows the same `Schedulers.boundedElastic()` bridging pattern: the Bedrock `ChatClient` calls
+  (`QueryNormalizationService`, `IntentClassificationService`, `AnswerGenerationService`) and the Qdrant
+  `VectorStore` call (`KnowledgeRetrievalService`) are all blocking under the hood, so every call site
+  wraps them in `Mono.fromCallable(...).subscribeOn(Schedulers.boundedElastic())`.
 
 ## Related documents
 
 - [Architecture overview](overview.md)
-- [RAG pipeline](rag-pipeline.md) — planned, describes the target service layer
+- [RAG pipeline](rag-pipeline.md) — implemented (Phase 1); describes the actual service layer
 - [Local ↔ AWS mapping](local-vs-aws.md)

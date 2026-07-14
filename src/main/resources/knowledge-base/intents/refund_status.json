@@ -1,0 +1,15 @@
+{
+  "intent_id": "refund_status",
+  "canonical_questions": [
+    "Where is my refund?",
+    "When will the refund money arrive?",
+    "Refund status",
+    "I want my money back, when is it coming"
+  ],
+  "required_slots": ["order_id"],
+  "knowledge_snippet": "Refunds are processed within 3-5 business days from the moment the request is confirmed.",
+  "system_instruction": "Answer only about refund status, use order_id for personalization.",
+  "allowed": true,
+  "answer_template": "For order {order_id}: the refund is processed within 3-5 days from confirmation.",
+  "escalation_fallback": "If the status is unclear, please contact a human agent."
+}
