@@ -1,115 +1,134 @@
-# Graph Report - demo_chat  (2026-07-13)
+# Graph Report - .  (2026-07-14)
 
 ## Corpus Check
-- 29 files · ~4,009 words
-- Verdict: corpus is large enough that graph structure adds value.
+- Corpus is ~6,071 words - fits in a single context window. You may not need a graph.
 
 ## Summary
-- 118 nodes · 123 edges · 24 communities (17 shown, 7 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.8)
-- Token cost: 0 input · 0 output
+- 141 nodes · 239 edges · 20 communities (15 shown, 5 thin omitted)
+- Extraction: 87% EXTRACTED · 13% INFERRED · 0% AMBIGUOUS · INFERRED: 30 edges (avg confidence: 0.84)
+- Token cost: 128,072 input · 0 output
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Community 0|Community 0]]
-- [[_COMMUNITY_Community 1|Community 1]]
-- [[_COMMUNITY_Community 2|Community 2]]
-- [[_COMMUNITY_Community 6|Community 6]]
-- [[_COMMUNITY_Community 7|Community 7]]
-- [[_COMMUNITY_Community 8|Community 8]]
-- [[_COMMUNITY_Community 9|Community 9]]
-- [[_COMMUNITY_Community 10|Community 10]]
-- [[_COMMUNITY_Community 11|Community 11]]
-- [[_COMMUNITY_Community 12|Community 12]]
-- [[_COMMUNITY_Community 13|Community 13]]
-- [[_COMMUNITY_Community 14|Community 14]]
-- [[_COMMUNITY_Community 15|Community 15]]
-- [[_COMMUNITY_Community 16|Community 16]]
-- [[_COMMUNITY_Community 17|Community 17]]
-- [[_COMMUNITY_Community 18|Community 18]]
-- [[_COMMUNITY_Community 20|Community 20]]
-- [[_COMMUNITY_Community 21|Community 21]]
-- [[_COMMUNITY_Community 22|Community 22]]
-- [[_COMMUNITY_Community 23|Community 23]]
+- Chat Feature & Cassandra Design
+- User Feature & Postgres Persistence
+- User REST Controller
+- User Service Layer
+- User Entity & Wiki Docs
+- Build Config & Password Encoder
+- Chat REST Controller
+- Validation Exception Handling
+- Chat Message UDT
+- Obsidian Theme Manifest
+- Application Context Test
+- Gradle Wrapper Script
+- Spring Boot Application Entry
+- Claude Code Tooling Config
+- Obsidian Appearance Theme
+- Kafka Topic Template
+- Qdrant Collection Template
 
 ## God Nodes (most connected - your core abstractions)
-1. `<Feature Name>` - 8 edges
-2. `Kafka Topic: <topic-name>` - 5 edges
-3. `UserController` - 4 edges
-4. `UserService` - 4 edges
-5. `Cassandra Table: <table_name>` - 4 edges
-6. `Postgres Table: <table_name>` - 4 edges
-7. `Qdrant Collection: <collection_name>` - 4 edges
-8. `demo_chat Wiki` - 4 edges
-9. `PasswordEncoder` - 3 edges
-10. `Mono` - 3 edges
+1. `User` - 19 edges
+2. `Feature: User` - 15 edges
+3. `UserService (referenced, not in this chunk)` - 14 edges
+4. `UserController` - 13 edges
+5. `Feature: Chat` - 12 edges
+6. `ChatHistory` - 11 edges
+7. `CreateUserRequest` - 11 edges
+8. `UserResponse (referenced, not in this chunk)` - 11 edges
+9. `ChatService` - 10 edges
+10. `Daily log 2026-07-13` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
-- None detected - all connections are within the same source files.
+- `Features/Chat.md (wiki page, referenced)` --semantically_similar_to--> `ChatService`  [INFERRED] [semantically similar]
+  docs/wiki/Features/Chat.md → src/main/java/com/example/demo_chat/chat/ChatService.java
+- `Features/User.md (wiki page, referenced)` --semantically_similar_to--> `User`  [INFERRED] [semantically similar]
+  docs/wiki/Features/User.md → src/main/java/com/example/demo_chat/user/User.java
+- `Feature: Chat` --references--> `ChatController`  [EXTRACTED]
+  docs/wiki/Features/Chat.md → src/main/java/com/example/demo_chat/chat/ChatController.java
+- `Feature: Chat` --references--> `ChatMessage`  [EXTRACTED]
+  docs/wiki/Features/Chat.md → src/main/java/com/example/demo_chat/chat/ChatMessage.java
+- `Feature: Chat` --references--> `ValidationExceptionHandler`  [EXTRACTED]
+  docs/wiki/Features/Chat.md → src/main/java/com/example/demo_chat/common/ValidationExceptionHandler.java
 
 ## Import Cycles
 - None detected.
 
-## Communities (24 total, 7 thin omitted)
+## Hyperedges (group relationships)
+- **Chat Feature: Controller/Service/History/Repository/Message** — src_main_java_com_example_demo_chat_chat_chatcontroller_chatcontroller, src_main_java_com_example_demo_chat_chat_chatservice_chatservice, src_main_java_com_example_demo_chat_chat_chathistory_chathistory, src_main_java_com_example_demo_chat_chat_chathistoryrepository_chathistoryrepository, src_main_java_com_example_demo_chat_chat_chatmessage_chatmessage [INFERRED 0.85]
+- **User Creation & Validation Flow** — src_main_java_com_example_demo_chat_user_usercontroller_usercontroller, src_main_java_com_example_demo_chat_user_createuserrequest_createuserrequest, src_main_java_com_example_demo_chat_common_validationexceptionhandler_validationexceptionhandler, src_main_java_com_example_demo_chat_config_passwordencoderconfig_passwordencoderconfig, src_main_java_com_example_demo_chat_user_user_user [INFERRED 0.85]
+- **Gradle Build System (build.gradle/settings.gradle/gradlew)** — build_project_config, settings_root_project, gradlew_wrapper_script [INFERRED 0.75]
+- **User feature: code + schema tying together the User entity** — src_main_java_com_example_demo_chat_user_user_user, src_main_java_com_example_demo_chat_user_userrepository_userrepository, src_main_java_com_example_demo_chat_user_userservice_userservice, src_main_java_com_example_demo_chat_user_userresponse_userresponse, src_main_java_com_example_demo_chat_user_createuserrequest_createuserrequest, src_main_java_com_example_demo_chat_user_usercontroller_usercontroller, src_main_resources_db_migration_v1_create_users_table_users, docs_wiki_features_user_user [EXTRACTED 1.00]
+- **Chat feature: code + Cassandra table implementing chat start/history** — src_main_java_com_example_demo_chat_chat_chatcontroller_chatcontroller, src_main_java_com_example_demo_chat_chat_chatservice_chatservice, src_main_java_com_example_demo_chat_chat_chathistory_chathistory, src_main_java_com_example_demo_chat_chat_chatmessage_chatmessage, src_main_java_com_example_demo_chat_chat_chathistoryrepository_chathistoryrepository, docs_wiki_features_chat_chat, docs_wiki_infrastructure_cassandra_chat_history_chat_history [EXTRACTED 1.00]
+- **Obsidian wiki Map of Content entries** — docs_wiki_index_index, docs_wiki_features_chat_chat, docs_wiki_features_user_user, docs_wiki_infrastructure_cassandra_chat_history_chat_history, docs_wiki_infrastructure_postgres_users_users, docs_wiki_daily_2026_07_13_2026_07_13 [EXTRACTED 1.00]
 
-### Community 0 - "Community 0"
+## Communities (20 total, 5 thin omitted)
+
+### Community 0 - "Chat Feature & Cassandra Design"
+Cohesion: 0.14
+Nodes (19): Feature: Chat, ChatHistory partition key = user_id, queries expected by user not chat id, ChatMessage modeled as frozen UDT list on ChatHistory vs wide-row table, Feature note template, Frozen list on single partition is a Cassandra anti-pattern for unbounded growth, Cassandra table: chat_history, Cassandra table note template, ReactiveCassandraRepository (+11 more)
+
+### Community 1 - "User Feature & Postgres Persistence"
+Cohesion: 0.18
+Nodes (16): daily-report skill, NewJavaFile skill, CLAUDE.md project instructions, Daily log 2026-07-13, BCrypt via spring-security-crypto only, avoiding full Security starter, 409 Conflict via DB unique-constraint violation, not pre-check (avoids race), Feature: User, UUID primary key over auto-increment to avoid leaking guessable ids (+8 more)
+
+### Community 2 - "User REST Controller"
+Cohesion: 0.26
+Nodes (10): GetMapping, ResponseStatus, ExceptionHandler, Mono, PostMapping, RequestMapping, RequiredArgsConstructor, ResponseEntity (+2 more)
+
+### Community 3 - "User Service Layer"
 Cohesion: 0.25
-Nodes (6): Commands, Configuration, graphify, Intended architecture (from declared dependencies), Project status, Toolchain
+Nodes (7): CreateUserRequest, UserResponse (referenced, not in this chunk), Mono, PasswordEncoder, RequiredArgsConstructor, Service, UserService (referenced, not in this chunk)
 
-### Community 6 - "Community 6"
-Cohesion: 0.22
-Nodes (8): Decisions, <Feature Name>, Infrastructure Used, Open Questions, Overview, Related Code, Requirements, Source Log
+### Community 4 - "User Entity & Wiki Docs"
+Cohesion: 0.23
+Nodes (12): Daily/2026-07-13.md (wiki daily note, referenced), Features/Chat.md (wiki page, referenced), Features/User.md (wiki page, referenced), Obsidian Core Plugins Enabled, Obsidian Workspace Layout State, Entity, AllArgsConstructor, Builder (+4 more)
 
-### Community 7 - "Community 7"
-Cohesion: 0.25
-Nodes (10): GetMapping, ResponseStatus, CreateUserRequest, ExceptionHandler, Mono, PostMapping, ResponseEntity, UserResponse (+2 more)
+### Community 5 - "Build Config & Password Encoder"
+Cohesion: 0.31
+Nodes (7): Bean, build.gradle Dependency & Plugin Configuration, Configuration, Gradle Wrapper Script (gradlew), settings.gradle Root Project Declaration, PasswordEncoder, PasswordEncoderConfig
 
-### Community 8 - "Community 8"
-Cohesion: 0.29
-Nodes (6): demo_chat Wiki, Features, Infrastructure, Linking convention, Map of Content, Structure
+### Community 6 - "Chat REST Controller"
+Cohesion: 0.39
+Nodes (7): ChatController, Mono, PostMapping, RequestMapping, RequiredArgsConstructor, ResponseEntity, RestController
 
-### Community 9 - "Community 9"
-Cohesion: 0.33
-Nodes (5): Consumers, Kafka Topic: <topic-name>, Notes, Producers, Schema
-
-### Community 10 - "Community 10"
-Cohesion: 0.21
-Nodes (9): Bean, PasswordEncoderConfig, PasswordEncoder, CreateUserRequest, Mono, User, UserResponse, UUID (+1 more)
-
-### Community 11 - "Community 11"
-Cohesion: 0.40
-Nodes (4): Cassandra Table: <table_name>, Columns, Notes, Used By
-
-### Community 12 - "Community 12"
-Cohesion: 0.40
-Nodes (4): Columns, Notes, Postgres Table: <table_name>, Used By
-
-### Community 13 - "Community 13"
-Cohesion: 0.40
-Nodes (4): Notes, Payload Fields, Qdrant Collection: <collection_name>, Used By
-
-### Community 14 - "Community 14"
-Cohesion: 0.50
-Nodes (3): User, UserResponse, from()
-
-### Community 17 - "Community 17"
+### Community 7 - "Validation Exception Handling"
 Cohesion: 0.48
-Nodes (5): ChatController, Mono, PostMapping, ResponseEntity, UUID
+Nodes (5): ProblemDetail, RestControllerAdvice, ExceptionHandler, ValidationExceptionHandler, WebExchangeBindException
 
-### Community 20 - "Community 20"
+### Community 8 - "Chat Message UDT"
+Cohesion: 0.52
+Nodes (6): ChatMessage, AllArgsConstructor, Builder, Getter, NoArgsConstructor, UserDefinedType
+
+### Community 9 - "Obsidian Theme Manifest"
+Cohesion: 0.33
+Nodes (5): author, authorUrl, minAppVersion, name, version
+
+### Community 10 - "Application Context Test"
 Cohesion: 0.60
-Nodes (3): ChatService, Mono, UUID
+Nodes (3): SpringBootTest, DemoChatApplicationTests, Test
 
-### Community 23 - "Community 23"
-Cohesion: 0.53
-Nodes (4): ValidationExceptionHandler, ProblemDetail, ExceptionHandler, WebExchangeBindException
+### Community 11 - "Gradle Wrapper Script"
+Cohesion: 0.83
+Nodes (3): gradlew script, die(), warn()
 
 ## Knowledge Gaps
-- **40 isolated node(s):** `String`, `ChatHistory`, `ChatHistoryRepository`, `ChatMessage`, `User` (+35 more)
+- **13 isolated node(s):** `name`, `version`, `minAppVersion`, `author`, `authorUrl` (+8 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **What connects `String`, `ChatHistory`, `ChatHistoryRepository` to the rest of the system?**
-  _40 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `Feature: Chat` connect `Chat Feature & Cassandra Design` to `Chat Message UDT`, `User Feature & Postgres Persistence`, `Chat REST Controller`, `Validation Exception Handling`?**
+  _High betweenness centrality (0.181) - this node is a cross-community bridge._
+- **Why does `User` connect `User Entity & Wiki Docs` to `User Feature & Postgres Persistence`, `User REST Controller`, `User Service Layer`, `Build Config & Password Encoder`?**
+  _High betweenness centrality (0.143) - this node is a cross-community bridge._
+- **Why does `build.gradle Dependency & Plugin Configuration` connect `Build Config & Password Encoder` to `Chat Feature & Cassandra Design`, `User Service Layer`, `User Entity & Wiki Docs`, `Chat REST Controller`?**
+  _High betweenness centrality (0.123) - this node is a cross-community bridge._
+- **Are the 4 inferred relationships involving `User` (e.g. with `build.gradle Dependency & Plugin Configuration` and `Features/User.md (wiki page, referenced)`) actually correct?**
+  _`User` has 4 INFERRED edges - model-reasoned connections that need verification._
+- **What connects `name`, `version`, `minAppVersion` to the rest of the system?**
+  _13 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Chat Feature & Cassandra Design` be split into smaller, more focused modules?**
+  _Cohesion score 0.1422924901185771 - nodes in this community are weakly interconnected._

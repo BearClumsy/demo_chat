@@ -65,12 +65,35 @@ details for Postgres, Cassandra, Qdrant, Kafka, and Bedrock credentials will nee
 profile-specific `application-<profile>.properties` / environment variables) as those integrations are
 built out.
 
-## graphify
+## Knowledge Sources
 
-This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+This project has two navigable knowledge sources — prefer them over raw Read/grep:
 
-Rules:
-- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
-- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
-- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- `graphify-out/` — auto-generated code graph (god nodes, communities, cross-file relationships)
+- `docs/wiki/` — Obsidian vault of manually/AI-curated project knowledge (requirements, decisions,
+  notes), distinct from graphify's auto-generated graph
+
+### graphify
+
+- Use `graphify query "<question>"` when `graphify-out/graph.json` exists. Use
+  `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused
+  concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep
+  output.
+- Read `graphify-out/GRAPH_REPORT.md` only for broad architecture review or when
+  query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
+
+### Working with this Vault
+
+This is an Obsidian vault. For reading/searching/writing notes, use the Obsidian CLI
+(`obsidian ...`) rather than directly reading `.md` files through Read — the CLI works through the
+Obsidian runtime and correctly updates links, front matter, and indexes.
+
+Structure: `Features/<name>.md`, `Infrastructure/{Kafka,Postgres,Cassandra,Qdrant}/<resource>.md`,
+`Daily/<YYYY-MM-DD>.md`, each folder with a `_template.md` to copy from. `index.md` is the MOC
+entry point.
+
+Before manually grepping files, first try:
+- `graphify query "<question>"` — broad context/connections on a topic
+- `obsidian search query="<term>"` — exact search by headings/tags
+- `obsidian links <note>` / `obsidian backlinks <note>` — link graph of a single note
