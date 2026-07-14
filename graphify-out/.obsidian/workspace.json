@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "8fadff3a5d81f012",
+        "id": "2c5c43afbe9c7a2b",
         "type": "tabs",
         "children": [
           {
-            "id": "37481106dcdb1e13",
+            "id": "88ec5fa1340b9575",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "GRAPH_REPORT.md",
+                "file": "2026-07-14/GRAPH_REPORT.md",
                 "mode": "source",
                 "source": false
               },
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "GRAPH_REPORT.md",
+                "file": "2026-07-14/GRAPH_REPORT.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -113,7 +113,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "GRAPH_REPORT.md",
+                "file": "2026-07-14/GRAPH_REPORT.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -156,7 +156,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GRAPH_REPORT.md",
+                "file": "2026-07-14/GRAPH_REPORT.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -183,6 +183,25 @@
       "bases:Create new base": false
     }
   },
-  "active": "37481106dcdb1e13",
-  "lastOpenFiles": []
+  "active": "88ec5fa1340b9575",
+  "lastOpenFiles": [
+    "_COMMUNITY_Kafka Topic Note Template.md",
+    "2026-07-14/GRAPH_REPORT.md",
+    "Features/Chat.md",
+    "GRAPH_REPORT.md",
+    "cache/ast/v0.9.15/7e408f3fb5b7f8b1bad6ad4c5fd6f85d1f58457591445b3d07da0295d78527fc.json",
+    "cache/ast/v0.9.15/0b14cfb65e20e3fa0dbbba6d66a916367c374d242b5629f68b6a64e07098f54d.json",
+    "cache/ast/v0.9.15/bf717bfe83166e668645124511341f57661928cb6a6400153c9844b676ccdb32.json",
+    "cache/ast/v0.9.15/cbbfcadeb47ed20d297fa948a4795e307f5b9ea720af56725620de7311f22519.json",
+    "cache/ast/v0.9.15/dff7a2a8848411bd1acf8899ffaffd6cd4e12921d0741d596f40028868043858.json",
+    "cache/ast/v0.9.15/fad6ce241ba962117cd54e8ae96689792d137cded2ede7a1dafd7101ff629707.json",
+    "cache/ast/v0.9.15/6f7349a455a0b70654347135205b4f9a29bd521753012fa2df01082701b98140.json",
+    "cache/ast/v0.9.15/6ce10e42544f4b0036fa55d8e248fbe727b65b35d67709e016da793a6c9ce055.json",
+    "cache/ast/v0.9.15/416004248c3925027c54c86fe981e7d91b2c74e870bc4c7b9f6977da0b3a2779.json",
+    "cache/ast/v0.9.15/bf3d0f4ccaff9e9f909d8e9dda8130a99fa1d14791b406ef795f40124edaff32.json",
+    "_COMMUNITY_User Entity.md",
+    "_COMMUNITY_Postgres Table Template.md",
+    "_COMMUNITY_New Java File Skill.md",
+    "_COMMUNITY_Community 35.md"
+  ]
 }

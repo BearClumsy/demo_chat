@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Features/User.md",
-                "mode": "preview",
+                "file": "docs/Plan/README.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "User"
+              "title": "README"
             }
           }
         ]
@@ -185,7 +185,41 @@
   },
   "active": "19f4e5e332e17220",
   "lastOpenFiles": [
-    "Features/Chat.md",
-    "Daily/2026-07-13.md"
+    "Clippings/Nginx для начинающих точная настройка процессов, заголовков, SSL, keepalive и маршрутизации запросов.md",
+    "docs/Plan/README.md",
+    "Clippings",
+    "docs/Plan/overview.md",
+    "docs/Plan/github-actions.md.tmp.4546.9c4fda9323cb",
+    "docs/Plan/infrastructure.md.tmp.4546.16ef789991b3",
+    "docs/rag/intent-matching.md",
+    "_tmp_test_note.md",
+    "Untitled.md",
+    "docs/Plan/infrastructure.md",
+    "docs/Plan/infrastructure.md",
+    "docs/aws",
+    "docs/Plan/github-actions.md",
+    "docs/Plan/vector-store-schema.md",
+    "docs/Plan/intent-matching.md",
+    "ci-cd/github-actions.md",
+    "docs/rag",
+    "docs/Plan/backend.md",
+    "docs/Plan/dialogue-state.md",
+    "docs/Plan/local-vs-aws.md",
+    "docs/architecture",
+    "docs/environments/local-vs-aws.md",
+    "Daily/2026-07-13.md",
+    "docs/Plan/rag-pipeline.md",
+    "docs/Plan/prompt-engineering.md",
+    "docs/Plan/frontend.md",
+    "docs/Plan/roadmap.md",
+    "docs/environments",
+    "docs",
+    "ci-cd",
+    "index.md",
+    "docs/Plan",
+    "Infrastructure/Qdrant/_template.md",
+    "Infrastructure/Postgres/users.md",
+    "Infrastructure/Cassandra/chat_history.md",
+    "Features/Chat.md"
   ]
 }

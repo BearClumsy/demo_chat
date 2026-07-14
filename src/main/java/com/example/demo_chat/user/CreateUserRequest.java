@@ -17,8 +17,7 @@ public record CreateUserRequest(
         @Size(max = 255, message = "{user.email.size}")
         String email,
     @Size(max = 20, message = "{user.phone.size}") String phone,
-    @NotBlank(message = "{user.login.required}")
-        @Size(max = 100, message = "{user.login.size}")
+    @NotBlank(message = "{user.login.required}") @Size(max = 100, message = "{user.login.size}")
         String login,
     @NotBlank(message = "{user.password.required}")
         @Size(min = 8, max = 255, message = "{user.password.size}")

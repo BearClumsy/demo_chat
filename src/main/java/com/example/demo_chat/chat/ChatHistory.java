@@ -14,7 +14,7 @@ import org.springframework.data.cassandra.core.mapping.Table;
 
 @Table("chat_history")
 @Getter
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ChatHistory {
@@ -24,6 +24,9 @@ public class ChatHistory {
 
   @Column("participant_ids")
   private List<UUID> participantIds;
+
+  @Column("title")
+  private String title;
 
   @Frozen
   @Column("messages")

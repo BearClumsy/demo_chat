@@ -1,11 +1,11 @@
 package com.example.demo_chat.common;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
-import org.springframework.validation.FieldError;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.support.WebExchangeBindException;
 
@@ -14,14 +14,24 @@ public class ValidationExceptionHandler {
 
   @ExceptionHandler(WebExchangeBindException.class)
   public ProblemDetail handleValidationException(WebExchangeBindException ex) {
-    Map<String, String> fieldErrors = new LinkedHashMap<>();
-    for (FieldError fieldError : ex.getFieldErrors()) {
+    var fieldErrors = new LinkedHashMap<String, String>();
+    for (var fieldError : ex.getFieldErrors()) {
       fieldErrors.put(fieldError.getField(), fieldError.getDefaultMessage());
     }
 
-    ProblemDetail problemDetail =
+    var problemDetail =
         ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, "Validation failed");
     problemDetail.setProperty("errors", fieldErrors);
     return problemDetail;
   }
+
+  /** Maps invalid chat participants (self-chat or unknown user ids) to 400 Bad Request. */
+  @ExceptionHandler(IllegalArgumentException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public void handleInvalidChatParticipants() {}
+
+  /** Maps a {@code currentUserId} that doesn't match the authenticated user to 403 Forbidden. */
+  @ExceptionHandler(AccessDeniedException.class)
+  @ResponseStatus(HttpStatus.FORBIDDEN)
+  public void handleCurrentUserMismatch() {}
 }
