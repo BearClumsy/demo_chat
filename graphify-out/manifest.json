@@ -1,0 +1,152 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1783961282.6099799,
+    "ast_hash": "e1073342e958ac9f00716938c8f165e3",
+    "semantic_hash": ""
+  },
+  ".claude/settings.local.json": {
+    "mtime": 1783967580.3515396,
+    "ast_hash": "51c69d5748404d67b44e5598f21a7490",
+    "semantic_hash": ""
+  },
+  "build.gradle": {
+    "mtime": 1783966878.23302,
+    "ast_hash": "476048f5617e9e65394831d8452f95aa",
+    "semantic_hash": ""
+  },
+  "gradlew": {
+    "mtime": 1783960338.0,
+    "ast_hash": "45bf2667b1fbec0e07e42808dc662b6b",
+    "semantic_hash": ""
+  },
+  "settings.gradle": {
+    "mtime": 1783963115.9978929,
+    "ast_hash": "18572ef86608bf0ed2cdadd2f294a379",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/DemoChatApplication.java": {
+    "mtime": 1783966080.929842,
+    "ast_hash": "af9172082a17860fd7363c0010599eca",
+    "semantic_hash": ""
+  },
+  "src/test/java/com/example/demo_chat/DemoChatApplicationTests.java": {
+    "mtime": 1783966080.994299,
+    "ast_hash": "9f49bedc4513a4402488276810776ab0",
+    "semantic_hash": ""
+  },
+  ".claude/skills/NewJavaFile/SKILL.md": {
+    "mtime": 1783960922.1430929,
+    "ast_hash": "4e5e6b6506452df553f3d5101bc81993",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1783961282.609558,
+    "ast_hash": "24dbc78e0d2fcbf7807600f2406c66be",
+    "semantic_hash": ""
+  },
+  "src/main/resources/local/docker-compose.yml": {
+    "mtime": 1783960651.4095018,
+    "ast_hash": "133465a612f27405fdfd88ec18c50d7c",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/user/User.java": {
+    "mtime": 1783967653.9867027,
+    "ast_hash": "5f03c16dbf5ab3f77e5ec74161ec66c2",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/user/UserRepository.java": {
+    "mtime": 1783967685.8960814,
+    "ast_hash": "a9c3f508d3cb3a2eae964667dd21d78c",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/user/UserResponse.java": {
+    "mtime": 1783967691.970163,
+    "ast_hash": "e5f408861e3941fe5603d41a8476502f",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/user/UserService.java": {
+    "mtime": 1783967681.5952575,
+    "ast_hash": "aa9ed99e4dd39140c6d3646ab62c2ac0",
+    "semantic_hash": ""
+  },
+  "src/main/resources/db/migration/V1__create_users_table.sql": {
+    "mtime": 1783962880.293979,
+    "ast_hash": "4eaa7e9eb16ffb182dcae75e641da181",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Features/_template.md": {
+    "mtime": 1783961985.975616,
+    "ast_hash": "71883931a8ee00dd803cf1c3fd786357",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Infrastructure/Cassandra/_template.md": {
+    "mtime": 1783962001.4438732,
+    "ast_hash": "840c5054291f56838ac7fb4cab5e7689",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Infrastructure/Kafka/_template.md": {
+    "mtime": 1783961993.847569,
+    "ast_hash": "049f69cc5c586101ec93834b592ef6bd",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Infrastructure/Postgres/_template.md": {
+    "mtime": 1783961997.6673782,
+    "ast_hash": "a7984f4d12cd74521146336ea926de4f",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Infrastructure/Qdrant/_template.md": {
+    "mtime": 1783962005.6755388,
+    "ast_hash": "4cca1777cc6b6b8ff395a29be8106652",
+    "semantic_hash": ""
+  },
+  "docs/wiki/index.md": {
+    "mtime": 1783961981.4542444,
+    "ast_hash": "2fb2bcfdcc8061062ff9ba6512620615",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/user/UserController.java": {
+    "mtime": 1783967670.3085058,
+    "ast_hash": "38f517733c3d0677b38ca399e121540f",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/chat/ChatController.java": {
+    "mtime": 1783967200.4716408,
+    "ast_hash": "f6e0a5716f9114685c29dee0631c098d",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/config/PasswordEncoderConfig.java": {
+    "mtime": 1783966912.6232173,
+    "ast_hash": "911e01c5f613d77a25c12ababae2b519",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/user/CreateUserRequest.java": {
+    "mtime": 1783968006.4782526,
+    "ast_hash": "5f6ab5179d40d8a1d286ff5bf919fd51",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/chat/ChatService.java": {
+    "mtime": 1783967721.2710047,
+    "ast_hash": "f1a557fdc81c072f29f0751b257f8539",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/chat/ChatHistory.java": {
+    "mtime": 1783967561.5475037,
+    "ast_hash": "8e82cad56179b5849eeadf785f3156a6",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/chat/ChatMessage.java": {
+    "mtime": 1783967552.1305878,
+    "ast_hash": "e61538e15a8b42c3d9a62171c029ed70",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/chat/ChatHistoryRepository.java": {
+    "mtime": 1783967711.7536666,
+    "ast_hash": "4406d5e17631fe63489faa653ba77b1d",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/common/ValidationExceptionHandler.java": {
+    "mtime": 1783968011.484328,
+    "ast_hash": "dcb86539d7eaeff615afe60e18e4bec3",
+    "semantic_hash": ""
+  }
+}
