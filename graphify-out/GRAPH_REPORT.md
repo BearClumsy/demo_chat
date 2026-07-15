@@ -1,16 +1,16 @@
-# Graph Report - demo_chat  (2026-07-14)
+# Graph Report - demo_chat  (2026-07-15)
 
 ## Corpus Check
-- 81 files · ~15,509 words
+- 94 files · ~19,835 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 581 nodes · 738 edges · 85 communities (63 shown, 22 thin omitted)
-- Extraction: 88% EXTRACTED · 12% INFERRED · 0% AMBIGUOUS · INFERRED: 92 edges (avg confidence: 0.85)
+- 702 nodes · 982 edges · 92 communities (71 shown, 21 thin omitted)
+- Extraction: 85% EXTRACTED · 15% INFERRED · 0% AMBIGUOUS · INFERRED: 152 edges (avg confidence: 0.83)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `db4edbf7`
+- Built from commit: `99eb1dba`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -87,18 +87,24 @@
 - [[_COMMUNITY_Community 71|Community 71]]
 - [[_COMMUNITY_Community 72|Community 72]]
 - [[_COMMUNITY_Community 73|Community 73]]
+- [[_COMMUNITY_Community 79|Community 79]]
+- [[_COMMUNITY_Community 85|Community 85]]
+- [[_COMMUNITY_Community 86|Community 86]]
+- [[_COMMUNITY_Community 87|Community 87]]
+- [[_COMMUNITY_Community 88|Community 88]]
+- [[_COMMUNITY_Community 89|Community 89]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `User Feature` - 13 edges
-2. `ChatPipelineService` - 12 edges
+1. `ChatPipelineService` - 16 edges
+2. `User Feature` - 13 edges
 3. `Support Chat (RAG-based, Scoped Intent Matching) — Project Overview` - 12 edges
-4. `Java Backend Stack (Spring Boot 4.0.7 + WebFlux + Spring AI 2.0.0)` - 11 edges
-5. `Dialogue Session Model (Redis-based design)` - 11 edges
-6. `GitHub Actions workflow file structure (planned)` - 10 edges
-7. `Mono` - 9 edges
-8. `CI/CD: GitHub Actions` - 9 edges
-9. `Chat Feature` - 9 edges
-10. `demo_chat Wiki Map of Content` - 9 edges
+4. `String` - 11 edges
+5. `Java Backend Stack (Spring Boot 4.0.7 + WebFlux + Spring AI 2.0.0)` - 11 edges
+6. `Dialogue Session Model (Redis-based design)` - 11 edges
+7. `Mono` - 10 edges
+8. `PipelineOutcome` - 10 edges
+9. `GitHub Actions workflow file structure (planned)` - 10 edges
+10. `CI/CD: GitHub Actions` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Cassandra Docker Service` --shares_data_with--> `chat_history Cassandra Table`  [INFERRED]
@@ -123,11 +129,11 @@
 - **Local-to-AWS Multi-Datastore Infrastructure Mapping** — docs_wiki_docs_plan_overview_system_components, docs_wiki_docs_plan_backend_stack, docs_wiki_docs_plan_local_vs_aws_mapping_table, docs_wiki_docs_plan_infrastructure_aws_services [INFERRED 0.85]
 - **Answer Generation and Guardrail Pipeline** — docs_wiki_docs_plan_rag_pipeline_stages, docs_wiki_docs_plan_prompt_engineering_prompt_structure, docs_wiki_docs_plan_prompt_engineering_output_guardrails, docs_wiki_docs_plan_intent_matching_two_stage_filter [INFERRED 0.75]
 
-## Communities (85 total, 22 thin omitted)
+## Communities (92 total, 21 thin omitted)
 
 ### Community 0 - "Plan Docs: Target Architecture"
-Cohesion: 0.08
-Nodes (48): Java Backend Stack (Spring Boot 4.0.7 + WebFlux + Spring AI 2.0.0), DialogueStatus state machine (NEW→INTENT_MATCHED→SLOT_FILLING→READY_TO_ANSWER→ANSWERED / OUT_OF_SCOPE→ESCALATED), Dialogue Session Model (Redis-based design), Redis key structure (session:{id}, semcache:{queryHash}, ratelimit:{userId}), Planned backend integration points (SSE endpoints) vs actual current API surface, React Frontend planned project structure, backend-ci.yml stages, deploy-prod.yml (blue/green, manual approval) (+40 more)
+Cohesion: 0.07
+Nodes (52): chat/ package (ChatController, ChatService, ChatHistory, Cassandra), Package-by-feature over package-by-layer (deliberate choice), Reactive boundaries: chat/* fully reactive vs user/* blocking JPA bridged via Schedulers.boundedElastic(), Java Backend Stack (Spring Boot 4.0.7 + WebFlux + Spring AI 2.0.0), user/ package (UserController, UserService, User JPA entity), DialogueStatus state machine (NEW→INTENT_MATCHED→SLOT_FILLING→READY_TO_ANSWER→ANSWERED / OUT_OF_SCOPE→ESCALATED), Dialogue Session Model (Redis-based design), Redis key structure (session:{id}, semcache:{queryHash}, ratelimit:{userId}) (+44 more)
 
 ### Community 1 - "User Feature Wiki Notes"
 Cohesion: 0.18
@@ -138,24 +144,24 @@ Cohesion: 0.25
 Nodes (10): GetMapping, CreateUserRequest, ExceptionHandler, Mono, PostMapping, ResponseEntity, ResponseStatus, UserResponse (+2 more)
 
 ### Community 3 - "Chat API Implementation"
-Cohesion: 0.10
-Nodes (22): ChatController, GrantedAuthority, ParticipantRequest, SendMessageRequest, Mono, PostMapping, ResponseEntity, SendMessageResponse (+14 more)
+Cohesion: 0.16
+Nodes (18): ChatController, ParticipantRequest, SendMessageRequest, Flux, Mono, PostMapping, ResponseEntity, SendMessageResponse (+10 more)
 
 ### Community 4 - "Chat Feature Wiki Notes"
 Cohesion: 0.25
 Nodes (9): Chat Feature, ChatController, ChatHistoryRepository, ChatService, startChat() Generates Random UUID Decision, ValidationExceptionHandler, App-Wide ValidationExceptionHandler Decision, Feature Note Template (+1 more)
 
 ### Community 5 - "User Entity & Security Principal"
-Cohesion: 0.07
-Nodes (39): AnswerGenerationService, ChatHistoryRepository, DialogueState, DialogueStateRepository, IntentClassificationService, KnowledgeRetrievalService, PipelineOutcome, PromptBuilder (+31 more)
+Cohesion: 0.11
+Nodes (25): ChatServiceValidateParticipantIdsTest, DialogueState, PipelineOutcome, ChatPipelineService, DialogueState, PromptBuilder, ChatHistory, Document (+17 more)
 
 ### Community 6 - "Chat Cassandra Entities"
-Cohesion: 0.13
-Nodes (16): ChatService, Collection, MessageRequest, ObjectMapper, PostConstruct, IntentDefinitionRegistry, Resource, ChatHistory (+8 more)
+Cohesion: 0.06
+Nodes (30): BeforeAll, Collection, DynamicPropertyRegistry, DynamicPropertySource, GrantedAuthority, ObjectMapper, PostConstruct, IntentDefinitionRegistry (+22 more)
 
 ### Community 7 - "Auth: UserDetails & Repository"
-Cohesion: 0.19
-Nodes (9): ReactiveUserDetailsService, Mono, Override, String, Optional, String, User, SecurityUserDetailsService (+1 more)
+Cohesion: 0.10
+Nodes (18): ChatHistoryRepository, Predicate, AnswerGenerationService, ChatPipelineServiceTest, SlotFillingService, AssembledPrompt, ChatClient, IntentDefinition (+10 more)
 
 ### Community 8 - "Data Store Docker Services"
 Cohesion: 0.24
@@ -178,8 +184,8 @@ Cohesion: 0.21
 Nodes (9): PasswordEncoderConfig, PasswordEncoder, Bean, CreateUserRequest, Mono, User, UserResponse, UUID (+1 more)
 
 ### Community 14 - "Backend Package Structure Doc"
-Cohesion: 0.67
-Nodes (4): chat/ package (ChatController, ChatService, ChatHistory, Cassandra), Package-by-feature over package-by-layer (deliberate choice), Reactive boundaries: chat/* fully reactive vs user/* blocking JPA bridged via Schedulers.boundedElastic(), user/ package (UserController, UserService, User JPA entity)
+Cohesion: 0.13
+Nodes (14): SemanticCacheVectorStoreConfig, EmbeddingModel, QdrantClient, Qualifier, SemanticCacheService, SemanticCacheServiceTest, Bean, String (+6 more)
 
 ### Community 15 - "Gradle Wrapper Script"
 Cohesion: 0.18
@@ -187,7 +193,7 @@ Nodes (10): Architecture, AWS, CI/CD, Current repository structure, Data, Docume
 
 ### Community 16 - "Application Entry Point"
 Cohesion: 0.20
-Nodes (8): Commands, Configuration, graphify, Intended architecture (from declared dependencies), Knowledge Sources, Project status, Toolchain, Working with this Vault
+Nodes (8): Architecture (from declared dependencies), Commands, Configuration, graphify, Knowledge Sources, Project status, Toolchain, Working with this Vault
 
 ### Community 17 - "Obsidian App Settings"
 Cohesion: 0.20
@@ -223,7 +229,7 @@ Nodes (8): ChatHistory Entity, ChatHistory Partition Key = user_id Decision, Cha
 
 ### Community 42 - "Community 42"
 Cohesion: 0.25
-Nodes (7): Dialogue Session Model (Cassandra), Example value, Key structure (target), Related documents, Semantic cache and rate limiting — not yet decided, Statuses (`DialogueStatus`), Why Cassandra and not in-memory
+Nodes (7): Dialogue Session Model (Cassandra), Example value, Key structure (implemented), Related documents, Semantic cache and rate limiting — not yet decided, Statuses (`DialogueStatus`), Why Cassandra and not in-memory
 
 ### Community 43 - "Community 43"
 Cohesion: 0.25
@@ -290,8 +296,8 @@ Cohesion: 0.33
 Nodes (5): Architecture Overview, Design principles, Flow for a single message (current implementation), Related documents, System components (current)
 
 ### Community 59 - "Community 59"
-Cohesion: 0.33
-Nodes (5): Example of a single request going through the pipeline, Pipeline stages, RAG Pipeline: From User Context to Answer, Related documents, Where each stage lives in the code (see backend structure)
+Cohesion: 0.29
+Nodes (6): Example of a single request going through the pipeline, Known Phase-1 simplifications, Pipeline stages, RAG Pipeline: From User Context to Answer, Related documents, Where each stage lives in the code
 
 ### Community 60 - "Community 60"
 Cohesion: 0.40
@@ -325,25 +331,53 @@ Nodes (4): Notes, Payload Fields, Qdrant Collection: <collection_name>, Used By
 Cohesion: 0.50
 Nodes (3): Format, Gathering what changed, Saving
 
+### Community 68 - "Community 68"
+Cohesion: 0.33
+Nodes (5): alwaysUpdateLinks, promptDelete, readableLineLength, strictLineBreaks, vimMode
+
+### Community 79 - "Community 79"
+Cohesion: 0.19
+Nodes (9): Boolean, ResponseValidator, ResponseValidatorTest, ChatClient, IntentDefinition, Mono, String, IntentDefinition (+1 more)
+
+### Community 85 - "Community 85"
+Cohesion: 0.15
+Nodes (12): AnswerGenerationService, DialogueStateRepository, IntentClassificationService, KnowledgeRetrievalService, PromptBuilder, QueryNormalizationService, ResponseValidator, ScopeFilter (+4 more)
+
+### Community 86 - "Community 86"
+Cohesion: 0.32
+Nodes (8): ChatService, MessageRequest, ChatHistory, List, Mono, String, UUID, Void
+
+### Community 87 - "Community 87"
+Cohesion: 0.29
+Nodes (5): TextChunker, TextChunkerTest, List, String, Test
+
+### Community 88 - "Community 88"
+Cohesion: 0.25
+Nodes (7): Commands, Current status, demo_chat, Documentation, Getting started, Project structure, Tech stack
+
+### Community 89 - "Community 89"
+Cohesion: 0.33
+Nodes (5): 2026-07-14, API — RAG pipeline, Dependencies — Bedrock Converse starter, Documentation, Infrastructure & tooling
+
 ## Knowledge Gaps
-- **231 isolated node(s):** `promptDelete`, `alwaysUpdateLinks`, `name`, `version`, `minAppVersion` (+226 more)
+- **259 isolated node(s):** `promptDelete`, `alwaysUpdateLinks`, `strictLineBreaks`, `vimMode`, `readableLineLength` (+254 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **22 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **21 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `UserDetails` connect `Chat API Implementation` to `Auth: UserDetails & Repository`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **Why does `ChatPipelineService` connect `User Entity & Security Principal` to `Community 85`?**
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Why does `KnowledgeBaseIndexer` connect `Obsidian Catppuccin Theme` to `Chat Cassandra Entities`?**
+  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **Why does `UserPrincipal` connect `Chat Cassandra Entities` to `Chat API Implementation`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Are the 3 inferred relationships involving `User Feature` (e.g. with `Built com.example.demo_chat.user Package (API)` and `Feature Note Template`) actually correct?**
   _`User Feature` has 3 INFERRED edges - model-reasoned connections that need verification._
-- **Are the 3 inferred relationships involving `Dialogue Session Model (Redis-based design)` (e.g. with `chat/ package (ChatController, ChatService, ChatHistory, Cassandra)` and `Flow for a single message — current implementation (user create, chat start, add participant)`) actually correct?**
-  _`Dialogue Session Model (Redis-based design)` has 3 INFERRED edges - model-reasoned connections that need verification._
-- **What connects `promptDelete`, `alwaysUpdateLinks`, `name` to the rest of the system?**
-  _248 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `promptDelete`, `alwaysUpdateLinks`, `strictLineBreaks` to the rest of the system?**
+  _276 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Plan Docs: Target Architecture` be split into smaller, more focused modules?**
-  _Cohesion score 0.07801418439716312 - nodes in this community are weakly interconnected._
-- **Should `Chat API Implementation` be split into smaller, more focused modules?**
-  _Cohesion score 0.10227272727272728 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07013574660633484 - nodes in this community are weakly interconnected._
 - **Should `User Entity & Security Principal` be split into smaller, more focused modules?**
-  _Cohesion score 0.06721311475409836 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11394557823129252 - nodes in this community are weakly interconnected._

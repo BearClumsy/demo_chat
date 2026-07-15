@@ -5,12 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
-/**
- * Bridges the blocking {@link UserRepository} (JPA/JDBC) onto reactive {@link Mono}s by running
- * each call on {@link Schedulers#boundedElastic()}, so it doesn't block the WebFlux event loop.
- */
+/** Calls the reactive {@link UserRepository} (R2DBC) directly - no blocking bridge needed. */
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -23,10 +19,7 @@ public class UserService {
    * @return the user, or an empty {@link Mono} if none exists with this id
    */
   public Mono<UserResponse> getUserById(UUID id) {
-    return Mono.fromCallable(() -> userRepository.findById(id))
-        .subscribeOn(Schedulers.boundedElastic())
-        .flatMap(Mono::justOrEmpty)
-        .map(UserResponse::from);
+    return userRepository.findById(id).map(UserResponse::from);
   }
 
   /**
@@ -36,9 +29,7 @@ public class UserService {
    * @return the created user
    */
   public Mono<UserResponse> createUser(CreateUserRequest request) {
-    return Mono.fromCallable(() -> userRepository.save(toNewUser(request)))
-        .subscribeOn(Schedulers.boundedElastic())
-        .map(UserResponse::from);
+    return userRepository.save(toNewUser(request)).map(UserResponse::from);
   }
 
   private User toNewUser(CreateUserRequest request) {

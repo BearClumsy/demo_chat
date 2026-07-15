@@ -1,16 +1,15 @@
 package com.example.demo_chat.chat;
 
+import com.example.demo_chat.user.User;
 import com.example.demo_chat.user.UserRepository;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.Schedulers;
 
 @Service
 @RequiredArgsConstructor
@@ -71,7 +70,7 @@ public class ChatService {
               if (chatHistory.getParticipantIds().contains(userId)) {
                 return Mono.just(chatHistory);
               }
-              List<UUID> participantIds = new ArrayList<>(chatHistory.getParticipantIds());
+              var participantIds = new ArrayList<>(chatHistory.getParticipantIds());
               participantIds.add(userId);
               return chatHistoryRepository.save(
                   chatHistory.toBuilder().participantIds(participantIds).build());
@@ -97,17 +96,15 @@ public class ChatService {
   }
 
   private Mono<Void> validateParticipantIds(List<UUID> participantIds) {
-    return Mono.fromCallable(() -> userRepository.findAllById(participantIds))
-        .subscribeOn(Schedulers.boundedElastic())
+    return userRepository
+        .findAllById(participantIds)
+        .map(User::getId)
+        .collect(Collectors.toSet())
         .flatMap(
-            users -> {
-              Set<UUID> foundIds = new HashSet<>();
-              users.forEach(user -> foundIds.add(user.getId()));
-              if (!foundIds.containsAll(participantIds)) {
-                return Mono.<Void>error(
-                    new IllegalArgumentException("Participant ids must be valid"));
-              }
-              return Mono.<Void>empty();
-            });
+            foundIds ->
+                foundIds.containsAll(participantIds)
+                    ? Mono.<Void>empty()
+                    : Mono.<Void>error(
+                        new IllegalArgumentException("Participant ids must be valid")));
   }
 }

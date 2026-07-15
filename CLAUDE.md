@@ -4,10 +4,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project status
 
-This is a freshly-scaffolded Spring Boot project (Spring Initializr output). The only code present is the
-generated application entry point and a placeholder context-load test — no controllers, services, entities,
-or AI/RAG wiring have been written yet. Treat the dependency set in `build.gradle` as a statement of intended
-architecture, not a description of existing code.
+This project has moved past scaffolding. Phases 1 and 2 of the roadmap (see
+`docs/wiki/Plan/roadmap.md`) are implemented: user management + Spring Security auth (Postgres via
+R2DBC), authenticated chat creation with participant validation and message history (Cassandra), and an
+8-stage RAG pipeline — normalize → semantic-cache check → retrieve → classify intent → slot-fill →
+generate → output-side groundedness guardrail — orchestrated by `ChatPipelineService`. Retrieval and the
+semantic cache are both backed by Qdrant (`support_kb` and `semantic_cache` collections). Replies are
+available either as a plain JSON response or SSE-streamed (buffer-then-chunk, not live token generation)
+via `POST /api/chats/{chatId}/messages/stream`. See `README.md` for a fuller overview.
+
+Still outstanding: the React frontend, AWS deployment, and CI/CD. Bedrock/Qdrant calls remain on
+`Schedulers.boundedElastic()` bridging (a deliberate, accepted scope boundary — neither has a
+reactive-native client in this Spring AI version); only Postgres/JPA had a real reactive alternative
+(R2DBC) and has been migrated. Test coverage now includes an R2DBC repository slice test, a `ChatService`
+unit test, RAG pipeline unit tests (guardrail, semantic cache), and a `ChatController` SSE slice test,
+alongside the original context-load test.
 
 ## Commands
 
@@ -30,9 +41,10 @@ Tests use JUnit 5 (`useJUnitPlatform()` is configured in `build.gradle`).
 - Spring AI 2.0.0, imported as a BOM (`springAiVersion` in `build.gradle`).
 - Root package: `com.example.demo_chat`.
 
-## Intended architecture (from declared dependencies)
+## Architecture (from declared dependencies)
 
-The dependency set points to a RAG-style chat application with the following shape once implemented:
+The dependency set backs a RAG-style chat application with the following shape. Most of this is now
+implemented (see "Project status" above); where a piece is still pending, it's called out below.
 
 - **Reactive web layer**: `spring-boot-starter-webflux` + `spring-boot-starter-webclient` — endpoints and
   outbound HTTP calls are expected to be reactive (`Mono`/`Flux`), not servlet-based.
@@ -44,26 +56,32 @@ The dependency set points to a RAG-style chat application with the following sha
   expected to be Markdown, chunked/loaded through Spring AI's ETL pipeline.
 - **Chat memory**: `spring-ai-starter-model-chat-memory-repository-cassandra` — conversation history is
   persisted in Cassandra, accessed reactively (`spring-boot-starter-data-cassandra-reactive`).
-- **Relational persistence**: `spring-boot-starter-data-jpa` + `postgresql` driver + `spring-boot-starter-
-  flyway` (with `flyway-database-postgresql`) — any relational schema (e.g. app/user data distinct from
-  vector or chat-memory storage) is Postgres, version-controlled via Flyway migrations. Migration files
-  belong under `src/main/resources/db/migration` following Flyway's `V<version>__description.sql` naming.
+- **Relational persistence**: `spring-boot-starter-data-r2dbc` + `r2dbc-postgresql` for the app's
+  reactive Postgres access, plus `spring-boot-starter-jdbc` + `postgresql` driver + `spring-boot-starter-
+  flyway` (with `flyway-database-postgresql`) purely so Flyway has a blocking `DataSource` to run
+  migrations with — any relational schema (e.g. app/user data distinct from vector or chat-memory
+  storage) is Postgres, version-controlled via Flyway migrations. Migration files belong under
+  `src/main/resources/db/migration` following Flyway's `V<version>__description.sql` naming.
 - **Messaging**: `spring-boot-starter-kafka` — expect async event production/consumption alongside the
-  synchronous chat API.
+  synchronous chat API. Not yet wired up.
 - **Observability**: `spring-boot-starter-actuator` — health/metrics endpoints are expected to be enabled.
 - Lombok is available (`compileOnly` + annotation processor) for reducing boilerplate on entities/DTOs.
 
-Because JPA/Postgres, Cassandra, and Qdrant are all present, expect three distinct data stores serving
-different purposes (transactional data, chat memory, vector embeddings) rather than a single database —
-don't default to putting new persistent state in JPA/Postgres without checking whether it's chat memory or
-vector data instead.
+Because R2DBC/Postgres, Cassandra, and Qdrant are all present, expect three distinct data stores serving
+different purposes (transactional data, chat memory/dialogue state, vector embeddings — including a
+second Qdrant collection, `semantic_cache`, alongside the knowledge-base `support_kb` collection) rather
+than a single database — don't default to putting new persistent state in R2DBC/Postgres without checking
+whether it's chat memory or vector data instead.
 
 ## Configuration
 
-`src/main/resources/application.properties` currently only sets `spring.application.name`. Connection
-details for Postgres, Cassandra, Qdrant, Kafka, and Bedrock credentials will need to be added here (or in
-profile-specific `application-<profile>.properties` / environment variables) as those integrations are
-built out.
+`src/main/resources/application.properties` sets connection details for Postgres (both `spring.datasource.*`
+for Flyway/JDBC and `spring.r2dbc.*` for the app), Cassandra, Qdrant, Kafka, and Bedrock model IDs, plus
+`demo-chat.rag.*`, `demo-chat.guardrail.*`, `demo-chat.cache.*`, and `demo-chat.streaming.*` tuning
+properties (kebab-case, `@Value("${...:default}")` injection, no `@ConfigurationProperties` class).
+Bedrock credentials are not set here and must come from the environment/AWS credential chain. Local
+dependencies (Postgres, Cassandra, Qdrant, Kafka) can be started via
+`src/main/resources/local/docker-compose.yml`.
 
 ## Knowledge Sources
 
@@ -90,7 +108,10 @@ This is an Obsidian vault. For reading/searching/writing notes, use the Obsidian
 Obsidian runtime and correctly updates links, front matter, and indexes.
 
 Structure: `Features/<name>.md`, `Infrastructure/{Kafka,Postgres,Cassandra,Qdrant}/<resource>.md`,
-`Daily/<YYYY-MM-DD>.md`, each folder with a `_template.md` to copy from. `index.md` is the MOC
+`Daily/<YYYY-MM-DD>.md` — each of these folders has a `_template.md` to copy from. `Plan/<topic>.md` is
+architecture/roadmap-level documentation (system overview, RAG pipeline design, phased roadmap) rather
+than per-resource notes, so it has no template; `Plan/README.md` is its own sub-index and
+`Plan/roadmap.md` tracks what's implemented per phase. `index.md` (vault root) is the overall MOC
 entry point.
 
 Before manually grepping files, first try:

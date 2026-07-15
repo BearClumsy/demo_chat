@@ -1,3 +1,5 @@
 {
-  "cssTheme": "Catppuccin"
+  "cssTheme": "Catppuccin",
+  "baseFontSize": 20,
+  "theme": "system"
 }

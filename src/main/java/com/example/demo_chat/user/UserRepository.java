@@ -1,11 +1,11 @@
 package com.example.demo_chat.user;
 
-import java.util.Optional;
 import java.util.UUID;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
+import reactor.core.publisher.Mono;
 
-/** Spring Data JPA repository for {@link User}. */
-public interface UserRepository extends JpaRepository<User, UUID> {
+/** Reactive Spring Data R2DBC repository for {@link User}. */
+public interface UserRepository extends R2dbcRepository<User, UUID> {
 
-  Optional<User> findByLogin(String login);
+  Mono<User> findByLogin(String login);
 }

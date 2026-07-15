@@ -13,8 +13,10 @@
 
 ## Used By
 
-- [[Chat]] — `ChatService.startChat()` creates a new row on chat start; no read/update path implemented
-  yet.
+- [[Chat]] — `ChatService.startChat()` creates a new row on chat start; `getChatForParticipant()` reads
+  it (and checks `participant_ids` for access); `addParticipant()` updates `participant_ids`;
+  `ChatPipelineService.appendMessages()` appends the user + assistant turn to `messages` after every
+  `POST /api/chats/{chatId}/messages` (or the SSE `.../messages/stream` variant) call.
 
 ## Notes
 

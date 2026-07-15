@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "4d104ff4891ab2e1",
+        "id": "33b175613275a2b1",
         "type": "tabs",
         "children": [
           {
-            "id": "19f4e5e332e17220",
+            "id": "f6dcffc2546c0285",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Plan/rag-pipeline.md",
-                "mode": "source",
+                "file": "Plan/README.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "rag-pipeline"
+              "title": "README"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 467
   },
   "right": {
     "id": "bad9de9eb8ac3cc1",
@@ -183,43 +183,43 @@
       "bases:Create new base": false
     }
   },
-  "active": "8cdbcfecaac25e06",
+  "active": "f6dcffc2546c0285",
   "lastOpenFiles": [
-    "Daily/2026-07-14.md",
-    "docs/Plan/README.md",
-    "Clippings/Nginx для начинающих точная настройка процессов, заголовков, SSL, keepalive и маршрутизации запросов.md",
-    "Clippings",
-    "docs/Plan/overview.md",
-    "docs/Plan/github-actions.md.tmp.4546.9c4fda9323cb",
-    "docs/Plan/infrastructure.md.tmp.4546.16ef789991b3",
-    "docs/rag/intent-matching.md",
-    "_tmp_test_note.md",
-    "Untitled.md",
-    "docs/Plan/infrastructure.md",
-    "docs/Plan/infrastructure.md",
-    "docs/aws",
-    "docs/Plan/github-actions.md",
-    "docs/Plan/vector-store-schema.md",
-    "docs/Plan/intent-matching.md",
-    "ci-cd/github-actions.md",
-    "docs/rag",
-    "docs/Plan/backend.md",
-    "docs/Plan/dialogue-state.md",
-    "docs/Plan/local-vs-aws.md",
-    "docs/architecture",
-    "docs/environments/local-vs-aws.md",
-    "Daily/2026-07-13.md",
-    "docs/Plan/rag-pipeline.md",
-    "docs/Plan/prompt-engineering.md",
-    "docs/Plan/frontend.md",
-    "docs/Plan/roadmap.md",
-    "docs/environments",
-    "docs",
-    "ci-cd",
+    "index.md.tmp.13255.15a0e77f3f10",
+    "Daily/2026-07-15.md",
+    "Plan/frontend.md.tmp.13255.bc2bee72c7a9",
+    "Plan/infrastructure.md.tmp.13255.c74a0080c591",
+    "Plan/github-actions.md.tmp.13255.17add47587cd",
+    "Plan/github-actions.md.tmp.13255.1bfeb78b81b9",
+    "Plan/github-actions.md.tmp.13255.9572059d2719",
+    "Plan/prompt-engineering.md.tmp.13255.9dece29a68d7",
+    "Plan/intent-matching.md.tmp.13255.5749f4e4efea",
+    "Plan/rag-pipeline.md",
     "index.md",
-    "docs/Plan",
-    "Infrastructure/Qdrant/_template.md",
+    "Plan/vector-store-schema.md",
+    "Plan/roadmap.md",
+    "Plan/README.md",
+    "Plan/prompt-engineering.md",
+    "Plan/overview.md",
+    "Plan/local-vs-aws.md",
+    "Plan/intent-matching.md",
+    "Plan/infrastructure.md",
+    "Plan/github-actions.md",
+    "Plan/frontend.md",
+    "Plan/dialogue-state.md",
+    "Plan/backend.md",
+    "Plan",
+    "Features/Chat.md",
+    "Features/User.md",
+    "Infrastructure/Cassandra/chat_history.md",
+    "Infrastructure/Cassandra/dialogue_state.md",
     "Infrastructure/Postgres/users.md",
-    "Infrastructure/Cassandra/chat_history.md"
+    "Infrastructure/Qdrant/_template.md",
+    "Infrastructure/Qdrant/support_kb.md",
+    "Infrastructure/Qdrant/semantic_cache.md",
+    "index.md.tmp.13255.6739ab577f94",
+    "Infrastructure/Cassandra/chat_history.md.tmp.13255.77d6cce4b0f8",
+    "docs/Plan/README.md",
+    "docs/Plan/vector-store-schema.md"
   ]
 }

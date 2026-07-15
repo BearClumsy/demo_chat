@@ -10,8 +10,8 @@
     "semantic_hash": "adf03a30263e7eae5b762e8b678e3c15"
   },
   "build.gradle": {
-    "mtime": 1784055170.151365,
-    "ast_hash": "735fd618cb992ab5614cdb98d00c8d57",
+    "mtime": 1784141831.0788264,
+    "ast_hash": "9858eb7d34a2955d7c514a62be5e207e",
     "semantic_hash": ""
   },
   "gradlew": {
@@ -34,15 +34,10 @@
     "ast_hash": "9f49bedc4513a4402488276810776ab0",
     "semantic_hash": "9f49bedc4513a4402488276810776ab0"
   },
-  ".claude/skills/NewJavaFile/SKILL.md": {
-    "mtime": 1783960922.1430929,
-    "ast_hash": "4e5e6b6506452df553f3d5101bc81993",
-    "semantic_hash": "4e5e6b6506452df553f3d5101bc81993"
-  },
   "CLAUDE.md": {
-    "mtime": 1784017265.4873085,
-    "ast_hash": "f2286cc88e9930fadcc5a26d1343bffb",
-    "semantic_hash": "f2286cc88e9930fadcc5a26d1343bffb"
+    "mtime": 1784126908.6225808,
+    "ast_hash": "ae63e3286df1f29ba36c36063fe0df1a",
+    "semantic_hash": ""
   },
   "src/main/resources/local/docker-compose.yml": {
     "mtime": 1784054357.1221418,
@@ -50,14 +45,14 @@
     "semantic_hash": ""
   },
   "src/main/java/com/example/demo_chat/user/User.java": {
-    "mtime": 1783967653.9867027,
-    "ast_hash": "5f03c16dbf5ab3f77e5ec74161ec66c2",
-    "semantic_hash": "5f03c16dbf5ab3f77e5ec74161ec66c2"
+    "mtime": 1784129768.3406425,
+    "ast_hash": "4ed75529a7fa98251cb3abb91b979b24",
+    "semantic_hash": ""
   },
   "src/main/java/com/example/demo_chat/user/UserRepository.java": {
-    "mtime": 1784026287.9190624,
-    "ast_hash": "ee14a35c22030719aff5f2c6089f92f7",
-    "semantic_hash": "ee14a35c22030719aff5f2c6089f92f7"
+    "mtime": 1784129771.6660333,
+    "ast_hash": "77b36af4e69fac49f4376c25657f6a3e",
+    "semantic_hash": ""
   },
   "src/main/java/com/example/demo_chat/user/UserResponse.java": {
     "mtime": 1783967691.970163,
@@ -65,9 +60,9 @@
     "semantic_hash": "e5f408861e3941fe5603d41a8476502f"
   },
   "src/main/java/com/example/demo_chat/user/UserService.java": {
-    "mtime": 1783967681.5952575,
-    "ast_hash": "aa9ed99e4dd39140c6d3646ab62c2ac0",
-    "semantic_hash": "aa9ed99e4dd39140c6d3646ab62c2ac0"
+    "mtime": 1784129777.80898,
+    "ast_hash": "7a45a497ea4aeedb91421b02151785e5",
+    "semantic_hash": ""
   },
   "src/main/resources/db/migration/V1__create_users_table.sql": {
     "mtime": 1783962880.293979,
@@ -100,9 +95,9 @@
     "semantic_hash": "4cca1777cc6b6b8ff395a29be8106652"
   },
   "docs/wiki/index.md": {
-    "mtime": 1783968676.0073671,
-    "ast_hash": "a4326d3a16b2b8e6f6227c7b40d15732",
-    "semantic_hash": "a4326d3a16b2b8e6f6227c7b40d15732"
+    "mtime": 1784055893.5101018,
+    "ast_hash": "1600d7bebfe02de3d246af79c990cd3f",
+    "semantic_hash": ""
   },
   "src/main/java/com/example/demo_chat/user/UserController.java": {
     "mtime": 1783967670.3085058,
@@ -110,8 +105,8 @@
     "semantic_hash": "38f517733c3d0677b38ca399e121540f"
   },
   "src/main/java/com/example/demo_chat/chat/ChatController.java": {
-    "mtime": 1784053965.0917842,
-    "ast_hash": "c5dee10bffa6bdbd175c4549265af213",
+    "mtime": 1784142780.347357,
+    "ast_hash": "b31bd9f29a890cc5bb03ed854a9e90ff",
     "semantic_hash": ""
   },
   "src/main/java/com/example/demo_chat/config/PasswordEncoderConfig.java": {
@@ -125,8 +120,8 @@
     "semantic_hash": "939bbafa98d1a46e6f0aff00b84716d6"
   },
   "src/main/java/com/example/demo_chat/chat/ChatService.java": {
-    "mtime": 1784053953.199352,
-    "ast_hash": "c58375cf2b1849ff755e5ecc75bf110a",
+    "mtime": 1784129796.3191524,
+    "ast_hash": "176df2e9b05dac14bffa00e7f81213fa",
     "semantic_hash": ""
   },
   "src/main/java/com/example/demo_chat/chat/ChatHistory.java": {
@@ -150,17 +145,17 @@
     "semantic_hash": "f5edf1d1eafb95287646e2610828296e"
   },
   "docs/wiki/.obsidian/app.json": {
-    "mtime": 1784052185.0250735,
-    "ast_hash": "8de5de928883bc689dcd9605d068deb6",
-    "semantic_hash": "8de5de928883bc689dcd9605d068deb6"
+    "mtime": 1784127034.4747896,
+    "ast_hash": "125f4394d2ac48795cb33cfcf4b555eb",
+    "semantic_hash": ""
   },
   "docs/wiki/.obsidian/appearance.json": {
-    "mtime": 1784052185.026898,
+    "mtime": 1784127034.4765382,
     "ast_hash": "c35f421c868a3bed9e5cd1b9abbbc46b",
     "semantic_hash": "c35f421c868a3bed9e5cd1b9abbbc46b"
   },
   "docs/wiki/.obsidian/core-plugins.json": {
-    "mtime": 1784052184.758573,
+    "mtime": 1784127034.2039294,
     "ast_hash": "7c877bea49eaeabb100563bd157b9051",
     "semantic_hash": "7c877bea49eaeabb100563bd157b9051"
   },
@@ -170,8 +165,8 @@
     "semantic_hash": "5a79c6e7436a0a7dfce24da79669e7cc"
   },
   "docs/wiki/.obsidian/workspace.json": {
-    "mtime": 1784053574.0098953,
-    "ast_hash": "b39dd185a1a06d6e7da08b4ec3a80349",
+    "mtime": 1784127034.7586484,
+    "ast_hash": "d8a16e13c9e3431d3c3936dc2508570f",
     "semantic_hash": ""
   },
   ".claude/skills/daily-report/SKILL.md": {
@@ -220,9 +215,9 @@
     "semantic_hash": "99c2904334034e4c1e75722f806a7949"
   },
   "src/main/java/com/example/demo_chat/user/SecurityUserDetailsService.java": {
-    "mtime": 1784026273.906154,
-    "ast_hash": "cb8de8296431823f527d98b5e642d52f",
-    "semantic_hash": "cb8de8296431823f527d98b5e642d52f"
+    "mtime": 1784142259.732731,
+    "ast_hash": "489f6f09dbd0414cba22d752e5912b6e",
+    "semantic_hash": ""
   },
   "src/main/java/com/example/demo_chat/user/UserPrincipal.java": {
     "mtime": 1784026268.9737244,
@@ -235,18 +230,18 @@
     "semantic_hash": "e1da495c008f2b3b75f19b80536dbd0a"
   },
   "docs/wiki/docs/Plan/README.md": {
-    "mtime": 1784034480.1391368,
-    "ast_hash": "463ca747f50f895484b548c40f702e64",
-    "semantic_hash": "463ca747f50f895484b548c40f702e64"
+    "mtime": 1784127601.609558,
+    "ast_hash": "c44de13ce1f0e4a37c84b19ce2928dcb",
+    "semantic_hash": ""
   },
   "docs/wiki/docs/Plan/backend.md": {
-    "mtime": 1784034566.8268163,
-    "ast_hash": "afe96235789b7c7eb55c1e14fad31f8f",
-    "semantic_hash": "afe96235789b7c7eb55c1e14fad31f8f"
+    "mtime": 1784055655.4758325,
+    "ast_hash": "27ba9f897814051a7e77b61d8c22bdda",
+    "semantic_hash": ""
   },
   "docs/wiki/docs/Plan/dialogue-state.md": {
-    "mtime": 1784036829.6711695,
-    "ast_hash": "c24a03b8915dcc1210caad8815eb3cb4",
+    "mtime": 1784055701.50761,
+    "ast_hash": "500ba5de0b319a55ea6c1163a877d0b1",
     "semantic_hash": ""
   },
   "docs/wiki/docs/Plan/frontend.md": {
@@ -275,9 +270,9 @@
     "semantic_hash": "e3d8ddc95636b18850ae75a6bdc74dae"
   },
   "docs/wiki/docs/Plan/overview.md": {
-    "mtime": 1784034525.5921519,
-    "ast_hash": "8b3ddaf9d19d1f56fe22d6cc17ab888a",
-    "semantic_hash": "8b3ddaf9d19d1f56fe22d6cc17ab888a"
+    "mtime": 1784055681.9074988,
+    "ast_hash": "e412e74394d1f1b9b07cae1ec7124684",
+    "semantic_hash": ""
   },
   "docs/wiki/docs/Plan/prompt-engineering.md": {
     "mtime": 1784033438.660394,
@@ -285,14 +280,14 @@
     "semantic_hash": "129f42f00d7737dd4618dd15bd5662e3"
   },
   "docs/wiki/docs/Plan/rag-pipeline.md": {
-    "mtime": 1784033525.4405663,
-    "ast_hash": "376bf94ebcab7ba12fe3dafc8cb05015",
-    "semantic_hash": "376bf94ebcab7ba12fe3dafc8cb05015"
+    "mtime": 1784055746.4645293,
+    "ast_hash": "3f691018d3fda05bc862b34b3f890251",
+    "semantic_hash": ""
   },
   "docs/wiki/docs/Plan/roadmap.md": {
-    "mtime": 1784034739.9552398,
-    "ast_hash": "cf9e3677ded1471999207c6e0327cf34",
-    "semantic_hash": "cf9e3677ded1471999207c6e0327cf34"
+    "mtime": 1784055724.26805,
+    "ast_hash": "36edba8d79220acf0f502de79b9c70a9",
+    "semantic_hash": ""
   },
   "docs/wiki/docs/Plan/vector-store-schema.md": {
     "mtime": 1784033438.6578746,
@@ -325,8 +320,8 @@
     "semantic_hash": ""
   },
   "src/main/java/com/example/demo_chat/rag/ChatPipelineService.java": {
-    "mtime": 1784054011.9351535,
-    "ast_hash": "a45fe796ded8592cf14752788b21cc32",
+    "mtime": 1784142760.6131172,
+    "ast_hash": "82486a04efb74e4b6dffc16d641bb4d3",
     "semantic_hash": ""
   },
   "src/main/java/com/example/demo_chat/rag/DialogueState.java": {
@@ -340,8 +335,8 @@
     "semantic_hash": ""
   },
   "src/main/java/com/example/demo_chat/rag/DialogueStatus.java": {
-    "mtime": 1784053882.1357567,
-    "ast_hash": "cd8e3714af184173e0beec7a83e7cd73",
+    "mtime": 1784142307.820218,
+    "ast_hash": "02ac5dcdd2258c29121b8bc03728141a",
     "semantic_hash": ""
   },
   "src/main/java/com/example/demo_chat/rag/IntentClassification.java": {
@@ -407,6 +402,76 @@
   "src/main/resources/knowledge-base/intents/refund_status.json": {
     "mtime": 1784053658.931839,
     "ast_hash": "8b346125afac97e06971d9507ff29946",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/config/SemanticCacheVectorStoreConfig.java": {
+    "mtime": 1784142509.3546863,
+    "ast_hash": "412147a934d53a2e122fa7c0c6ac2e80",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/rag/GroundednessCheck.java": {
+    "mtime": 1784142294.169687,
+    "ast_hash": "dc46e0e659add93ffedb334fec909d95",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/rag/ResponseValidator.java": {
+    "mtime": 1784142302.277647,
+    "ast_hash": "45c8fc755c96a346e87d52192eae046a",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/rag/SemanticCacheService.java": {
+    "mtime": 1784142675.20967,
+    "ast_hash": "5ee5e508160a72fed61d151bd5284143",
+    "semantic_hash": ""
+  },
+  "src/main/java/com/example/demo_chat/rag/TextChunker.java": {
+    "mtime": 1784142700.888656,
+    "ast_hash": "790a4739c4435d0484222d63da130860",
+    "semantic_hash": ""
+  },
+  "src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java": {
+    "mtime": 1784142259.7628334,
+    "ast_hash": "c391777ac4d693061d3f2547e62c0220",
+    "semantic_hash": ""
+  },
+  "src/test/java/com/example/demo_chat/rag/ChatPipelineServiceTest.java": {
+    "mtime": 1784142826.2490783,
+    "ast_hash": "8cc124a4d21c47e6f394327b00903c65",
+    "semantic_hash": ""
+  },
+  "src/test/java/com/example/demo_chat/rag/ResponseValidatorTest.java": {
+    "mtime": 1784142342.7068844,
+    "ast_hash": "3d7d6f3e975e42c722790cab4bb59e24",
+    "semantic_hash": ""
+  },
+  "src/test/java/com/example/demo_chat/rag/SemanticCacheServiceTest.java": {
+    "mtime": 1784142675.2228036,
+    "ast_hash": "17fc0c629a26789a02666b7233151eed",
+    "semantic_hash": ""
+  },
+  "src/test/java/com/example/demo_chat/rag/TextChunkerTest.java": {
+    "mtime": 1784142834.1184478,
+    "ast_hash": "927e545240a276351889f7ec8bf5c4c1",
+    "semantic_hash": ""
+  },
+  "src/test/java/com/example/demo_chat/user/UserRepositoryTest.java": {
+    "mtime": 1784141898.5002167,
+    "ast_hash": "150e13ad6c61db60575c6300537ce6e4",
+    "semantic_hash": ""
+  },
+  ".claude/skills/java-rules/SKILL.md": {
+    "mtime": 1784142779.5345557,
+    "ast_hash": "846176399e9bd7616ef649f41926b684",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1784126883.0134895,
+    "ast_hash": "301fb98bdf574e8661654946eb0831f3",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Daily/2026-07-14.md": {
+    "mtime": 1784055865.359701,
+    "ast_hash": "e942549abb28cdbf2ae0f73cb37f998f",
     "semantic_hash": ""
   }
 }

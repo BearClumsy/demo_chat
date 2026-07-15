@@ -5,7 +5,9 @@ import com.example.demo_chat.user.UserPrincipal;
 import jakarta.validation.Valid;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -74,6 +77,32 @@ public class ChatController {
             chatHistory ->
                 chatPipelineService.handleMessage(chatId, principal.getId(), request.message()))
         .map(ResponseEntity::ok)
+        .defaultIfEmpty(ResponseEntity.notFound().build());
+  }
+
+  /**
+   * Same as {@link #sendMessage}, but streams the reply as chunked SSE {@code token} events
+   * followed by one {@code done} event, instead of waiting for the whole answer.
+   *
+   * @param principal the authenticated user sending the message
+   * @param chatId the chat to send the message into
+   * @param request the message text
+   * @return the SSE stream, or 404 if no chat has this id
+   * @throws AccessDeniedException if {@code principal} isn't a participant in the chat
+   */
+  @PostMapping(value = "/{chatId}/messages/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+  public Mono<ResponseEntity<Flux<ServerSentEvent<String>>>> sendMessageStream(
+      @AuthenticationPrincipal UserPrincipal principal,
+      @PathVariable UUID chatId,
+      @Valid @RequestBody SendMessageRequest request) {
+    return chatService
+        .getChatForParticipant(chatId, principal.getId())
+        .map(
+            chatHistory ->
+                ResponseEntity.ok()
+                    .body(
+                        chatPipelineService.handleMessageStream(
+                            chatId, principal.getId(), request.message())))
         .defaultIfEmpty(ResponseEntity.notFound().build());
   }
 }

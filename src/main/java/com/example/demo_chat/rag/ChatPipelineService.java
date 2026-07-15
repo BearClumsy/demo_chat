@@ -4,6 +4,7 @@ import com.example.demo_chat.chat.ChatHistory;
 import com.example.demo_chat.chat.ChatHistoryRepository;
 import com.example.demo_chat.chat.ChatMessage;
 import com.example.demo_chat.chat.SendMessageResponse;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +14,10 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.ai.document.Document;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -38,8 +42,12 @@ public class ChatPipelineService {
   private final SlotFillingService slotFillingService;
   private final PromptBuilder promptBuilder;
   private final AnswerGenerationService answerGenerationService;
+  private final ResponseValidator responseValidator;
+  private final SemanticCacheService semanticCacheService;
   private final DialogueStateRepository dialogueStateRepository;
   private final ChatHistoryRepository chatHistoryRepository;
+  private final TextChunker textChunker;
+  private final long chunkDelayMillis;
 
   public ChatPipelineService(
       IntentDefinitionRegistry registry,
@@ -50,8 +58,12 @@ public class ChatPipelineService {
       SlotFillingService slotFillingService,
       PromptBuilder promptBuilder,
       AnswerGenerationService answerGenerationService,
+      ResponseValidator responseValidator,
+      SemanticCacheService semanticCacheService,
       DialogueStateRepository dialogueStateRepository,
-      ChatHistoryRepository chatHistoryRepository) {
+      ChatHistoryRepository chatHistoryRepository,
+      TextChunker textChunker,
+      @Value("${demo-chat.streaming.chunk-delay-millis:40}") long chunkDelayMillis) {
     this.registry = registry;
     this.normalizationService = normalizationService;
     this.retrievalService = retrievalService;
@@ -60,8 +72,12 @@ public class ChatPipelineService {
     this.slotFillingService = slotFillingService;
     this.promptBuilder = promptBuilder;
     this.answerGenerationService = answerGenerationService;
+    this.responseValidator = responseValidator;
+    this.semanticCacheService = semanticCacheService;
     this.dialogueStateRepository = dialogueStateRepository;
     this.chatHistoryRepository = chatHistoryRepository;
+    this.textChunker = textChunker;
+    this.chunkDelayMillis = chunkDelayMillis;
   }
 
   /**
@@ -76,6 +92,39 @@ public class ChatPipelineService {
         .defaultIfEmpty(DialogueState.newState(chatId))
         .flatMap(state -> continuePipeline(state, rawMessage))
         .flatMap(outcome -> persistAndReturn(chatId, userId, rawMessage, outcome));
+  }
+
+  /**
+   * Same pipeline as {@link #handleMessage}, but streams the already guardrail-validated reply as
+   * chunked SSE {@code token} events followed by one {@code done} event, instead of waiting for the
+   * whole answer before responding.
+   *
+   * @param chatId the chat this message belongs to
+   * @param userId the user sending the message
+   * @param rawMessage the raw message text
+   * @return a stream of {@code token} events followed by one {@code done} event carrying the
+   *     resulting dialogue status
+   */
+  public Flux<ServerSentEvent<String>> handleMessageStream(
+      UUID chatId, UUID userId, String rawMessage) {
+    return dialogueStateRepository
+        .findById(chatId)
+        .defaultIfEmpty(DialogueState.newState(chatId))
+        .flatMap(state -> continuePipeline(state, rawMessage))
+        .flatMapMany(outcome -> streamOutcome(chatId, userId, rawMessage, outcome));
+  }
+
+  private Flux<ServerSentEvent<String>> streamOutcome(
+      UUID chatId, UUID userId, String rawMessage, PipelineOutcome outcome) {
+    Flux<ServerSentEvent<String>> tokenEvents =
+        Flux.fromIterable(textChunker.chunk(outcome.reply()))
+            .delayElements(Duration.ofMillis(chunkDelayMillis))
+            .map(chunk -> ServerSentEvent.builder(chunk).event("token").build());
+    Mono<ServerSentEvent<String>> doneEvent =
+        persistOutcome(chatId, userId, rawMessage, outcome)
+            .thenReturn(
+                ServerSentEvent.builder(outcome.state().getStatus().name()).event("done").build());
+    return tokenEvents.concatWith(doneEvent);
   }
 
   private Mono<PipelineOutcome> continuePipeline(DialogueState state, String rawMessage) {
@@ -94,9 +143,9 @@ public class ChatPipelineService {
     if (missingBefore.isEmpty()) {
       return generateAnswer(state, intent);
     }
-    Map<String, String> newSlots = new HashMap<>(state.getSlots());
+    var newSlots = new HashMap<>(state.getSlots());
     newSlots.put(missingBefore.get(0), rawMessage.trim());
-    DialogueState updated = state.toBuilder().slots(newSlots).updatedAt(Instant.now()).build();
+    var updated = state.toBuilder().slots(newSlots).updatedAt(Instant.now()).build();
 
     List<String> stillMissing = slotFillingService.missingSlots(intent, newSlots);
     if (!stillMissing.isEmpty()) {
@@ -115,10 +164,30 @@ public class ChatPipelineService {
         .normalize(rawMessage)
         .flatMap(
             normalizedQuery ->
-                retrievalService
-                    .retrieve(normalizedQuery)
-                    .map(this::toCandidateIntents)
-                    .flatMap(candidates -> classifyAndRoute(state, normalizedQuery, candidates)));
+                semanticCacheService
+                    .lookup(normalizedQuery)
+                    .map(cachedAnswer -> cacheHit(state, normalizedQuery, cachedAnswer))
+                    .switchIfEmpty(
+                        Mono.defer(
+                            () ->
+                                retrievalService
+                                    .retrieve(normalizedQuery)
+                                    .map(this::toCandidateIntents)
+                                    .flatMap(
+                                        candidates ->
+                                            classifyAndRoute(
+                                                state, normalizedQuery, candidates)))));
+  }
+
+  private PipelineOutcome cacheHit(
+      DialogueState state, String normalizedQuery, String cachedAnswer) {
+    DialogueState updated =
+        state.toBuilder()
+            .status(DialogueStatus.ANSWERED)
+            .lastNormalizedQuery(normalizedQuery)
+            .updatedAt(Instant.now())
+            .build();
+    return new PipelineOutcome(updated, cachedAnswer);
   }
 
   private List<IntentDefinition> toCandidateIntents(List<Document> documents) {
@@ -170,10 +239,25 @@ public class ChatPipelineService {
     AssembledPrompt prompt = promptBuilder.build(intent, state.getSlots(), query);
     return answerGenerationService
         .generate(prompt)
-        .map(
+        .flatMap(
             answer ->
-                new PipelineOutcome(
-                    state.toBuilder().status(DialogueStatus.ANSWERED).build(), answer));
+                responseValidator
+                    .validate(answer, intent)
+                    .flatMap(
+                        grounded -> {
+                          if (!grounded) {
+                            return Mono.just(
+                                new PipelineOutcome(
+                                    state.toBuilder().status(DialogueStatus.ESCALATED).build(),
+                                    intent.escalationFallback()));
+                          }
+                          return semanticCacheService
+                              .store(query, intent.intentId(), answer)
+                              .thenReturn(
+                                  new PipelineOutcome(
+                                      state.toBuilder().status(DialogueStatus.ANSWERED).build(),
+                                      answer));
+                        }));
   }
 
   private PipelineOutcome outOfScope(DialogueState state) {
@@ -189,10 +273,16 @@ public class ChatPipelineService {
 
   private Mono<SendMessageResponse> persistAndReturn(
       UUID chatId, UUID userId, String rawMessage, PipelineOutcome outcome) {
+    return persistOutcome(chatId, userId, rawMessage, outcome)
+        .thenReturn(new SendMessageResponse(outcome.reply(), outcome.state().getStatus().name()));
+  }
+
+  private Mono<Void> persistOutcome(
+      UUID chatId, UUID userId, String rawMessage, PipelineOutcome outcome) {
     return dialogueStateRepository
         .save(outcome.state())
         .then(appendMessages(chatId, userId, rawMessage, outcome.reply()))
-        .thenReturn(new SendMessageResponse(outcome.reply(), outcome.state().getStatus().name()));
+        .then();
   }
 
   private Mono<ChatHistory> appendMessages(
@@ -201,8 +291,8 @@ public class ChatPipelineService {
         .findById(chatId)
         .flatMap(
             chatHistory -> {
-              List<ChatMessage> messages = new ArrayList<>(chatHistory.getMessages());
-              Instant now = Instant.now();
+              var messages = new ArrayList<>(chatHistory.getMessages());
+              var now = Instant.now();
               messages.add(
                   ChatMessage.builder().senderId(userId).content(rawMessage).sentAt(now).build());
               messages.add(

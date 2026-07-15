@@ -16,9 +16,14 @@ auto-generated code graph of what's actually implemented.
   - `Infrastructure/Postgres/<table-name>.md` — one note per table (schema, migration file, columns)
   - `Infrastructure/Cassandra/<table-name>.md` — one note per table (partition/clustering keys, TTL)
   - `Infrastructure/Qdrant/<collection-name>.md` — one note per collection (embedding model, dims, distance metric)
+- **Plan** — `Plan/<topic>.md`, architecture/roadmap-level rather than per-resource: system overview,
+  RAG pipeline design, phased roadmap, AWS/CI-CD plans. `Plan/README.md` is its own entry point/index
+  (same role as this file, one level down); `Plan/roadmap.md` tracks what's actually implemented per
+  phase.
 
 Each folder has a `_template.md` — copy it when creating a new note, then delete the template comment
-at the top.
+at the top. (`Plan/` doesn't use this template pattern — its notes are one-off architecture topics, not
+repeated per-resource entries.)
 
 ## Linking convention
 
@@ -36,9 +41,18 @@ view alone since these docs may also be read outside Obsidian).
 ### Infrastructure
 
 - [[chat_history]] (Cassandra)
+- [[dialogue_state]] (Cassandra)
 - [[users]] (Postgres)
+- [[support_kb]] (Qdrant)
+- [[semantic_cache]] (Qdrant)
+
+### Plan
+
+- [[README|Plan overview]]
+- [[roadmap]]
 
 ### Daily
 
 - [[2026-07-13]]
 - [[2026-07-14]]
+- [[2026-07-15]]
