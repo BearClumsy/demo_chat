@@ -1,0 +1,88 @@
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f7;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.auth-card {
+  width: 320px;
+  padding: 2rem;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-card h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.auth-field input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d0d0d5;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.auth-submit {
+  padding: 0.625rem;
+  border: none;
+  border-radius: 6px;
+  background: #2f6fed;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.auth-submit:hover {
+  background: #2559c7;
+}
+
+.auth-submit:disabled {
+  background: #a8bdf0;
+  cursor: default;
+}
+
+.auth-hint {
+  color: #888;
+  font-size: 0.75rem;
+}
+
+.auth-message {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: #667;
+  text-align: center;
+}
+
+.auth-toggle {
+  margin: 0;
+  font-size: 0.875rem;
+  text-align: center;
+  color: #555;
+}
+
+.auth-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #2f6fed;
+  cursor: pointer;
+  font-size: inherit;
+  text-decoration: underline;
+}

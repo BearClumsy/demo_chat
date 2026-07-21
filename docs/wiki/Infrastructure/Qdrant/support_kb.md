@@ -22,7 +22,7 @@ see `docs/wiki/Plan/overview.md`).
 ## Notes
 
 - Populated by `KnowledgeBaseIndexer` (an `ApplicationRunner`), which pushes every
-  `IntentDefinition` loaded from `src/main/resources/knowledge-base/intents/*.json` into this collection
+  `IntentDefinition` loaded from `modules/server/src/main/resources/knowledge-base/intents/*.json` into this collection
   on every app startup (`demo-chat.rag.reindex-on-startup=true`). Document ids are the intent id, so
   re-running the indexer just upserts the same points rather than duplicating them.
 - Currently 4 intents: `refund_status`, `order_status`, `change_shipping_address`, `password_reset`.

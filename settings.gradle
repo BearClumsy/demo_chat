@@ -3,3 +3,9 @@ plugins {
 }
 
 rootProject.name = 'demo_chat'
+
+include 'client'
+project(':client').projectDir = file('modules/client')
+
+include 'server'
+project(':server').projectDir = file('modules/server')

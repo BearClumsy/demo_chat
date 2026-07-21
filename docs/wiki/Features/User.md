@@ -45,15 +45,15 @@ build on.
 
 ## Related Code
 
-- `src/main/java/com/example/demo_chat/user/User.java` — entity
-- `src/main/java/com/example/demo_chat/user/UserRepository.java`
-- `src/main/java/com/example/demo_chat/user/UserService.java`
-- `src/main/java/com/example/demo_chat/user/UserResponse.java`
-- `src/main/java/com/example/demo_chat/user/CreateUserRequest.java`
-- `src/main/java/com/example/demo_chat/user/UserController.java` — `GET /api/users/{id}`,
+- `modules/server/src/main/java/com/example/demo_chat/user/User.java` — entity
+- `modules/server/src/main/java/com/example/demo_chat/user/UserRepository.java`
+- `modules/server/src/main/java/com/example/demo_chat/user/UserService.java`
+- `modules/server/src/main/java/com/example/demo_chat/user/UserResponse.java`
+- `modules/server/src/main/java/com/example/demo_chat/user/CreateUserRequest.java`
+- `modules/server/src/main/java/com/example/demo_chat/user/UserController.java` — `GET /api/users/{id}`,
   `POST /api/users`
-- `src/main/java/com/example/demo_chat/config/PasswordEncoderConfig.java`
-- `src/main/resources/db/migration/V1__create_users_table.sql`
+- `modules/server/src/main/java/com/example/demo_chat/config/PasswordEncoderConfig.java`
+- `modules/server/src/main/resources/db/migration/V1__create_users_table.sql`
 
 ## Source Log
 

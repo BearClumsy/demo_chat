@@ -7,13 +7,13 @@ Stack: **Spring Boot 4.0.7 + Spring WebFlux + Spring AI 2.0.0 + Spring Security 
 Build tool: Gradle, **Groovy DSL** (`build.gradle`, not Kotlin DSL). Java toolchain: **26**. Lombok is
 used throughout for entity/DTO boilerplate.
 
-This is a single Gradle module at the repo root — not a `backend/` subdirectory (there's no separate
-frontend or infra module in this repo; see [README.md](README.md)).
+This is the `:server` Gradle module, at `modules/server/` (multi-module build: `modules/server` for
+this backend, `modules/client` for the still-empty React frontend module; see [README.md](README.md)).
 
 ## Actual package tree
 
 ```
-src/
+modules/server/src/
 ├── main/
 │   ├── java/com/example/demo_chat/
 │   │   ├── DemoChatApplication.java

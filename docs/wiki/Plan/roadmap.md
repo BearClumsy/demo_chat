@@ -4,7 +4,7 @@
 
 ## Phase 1 — Local prototype
 
-- [x] docker-compose: **Postgres + Cassandra + Qdrant + Kafka** (`src/main/resources/local/docker-compose.yml`)
+- [x] docker-compose: **Postgres + Cassandra + Qdrant + Kafka** (`modules/server/src/main/resources/local/docker-compose.yml`)
       — the original "Qdrant + Redis (Ollama on host)" assumption was superseded; there's no Redis or
       Ollama in this project. Cassandra's heap is capped (`MAX_HEAP_SIZE`/`HEAP_NEWSIZE`) so it fits
       alongside the other three services on a memory-constrained local Docker VM.
@@ -22,7 +22,10 @@
 - [x] Pipeline: normalize → retrieve → scope filter → slot-fill → generate (no output guardrail yet) —
       implemented in `com.example.demo_chat.rag`, orchestrated by `ChatPipelineService`. See
       [rag-pipeline.md](rag-pipeline.md) for the stage-by-stage design and known simplifications.
-- [ ] Simple React chat without streaming (plain request/response) — not started, no `frontend/` exists.
+- [x] Simple React chat — **superseded**: implemented directly with SSE streaming (see the Phase 2 item
+      below and [frontend-chat-mvp.md](frontend-chat-mvp.md)) rather than as a separate non-streaming step
+      first; the `:client` Gradle module (`modules/client/`) is now a real Vite + React + TypeScript app,
+      not an empty placeholder.
 
 **Definition of done:** an end-to-end dialogue with one intent and one slot works locally, start to
 finish. **Wiring verified, live behavior not yet confirmed** — the full bean graph (Cassandra, Qdrant,
@@ -44,10 +47,13 @@ AWS credentials end-to-end.
       already-validated text into word chunks via `TextChunker` and emits them as SSE `token` events
       followed by one `done` event. Chosen over true streaming (Spring AI's `ChatClient.stream()`, unused
       elsewhere in this codebase) because live streaming would mean the guardrail could only run *after*
-      the client already saw the text — this preserves the guardrail's full pre-send guarantee. No React
-      frontend consumes this yet (still out of scope; see the item below).
-- [ ] Simple React chat without streaming — still not started, carried over from Phase 1; a frontend to
-      actually consume the new SSE endpoint is separate follow-up work.
+      the client already saw the text — this preserves the guardrail's full pre-send guarantee.
+- [x] React chat consuming the SSE endpoint — `modules/client/` now has a working chat MVP (signup/login,
+      start a chat, `useChatStream` hook parsing the `token`/`done` SSE frames by hand since native
+      `EventSource` can't POST or send an `Authorization` header). See
+      [frontend-chat-mvp.md](frontend-chat-mvp.md) for the design decisions and known gaps (no chat
+      listing/restore endpoint, no lookup-by-login endpoint). **Not yet verified against a live backend**
+      — this machine has no AWS Bedrock credentials, so the backend can't boot to test against.
 - [ ] Redis for dialogue state (instead of in-memory) — **superseded**: dialogue/chat state now lives in
       Cassandra, not Redis (see [overview.md](overview.md)).
 - [x] Output-side guardrail validation — `ResponseValidator` implemented: a groundedness check
@@ -94,3 +100,4 @@ AWS credentials end-to-end.
 - [Architecture overview](overview.md)
 - [Local ↔ AWS mapping](local-vs-aws.md)
 - [GitHub Actions](github-actions.md) — planned
+- [Frontend Chat MVP](frontend-chat-mvp.md) — implemented

@@ -1,16 +1,16 @@
-# Graph Report - demo_chat  (2026-07-15)
+# Graph Report - demo_chat  (2026-07-21)
 
 ## Corpus Check
-- 94 files · ~19,835 words
+- 104 files · ~27,980 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 702 nodes · 982 edges · 92 communities (71 shown, 21 thin omitted)
-- Extraction: 85% EXTRACTED · 15% INFERRED · 0% AMBIGUOUS · INFERRED: 152 edges (avg confidence: 0.83)
+- 926 nodes · 1429 edges · 111 communities (90 shown, 21 thin omitted)
+- Extraction: 86% EXTRACTED · 14% INFERRED · 0% AMBIGUOUS · INFERRED: 198 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `99eb1dba`
+- Built from commit: `dc555a84`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -36,6 +36,7 @@
 - [[_COMMUNITY_Graphify Workflow Setup|Graphify Workflow Setup]]
 - [[_COMMUNITY_Bedrock LLM Access|Bedrock LLM Access]]
 - [[_COMMUNITY_Root Package & Java Skill|Root Package & Java Skill]]
+- [[_COMMUNITY_Build Directory|Build Directory]]
 - [[_COMMUNITY_Document Ingestion (Markdown)|Document Ingestion (Markdown)]]
 - [[_COMMUNITY_Intended Architecture Statement|Intended Architecture Statement]]
 - [[_COMMUNITY_Observability (Actuator)|Observability (Actuator)]]
@@ -93,18 +94,35 @@
 - [[_COMMUNITY_Community 87|Community 87]]
 - [[_COMMUNITY_Community 88|Community 88]]
 - [[_COMMUNITY_Community 89|Community 89]]
+- [[_COMMUNITY_Community 92|Community 92]]
+- [[_COMMUNITY_Community 93|Community 93]]
+- [[_COMMUNITY_Community 94|Community 94]]
+- [[_COMMUNITY_Community 95|Community 95]]
+- [[_COMMUNITY_Community 96|Community 96]]
+- [[_COMMUNITY_Community 97|Community 97]]
+- [[_COMMUNITY_Community 98|Community 98]]
+- [[_COMMUNITY_Community 99|Community 99]]
+- [[_COMMUNITY_Community 100|Community 100]]
+- [[_COMMUNITY_Community 101|Community 101]]
+- [[_COMMUNITY_Community 102|Community 102]]
+- [[_COMMUNITY_Community 103|Community 103]]
+- [[_COMMUNITY_Community 104|Community 104]]
+- [[_COMMUNITY_Community 105|Community 105]]
+- [[_COMMUNITY_Community 106|Community 106]]
+- [[_COMMUNITY_Community 107|Community 107]]
+- [[_COMMUNITY_Community 108|Community 108]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `ChatPipelineService` - 16 edges
-2. `User Feature` - 13 edges
-3. `Support Chat (RAG-based, Scoped Intent Matching) — Project Overview` - 12 edges
-4. `String` - 11 edges
-5. `Java Backend Stack (Spring Boot 4.0.7 + WebFlux + Spring AI 2.0.0)` - 11 edges
-6. `Dialogue Session Model (Redis-based design)` - 11 edges
-7. `Mono` - 10 edges
-8. `PipelineOutcome` - 10 edges
-9. `GitHub Actions workflow file structure (planned)` - 10 edges
-10. `CI/CD: GitHub Actions` - 9 edges
+1. `M` - 31 edges
+2. `w()` - 19 edges
+3. `ChatPipelineService` - 16 edges
+4. `Ee()` - 14 edges
+5. `kt()` - 13 edges
+6. `User Feature` - 13 edges
+7. `Support Chat (RAG-based, Scoped Intent Matching) — Project Overview` - 12 edges
+8. `pc()` - 11 edges
+9. `String` - 11 edges
+10. `Java Backend Stack (Spring Boot 4.0.7 + WebFlux + Spring AI 2.0.0)` - 11 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Cassandra Docker Service` --shares_data_with--> `chat_history Cassandra Table`  [INFERRED]
@@ -129,7 +147,7 @@
 - **Local-to-AWS Multi-Datastore Infrastructure Mapping** — docs_wiki_docs_plan_overview_system_components, docs_wiki_docs_plan_backend_stack, docs_wiki_docs_plan_local_vs_aws_mapping_table, docs_wiki_docs_plan_infrastructure_aws_services [INFERRED 0.85]
 - **Answer Generation and Guardrail Pipeline** — docs_wiki_docs_plan_rag_pipeline_stages, docs_wiki_docs_plan_prompt_engineering_prompt_structure, docs_wiki_docs_plan_prompt_engineering_output_guardrails, docs_wiki_docs_plan_intent_matching_two_stage_filter [INFERRED 0.75]
 
-## Communities (92 total, 21 thin omitted)
+## Communities (111 total, 21 thin omitted)
 
 ### Community 0 - "Plan Docs: Target Architecture"
 Cohesion: 0.07
@@ -144,24 +162,24 @@ Cohesion: 0.25
 Nodes (10): GetMapping, CreateUserRequest, ExceptionHandler, Mono, PostMapping, ResponseEntity, ResponseStatus, UserResponse (+2 more)
 
 ### Community 3 - "Chat API Implementation"
-Cohesion: 0.16
-Nodes (18): ChatController, ParticipantRequest, SendMessageRequest, Flux, Mono, PostMapping, ResponseEntity, SendMessageResponse (+10 more)
+Cohesion: 0.17
+Nodes (17): ChatController, Flux, Mono, PostMapping, ResponseEntity, SendMessageResponse, ServerSentEvent, String (+9 more)
 
 ### Community 4 - "Chat Feature Wiki Notes"
 Cohesion: 0.25
 Nodes (9): Chat Feature, ChatController, ChatHistoryRepository, ChatService, startChat() Generates Random UUID Decision, ValidationExceptionHandler, App-Wide ValidationExceptionHandler Decision, Feature Note Template (+1 more)
 
 ### Community 5 - "User Entity & Security Principal"
-Cohesion: 0.11
-Nodes (25): ChatServiceValidateParticipantIdsTest, DialogueState, PipelineOutcome, ChatPipelineService, DialogueState, PromptBuilder, ChatHistory, Document (+17 more)
+Cohesion: 0.41
+Nodes (7): DialogueState, IntentDefinition, Mono, String, Void, PipelineOutcome, ChatPipelineService
 
 ### Community 6 - "Chat Cassandra Entities"
 Cohesion: 0.06
-Nodes (30): BeforeAll, Collection, DynamicPropertyRegistry, DynamicPropertySource, GrantedAuthority, ObjectMapper, PostConstruct, IntentDefinitionRegistry (+22 more)
+Nodes (31): BeforeAll, Collection, DynamicPropertyRegistry, DynamicPropertySource, GrantedAuthority, IntentDefinition, Optional, Mono (+23 more)
 
 ### Community 7 - "Auth: UserDetails & Repository"
-Cohesion: 0.10
-Nodes (18): ChatHistoryRepository, Predicate, AnswerGenerationService, ChatPipelineServiceTest, SlotFillingService, AssembledPrompt, ChatClient, IntentDefinition (+10 more)
+Cohesion: 0.24
+Nodes (7): ChatHistoryRepository, AssembledPrompt, ServerSentEvent, String, Test, Predicate, ChatPipelineServiceTest
 
 ### Community 8 - "Data Store Docker Services"
 Cohesion: 0.24
@@ -169,39 +187,43 @@ Nodes (10): Chat Memory via Cassandra, Messaging via Kafka, Relational Persisten
 
 ### Community 9 - "Validation Error Handling"
 Cohesion: 0.42
-Nodes (5): ValidationExceptionHandler, ProblemDetail, ExceptionHandler, ResponseStatus, WebExchangeBindException
+Nodes (5): ValidationExceptionHandler, ExceptionHandler, ResponseStatus, ProblemDetail, WebExchangeBindException
 
 ### Community 10 - "Security Filter Chain Config"
 Cohesion: 0.53
-Nodes (4): SecurityConfig, SecurityWebFilterChain, ServerHttpSecurity, Bean
+Nodes (4): SecurityConfig, Bean, SecurityWebFilterChain, ServerHttpSecurity
 
 ### Community 11 - "Obsidian Catppuccin Theme"
 Cohesion: 0.16
-Nodes (10): ApplicationArguments, ApplicationRunner, DemoChatApplication, KnowledgeBaseIndexer, String, Document, IntentDefinition, IntentDefinitionRegistry (+2 more)
+Nodes (10): ApplicationArguments, ApplicationRunner, DemoChatApplication, String, Document, IntentDefinition, IntentDefinitionRegistry, Override (+2 more)
 
 ### Community 12 - "Password Encoder Config"
 Cohesion: 0.21
-Nodes (9): PasswordEncoderConfig, PasswordEncoder, Bean, CreateUserRequest, Mono, User, UserResponse, UUID (+1 more)
+Nodes (9): PasswordEncoderConfig, Bean, CreateUserRequest, Mono, User, UserResponse, UUID, PasswordEncoder (+1 more)
 
 ### Community 14 - "Backend Package Structure Doc"
-Cohesion: 0.13
-Nodes (14): SemanticCacheVectorStoreConfig, EmbeddingModel, QdrantClient, Qualifier, SemanticCacheService, SemanticCacheServiceTest, Bean, String (+6 more)
+Cohesion: 0.21
+Nodes (10): SemanticCacheVectorStoreConfig, EmbeddingModel, Bean, String, VectorStore, Mono, VectorStore, QdrantClient (+2 more)
 
 ### Community 15 - "Gradle Wrapper Script"
 Cohesion: 0.18
 Nodes (10): Architecture, AWS, CI/CD, Current repository structure, Data, Documentation, Environments, Plan (+2 more)
 
 ### Community 16 - "Application Entry Point"
-Cohesion: 0.20
-Nodes (8): Architecture (from declared dependencies), Commands, Configuration, graphify, Knowledge Sources, Project status, Toolchain, Working with this Vault
+Cohesion: 0.18
+Nodes (9): Architecture (from declared dependencies), Commands, Configuration, graphify, Knowledge Sources, Module layout, Project status, Toolchain (+1 more)
 
 ### Community 17 - "Obsidian App Settings"
 Cohesion: 0.20
 Nodes (9): `backend-ci.yml` — stages, CI/CD: GitHub Actions, `deploy-prod.yml`, `deploy-staging.yml`, `frontend-ci.yml` — stages, GitHub Environments and protections, `knowledge-base-lint.yml`, Related documents (+1 more)
 
+### Community 21 - "Build Directory"
+Cohesion: 0.04
+Nodes (31): addSettingChild(), bl(), Cl(), Cu(), de(), Dl(), ea(), fn() (+23 more)
+
 ### Community 35 - "Community 35"
 Cohesion: 0.27
-Nodes (7): IntentClassificationService, ChatClient, IntentClassification, IntentDefinition, List, Mono, String
+Nodes (7): ChatClient, IntentClassification, IntentDefinition, List, Mono, String, IntentClassificationService
 
 ### Community 36 - "Community 36"
 Cohesion: 0.22
@@ -217,7 +239,7 @@ Nodes (8): Decisions, Feature: User, Infrastructure Used, Open Questions, Overvi
 
 ### Community 39 - "Community 39"
 Cohesion: 0.33
-Nodes (6): KnowledgeRetrievalService, Document, List, Mono, String, VectorStore
+Nodes (6): Document, List, Mono, String, VectorStore, KnowledgeRetrievalService
 
 ### Community 40 - "Community 40"
 Cohesion: 0.25
@@ -229,7 +251,7 @@ Nodes (8): ChatHistory Entity, ChatHistory Partition Key = user_id Decision, Cha
 
 ### Community 42 - "Community 42"
 Cohesion: 0.25
-Nodes (7): Dialogue Session Model (Cassandra), Example value, Key structure (implemented), Related documents, Semantic cache and rate limiting — not yet decided, Statuses (`DialogueStatus`), Why Cassandra and not in-memory
+Nodes (7): Dialogue Session Model (Cassandra), Example value, Key structure (implemented), Related documents, Semantic cache — decided (Phase 2), Statuses (`DialogueStatus`), Why Cassandra and not in-memory
 
 ### Community 43 - "Community 43"
 Cohesion: 0.25
@@ -249,19 +271,19 @@ Nodes (7): Implementation Roadmap, Phase 1 — Local prototype, Phase 2 — Reac
 
 ### Community 47 - "Community 47"
 Cohesion: 0.32
-Nodes (5): ScopeFilter, IntentClassification, IntentDefinition, List, Optional
+Nodes (5): IntentClassification, IntentDefinition, List, Optional, ScopeFilter
 
 ### Community 48 - "Community 48"
-Cohesion: 0.25
-Nodes (7): Daily, demo_chat Wiki, Features, Infrastructure, Linking convention, Map of Content, Structure
+Cohesion: 0.22
+Nodes (8): Daily, demo_chat Wiki, Features, Infrastructure, Linking convention, Map of Content, Plan, Structure
 
 ### Community 49 - "Community 49"
-Cohesion: 0.29
-Nodes (6): Collection indexes and parameters (Qdrant), Knowledge base update process, Metadata fields, Related documents, `support_kb` collection, Vector Store Schema (Topics + Answers)
+Cohesion: 0.25
+Nodes (7): Collection indexes and parameters (Qdrant), Knowledge base update process, Metadata fields, Related documents, `semantic_cache` collection (Phase 2), `support_kb` collection, Vector Store Schema (Topics + Answers)
 
 ### Community 50 - "Community 50"
 Cohesion: 0.38
-Nodes (4): QueryNormalizationService, ChatClient, Mono, String
+Nodes (4): ChatClient, Mono, String, QueryNormalizationService
 
 ### Community 51 - "Community 51"
 Cohesion: 0.33
@@ -296,8 +318,8 @@ Cohesion: 0.33
 Nodes (5): Architecture Overview, Design principles, Flow for a single message (current implementation), Related documents, System components (current)
 
 ### Community 59 - "Community 59"
-Cohesion: 0.29
-Nodes (6): Example of a single request going through the pipeline, Known Phase-1 simplifications, Pipeline stages, RAG Pipeline: From User Context to Answer, Related documents, Where each stage lives in the code
+Cohesion: 0.22
+Nodes (8): Example of a single request going through the pipeline, How it works (quick reference), Known simplifications, Pipeline stages, RAG Pipeline: From User Context to Answer, Related documents, SSE streaming, Where each stage lives in the code
 
 ### Community 60 - "Community 60"
 Cohesion: 0.40
@@ -313,7 +335,7 @@ Nodes (5): GET /api/users/{id} Endpoint, POST /api/users Endpoint, Moved UserCon
 
 ### Community 63 - "Community 63"
 Cohesion: 0.40
-Nodes (4): Backend integration points (target — current backend endpoints differ), React Frontend: Project Structure, Related documents, Tree
+Nodes (4): Backend integration points (target — current backend endpoints differ in shape), React Frontend: Project Structure, Related documents, Tree
 
 ### Community 64 - "Community 64"
 Cohesion: 0.40
@@ -337,19 +359,19 @@ Nodes (5): alwaysUpdateLinks, promptDelete, readableLineLength, strictLineBreaks
 
 ### Community 79 - "Community 79"
 Cohesion: 0.19
-Nodes (9): Boolean, ResponseValidator, ResponseValidatorTest, ChatClient, IntentDefinition, Mono, String, IntentDefinition (+1 more)
+Nodes (9): Boolean, ChatClient, IntentDefinition, Mono, String, IntentDefinition, Test, ResponseValidator (+1 more)
 
 ### Community 85 - "Community 85"
 Cohesion: 0.15
-Nodes (12): AnswerGenerationService, DialogueStateRepository, IntentClassificationService, KnowledgeRetrievalService, PromptBuilder, QueryNormalizationService, ResponseValidator, ScopeFilter (+4 more)
+Nodes (12): AnswerGenerationService, DialogueStateRepository, IntentClassificationService, KnowledgeRetrievalService, IntentDefinitionRegistry, PromptBuilder, QueryNormalizationService, ResponseValidator (+4 more)
 
 ### Community 86 - "Community 86"
-Cohesion: 0.32
-Nodes (8): ChatService, MessageRequest, ChatHistory, List, Mono, String, UUID, Void
+Cohesion: 0.20
+Nodes (11): ChatControllerStreamTest, ChatService, MessageRequest, ChatHistory, List, Mono, String, UUID (+3 more)
 
 ### Community 87 - "Community 87"
 Cohesion: 0.29
-Nodes (5): TextChunker, TextChunkerTest, List, String, Test
+Nodes (5): List, String, Test, TextChunker, TextChunkerTest
 
 ### Community 88 - "Community 88"
 Cohesion: 0.25
@@ -359,25 +381,93 @@ Nodes (7): Commands, Current status, demo_chat, Documentation, Getting started, 
 Cohesion: 0.33
 Nodes (5): 2026-07-14, API — RAG pipeline, Dependencies — Bedrock Converse starter, Documentation, Infrastructure & tooling
 
+### Community 92 - "Community 92"
+Cohesion: 0.10
+Nodes (10): ie(), ke(), M, oe(), Ot(), qe(), S(), Te() (+2 more)
+
+### Community 93 - "Community 93"
+Cohesion: 0.17
+Nodes (32): Aa(), ac(), At(), Bi(), c(), Cr(), dc(), ec() (+24 more)
+
+### Community 94 - "Community 94"
+Cohesion: 0.14
+Nodes (21): bu(), du(), gu(), Ht(), hu(), Je(), Ki(), lu() (+13 more)
+
+### Community 95 - "Community 95"
+Cohesion: 0.19
+Nodes (12): addExportButton(), addResetButton(), clearFilter(), destroy(), filter(), me(), removeChildren(), render() (+4 more)
+
+### Community 96 - "Community 96"
+Cohesion: 0.30
+Nodes (4): String, Void, Test, SemanticCacheServiceTest
+
+### Community 97 - "Community 97"
+Cohesion: 0.29
+Nodes (7): ChatHistory, Document, Flux, List, SendMessageResponse, ServerSentEvent, UUID
+
+### Community 98 - "Community 98"
+Cohesion: 0.22
+Nodes (7): UUID, AssembledPrompt, IntentDefinition, Map, String, DialogueState, PromptBuilder
+
+### Community 99 - "Community 99"
+Cohesion: 0.22
+Nodes (7): String, IntentDefinition, List, Map, String, BeforeEach, SlotFillingService
+
+### Community 100 - "Community 100"
+Cohesion: 0.31
+Nodes (11): cleanup(), clearSection(), clearSetting(), gl(), initClasses(), removeClasses(), save(), setConfig() (+3 more)
+
+### Community 101 - "Community 101"
+Cohesion: 0.22
+Nodes (8): author, authorUrl, description, id, isDesktopOnly, minAppVersion, name, version
+
+### Community 102 - "Community 102"
+Cohesion: 0.32
+Nodes (5): ChatClient, IntentDefinition, Mono, String, AnswerGenerationService
+
+### Community 103 - "Community 103"
+Cohesion: 0.43
+Nodes (3): ChatServiceValidateParticipantIdsTest, BeforeEach, Test
+
+### Community 104 - "Community 104"
+Cohesion: 0.33
+Nodes (5): 2026-07-15, API — RAG pipeline Phase 2, Data layer — R2DBC migration, Documentation, Infrastructure & tooling
+
+### Community 105 - "Community 105"
+Cohesion: 0.40
+Nodes (4): Cassandra Table: dialogue_state, Columns, Notes, Used By
+
+### Community 106 - "Community 106"
+Cohesion: 0.40
+Nodes (4): Notes, Payload Fields, Qdrant Collection: semantic_cache, Used By
+
+### Community 107 - "Community 107"
+Cohesion: 0.40
+Nodes (4): Notes, Payload Fields, Qdrant Collection: support_kb, Used By
+
+### Community 108 - "Community 108"
+Cohesion: 0.67
+Nodes (3): bc(), ka(), vc()
+
 ## Knowledge Gaps
-- **259 isolated node(s):** `promptDelete`, `alwaysUpdateLinks`, `strictLineBreaks`, `vimMode`, `readableLineLength` (+254 more)
+- **285 isolated node(s):** `promptDelete`, `alwaysUpdateLinks`, `strictLineBreaks`, `vimMode`, `readableLineLength` (+280 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **21 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ChatPipelineService` connect `User Entity & Security Principal` to `Community 85`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Why does `ChatPipelineService` connect `User Entity & Security Principal` to `Community 97`, `Community 85`, `Auth: UserDetails & Repository`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+- **Why does `M` connect `Community 92` to `Community 93`, `Build Directory`, `Community 95`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
 - **Why does `KnowledgeBaseIndexer` connect `Obsidian Catppuccin Theme` to `Chat Cassandra Entities`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **Why does `UserPrincipal` connect `Chat Cassandra Entities` to `Chat API Implementation`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
-- **Are the 3 inferred relationships involving `User Feature` (e.g. with `Built com.example.demo_chat.user Package (API)` and `Feature Note Template`) actually correct?**
-  _`User Feature` has 3 INFERRED edges - model-reasoned connections that need verification._
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Are the 16 inferred relationships involving `w()` (e.g. with `At()` and `c()`) actually correct?**
+  _`w()` has 16 INFERRED edges - model-reasoned connections that need verification._
+- **Are the 7 inferred relationships involving `kt()` (e.g. with `dc()` and `ic()`) actually correct?**
+  _`kt()` has 7 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `promptDelete`, `alwaysUpdateLinks`, `strictLineBreaks` to the rest of the system?**
-  _276 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _302 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Plan Docs: Target Architecture` be split into smaller, more focused modules?**
   _Cohesion score 0.07013574660633484 - nodes in this community are weakly interconnected._
-- **Should `User Entity & Security Principal` be split into smaller, more focused modules?**
-  _Cohesion score 0.11394557823129252 - nodes in this community are weakly interconnected._

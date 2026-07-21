@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "33b175613275a2b1",
+        "id": "ae914f52d6544d57",
         "type": "tabs",
         "children": [
           {
-            "id": "f6dcffc2546c0285",
+            "id": "560e54d5fbfa1a26",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Plan/README.md",
-                "mode": "preview",
+                "file": "Plan/frontend.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "frontend"
             }
           }
         ]
@@ -183,22 +183,25 @@
       "bases:Create new base": false
     }
   },
-  "active": "f6dcffc2546c0285",
+  "active": "560e54d5fbfa1a26",
   "lastOpenFiles": [
+    "Plan/frontend-chat-mvp.md",
+    "Plan/frontend.md.tmp.6305.8489853db77d",
+    "Infrastructure/Qdrant/support_kb.md.tmp.6305.9fe8f8fd9ce7",
+    "Features/User.md.tmp.6305.f4c0eebb75b8",
+    "Plan/github-actions.md.tmp.6305.07334615623d",
+    "Plan/roadmap.md.tmp.6305.dc0c1b9ce4ce",
+    "Plan/roadmap.md.tmp.6305.1c587dd8970b",
+    "Plan/local-vs-aws.md.tmp.6305.db066c0570d4",
+    "Plan/local-vs-aws.md.tmp.6305.35e95f387ea6",
+    "Plan/README.md.tmp.6305.0f055b61be43",
+    "Plan/README.md",
     "index.md.tmp.13255.15a0e77f3f10",
     "Daily/2026-07-15.md",
-    "Plan/frontend.md.tmp.13255.bc2bee72c7a9",
-    "Plan/infrastructure.md.tmp.13255.c74a0080c591",
-    "Plan/github-actions.md.tmp.13255.17add47587cd",
-    "Plan/github-actions.md.tmp.13255.1bfeb78b81b9",
-    "Plan/github-actions.md.tmp.13255.9572059d2719",
-    "Plan/prompt-engineering.md.tmp.13255.9dece29a68d7",
-    "Plan/intent-matching.md.tmp.13255.5749f4e4efea",
     "Plan/rag-pipeline.md",
     "index.md",
     "Plan/vector-store-schema.md",
     "Plan/roadmap.md",
-    "Plan/README.md",
     "Plan/prompt-engineering.md",
     "Plan/overview.md",
     "Plan/local-vs-aws.md",
@@ -208,7 +211,6 @@
     "Plan/frontend.md",
     "Plan/dialogue-state.md",
     "Plan/backend.md",
-    "Plan",
     "Features/Chat.md",
     "Features/User.md",
     "Infrastructure/Cassandra/chat_history.md",
@@ -217,8 +219,6 @@
     "Infrastructure/Qdrant/_template.md",
     "Infrastructure/Qdrant/support_kb.md",
     "Infrastructure/Qdrant/semantic_cache.md",
-    "index.md.tmp.13255.6739ab577f94",
-    "Infrastructure/Cassandra/chat_history.md.tmp.13255.77d6cce4b0f8",
     "docs/Plan/README.md",
     "docs/Plan/vector-store-schema.md"
   ]

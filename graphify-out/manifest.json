@@ -9,65 +9,20 @@
     "ast_hash": "adf03a30263e7eae5b762e8b678e3c15",
     "semantic_hash": "adf03a30263e7eae5b762e8b678e3c15"
   },
-  "build.gradle": {
-    "mtime": 1784141831.0788264,
-    "ast_hash": "9858eb7d34a2955d7c514a62be5e207e",
-    "semantic_hash": ""
-  },
   "gradlew": {
     "mtime": 1783960338.0,
     "ast_hash": "45bf2667b1fbec0e07e42808dc662b6b",
     "semantic_hash": "45bf2667b1fbec0e07e42808dc662b6b"
   },
   "settings.gradle": {
-    "mtime": 1783963115.9978929,
-    "ast_hash": "18572ef86608bf0ed2cdadd2f294a379",
-    "semantic_hash": "18572ef86608bf0ed2cdadd2f294a379"
-  },
-  "src/main/java/com/example/demo_chat/DemoChatApplication.java": {
-    "mtime": 1783966080.929842,
-    "ast_hash": "af9172082a17860fd7363c0010599eca",
-    "semantic_hash": "af9172082a17860fd7363c0010599eca"
-  },
-  "src/test/java/com/example/demo_chat/DemoChatApplicationTests.java": {
-    "mtime": 1783966080.994299,
-    "ast_hash": "9f49bedc4513a4402488276810776ab0",
-    "semantic_hash": "9f49bedc4513a4402488276810776ab0"
+    "mtime": 1784640273.1255891,
+    "ast_hash": "d13040245c02e258f01c586e361a10fe",
+    "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1784126908.6225808,
-    "ast_hash": "ae63e3286df1f29ba36c36063fe0df1a",
+    "mtime": 1784640349.7044058,
+    "ast_hash": "0b962318e183d6fa3ecb697082bf7ada",
     "semantic_hash": ""
-  },
-  "src/main/resources/local/docker-compose.yml": {
-    "mtime": 1784054357.1221418,
-    "ast_hash": "e1eb96971be6615f6c5c34ba872bcb25",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/user/User.java": {
-    "mtime": 1784129768.3406425,
-    "ast_hash": "4ed75529a7fa98251cb3abb91b979b24",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/user/UserRepository.java": {
-    "mtime": 1784129771.6660333,
-    "ast_hash": "77b36af4e69fac49f4376c25657f6a3e",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/user/UserResponse.java": {
-    "mtime": 1783967691.970163,
-    "ast_hash": "e5f408861e3941fe5603d41a8476502f",
-    "semantic_hash": "e5f408861e3941fe5603d41a8476502f"
-  },
-  "src/main/java/com/example/demo_chat/user/UserService.java": {
-    "mtime": 1784129777.80898,
-    "ast_hash": "7a45a497ea4aeedb91421b02151785e5",
-    "semantic_hash": ""
-  },
-  "src/main/resources/db/migration/V1__create_users_table.sql": {
-    "mtime": 1783962880.293979,
-    "ast_hash": "4eaa7e9eb16ffb182dcae75e641da181",
-    "semantic_hash": "4eaa7e9eb16ffb182dcae75e641da181"
   },
   "docs/wiki/Features/_template.md": {
     "mtime": 1783961985.975616,
@@ -95,67 +50,22 @@
     "semantic_hash": "4cca1777cc6b6b8ff395a29be8106652"
   },
   "docs/wiki/index.md": {
-    "mtime": 1784055893.5101018,
-    "ast_hash": "1600d7bebfe02de3d246af79c990cd3f",
+    "mtime": 1784146166.84288,
+    "ast_hash": "f26e6b84f484b2f95a5eab41d3af4578",
     "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/user/UserController.java": {
-    "mtime": 1783967670.3085058,
-    "ast_hash": "38f517733c3d0677b38ca399e121540f",
-    "semantic_hash": "38f517733c3d0677b38ca399e121540f"
-  },
-  "src/main/java/com/example/demo_chat/chat/ChatController.java": {
-    "mtime": 1784142780.347357,
-    "ast_hash": "b31bd9f29a890cc5bb03ed854a9e90ff",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/config/PasswordEncoderConfig.java": {
-    "mtime": 1783966912.6232173,
-    "ast_hash": "911e01c5f613d77a25c12ababae2b519",
-    "semantic_hash": "911e01c5f613d77a25c12ababae2b519"
-  },
-  "src/main/java/com/example/demo_chat/user/CreateUserRequest.java": {
-    "mtime": 1784026337.1848838,
-    "ast_hash": "939bbafa98d1a46e6f0aff00b84716d6",
-    "semantic_hash": "939bbafa98d1a46e6f0aff00b84716d6"
-  },
-  "src/main/java/com/example/demo_chat/chat/ChatService.java": {
-    "mtime": 1784129796.3191524,
-    "ast_hash": "176df2e9b05dac14bffa00e7f81213fa",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/chat/ChatHistory.java": {
-    "mtime": 1784030608.8737814,
-    "ast_hash": "344ebe09e311f12742747241ac06d88b",
-    "semantic_hash": "344ebe09e311f12742747241ac06d88b"
-  },
-  "src/main/java/com/example/demo_chat/chat/ChatMessage.java": {
-    "mtime": 1783967552.1305878,
-    "ast_hash": "e61538e15a8b42c3d9a62171c029ed70",
-    "semantic_hash": "e61538e15a8b42c3d9a62171c029ed70"
-  },
-  "src/main/java/com/example/demo_chat/chat/ChatHistoryRepository.java": {
-    "mtime": 1783967711.7536666,
-    "ast_hash": "4406d5e17631fe63489faa653ba77b1d",
-    "semantic_hash": "4406d5e17631fe63489faa653ba77b1d"
-  },
-  "src/main/java/com/example/demo_chat/common/ValidationExceptionHandler.java": {
-    "mtime": 1784031678.4425166,
-    "ast_hash": "f5edf1d1eafb95287646e2610828296e",
-    "semantic_hash": "f5edf1d1eafb95287646e2610828296e"
   },
   "docs/wiki/.obsidian/app.json": {
-    "mtime": 1784127034.4747896,
+    "mtime": 1784639842.8658633,
     "ast_hash": "125f4394d2ac48795cb33cfcf4b555eb",
     "semantic_hash": ""
   },
   "docs/wiki/.obsidian/appearance.json": {
-    "mtime": 1784127034.4765382,
-    "ast_hash": "c35f421c868a3bed9e5cd1b9abbbc46b",
-    "semantic_hash": "c35f421c868a3bed9e5cd1b9abbbc46b"
+    "mtime": 1784639842.8675983,
+    "ast_hash": "874a9b15b7b6f1f8ebb4a395bf06bae6",
+    "semantic_hash": ""
   },
   "docs/wiki/.obsidian/core-plugins.json": {
-    "mtime": 1784127034.2039294,
+    "mtime": 1784639842.4516015,
     "ast_hash": "7c877bea49eaeabb100563bd157b9051",
     "semantic_hash": "7c877bea49eaeabb100563bd157b9051"
   },
@@ -165,8 +75,8 @@
     "semantic_hash": "5a79c6e7436a0a7dfce24da79669e7cc"
   },
   "docs/wiki/.obsidian/workspace.json": {
-    "mtime": 1784127034.7586484,
-    "ast_hash": "d8a16e13c9e3431d3c3936dc2508570f",
+    "mtime": 1784639843.1042054,
+    "ast_hash": "19dd9ed91bd8961ef3279c910c1a7147",
     "semantic_hash": ""
   },
   ".claude/skills/daily-report/SKILL.md": {
@@ -190,273 +100,13 @@
     "semantic_hash": "0e1ad901579054b2bc4fc812efd79491"
   },
   "docs/wiki/Infrastructure/Cassandra/chat_history.md": {
-    "mtime": 1783968371.5499208,
-    "ast_hash": "5af0925a0a0784b90c73204af4e43445",
-    "semantic_hash": "5af0925a0a0784b90c73204af4e43445"
+    "mtime": 1784144834.4525535,
+    "ast_hash": "68ccda5f19618329a04a71fa34a30b55",
+    "semantic_hash": ""
   },
   "docs/wiki/Infrastructure/Postgres/users.md": {
-    "mtime": 1783968428.383647,
-    "ast_hash": "9657c037708e77044a9ad4935c240797",
-    "semantic_hash": "9657c037708e77044a9ad4935c240797"
-  },
-  "src/main/java/com/example/demo_chat/chat/ParticipantRequest.java": {
-    "mtime": 1784018243.3336477,
-    "ast_hash": "2f6156a84668279712cf320a04a8b059",
-    "semantic_hash": "2f6156a84668279712cf320a04a8b059"
-  },
-  "src/main/java/com/example/demo_chat/chat/StartChatRequest.java": {
-    "mtime": 1784030604.2214882,
-    "ast_hash": "4d22808020890100fc2ef9db8fc50c68",
-    "semantic_hash": "4d22808020890100fc2ef9db8fc50c68"
-  },
-  "src/main/java/com/example/demo_chat/config/SecurityConfig.java": {
-    "mtime": 1784026297.3700428,
-    "ast_hash": "99c2904334034e4c1e75722f806a7949",
-    "semantic_hash": "99c2904334034e4c1e75722f806a7949"
-  },
-  "src/main/java/com/example/demo_chat/user/SecurityUserDetailsService.java": {
-    "mtime": 1784142259.732731,
-    "ast_hash": "489f6f09dbd0414cba22d752e5912b6e",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/user/UserPrincipal.java": {
-    "mtime": 1784026268.9737244,
-    "ast_hash": "23fb8688e70ed9011d4d7b939be9b94c",
-    "semantic_hash": "23fb8688e70ed9011d4d7b939be9b94c"
-  },
-  "src/main/java/com/example/demo_chat/chat/MessageRequest.java": {
-    "mtime": 1784030597.1327014,
-    "ast_hash": "e1da495c008f2b3b75f19b80536dbd0a",
-    "semantic_hash": "e1da495c008f2b3b75f19b80536dbd0a"
-  },
-  "docs/wiki/docs/Plan/README.md": {
-    "mtime": 1784127601.609558,
-    "ast_hash": "c44de13ce1f0e4a37c84b19ce2928dcb",
-    "semantic_hash": ""
-  },
-  "docs/wiki/docs/Plan/backend.md": {
-    "mtime": 1784055655.4758325,
-    "ast_hash": "27ba9f897814051a7e77b61d8c22bdda",
-    "semantic_hash": ""
-  },
-  "docs/wiki/docs/Plan/dialogue-state.md": {
-    "mtime": 1784055701.50761,
-    "ast_hash": "500ba5de0b319a55ea6c1163a877d0b1",
-    "semantic_hash": ""
-  },
-  "docs/wiki/docs/Plan/frontend.md": {
-    "mtime": 1784034615.2118378,
-    "ast_hash": "1cd9a7f42de6ae755a35174888f07492",
-    "semantic_hash": "1cd9a7f42de6ae755a35174888f07492"
-  },
-  "docs/wiki/docs/Plan/github-actions.md": {
-    "mtime": 1784036878.6907191,
-    "ast_hash": "455a29afcc5b47f2afced46cc3904315",
-    "semantic_hash": ""
-  },
-  "docs/wiki/docs/Plan/infrastructure.md": {
-    "mtime": 1784036872.1428027,
-    "ast_hash": "9ff8e90098f354cb589c24a33d39d1ab",
-    "semantic_hash": ""
-  },
-  "docs/wiki/docs/Plan/intent-matching.md": {
-    "mtime": 1784036867.4080086,
-    "ast_hash": "110b9f977b86f6be14fbf0b660776f9f",
-    "semantic_hash": ""
-  },
-  "docs/wiki/docs/Plan/local-vs-aws.md": {
-    "mtime": 1784034691.5703144,
-    "ast_hash": "e3d8ddc95636b18850ae75a6bdc74dae",
-    "semantic_hash": "e3d8ddc95636b18850ae75a6bdc74dae"
-  },
-  "docs/wiki/docs/Plan/overview.md": {
-    "mtime": 1784055681.9074988,
-    "ast_hash": "e412e74394d1f1b9b07cae1ec7124684",
-    "semantic_hash": ""
-  },
-  "docs/wiki/docs/Plan/prompt-engineering.md": {
-    "mtime": 1784033438.660394,
-    "ast_hash": "129f42f00d7737dd4618dd15bd5662e3",
-    "semantic_hash": "129f42f00d7737dd4618dd15bd5662e3"
-  },
-  "docs/wiki/docs/Plan/rag-pipeline.md": {
-    "mtime": 1784055746.4645293,
-    "ast_hash": "3f691018d3fda05bc862b34b3f890251",
-    "semantic_hash": ""
-  },
-  "docs/wiki/docs/Plan/roadmap.md": {
-    "mtime": 1784055724.26805,
-    "ast_hash": "36edba8d79220acf0f502de79b9c70a9",
-    "semantic_hash": ""
-  },
-  "docs/wiki/docs/Plan/vector-store-schema.md": {
-    "mtime": 1784033438.6578746,
-    "ast_hash": "e14d8b536f0d8b2ee917e34dd30fa3f8",
-    "semantic_hash": "e14d8b536f0d8b2ee917e34dd30fa3f8"
-  },
-  "src/main/java/com/example/demo_chat/chat/SendMessageRequest.java": {
-    "mtime": 1784053934.956309,
-    "ast_hash": "4cb5f4d613a03c558c842a79463baaa6",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/chat/SendMessageResponse.java": {
-    "mtime": 1784053936.0342572,
-    "ast_hash": "7460639bf45c89358c499acfc7a473ad",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/config/ChatClientConfig.java": {
-    "mtime": 1784053937.9528444,
-    "ast_hash": "dc0eb689a289c84f73ef47a6263b85df",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/AnswerGenerationService.java": {
-    "mtime": 1784054011.8869996,
-    "ast_hash": "43b8fdbdda96d455e7708e2cf1029e55",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/AssembledPrompt.java": {
-    "mtime": 1784053913.5832665,
-    "ast_hash": "5bbfc2c2d68127241aad75accb5d8a6b",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/ChatPipelineService.java": {
-    "mtime": 1784142760.6131172,
-    "ast_hash": "82486a04efb74e4b6dffc16d641bb4d3",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/DialogueState.java": {
-    "mtime": 1784054011.9474938,
-    "ast_hash": "0185feb92973169873c60c2ed73974b3",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/DialogueStateRepository.java": {
-    "mtime": 1784053888.3859022,
-    "ast_hash": "9a39a93aa87d0ab9f71bcee64d12c456",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/DialogueStatus.java": {
-    "mtime": 1784142307.820218,
-    "ast_hash": "02ac5dcdd2258c29121b8bc03728141a",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/IntentClassification.java": {
-    "mtime": 1784053900.8872998,
-    "ast_hash": "57cd9aa7c778e7157f74e9291ea730f5",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/IntentClassificationService.java": {
-    "mtime": 1784054011.9677455,
-    "ast_hash": "4cd94155fffd5e72953d8040aa52f5ea",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/IntentDefinition.java": {
-    "mtime": 1784053866.1816843,
-    "ast_hash": "eea56338636ea885c09c76b9a3e37ded",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/IntentDefinitionRegistry.java": {
-    "mtime": 1784053872.3158917,
-    "ast_hash": "fff33f5325792b28300084ec93c81006",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/KnowledgeBaseIndexer.java": {
-    "mtime": 1784054011.9880166,
-    "ast_hash": "6fb9b0a14f9c1b774d3f59fd92a2c357",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/KnowledgeRetrievalService.java": {
-    "mtime": 1784053898.6388478,
-    "ast_hash": "f35995b112d63314a7bb2acc098e1c92",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/PromptBuilder.java": {
-    "mtime": 1784054011.9998624,
-    "ast_hash": "190343d6075d2fa4161a35804e5dcf0f",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/QueryNormalizationService.java": {
-    "mtime": 1784053895.0702412,
-    "ast_hash": "b57184932a37330c8864bb47375a4e7a",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/ScopeFilter.java": {
-    "mtime": 1784053910.3699052,
-    "ast_hash": "ff597430dbacf11f6a3d6fff84fb5c4a",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/SlotFillingService.java": {
-    "mtime": 1784053912.4555058,
-    "ast_hash": "3e887e4a317ab4670edbbb26e48e1dc4",
-    "semantic_hash": ""
-  },
-  "src/main/resources/knowledge-base/intents/change_shipping_address.json": {
-    "mtime": 1784053663.630609,
-    "ast_hash": "de335966de27a6670590a1f42aa7f206",
-    "semantic_hash": ""
-  },
-  "src/main/resources/knowledge-base/intents/order_status.json": {
-    "mtime": 1784053661.0296235,
-    "ast_hash": "f88353fda779e5cc662bd27bf6224fdf",
-    "semantic_hash": ""
-  },
-  "src/main/resources/knowledge-base/intents/refund_status.json": {
-    "mtime": 1784053658.931839,
-    "ast_hash": "8b346125afac97e06971d9507ff29946",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/config/SemanticCacheVectorStoreConfig.java": {
-    "mtime": 1784142509.3546863,
-    "ast_hash": "412147a934d53a2e122fa7c0c6ac2e80",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/GroundednessCheck.java": {
-    "mtime": 1784142294.169687,
-    "ast_hash": "dc46e0e659add93ffedb334fec909d95",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/ResponseValidator.java": {
-    "mtime": 1784142302.277647,
-    "ast_hash": "45c8fc755c96a346e87d52192eae046a",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/SemanticCacheService.java": {
-    "mtime": 1784142675.20967,
-    "ast_hash": "5ee5e508160a72fed61d151bd5284143",
-    "semantic_hash": ""
-  },
-  "src/main/java/com/example/demo_chat/rag/TextChunker.java": {
-    "mtime": 1784142700.888656,
-    "ast_hash": "790a4739c4435d0484222d63da130860",
-    "semantic_hash": ""
-  },
-  "src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java": {
-    "mtime": 1784142259.7628334,
-    "ast_hash": "c391777ac4d693061d3f2547e62c0220",
-    "semantic_hash": ""
-  },
-  "src/test/java/com/example/demo_chat/rag/ChatPipelineServiceTest.java": {
-    "mtime": 1784142826.2490783,
-    "ast_hash": "8cc124a4d21c47e6f394327b00903c65",
-    "semantic_hash": ""
-  },
-  "src/test/java/com/example/demo_chat/rag/ResponseValidatorTest.java": {
-    "mtime": 1784142342.7068844,
-    "ast_hash": "3d7d6f3e975e42c722790cab4bb59e24",
-    "semantic_hash": ""
-  },
-  "src/test/java/com/example/demo_chat/rag/SemanticCacheServiceTest.java": {
-    "mtime": 1784142675.2228036,
-    "ast_hash": "17fc0c629a26789a02666b7233151eed",
-    "semantic_hash": ""
-  },
-  "src/test/java/com/example/demo_chat/rag/TextChunkerTest.java": {
-    "mtime": 1784142834.1184478,
-    "ast_hash": "927e545240a276351889f7ec8bf5c4c1",
-    "semantic_hash": ""
-  },
-  "src/test/java/com/example/demo_chat/user/UserRepositoryTest.java": {
-    "mtime": 1784141898.5002167,
-    "ast_hash": "150e13ad6c61db60575c6300537ce6e4",
+    "mtime": 1784145672.068576,
+    "ast_hash": "801b7d134cca1c562880a2ba9ea3f725",
     "semantic_hash": ""
   },
   ".claude/skills/java-rules/SKILL.md": {
@@ -465,13 +115,413 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1784126883.0134895,
-    "ast_hash": "301fb98bdf574e8661654946eb0831f3",
+    "mtime": 1784640314.4920716,
+    "ast_hash": "01f74cc56ddbea5e18ee475f36201096",
     "semantic_hash": ""
   },
   "docs/wiki/Daily/2026-07-14.md": {
     "mtime": 1784055865.359701,
     "ast_hash": "e942549abb28cdbf2ae0f73cb37f998f",
+    "semantic_hash": ""
+  },
+  "docs/wiki/.obsidian/community-plugins.json": {
+    "mtime": 1784639843.0970342,
+    "ast_hash": "831ea604bb5c8e4cabc4bd2f79277444",
+    "semantic_hash": ""
+  },
+  "docs/wiki/.obsidian/plugins/obsidian-style-settings/data.json": {
+    "mtime": 1784144372.209,
+    "ast_hash": "993c635ff9dbf501de29f1e87e8ee5d3",
+    "semantic_hash": ""
+  },
+  "docs/wiki/.obsidian/plugins/obsidian-style-settings/main.js": {
+    "mtime": 1784144353.5338356,
+    "ast_hash": "177c659f2139ba32b2cc6248e44a9e0d",
+    "semantic_hash": ""
+  },
+  "docs/wiki/.obsidian/plugins/obsidian-style-settings/manifest.json": {
+    "mtime": 1784144353.272092,
+    "ast_hash": "70aa9940cfcae5a0023be5baca462f1b",
+    "semantic_hash": ""
+  },
+  "modules/client/build.gradle": {
+    "mtime": 1784640049.2374756,
+    "ast_hash": "316f32ec8bc3362709c3002f2e4f101c",
+    "semantic_hash": ""
+  },
+  "modules/server/build.gradle": {
+    "mtime": 1784141831.0788264,
+    "ast_hash": "9858eb7d34a2955d7c514a62be5e207e",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/DemoChatApplication.java": {
+    "mtime": 1783966080.929842,
+    "ast_hash": "af9172082a17860fd7363c0010599eca",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java": {
+    "mtime": 1784143457.8181138,
+    "ast_hash": "b31bd9f29a890cc5bb03ed854a9e90ff",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ChatHistory.java": {
+    "mtime": 1784030608.8737814,
+    "ast_hash": "344ebe09e311f12742747241ac06d88b",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ChatHistoryRepository.java": {
+    "mtime": 1783967711.7536666,
+    "ast_hash": "4406d5e17631fe63489faa653ba77b1d",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ChatMessage.java": {
+    "mtime": 1783967552.1305878,
+    "ast_hash": "e61538e15a8b42c3d9a62171c029ed70",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java": {
+    "mtime": 1784145342.3622196,
+    "ast_hash": "3440715b3d10d4ef7f32785354bb6f10",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/MessageRequest.java": {
+    "mtime": 1784030597.1327014,
+    "ast_hash": "e1da495c008f2b3b75f19b80536dbd0a",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ParticipantRequest.java": {
+    "mtime": 1784018243.3336477,
+    "ast_hash": "2f6156a84668279712cf320a04a8b059",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/SendMessageRequest.java": {
+    "mtime": 1784053934.956309,
+    "ast_hash": "4cb5f4d613a03c558c842a79463baaa6",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/SendMessageResponse.java": {
+    "mtime": 1784053936.0342572,
+    "ast_hash": "7460639bf45c89358c499acfc7a473ad",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/StartChatRequest.java": {
+    "mtime": 1784030604.2214882,
+    "ast_hash": "4d22808020890100fc2ef9db8fc50c68",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/common/ValidationExceptionHandler.java": {
+    "mtime": 1784031678.4425166,
+    "ast_hash": "f5edf1d1eafb95287646e2610828296e",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/config/ChatClientConfig.java": {
+    "mtime": 1784053937.9528444,
+    "ast_hash": "dc0eb689a289c84f73ef47a6263b85df",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/config/PasswordEncoderConfig.java": {
+    "mtime": 1783966912.6232173,
+    "ast_hash": "911e01c5f613d77a25c12ababae2b519",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/config/SecurityConfig.java": {
+    "mtime": 1784026297.3700428,
+    "ast_hash": "99c2904334034e4c1e75722f806a7949",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/config/SemanticCacheVectorStoreConfig.java": {
+    "mtime": 1784142509.3546863,
+    "ast_hash": "412147a934d53a2e122fa7c0c6ac2e80",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/AnswerGenerationService.java": {
+    "mtime": 1784054011.8869996,
+    "ast_hash": "43b8fdbdda96d455e7708e2cf1029e55",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/AssembledPrompt.java": {
+    "mtime": 1784053913.5832665,
+    "ast_hash": "5bbfc2c2d68127241aad75accb5d8a6b",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/ChatPipelineService.java": {
+    "mtime": 1784145362.4113133,
+    "ast_hash": "f0d29fd078a2fee857c832ff2ae873da",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/DialogueState.java": {
+    "mtime": 1784054011.9474938,
+    "ast_hash": "0185feb92973169873c60c2ed73974b3",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/DialogueStateRepository.java": {
+    "mtime": 1784053888.3859022,
+    "ast_hash": "9a39a93aa87d0ab9f71bcee64d12c456",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/DialogueStatus.java": {
+    "mtime": 1784145672.079374,
+    "ast_hash": "4449d61df4035b195f42570cb244fe2b",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/GroundednessCheck.java": {
+    "mtime": 1784142294.169687,
+    "ast_hash": "dc46e0e659add93ffedb334fec909d95",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/IntentClassification.java": {
+    "mtime": 1784053900.8872998,
+    "ast_hash": "57cd9aa7c778e7157f74e9291ea730f5",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/IntentClassificationService.java": {
+    "mtime": 1784054011.9677455,
+    "ast_hash": "4cd94155fffd5e72953d8040aa52f5ea",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/IntentDefinition.java": {
+    "mtime": 1784053866.1816843,
+    "ast_hash": "eea56338636ea885c09c76b9a3e37ded",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/IntentDefinitionRegistry.java": {
+    "mtime": 1784053872.3158917,
+    "ast_hash": "fff33f5325792b28300084ec93c81006",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/KnowledgeBaseIndexer.java": {
+    "mtime": 1784054011.9880166,
+    "ast_hash": "6fb9b0a14f9c1b774d3f59fd92a2c357",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/KnowledgeRetrievalService.java": {
+    "mtime": 1784053898.6388478,
+    "ast_hash": "f35995b112d63314a7bb2acc098e1c92",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/PromptBuilder.java": {
+    "mtime": 1784054011.9998624,
+    "ast_hash": "190343d6075d2fa4161a35804e5dcf0f",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/QueryNormalizationService.java": {
+    "mtime": 1784053895.0702412,
+    "ast_hash": "b57184932a37330c8864bb47375a4e7a",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/ResponseValidator.java": {
+    "mtime": 1784145672.0825453,
+    "ast_hash": "1cf9a68202d70d9b18faf452d69c3594",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/ScopeFilter.java": {
+    "mtime": 1784053910.3699052,
+    "ast_hash": "ff597430dbacf11f6a3d6fff84fb5c4a",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/SemanticCacheService.java": {
+    "mtime": 1784142675.20967,
+    "ast_hash": "5ee5e508160a72fed61d151bd5284143",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/SlotFillingService.java": {
+    "mtime": 1784053912.4555058,
+    "ast_hash": "3e887e4a317ab4670edbbb26e48e1dc4",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/TextChunker.java": {
+    "mtime": 1784142700.888656,
+    "ast_hash": "790a4739c4435d0484222d63da130860",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/CreateUserRequest.java": {
+    "mtime": 1784026337.1848838,
+    "ast_hash": "939bbafa98d1a46e6f0aff00b84716d6",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/SecurityUserDetailsService.java": {
+    "mtime": 1784142259.732731,
+    "ast_hash": "489f6f09dbd0414cba22d752e5912b6e",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/User.java": {
+    "mtime": 1784129768.3406425,
+    "ast_hash": "4ed75529a7fa98251cb3abb91b979b24",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/UserController.java": {
+    "mtime": 1783967670.3085058,
+    "ast_hash": "38f517733c3d0677b38ca399e121540f",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/UserPrincipal.java": {
+    "mtime": 1784026268.9737244,
+    "ast_hash": "23fb8688e70ed9011d4d7b939be9b94c",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/UserRepository.java": {
+    "mtime": 1784129771.6660333,
+    "ast_hash": "77b36af4e69fac49f4376c25657f6a3e",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/UserResponse.java": {
+    "mtime": 1783967691.970163,
+    "ast_hash": "e5f408861e3941fe5603d41a8476502f",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/UserService.java": {
+    "mtime": 1784129777.80898,
+    "ast_hash": "7a45a497ea4aeedb91421b02151785e5",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/resources/db/migration/V1__create_users_table.sql": {
+    "mtime": 1783962880.293979,
+    "ast_hash": "4eaa7e9eb16ffb182dcae75e641da181",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/resources/knowledge-base/intents/change_shipping_address.json": {
+    "mtime": 1784053663.630609,
+    "ast_hash": "de335966de27a6670590a1f42aa7f206",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/resources/knowledge-base/intents/order_status.json": {
+    "mtime": 1784053661.0296235,
+    "ast_hash": "f88353fda779e5cc662bd27bf6224fdf",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/resources/knowledge-base/intents/refund_status.json": {
+    "mtime": 1784053658.931839,
+    "ast_hash": "8b346125afac97e06971d9507ff29946",
+    "semantic_hash": ""
+  },
+  "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java": {
+    "mtime": 1783966080.994299,
+    "ast_hash": "9f49bedc4513a4402488276810776ab0",
+    "semantic_hash": ""
+  },
+  "modules/server/src/test/java/com/example/demo_chat/chat/ChatControllerStreamTest.java": {
+    "mtime": 1784143600.2305255,
+    "ast_hash": "0d75525713fb4ee5ec3f59006a288d6e",
+    "semantic_hash": ""
+  },
+  "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java": {
+    "mtime": 1784142259.7628334,
+    "ast_hash": "c391777ac4d693061d3f2547e62c0220",
+    "semantic_hash": ""
+  },
+  "modules/server/src/test/java/com/example/demo_chat/rag/ChatPipelineServiceTest.java": {
+    "mtime": 1784142826.2490783,
+    "ast_hash": "8cc124a4d21c47e6f394327b00903c65",
+    "semantic_hash": ""
+  },
+  "modules/server/src/test/java/com/example/demo_chat/rag/ResponseValidatorTest.java": {
+    "mtime": 1784142342.7068844,
+    "ast_hash": "3d7d6f3e975e42c722790cab4bb59e24",
+    "semantic_hash": ""
+  },
+  "modules/server/src/test/java/com/example/demo_chat/rag/SemanticCacheServiceTest.java": {
+    "mtime": 1784142675.2228036,
+    "ast_hash": "17fc0c629a26789a02666b7233151eed",
+    "semantic_hash": ""
+  },
+  "modules/server/src/test/java/com/example/demo_chat/rag/TextChunkerTest.java": {
+    "mtime": 1784142834.1184478,
+    "ast_hash": "927e545240a276351889f7ec8bf5c4c1",
+    "semantic_hash": ""
+  },
+  "modules/server/src/test/java/com/example/demo_chat/user/UserRepositoryTest.java": {
+    "mtime": 1784141898.5002167,
+    "ast_hash": "150e13ad6c61db60575c6300537ce6e4",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Daily/2026-07-15.md": {
+    "mtime": 1784146158.955908,
+    "ast_hash": "113517ea9c42d6cfc69d844b8acb73d0",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Infrastructure/Cassandra/dialogue_state.md": {
+    "mtime": 1784145672.0714366,
+    "ast_hash": "722da0cc38a4211785116e2b1dd195fe",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Infrastructure/Qdrant/semantic_cache.md": {
+    "mtime": 1784145672.076544,
+    "ast_hash": "b9271f70bad97494632025f0f1bc9f2b",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Infrastructure/Qdrant/support_kb.md": {
+    "mtime": 1784145672.074069,
+    "ast_hash": "4c1e3b04906830dca702a52d4e44bdc8",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/README.md": {
+    "mtime": 1784143706.7998767,
+    "ast_hash": "cbb06b120e9719400cd6d629551e10e8",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/backend.md": {
+    "mtime": 1784143788.6511965,
+    "ast_hash": "6955df50c03fba68e759a3fd2e3c6944",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/dialogue-state.md": {
+    "mtime": 1784143882.9580495,
+    "ast_hash": "f57963c412ba6d05d57e4ba748ff1d7c",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/frontend.md": {
+    "mtime": 1784145947.7185495,
+    "ast_hash": "6e3820b17c88d365b25c1442c9776e94",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/github-actions.md": {
+    "mtime": 1784145901.0062582,
+    "ast_hash": "f5063862f2ffff27eef43a5a2d77674b",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/infrastructure.md": {
+    "mtime": 1784145915.5275176,
+    "ast_hash": "52a389ac10de25ab5a0402082b0350da",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/intent-matching.md": {
+    "mtime": 1784145857.960308,
+    "ast_hash": "bb29734fe026c5e1b494453044b7d259",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/local-vs-aws.md": {
+    "mtime": 1784145936.3829215,
+    "ast_hash": "ebe9e179a79d77f7b538e6963f7b5057",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/overview.md": {
+    "mtime": 1784143939.2054265,
+    "ast_hash": "08829a1b829b7dd5e3ef129b36158025",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/prompt-engineering.md": {
+    "mtime": 1784145880.7449586,
+    "ast_hash": "95d200f78ae2335ff81bfe5935acd30c",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/rag-pipeline.md": {
+    "mtime": 1784145428.6082175,
+    "ast_hash": "a1a8bcfcbf530b53feeb2719e9d2449f",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/roadmap.md": {
+    "mtime": 1784143665.440089,
+    "ast_hash": "5b305e0d9a1d9e236896ddeddf4c2a5b",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Plan/vector-store-schema.md": {
+    "mtime": 1784145982.79739,
+    "ast_hash": "543f47aa815d62e41071c8371650367b",
+    "semantic_hash": ""
+  },
+  "modules/server/src/main/resources/local/docker-compose.yml": {
+    "mtime": 1784054357.1221418,
+    "ast_hash": "e1eb96971be6615f6c5c34ba872bcb25",
     "semantic_hash": ""
   }
 }

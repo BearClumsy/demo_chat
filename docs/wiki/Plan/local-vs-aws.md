@@ -2,7 +2,7 @@
 
 [← Back to README](README.md) · [AWS infrastructure](infrastructure.md)
 
-**Status:** the local stack described here matches `src/main/resources/local/docker-compose.yml` today.
+**Status:** the local stack described here matches `modules/server/src/main/resources/local/docker-compose.yml` today.
 The AWS/staging/prod side is still planned — no Terraform or Spring Profiles exist yet (see below).
 
 ## Mapping table
@@ -43,14 +43,14 @@ will allow local ↔ AWS switching to be purely config-driven once profiles are 
 ## docker-compose (local stack, actual)
 
 ```
-src/main/resources/local/docker-compose.yml
+modules/server/src/main/resources/local/docker-compose.yml
 ├── postgres   (port 5432)  — users table (R2DBC app access, JDBC/Flyway for migrations)
 ├── cassandra  (port 9042)  — chat_history + dialogue_state tables
 ├── qdrant     (ports 6333/6334) — support_kb (knowledge base) + semantic_cache (Phase 2) collections
 └── kafka      (port 9092)       — declared, still not used by any code
 ```
 
-The application itself is not part of this compose file (it's run separately via `./gradlew bootRun`),
+The application itself is not part of this compose file (it's run separately via `./gradlew :server:bootRun`),
 and there is no LocalStack/S3/SQS emulation, no Ollama entry, and no `app` service — all of which appear
 in the earlier draft of this document but don't reflect the current setup.
 

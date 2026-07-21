@@ -33,17 +33,21 @@ Not yet built: the React frontend, AWS deployment, and CI/CD. See
   cache) collections, via `spring-ai-vector-store-advisor`.
 - **Chat history**: Cassandra, accessed reactively.
 - **Relational data** (users): Postgres via R2DBC for the app; a blocking JDBC `DataSource` is kept
-  solely for Flyway migrations under `src/main/resources/db/migration`.
+  solely for Flyway migrations under `modules/server/src/main/resources/db/migration`.
 - **Messaging**: Kafka.
 - **Security**: Spring Security.
 - **Observability**: Actuator.
 
 ## Project structure
 
-Single Gradle module, package-by-feature under `com.example.demo_chat`:
+Multi-module Gradle build, split under `modules/`:
+
+- `modules/server` — the Spring Boot backend described in this README (package-by-feature under
+  `com.example.demo_chat`)
+- `modules/client` — React frontend module (placeholder, not yet built)
 
 ```
-src/main/java/com/example/demo_chat/
+modules/server/src/main/java/com/example/demo_chat/
 ├── DemoChatApplication.java
 ├── chat/     # ChatController (incl. SSE /messages/stream), ChatService, ChatHistory (Cassandra), DTOs
 ├── user/     # UserController, UserService, User (Postgres/R2DBC), auth principal & repository
@@ -54,7 +58,7 @@ src/main/java/com/example/demo_chat/
 ├── config/   # SecurityConfig, PasswordEncoderConfig, ChatClientConfig, SemanticCacheVectorStoreConfig
 └── common/   # ValidationExceptionHandler
 
-src/main/resources/
+modules/server/src/main/resources/
 ├── application.properties     # Postgres (JDBC for Flyway + R2DBC for the app), Cassandra, Bedrock, Qdrant, Kafka
 ├── db/migration/              # Flyway migrations (V1__create_users_table.sql)
 ├── knowledge-base/intents/     # RAG knowledge base source docs (per-intent JSON)
@@ -66,7 +70,7 @@ src/main/resources/
 Start local dependencies (Postgres, Cassandra, Qdrant, Kafka):
 
 ```bash
-docker compose -f src/main/resources/local/docker-compose.yml up -d
+docker compose -f modules/server/src/main/resources/local/docker-compose.yml up -d
 ```
 
 You'll also need AWS credentials with Bedrock access for chat completions and embeddings (the app
@@ -75,17 +79,18 @@ doesn't provision or mock Bedrock locally).
 Run the app:
 
 ```bash
-./gradlew bootRun
+./gradlew :server:bootRun
 ```
 
 ## Commands
 
-Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle.
+Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tasks live under the
+`:server` module.
 
-- Build: `./gradlew build`
-- Run the app: `./gradlew bootRun`
-- Run all tests: `./gradlew test`
-- Run a single test class: `./gradlew test --tests "com.example.demo_chat.DemoChatApplicationTests"`
+- Build: `./gradlew :server:build`
+- Run the app: `./gradlew :server:bootRun`
+- Run all tests: `./gradlew :server:test`
+- Run a single test class: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests"`
 - Clean build output: `./gradlew clean`
 
 Tests use JUnit 5: the generated context-load test, an R2DBC repository slice test (Testcontainers

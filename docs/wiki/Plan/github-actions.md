@@ -57,7 +57,7 @@ trigger: pull_request, push to main/develop (path: frontend/**)
 ## `knowledge-base-lint.yml`
 
 ```
-trigger: pull_request (path: backend/src/main/resources/knowledge-base/**)
+trigger: pull_request (path: modules/server/src/main/resources/knowledge-base/**)
 
 1. checkout
 2. validate JSON schema of each intent file

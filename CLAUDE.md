@@ -20,25 +20,38 @@ reactive-native client in this Spring AI version); only Postgres/JPA had a real 
 unit test, RAG pipeline unit tests (guardrail, semantic cache), and a `ChatController` SSE slice test,
 alongside the original context-load test.
 
+## Module layout
+
+This is a multi-module Gradle build, with modules under `modules/`:
+
+- `modules/server` — the Spring Boot backend (all Java source, `application.properties`, Flyway
+  migrations, the local docker-compose file). This is what the rest of this document describes.
+  Paths quoted below (`src/main/...`) are relative to `modules/server/`.
+- `modules/client` — React frontend module (currently an empty placeholder; not yet built).
+
+The root `build.gradle` no longer exists — plugins/dependencies live in each module's own
+`build.gradle`, wired together via the root `settings.gradle`.
+
 ## Commands
 
-Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle.
+Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tasks run against the
+`:server` module.
 
-- Build: `./gradlew build`
-- Run the app: `./gradlew bootRun`
-- Run all tests: `./gradlew test`
-- Run a single test class: `./gradlew test --tests "com.example.demo_chat.DemoChatApplicationTests"`
-- Run a single test method: `./gradlew test --tests "com.example.demo_chat.DemoChatApplicationTests.contextLoads"`
+- Build: `./gradlew :server:build`
+- Run the app: `./gradlew :server:bootRun`
+- Run all tests: `./gradlew :server:test`
+- Run a single test class: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests"`
+- Run a single test method: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests.contextLoads"`
 - Clean build output: `./gradlew clean`
 
-Tests use JUnit 5 (`useJUnitPlatform()` is configured in `build.gradle`).
+Tests use JUnit 5 (`useJUnitPlatform()` is configured in `modules/server/build.gradle`).
 
 ## Toolchain
 
-- Java 26 (via Gradle toolchain in `build.gradle` — do not assume the system JDK matches; let the wrapper
-  provision it).
+- Java 26 (via Gradle toolchain in `modules/server/build.gradle` — do not assume the system JDK
+  matches; let the wrapper provision it).
 - Spring Boot 4.0.7, with dependency versions managed via `io.spring.dependency-management`.
-- Spring AI 2.0.0, imported as a BOM (`springAiVersion` in `build.gradle`).
+- Spring AI 2.0.0, imported as a BOM (`springAiVersion` in `modules/server/build.gradle`).
 - Root package: `com.example.demo_chat`.
 
 ## Architecture (from declared dependencies)
