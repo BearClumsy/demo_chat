@@ -36,12 +36,12 @@ class ChatServiceValidateParticipantIdsTest {
 
   @Test
   void addParticipantSucceedsWhenAllParticipantIdsAreValid() {
-    UUID chatId = UUID.randomUUID();
-    UUID newParticipantId = UUID.randomUUID();
-    User user = User.builder().id(newParticipantId).build();
-    ChatHistory existing =
+    var chatId = UUID.randomUUID();
+    var newParticipantId = UUID.randomUUID();
+    var user = User.builder().id(newParticipantId).build();
+    var existing =
         ChatHistory.builder().userId(chatId).participantIds(List.of(UUID.randomUUID())).build();
-    ChatHistory updated =
+    var updated =
         existing.toBuilder()
             .participantIds(List.of(existing.getParticipantIds().get(0), newParticipantId))
             .build();
@@ -59,8 +59,8 @@ class ChatServiceValidateParticipantIdsTest {
 
   @Test
   void addParticipantFailsWhenParticipantIdIsNotARealUser() {
-    UUID chatId = UUID.randomUUID();
-    UUID unknownUserId = UUID.randomUUID();
+    var chatId = UUID.randomUUID();
+    var unknownUserId = UUID.randomUUID();
 
     when(userRepository.findAllById(List.of(unknownUserId))).thenReturn(Flux.empty());
     // Constructed eagerly as the .then(Mono) argument, but never subscribed since

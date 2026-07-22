@@ -116,11 +116,11 @@ public class ChatPipelineService {
 
   private Flux<ServerSentEvent<String>> streamOutcome(
       UUID chatId, UUID userId, String rawMessage, PipelineOutcome outcome) {
-    Flux<ServerSentEvent<String>> tokenEvents =
+    var tokenEvents =
         Flux.fromIterable(textChunker.chunk(outcome.reply()))
             .delayElements(Duration.ofMillis(chunkDelayMillis))
             .map(chunk -> ServerSentEvent.builder(chunk).event("token").build());
-    Mono<ServerSentEvent<String>> doneEvent =
+    var doneEvent =
         persistOutcome(chatId, userId, rawMessage, outcome)
             .thenReturn(
                 ServerSentEvent.builder(outcome.state().getStatus().name()).event("done").build());
@@ -129,7 +129,7 @@ public class ChatPipelineService {
 
   private Mono<PipelineOutcome> continuePipeline(DialogueState state, String rawMessage) {
     if (state.getStatus() == DialogueStatus.SLOT_FILLING && state.getCurrentIntentId() != null) {
-      Optional<IntentDefinition> intent = registry.findById(state.getCurrentIntentId());
+      var intent = registry.findById(state.getCurrentIntentId());
       if (intent.isPresent()) {
         return continueSlotFilling(state, intent.get(), rawMessage);
       }
@@ -139,7 +139,7 @@ public class ChatPipelineService {
 
   private Mono<PipelineOutcome> continueSlotFilling(
       DialogueState state, IntentDefinition intent, String rawMessage) {
-    List<String> missingBefore = slotFillingService.missingSlots(intent, state.getSlots());
+    var missingBefore = slotFillingService.missingSlots(intent, state.getSlots());
     if (missingBefore.isEmpty()) {
       return generateAnswer(state, intent);
     }
@@ -147,7 +147,7 @@ public class ChatPipelineService {
     newSlots.put(missingBefore.get(0), rawMessage.trim());
     var updated = state.toBuilder().slots(newSlots).updatedAt(Instant.now()).build();
 
-    List<String> stillMissing = slotFillingService.missingSlots(intent, newSlots);
+    var stillMissing = slotFillingService.missingSlots(intent, newSlots);
     if (!stillMissing.isEmpty()) {
       return answerGenerationService
           .generateClarifyingQuestion(intent, stillMissing.get(0))
@@ -181,7 +181,7 @@ public class ChatPipelineService {
 
   private PipelineOutcome cacheHit(
       DialogueState state, String normalizedQuery, String cachedAnswer) {
-    DialogueState updated =
+    var updated =
         state.toBuilder()
             .status(DialogueStatus.ANSWERED)
             .lastNormalizedQuery(normalizedQuery)
@@ -212,15 +212,15 @@ public class ChatPipelineService {
               if (matched.isEmpty()) {
                 return Mono.just(outOfScope(state));
               }
-              IntentDefinition intent = matched.get();
-              DialogueState started =
+              var intent = matched.get();
+              var started =
                   state.toBuilder()
                       .currentIntentId(intent.intentId())
                       .slots(Map.of())
                       .lastNormalizedQuery(normalizedQuery)
                       .updatedAt(Instant.now())
                       .build();
-              List<String> missing = slotFillingService.missingSlots(intent, started.getSlots());
+              var missing = slotFillingService.missingSlots(intent, started.getSlots());
               if (!missing.isEmpty()) {
                 return answerGenerationService
                     .generateClarifyingQuestion(intent, missing.get(0))
@@ -235,8 +235,8 @@ public class ChatPipelineService {
   }
 
   private Mono<PipelineOutcome> generateAnswer(DialogueState state, IntentDefinition intent) {
-    String query = state.getLastNormalizedQuery() != null ? state.getLastNormalizedQuery() : "";
-    AssembledPrompt prompt = promptBuilder.build(intent, state.getSlots(), query);
+    var query = state.getLastNormalizedQuery() != null ? state.getLastNormalizedQuery() : "";
+    var prompt = promptBuilder.build(intent, state.getSlots(), query);
     return answerGenerationService
         .generate(prompt)
         .flatMap(
@@ -261,7 +261,7 @@ public class ChatPipelineService {
   }
 
   private PipelineOutcome outOfScope(DialogueState state) {
-    DialogueState updated =
+    var updated =
         state.toBuilder()
             .status(DialogueStatus.OUT_OF_SCOPE)
             .currentIntentId(null)

@@ -17,7 +17,7 @@ public class TextChunker {
     if (text == null || text.isBlank()) {
       return List.of();
     }
-    String[] words = text.trim().split("\\s+");
+    var words = text.trim().split("\\s+");
     return IntStream.range(0, words.length)
         .mapToObj(i -> i < words.length - 1 ? words[i] + " " : words[i])
         .toList();

@@ -39,7 +39,7 @@ public class ResponseValidator {
     if (!enabled) {
       return Mono.just(true);
     }
-    String userPrompt =
+    var userPrompt =
         """
         CONTEXT:
         %s

@@ -46,7 +46,7 @@ class UserRepositoryTest {
 
   @Test
   void savedUserCanBeFoundById() {
-    User user = newUser("jane.doe", "jane@example.com");
+    var user = newUser("jane.doe", "jane@example.com");
 
     userRepository
         .save(user)

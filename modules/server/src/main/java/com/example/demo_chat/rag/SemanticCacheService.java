@@ -68,7 +68,7 @@ public class SemanticCacheService {
     if (!enabled) {
       return Mono.empty();
     }
-    Document document =
+    var document =
         Document.builder()
             .id(UUID.randomUUID().toString())
             .text(normalizedQuery)

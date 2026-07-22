@@ -39,14 +39,14 @@ public class PromptBuilder {
    */
   public AssembledPrompt build(
       IntentDefinition intent, Map<String, String> slots, String normalizedQuery) {
-    String system = SYSTEM_TEMPLATE.formatted(intent.intentId(), intent.systemInstruction());
-    String userState =
+    var system = SYSTEM_TEMPLATE.formatted(intent.intentId(), intent.systemInstruction());
+    var userState =
         slots.isEmpty()
             ? "(none)"
             : slots.entrySet().stream()
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .collect(Collectors.joining("\n"));
-    String user = USER_TEMPLATE.formatted(intent.knowledgeSnippet(), userState, normalizedQuery);
+    var user = USER_TEMPLATE.formatted(intent.knowledgeSnippet(), userState, normalizedQuery);
     return new AssembledPrompt(system, user);
   }
 }

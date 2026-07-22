@@ -41,7 +41,7 @@ public class AnswerGenerationService {
    * @return a topic-constrained clarifying question
    */
   public Mono<String> generateClarifyingQuestion(IntentDefinition intent, String missingSlot) {
-    String system =
+    var system =
         CLARIFYING_QUESTION_SYSTEM_TEMPLATE.formatted(
             intent.intentId(), intent.knowledgeSnippet(), missingSlot);
     return Mono.fromCallable(

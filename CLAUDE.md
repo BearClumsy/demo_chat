@@ -13,26 +13,34 @@ semantic cache are both backed by Qdrant (`support_kb` and `semantic_cache` coll
 available either as a plain JSON response or SSE-streamed (buffer-then-chunk, not live token generation)
 via `POST /api/chats/{chatId}/messages/stream`. See `README.md` for a fuller overview.
 
-Still outstanding: the React frontend, AWS deployment, and CI/CD. Bedrock/Qdrant calls remain on
-`Schedulers.boundedElastic()` bridging (a deliberate, accepted scope boundary — neither has a
-reactive-native client in this Spring AI version); only Postgres/JPA had a real reactive alternative
-(R2DBC) and has been migrated. Test coverage now includes an R2DBC repository slice test, a `ChatService`
-unit test, RAG pipeline unit tests (guardrail, semantic cache), and a `ChatController` SSE slice test,
-alongside the original context-load test.
+A React chat MVP now exists under `modules/client` (auth + chat screens against the endpoints above), but
+it is not wired into the Gradle build yet — see "Module layout" below. Still outstanding: AWS deployment
+and CI/CD. Bedrock/Qdrant calls remain on `Schedulers.boundedElastic()` bridging (a deliberate, accepted
+scope boundary — neither has a reactive-native client in this Spring AI version); only Postgres/JPA had a
+real reactive alternative (R2DBC) and has been migrated. Test coverage now includes an R2DBC repository
+slice test, a `ChatService` unit test, RAG pipeline unit tests (guardrail, semantic cache, text chunking,
+groundedness validation), and a `ChatController` SSE slice test, alongside the original context-load test.
 
 ## Module layout
 
 This is a multi-module Gradle build, with modules under `modules/`:
 
 - `modules/server` — the Spring Boot backend (all Java source, `application.properties`, Flyway
-  migrations, the local docker-compose file). This is what the rest of this document describes.
+  migrations, the local docker-compose file). This is what most of this document describes.
   Paths quoted below (`src/main/...`) are relative to `modules/server/`.
-- `modules/client` — React frontend module (currently an empty placeholder; not yet built).
+- `modules/client` — React 19 + TypeScript + Vite frontend (package-by-feature: `src/features/auth`,
+  `src/features/chat/{api,components,hooks,types}`, shared app-level state in `src/app/AuthContext.tsx`).
+  Talks to the backend's `/api/**` endpoints; the Vite dev server proxies `/api` to
+  `http://localhost:8080` (see `vite.config.ts`). It is a real app now, but its `build.gradle` is still
+  just a placeholder comment — it is **not** wired into the Gradle multi-module build, so build/run/test
+  it directly with `npm`, not `./gradlew`.
 
 The root `build.gradle` no longer exists — plugins/dependencies live in each module's own
 `build.gradle`, wired together via the root `settings.gradle`.
 
 ## Commands
+
+### Server
 
 Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tasks run against the
 `:server` module.
@@ -42,9 +50,22 @@ Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tas
 - Run all tests: `./gradlew :server:test`
 - Run a single test class: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests"`
 - Run a single test method: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests.contextLoads"`
+- Check formatting (Spotless + Google Java Format): `./gradlew :server:spotlessCheck`
+- Apply formatting: `./gradlew :server:spotlessApply`
 - Clean build output: `./gradlew clean`
 
 Tests use JUnit 5 (`useJUnitPlatform()` is configured in `modules/server/build.gradle`).
+
+### Client
+
+Not a Gradle task — run these from `modules/client/` directly (`npm install` first if `node_modules`
+is missing):
+
+- Run the dev server (proxies `/api` to the backend on `:8080`): `npm run dev`
+- Type-check and build: `npm run build`
+- Preview a production build: `npm run preview`
+
+No test runner or linter is configured for the client yet.
 
 ## Toolchain
 
@@ -52,7 +73,10 @@ Tests use JUnit 5 (`useJUnitPlatform()` is configured in `modules/server/build.g
   matches; let the wrapper provision it).
 - Spring Boot 4.0.7, with dependency versions managed via `io.spring.dependency-management`.
 - Spring AI 2.0.0, imported as a BOM (`springAiVersion` in `modules/server/build.gradle`).
+- Server code is formatted with Spotless + Google Java Format (`modules/server/build.gradle`) — see
+  `spotlessCheck`/`spotlessApply` under Commands.
 - Root package: `com.example.demo_chat`.
+- Client: React 19, TypeScript, Vite 6 (`modules/client/package.json`).
 
 ## Architecture (from declared dependencies)
 

@@ -35,7 +35,7 @@ public class IntentDefinitionRegistry {
   void load() {
     var resolver = new PathMatchingResourcePatternResolver();
     try {
-      Resource[] resources = resolver.getResources(LOCATION_PATTERN);
+      var resources = resolver.getResources(LOCATION_PATTERN);
       intentsById =
           List.of(resources).stream()
               .map(this::readIntent)

@@ -25,7 +25,7 @@ class SemanticCacheServiceTest {
 
   @Test
   void lookupReturnsTheCachedAnswerOnAHit() {
-    Document cached =
+    var cached =
         Document.builder().text("where is my refund").metadata("answer", "3-5 days").build();
     when(vectorStore.similaritySearch(any(SearchRequest.class))).thenReturn(List.of(cached));
 

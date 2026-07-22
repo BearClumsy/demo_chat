@@ -1,6 +1,5 @@
 package com.example.demo_chat.rag;
 
-import java.util.List;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,7 +39,7 @@ public class KnowledgeBaseIndexer implements ApplicationRunner {
   }
 
   private void reindex() {
-    List<Document> documents = registry.findAll().stream().map(this::toDocument).toList();
+    var documents = registry.findAll().stream().map(this::toDocument).toList();
     vectorStore.add(documents);
   }
 

@@ -86,7 +86,7 @@ class ChatPipelineServiceTest {
             "Refund answer template",
             "If the status is unclear, please contact a human agent.");
 
-    Document document =
+    var document =
         Document.builder().text(NORMALIZED_QUERY).metadata("topic", "refund_status").build();
 
     when(dialogueStateRepository.findById(CHAT_ID)).thenReturn(Mono.empty());
@@ -117,7 +117,7 @@ class ChatPipelineServiceTest {
 
   @Test
   void groundedAnswerIsReturnedAsAnsweredAndCached() {
-    String generatedAnswer = "Refunds take 3-5 business days.";
+    var generatedAnswer = "Refunds take 3-5 business days.";
     when(answerGenerationService.generate(any())).thenReturn(Mono.just(generatedAnswer));
     when(responseValidator.validate(generatedAnswer, intent)).thenReturn(Mono.just(true));
 
@@ -132,7 +132,7 @@ class ChatPipelineServiceTest {
 
   @Test
   void ungroundedAnswerIsReplacedByEscalationFallbackAndNeverCached() {
-    String hallucinatedAnswer = "Your refund of $42 has already been sent.";
+    var hallucinatedAnswer = "Your refund of $42 has already been sent.";
     when(answerGenerationService.generate(any())).thenReturn(Mono.just(hallucinatedAnswer));
     when(responseValidator.validate(hallucinatedAnswer, intent)).thenReturn(Mono.just(false));
 
@@ -149,7 +149,7 @@ class ChatPipelineServiceTest {
 
   @Test
   void cacheHitSkipsRetrievalClassificationAndGeneration() {
-    String cachedAnswer = "Refunds take 3-5 business days.";
+    var cachedAnswer = "Refunds take 3-5 business days.";
     when(semanticCacheService.lookup(NORMALIZED_QUERY)).thenReturn(Mono.just(cachedAnswer));
 
     chatPipelineService
@@ -163,7 +163,7 @@ class ChatPipelineServiceTest {
 
   @Test
   void handleMessageStreamEmitsTokenChunksThenADoneEvent() {
-    String generatedAnswer = "Refunds take 3-5 days.";
+    var generatedAnswer = "Refunds take 3-5 days.";
     when(answerGenerationService.generate(any())).thenReturn(Mono.just(generatedAnswer));
     when(responseValidator.validate(generatedAnswer, intent)).thenReturn(Mono.just(true));
 

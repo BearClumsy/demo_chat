@@ -96,7 +96,7 @@ class ChatControllerStreamTest {
   }
 
   private static UserPrincipal principal() {
-    User user =
+    var user =
         User.builder()
             .id(USER_ID)
             .login("jane")

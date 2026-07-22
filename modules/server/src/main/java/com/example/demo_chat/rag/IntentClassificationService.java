@@ -36,7 +36,7 @@ public class IntentClassificationService {
    */
   public Mono<IntentClassification> classify(
       String normalizedQuery, List<IntentDefinition> candidates) {
-    String candidateList =
+    var candidateList =
         candidates.stream()
             .map(
                 candidate ->
@@ -45,7 +45,7 @@ public class IntentClassificationService {
                             candidate.intentId(),
                             String.join(" | ", candidate.canonicalQuestions())))
             .collect(Collectors.joining("\n"));
-    String userPrompt =
+    var userPrompt =
         """
         User message: %s
 
