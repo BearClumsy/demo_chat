@@ -56,3 +56,4 @@ view alone since these docs may also be read outside Obsidian).
 - [[2026-07-13]]
 - [[2026-07-14]]
 - [[2026-07-15]]
+- [[2026-07-22]]
