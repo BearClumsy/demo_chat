@@ -2,70 +2,81 @@
 
 [← Back to README](README.md) · [AWS infrastructure](infrastructure.md)
 
-**Status:** planned, not yet implemented — no `.github/workflows` directory exists in this repo. There
-is real test coverage to run now, though (see step 4 below), which wasn't true when this doc was first
-drafted.
+**Status:** partially implemented. The three CI workflows exist and run; the deploy workflows do not,
+because they need an AWS account and an ECR repository that don't exist yet (Phase 3b in
+[roadmap.md](roadmap.md)).
 
 ## Workflow file structure
 
 ```
 .github/
 └── workflows/
-    ├── backend-ci.yml           # tests + build the backend image
-    ├── frontend-ci.yml          # tests + build the frontend image
-    ├── knowledge-base-lint.yml  # validates the JSON schema of intents/*.json
-    ├── deploy-staging.yml       # deploy to ECS staging on merge to develop
-    ├── deploy-prod.yml          # deploy to ECS prod on a release tag
-    └── pr-checks.yml            # lint, static analysis on every PR
+    ├── backend-ci.yml           # IMPLEMENTED - spotlessCheck, tests, server image build
+    ├── frontend-ci.yml          # IMPLEMENTED - eslint, tsc/vite build, client image build
+    ├── knowledge-base-lint.yml  # IMPLEMENTED - scripts/validate-intents.mjs
+    ├── deploy-staging.yml       # planned - deploy to ECS staging
+    └── deploy-prod.yml          # planned - deploy to ECS prod on a release tag
 ```
 
-## `backend-ci.yml` — stages
+There is no separate `pr-checks.yml`: formatting and static analysis run inside `backend-ci` /
+`frontend-ci` rather than in a fourth workflow that would repeat their setup. All three trigger on
+`pull_request` and on `push` to `main`, path-filtered to their own module (`develop` doesn't exist as a
+branch in this repo).
+
+## `backend-ci.yml` — stages (implemented)
 
 ```
-trigger: pull_request, push to main/develop (path: backend/**)
+trigger: pull_request, push to main (paths: modules/server/**, gradle/**, settings.gradle, gradlew)
 
 1. checkout
-2. setup-java (temurin 26, version from `build.gradle` — Groovy DSL, not `.kts`)
-3. gradle build --info (runs Spotless check + tests, see `build.gradle`)
-4. unit tests — real ones exist now, under `src/test/java/com/example/demo_chat/`:
-   `rag/` (`ResponseValidatorTest`, `SemanticCacheServiceTest`, `TextChunkerTest`,
-   `ChatPipelineServiceTest`), `chat/ChatServiceValidateParticipantIdsTest`
-5. integration/slice tests (Testcontainers: **Postgres**, for `user/UserRepositoryTest`'s R2DBC slice
-   test — there's no Testcontainers module for Qdrant/Cassandra in this project; those would need the
-   local `docker-compose` stack or a different approach)
-6. static analysis — this project uses **Spotless** (`googleJavaFormat`, already configured in
-   `build.gradle`) for formatting, not Checkstyle/SpotBugs; a CI job would just run
-   `./gradlew spotlessCheck`, no new tool needed
-7. build Docker image → push to Amazon ECR (tag = git sha)
-8. Trivy scan of the image for vulnerabilities
+2. setup-java (temurin 26) + gradle/actions/setup-gradle for dependency caching
+3. ./gradlew :server:spotlessCheck :server:build
+   - spotlessCheck IS the static analysis here (googleJavaFormat); no Checkstyle/SpotBugs
+   - build runs all 8 test classes, including the Testcontainers ones
+4. upload the test report as an artifact on failure
+5. docker build of modules/server/Dockerfile (no push - no ECR yet)
 ```
 
-## `frontend-ci.yml` — stages
+Testcontainers uses the runner's Docker for Postgres (`user/UserRepositoryTest`) and for Postgres +
+Cassandra + Qdrant (`DemoChatApplicationTests`). Bedrock is stubbed in the tests, so the job needs no
+AWS credentials. Still to add in Phase 3b: ECR push (tag = git sha) and a Trivy scan of the image.
+
+## `frontend-ci.yml` — stages (implemented)
 
 ```
-trigger: pull_request, push to main/develop (path: frontend/**)
+trigger: pull_request, push to main (path: modules/client/**)
+
+1. checkout
+2. setup-node (22, npm cache keyed on modules/client/package-lock.json)
+3. npm ci
+4. npm run lint (ESLint 9 flat config: typescript-eslint + react-hooks + react-refresh)
+5. npm run build - `tsc -b && vite build`, so this type-checks as well as bundles
+6. docker build of modules/client/Dockerfile (no push - no ECR yet)
+```
+
+No unit-test step: there is still no test runner configured for the client.
+
+## `knowledge-base-lint.yml` (implemented)
+
+```
+trigger: pull_request, push to main
+         (paths: modules/server/src/main/resources/knowledge-base/**, scripts/validate-intents.mjs)
 
 1. checkout
 2. setup-node
-3. npm ci
-4. eslint + typecheck
-5. unit tests (vitest/jest)
-6. build (vite build)
-7. build Docker image (nginx + static) → push to ECR
+3. node scripts/validate-intents.mjs
 ```
 
-## `knowledge-base-lint.yml`
+The validator is dependency-free Node, and its rules mirror the `IntentDefinition` record so a file
+that passes also loads at startup:
 
-```
-trigger: pull_request (path: modules/server/src/main/resources/knowledge-base/**)
-
-1. checkout
-2. validate JSON schema of each intent file
-   (required fields: intent_id, canonical_questions, required_slots,
-   knowledge_snippet, allowed)
-3. check intent_id uniqueness
-4. check for duplicate canonical_questions across topics
-```
+1. required fields — `intent_id`, `canonical_questions` (non-empty), `required_slots`,
+   `knowledge_snippet`, `system_instruction`, `allowed`, `answer_template`, `escalation_fallback`
+   (earlier drafts of this doc listed a shorter, outdated set)
+2. no unknown fields — the record would silently ignore them
+3. `intent_id` unique across files and equal to the filename stem
+4. no duplicate canonical questions across intents
+5. every `{placeholder}` in `answer_template` is listed in `required_slots`
 
 A separate workflow, because the knowledge base changes more frequently
 and by different people (content managers/support staff) than the code —

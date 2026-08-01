@@ -1,0 +1,31 @@
+# Separate from backend-ci because the knowledge base is edited by content/support people far more
+# often than the code, and it needs a fast gate rather than a full Gradle build.
+name: knowledge-base-lint
+
+on:
+  pull_request:
+    paths:
+      - "modules/server/src/main/resources/knowledge-base/**"
+      - "scripts/validate-intents.mjs"
+      - ".github/workflows/knowledge-base-lint.yml"
+  push:
+    branches: [main]
+    paths:
+      - "modules/server/src/main/resources/knowledge-base/**"
+      - "scripts/validate-intents.mjs"
+      - ".github/workflows/knowledge-base-lint.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      - run: node scripts/validate-intents.mjs

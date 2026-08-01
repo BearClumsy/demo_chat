@@ -69,14 +69,42 @@ AWS credentials end-to-end.
 
 ## Phase 3 — Staging in AWS
 
+Split in two: **3a** is everything that can be built and verified without an AWS account (done), **3b**
+is everything that needs one (open).
+
+### Phase 3a — profiles, containers, CI (done)
+
+- [x] Spring Profiles — `application.properties` now holds only environment-independent settings
+      (`spring.profiles.default=local`, Bedrock model ids, collection names, `demo-chat.*` tuning), with
+      `application-local.properties` (the docker-compose stack) and `application-staging.properties` /
+      `application-prod.properties` binding every host, port, and credential to an environment variable.
+      Secrets have no defaults, so a missing one fails startup instead of falling back to a dev value.
+      Staging/prod also cap actuator exposure to `health,info,metrics` and set
+      `reindex-on-startup=false`. See [local-vs-aws.md](local-vs-aws.md).
+- [x] The test suite runs anywhere — `DemoChatApplicationTests` was a bare `@SpringBootTest` that only
+      passed against a running docker-compose stack plus AWS credentials. It now starts Postgres,
+      Cassandra, and Qdrant as Testcontainers and stubs only the Bedrock `ChatModel`/`EmbeddingModel`
+      (via `spring.ai.model.chat=none` / `spring.ai.model.embedding=none` plus a `@TestConfiguration`),
+      so `./gradlew :server:build` is green on a clean machine with Docker and nothing else. Without
+      this, CI would have been meaningless.
+- [x] Containerization — `modules/server/Dockerfile` (multi-stage, layered jar, non-root, healthcheck
+      on `/actuator/health`) and `modules/client/Dockerfile` (Vite build → nginx with SPA fallback and
+      an `/api` proxy that disables buffering so SSE still streams). `/actuator/health` is now
+      `permitAll` in `SecurityConfig` so container and ALB probes work; every other actuator endpoint
+      stays authenticated.
+- [x] GitHub Actions: `backend-ci` (spotlessCheck + build + tests + server image build), `frontend-ci`
+      (ESLint — newly added to the client — + `tsc`/vite build + client image build), and
+      `knowledge-base-lint` (`scripts/validate-intents.mjs`). No image push and no deploy workflow yet;
+      there is no ECR to push to. See [github-actions.md](github-actions.md).
+
+### Phase 3b — needs an AWS account (open)
+
 - [ ] Terraform: VPC, ECS, ALB, RDS (Postgres), Amazon Keyspaces/Cassandra, Qdrant on EC2
-- [ ] Switch to Bedrock via the `staging` profile — Bedrock is already the only configured LLM provider;
-      what's missing is the Spring Profile mechanism itself (see [local-vs-aws.md](local-vs-aws.md))
-- [ ] GitHub Actions: `backend-ci`, `frontend-ci`, `deploy-staging` — see [github-actions.md](github-actions.md), planned
+- [ ] `deploy-staging` workflow + ECR repositories and image pushes (OIDC, no static keys)
 - [ ] Knowledge-base reindexing as a CI job (`QdrantDocumentLoader.reindex()` on merge, per
-      [vector-store-schema.md](vector-store-schema.md)) — currently reindexes on every app startup instead
-      (`KnowledgeBaseIndexer`, idempotent since document ids are the intent id), which is fine for a
-      single local instance but not for a CI-driven staging/prod rollout.
+      [vector-store-schema.md](vector-store-schema.md)) — `KnowledgeBaseIndexer` still reindexes on
+      startup under the `local` profile (idempotent, since document ids are the intent id); staging and
+      prod now disable it, so the pipeline has to take over that job before either is usable.
 - [ ] Validate intent matching and prompts against real Bedrock
 - [ ] Load testing of the pipeline (retrieval + generation latency)
 

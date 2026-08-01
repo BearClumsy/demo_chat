@@ -22,6 +22,10 @@ public class SecurityConfig {
                 exchange
                     .pathMatchers(HttpMethod.POST, "/api/users")
                     .permitAll()
+                    // Container HEALTHCHECK and the ALB target group probe this without
+                    // credentials; every other actuator endpoint stays authenticated.
+                    .pathMatchers("/actuator/health", "/actuator/health/**")
+                    .permitAll()
                     .anyExchange()
                     .authenticated())
         .httpBasic(withDefaults())

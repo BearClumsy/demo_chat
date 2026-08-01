@@ -23,10 +23,14 @@ public class SemanticCacheVectorStoreConfig {
   public VectorStore semanticCacheVectorStore(
       QdrantClient qdrantClient,
       EmbeddingModel embeddingModel,
-      @Value("${demo-chat.cache.qdrant-collection:semantic_cache}") String collectionName) {
+      @Value("${demo-chat.cache.qdrant-collection:semantic_cache}") String collectionName,
+      // Shares the knowledge-base store's setting: creating a collection asks the embedding model
+      // for its dimensions, which is a live Bedrock call, so an environment where collections are
+      // provisioned ahead of time must be able to turn it off for both stores at once.
+      @Value("${spring.ai.vectorstore.qdrant.initialize-schema:true}") boolean initializeSchema) {
     return QdrantVectorStore.builder(qdrantClient, embeddingModel)
         .collectionName(collectionName)
-        .initializeSchema(true)
+        .initializeSchema(initializeSchema)
         .build();
   }
 }

@@ -1,0 +1,46 @@
+name: frontend-ci
+
+on:
+  pull_request:
+    paths:
+      - "modules/client/**"
+      - ".github/workflows/frontend-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "modules/client/**"
+      - ".github/workflows/frontend-ci.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frontend-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: modules/client
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: modules/client/package-lock.json
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      # `build` is `tsc -b && vite build`, so this type-checks as well as bundles. No test runner is
+      # configured for the client yet.
+      - run: npm run build
+
+      - name: Build the client image
+        run: docker build -t demo-chat-client:${{ github.sha }} .

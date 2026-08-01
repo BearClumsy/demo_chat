@@ -32,13 +32,15 @@ replies) is also implemented, though not yet verified against a live backend —
   originally drafted here
 
 ### Environments
-- [Local ↔ AWS: component mapping](local-vs-aws.md)
+- [Running locally](running-locally.md) — start the stack, boot the backend and client, run the tests
+- [Local ↔ AWS: component mapping](local-vs-aws.md) — includes the Spring Profile split (implemented)
 
 ### AWS
 - [AWS infrastructure (network, services, Terraform)](infrastructure.md) — *planned, not yet provisioned*
 
 ### CI/CD
-- [GitHub Actions: build and deploy pipelines](github-actions.md) — *planned, not yet implemented*
+- [GitHub Actions: build and deploy pipelines](github-actions.md) — CI implemented (`backend-ci`,
+  `frontend-ci`, `knowledge-base-lint`); the deploy workflows are *planned*
 
 ### Plan
 - [Phased implementation roadmap](roadmap.md)
@@ -51,8 +53,8 @@ replies) is also implemented, though not yet verified against a live backend —
 The project is a **multi-module Gradle build**: `modules/server` (this backend) and `modules/client`
 (React frontend — a Vite + React + TypeScript chat MVP: signup/login, start a chat, SSE-streamed
 replies; see [frontend.md](frontend.md)). There's still no separate `infra/` directory (that split
-remains a plan; see [infrastructure.md](infrastructure.md)). No `.github/workflows` exist yet either
-(see [github-actions.md](github-actions.md)).
+remains a plan; see [infrastructure.md](infrastructure.md)). `.github/workflows/` now holds the three CI
+workflows; the deploy ones are still missing (see [github-actions.md](github-actions.md)).
 
 ```
 demo_chat/                                  # multi-module Gradle build (root settings.gradle, no root build.gradle)

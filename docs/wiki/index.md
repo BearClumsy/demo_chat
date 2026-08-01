@@ -50,6 +50,7 @@ view alone since these docs may also be read outside Obsidian).
 
 - [[README|Plan overview]]
 - [[roadmap]]
+- [[running-locally]]
 
 ### Daily
 

@@ -1,0 +1,57 @@
+name: backend-ci
+
+on:
+  pull_request:
+    paths:
+      - "modules/server/**"
+      - "settings.gradle"
+      - "gradle/**"
+      - "gradlew"
+      - ".github/workflows/backend-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "modules/server/**"
+      - "settings.gradle"
+      - "gradle/**"
+      - "gradlew"
+      - ".github/workflows/backend-ci.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backend-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "26"
+
+      - uses: gradle/actions/setup-gradle@v6
+
+      # spotlessCheck is the project's static analysis (Google Java Format); build runs the tests,
+      # which spin up Postgres/Cassandra/Qdrant through Testcontainers using the runner's Docker.
+      # Bedrock is stubbed in the tests, so no AWS credentials are needed.
+      - name: Check formatting and run tests
+        run: ./gradlew --no-daemon :server:spotlessCheck :server:build
+
+      - name: Upload test report
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: server-test-report
+          path: modules/server/build/reports/tests/test
+          retention-days: 7
+
+      # Build only — there is no ECR repository to push to until the AWS work in Phase 3b. This
+      # still catches a Dockerfile that stopped matching the build.
+      - name: Build the server image
+        run: docker build -f modules/server/Dockerfile -t demo-chat-server:${{ github.sha }} .

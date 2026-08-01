@@ -14,8 +14,10 @@ available either as a plain JSON response or SSE-streamed (buffer-then-chunk, no
 via `POST /api/chats/{chatId}/messages/stream`. See `README.md` for a fuller overview.
 
 A React chat MVP now exists under `modules/client` (auth + chat screens against the endpoints above), but
-it is not wired into the Gradle build yet — see "Module layout" below. Still outstanding: AWS deployment
-and CI/CD. Bedrock/Qdrant calls remain on `Schedulers.boundedElastic()` bridging (a deliberate, accepted
+it is not wired into the Gradle build yet — see "Module layout" below. Phase 3a is also done: Spring
+Profiles (`local`/`staging`/`prod`), Dockerfiles for both modules, and GitHub Actions CI (`backend-ci`,
+`frontend-ci`, `knowledge-base-lint` under `.github/workflows/`). Still outstanding: the AWS half of
+Phase 3 — Terraform, ECR, and the deploy workflows. Bedrock/Qdrant calls remain on `Schedulers.boundedElastic()` bridging (a deliberate, accepted
 scope boundary — neither has a reactive-native client in this Spring AI version); only Postgres/JPA had a
 real reactive alternative (R2DBC) and has been migrated. Test coverage now includes an R2DBC repository
 slice test, a `ChatService` unit test, RAG pipeline unit tests (guardrail, semantic cache, text chunking,
@@ -54,7 +56,15 @@ Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tas
 - Apply formatting: `./gradlew :server:spotlessApply`
 - Clean build output: `./gradlew clean`
 
-Tests use JUnit 5 (`useJUnitPlatform()` is configured in `modules/server/build.gradle`).
+- Build the container image: `docker build -f modules/server/Dockerfile -t demo-chat-server .` (build
+  context is the **repository root**, not `modules/server`, because the Gradle wrapper lives there)
+
+Tests use JUnit 5 (`useJUnitPlatform()` is configured in `modules/server/build.gradle`). They require a
+running Docker daemon — `DemoChatApplicationTests` and `UserRepositoryTest` start Postgres, Cassandra,
+and Qdrant via Testcontainers — but **not** AWS credentials: `application-test.properties` sets
+`spring.ai.model.{chat,embedding}=none` and the test supplies stub Bedrock beans. If Docker isn't at
+the default socket (e.g. Colima), export `DOCKER_HOST` and
+`TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock`.
 
 ### Client
 
@@ -62,10 +72,17 @@ Not a Gradle task — run these from `modules/client/` directly (`npm install` f
 is missing):
 
 - Run the dev server (proxies `/api` to the backend on `:8080`): `npm run dev`
+- Lint (ESLint 9 flat config in `eslint.config.js`): `npm run lint`
 - Type-check and build: `npm run build`
 - Preview a production build: `npm run preview`
+- Build the container image (nginx + static build): `docker build -t demo-chat-client modules/client`
 
-No test runner or linter is configured for the client yet.
+No test runner is configured for the client yet.
+
+### Knowledge base
+
+- Validate the intent JSON files the way CI does: `node scripts/validate-intents.mjs`. Its rules mirror
+  the `IntentDefinition` record, so keep the two in sync when adding a field.
 
 ## Toolchain
 
@@ -112,13 +129,26 @@ whether it's chat memory or vector data instead.
 
 ## Configuration
 
-`src/main/resources/application.properties` sets connection details for Postgres (both `spring.datasource.*`
-for Flyway/JDBC and `spring.r2dbc.*` for the app), Cassandra, Qdrant, Kafka, and Bedrock model IDs, plus
-`demo-chat.rag.*`, `demo-chat.guardrail.*`, `demo-chat.cache.*`, and `demo-chat.streaming.*` tuning
-properties (kebab-case, `@Value("${...:default}")` injection, no `@ConfigurationProperties` class).
-Bedrock credentials are not set here and must come from the environment/AWS credential chain. Local
-dependencies (Postgres, Cassandra, Qdrant, Kafka) can be started via
-`src/main/resources/local/docker-compose.yml`.
+Configuration is split by Spring Profile under `src/main/resources/`:
+
+- `application.properties` — environment-independent only: Bedrock model IDs, Qdrant collection names,
+  and the `demo-chat.rag.*`, `demo-chat.guardrail.*`, `demo-chat.cache.*`, `demo-chat.streaming.*`
+  tuning properties (kebab-case, `@Value("${...:default}")` injection, no `@ConfigurationProperties`
+  class). It also sets `spring.profiles.default=local`, so `bootRun` behaves as it always has.
+- `application-local.properties` — the `localhost` connection details matching
+  `src/main/resources/local/docker-compose.yml`.
+- `application-staging.properties` / `application-prod.properties` — the same keys bound to environment
+  variables. Secrets (`${POSTGRES_PASSWORD}`, `${CASSANDRA_PASSWORD}`, `${QDRANT_API_KEY}`) have **no
+  default** so a missing one fails startup instead of falling back to a dev value. These two files
+  duplicate each other on purpose: `spring.config.import` of a shared file does not take effect from a
+  profile-specific document, and it fails silently by falling back to Boot's defaults.
+
+When adding a connection setting, add it to all three environment files, not just `application.properties`.
+
+Bedrock credentials are never in these files — they come from the AWS credential chain. Note that
+startup itself needs Bedrock unless the Qdrant collections already exist, because creating a collection
+calls the embedding model for its dimensions; `spring.ai.vectorstore.qdrant.initialize-schema` governs
+this for both the `support_kb` and `semantic_cache` stores.
 
 ## Knowledge Sources
 

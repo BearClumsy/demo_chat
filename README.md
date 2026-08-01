@@ -19,7 +19,9 @@ Phases 1 and 2 of the roadmap are implemented:
   collections); Bedrock/Qdrant calls remain on `Schedulers.boundedElastic()` bridging, a deliberate
   scope boundary since neither has a reactive-native client in this Spring AI version.
 
-Not yet built: the React frontend, AWS deployment, and CI/CD. See
+Phase 3 is half done. Spring Profiles (`local`/`staging`/`prod`), Dockerfiles for both modules, and
+GitHub Actions CI (`backend-ci`, `frontend-ci`, `knowledge-base-lint`) are in place; the AWS side —
+Terraform, ECR, and the deploy workflows — is still outstanding and needs an account. See
 [`docs/wiki/Plan/roadmap.md`](docs/wiki/Plan/roadmap.md) for the phased plan.
 
 ## Tech stack
@@ -44,7 +46,8 @@ Multi-module Gradle build, split under `modules/`:
 
 - `modules/server` — the Spring Boot backend described in this README (package-by-feature under
   `com.example.demo_chat`)
-- `modules/client` — React frontend module (placeholder, not yet built)
+- `modules/client` — React 19 + TypeScript + Vite frontend (auth + chat screens against the endpoints
+  above). Built with `npm`, not Gradle — its `build.gradle` is still a placeholder.
 
 ```
 modules/server/src/main/java/com/example/demo_chat/
@@ -59,10 +62,13 @@ modules/server/src/main/java/com/example/demo_chat/
 └── common/   # ValidationExceptionHandler
 
 modules/server/src/main/resources/
-├── application.properties     # Postgres (JDBC for Flyway + R2DBC for the app), Cassandra, Bedrock, Qdrant, Kafka
-├── db/migration/              # Flyway migrations (V1__create_users_table.sql)
-├── knowledge-base/intents/     # RAG knowledge base source docs (per-intent JSON)
-└── local/docker-compose.yml   # Postgres, Cassandra, Qdrant, Kafka for local dev
+├── application.properties            # environment-independent: model ids, collection names, demo-chat.* tuning
+├── application-local.properties      # the docker-compose stack (default profile)
+├── application-staging.properties    # AWS staging, every value from an env var
+├── application-prod.properties       # AWS prod
+├── db/migration/                     # Flyway migrations (V1__create_users_table.sql)
+├── knowledge-base/intents/           # RAG knowledge base source docs (per-intent JSON)
+└── local/docker-compose.yml          # Postgres, Cassandra, Qdrant, Kafka for local dev
 ```
 
 ## Getting started
@@ -74,13 +80,19 @@ docker compose -f modules/server/src/main/resources/local/docker-compose.yml up 
 ```
 
 You'll also need AWS credentials with Bedrock access for chat completions and embeddings (the app
-doesn't provision or mock Bedrock locally).
+doesn't provision or mock Bedrock locally). Startup itself needs them too, unless the Qdrant
+collections already exist: creating a collection asks the embedding model for its dimensions, which is
+a live Bedrock call.
 
-Run the app:
+Run the app (no profile set → `local`):
 
 ```bash
 ./gradlew :server:bootRun
 ```
+
+To run against a deployed environment's configuration instead, set `SPRING_PROFILES_ACTIVE=staging`
+(or `prod`) and supply `POSTGRES_*`, `CASSANDRA_*`, `QDRANT_*`, and `KAFKA_BOOTSTRAP_SERVERS` — those
+profiles read every host and credential from the environment and fail fast if a secret is missing.
 
 ## Commands
 
@@ -91,12 +103,25 @@ Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tas
 - Run the app: `./gradlew :server:bootRun`
 - Run all tests: `./gradlew :server:test`
 - Run a single test class: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests"`
+- Check/apply formatting: `./gradlew :server:spotlessCheck` / `./gradlew :server:spotlessApply`
 - Clean build output: `./gradlew clean`
 
-Tests use JUnit 5: the generated context-load test, an R2DBC repository slice test (Testcontainers
-Postgres), a `ChatService` unit test, RAG pipeline unit tests (guardrail, semantic cache), and a
-`ChatController` SSE endpoint slice test. Note: the context-load test needs real (or placeholder)
-AWS credentials and reachable Cassandra/Postgres/Qdrant to pass — see "Getting started" above.
+Frontend (from `modules/client/`): `npm run dev`, `npm run lint`, `npm run build`.
+
+Knowledge base: `node scripts/validate-intents.mjs` checks the intent JSON files the same way CI does.
+
+Container images:
+
+```bash
+docker build -f modules/server/Dockerfile -t demo-chat-server .   # context is the repo root
+docker build -t demo-chat-client modules/client
+```
+
+Tests use JUnit 5: a full-context wiring test, an R2DBC repository slice test, a `ChatService` unit
+test, RAG pipeline unit tests (guardrail, semantic cache, chunking), and a `ChatController` SSE slice
+test. They need **Docker** (Testcontainers starts Postgres, Cassandra, and Qdrant) but **not** AWS
+credentials — Bedrock is stubbed. If your Docker daemon isn't at the default socket (Colima, Rancher),
+export `DOCKER_HOST` and `TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock` first.
 
 ## Documentation
 

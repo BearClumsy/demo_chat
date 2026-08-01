@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Plan/frontend.md",
-                "mode": "source",
+                "file": "Plan/rag-pipeline.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "frontend"
+              "title": "rag-pipeline"
             }
           }
         ]
@@ -41,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -78,7 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 467
+    "width": 628.94921875
   },
   "right": {
     "id": "bad9de9eb8ac3cc1",
@@ -185,6 +187,14 @@
   },
   "active": "560e54d5fbfa1a26",
   "lastOpenFiles": [
+    "index.md.tmp.16109.d6a44f249999",
+    "Plan/running-locally.md",
+    "Plan/local-vs-aws.md.tmp.16109.ee886b6844a9",
+    "Plan/github-actions.md.tmp.16109.3e40b31bc6ae",
+    "Plan/overview.md",
+    "Plan/README.md",
+    "Plan/backend.md",
+    "Plan/frontend.md",
     "Plan/frontend-chat-mvp.md",
     "Plan/frontend.md.tmp.6305.8489853db77d",
     "Infrastructure/Qdrant/support_kb.md.tmp.6305.9fe8f8fd9ce7",
@@ -194,23 +204,17 @@
     "Plan/roadmap.md.tmp.6305.1c587dd8970b",
     "Plan/local-vs-aws.md.tmp.6305.db066c0570d4",
     "Plan/local-vs-aws.md.tmp.6305.35e95f387ea6",
-    "Plan/README.md.tmp.6305.0f055b61be43",
-    "Plan/README.md",
-    "index.md.tmp.13255.15a0e77f3f10",
     "Daily/2026-07-15.md",
     "Plan/rag-pipeline.md",
     "index.md",
     "Plan/vector-store-schema.md",
     "Plan/roadmap.md",
     "Plan/prompt-engineering.md",
-    "Plan/overview.md",
     "Plan/local-vs-aws.md",
     "Plan/intent-matching.md",
     "Plan/infrastructure.md",
     "Plan/github-actions.md",
-    "Plan/frontend.md",
     "Plan/dialogue-state.md",
-    "Plan/backend.md",
     "Features/Chat.md",
     "Features/User.md",
     "Infrastructure/Cassandra/chat_history.md",
@@ -218,8 +222,6 @@
     "Infrastructure/Postgres/users.md",
     "Infrastructure/Qdrant/_template.md",
     "Infrastructure/Qdrant/support_kb.md",
-    "Infrastructure/Qdrant/semantic_cache.md",
-    "docs/Plan/README.md",
-    "docs/Plan/vector-store-schema.md"
+    "Infrastructure/Qdrant/semantic_cache.md"
   ]
 }
