@@ -50,8 +50,8 @@
     "semantic_hash": "4cca1777cc6b6b8ff395a29be8106652"
   },
   "docs/wiki/index.md": {
-    "mtime": 1786546465.78887,
-    "ast_hash": "afe639310818b617fdbdfea8ab9ce48c",
+    "mtime": 1784824926.9131095,
+    "ast_hash": "f3d2e93932499b8cf373fd5647fdcb46",
     "semantic_hash": ""
   },
   "docs/wiki/.obsidian/app.json": {
@@ -75,8 +75,8 @@
     "semantic_hash": "5a79c6e7436a0a7dfce24da79669e7cc"
   },
   "docs/wiki/.obsidian/workspace.json": {
-    "mtime": 1785600295.5407498,
-    "ast_hash": "626177840c98f42ad285a9925c8fdd8e",
+    "mtime": 1785597485.202759,
+    "ast_hash": "bdb4183fcc500224b8cd7a2d824b4e22",
     "semantic_hash": ""
   },
   ".claude/skills/daily-report/SKILL.md": {
@@ -150,8 +150,8 @@
     "semantic_hash": ""
   },
   "modules/server/build.gradle": {
-    "mtime": 1786544534.3220515,
-    "ast_hash": "c8c1d8fb694903ef1d5cd6fef5104116",
+    "mtime": 1784141831.0788264,
+    "ast_hash": "9858eb7d34a2955d7c514a62be5e207e",
     "semantic_hash": ""
   },
   "modules/server/src/main/java/com/example/demo_chat/DemoChatApplication.java": {
@@ -455,8 +455,8 @@
     "semantic_hash": ""
   },
   "docs/wiki/Plan/README.md": {
-    "mtime": 1785598070.3064547,
-    "ast_hash": "d82bf0fdb222842a73794123e6ab9619",
+    "mtime": 1784642974.8373938,
+    "ast_hash": "427d164cefd7e4cc416ae6e94f598754",
     "semantic_hash": ""
   },
   "docs/wiki/Plan/backend.md": {
@@ -627,16 +627,6 @@
   "modules/client/index.html": {
     "mtime": 1784641124.102078,
     "ast_hash": "3f40b595cc58614577b92a4a83d2f40a",
-    "semantic_hash": ""
-  },
-  "docs/wiki/Daily/2026-08-12.md": {
-    "mtime": 1786546463.482478,
-    "ast_hash": "f4c7e0668259a7c13dfc95534222c7ef",
-    "semantic_hash": ""
-  },
-  "docs/wiki/Plan/running-locally.md": {
-    "mtime": 1785598056.6868405,
-    "ast_hash": "a864aed51afb1465c72991d9b95fc711",
     "semantic_hash": ""
   }
 }

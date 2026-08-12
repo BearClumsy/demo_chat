@@ -1344,7 +1344,7 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ec",
-      "community": 21,
+      "community": 93,
       "norm_label": "ec()"
     },
     {
@@ -1394,7 +1394,7 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ac",
-      "community": 21,
+      "community": 93,
       "norm_label": "ac()"
     },
     {
@@ -1474,7 +1474,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_vc",
-      "community": 21,
+      "community": 108,
       "norm_label": "vc()"
     },
     {
@@ -1484,7 +1484,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_bc",
-      "community": 21,
+      "community": 108,
       "norm_label": "bc()"
     },
     {
@@ -1554,7 +1554,7 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_kc",
-      "community": 21,
+      "community": 93,
       "norm_label": "kc()"
     },
     {
@@ -1684,7 +1684,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ka",
-      "community": 21,
+      "community": 108,
       "norm_label": "ka()"
     },
     {
@@ -1934,7 +1934,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_cu",
-      "community": 94,
+      "community": 21,
       "norm_label": "cu()"
     },
     {
@@ -1944,7 +1944,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_yn",
-      "community": 94,
+      "community": 21,
       "norm_label": "yn()"
     },
     {
@@ -1954,7 +1954,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_xu",
-      "community": 94,
+      "community": 21,
       "norm_label": "xu()"
     },
     {
@@ -3804,7 +3804,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice",
-      "community": 102,
+      "community": 5,
       "norm_label": "chatpipelineservice"
     },
     {
@@ -3814,7 +3814,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_chatpipelineservice",
-      "community": 108,
+      "community": 79,
       "norm_label": ".chatpipelineservice()"
     },
     {
@@ -3824,7 +3824,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_chatpipelineservice_java_intentdefinitionregistry",
-      "community": 108,
+      "community": 79,
       "norm_label": "intentdefinitionregistry"
     },
     {
@@ -3834,7 +3834,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "querynormalizationservice",
-      "community": 108,
+      "community": 79,
       "norm_label": "querynormalizationservice"
     },
     {
@@ -3844,7 +3844,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "knowledgeretrievalservice",
-      "community": 108,
+      "community": 79,
       "norm_label": "knowledgeretrievalservice"
     },
     {
@@ -3854,7 +3854,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "intentclassificationservice",
-      "community": 108,
+      "community": 79,
       "norm_label": "intentclassificationservice"
     },
     {
@@ -3864,7 +3864,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "scopefilter",
-      "community": 108,
+      "community": 79,
       "norm_label": "scopefilter"
     },
     {
@@ -3874,7 +3874,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "slotfillingservice",
-      "community": 108,
+      "community": 79,
       "norm_label": "slotfillingservice"
     },
     {
@@ -3884,7 +3884,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "promptbuilder",
-      "community": 108,
+      "community": 79,
       "norm_label": "promptbuilder"
     },
     {
@@ -3894,7 +3894,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "answergenerationservice",
-      "community": 108,
+      "community": 79,
       "norm_label": "answergenerationservice"
     },
     {
@@ -3904,7 +3904,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "responsevalidator",
-      "community": 108,
+      "community": 79,
       "norm_label": "responsevalidator"
     },
     {
@@ -3914,7 +3914,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "semanticcacheservice",
-      "community": 108,
+      "community": 79,
       "norm_label": "semanticcacheservice"
     },
     {
@@ -3924,7 +3924,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "dialoguestaterepository",
-      "community": 108,
+      "community": 79,
       "norm_label": "dialoguestaterepository"
     },
     {
@@ -3944,7 +3944,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "textchunker",
-      "community": 108,
+      "community": 79,
       "norm_label": "textchunker"
     },
     {
@@ -3974,7 +3974,7 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_chatpipelineservice_java_string",
-      "community": 102,
+      "community": 5,
       "norm_label": "string"
     },
     {
@@ -4044,7 +4044,7 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "pipelineoutcome",
-      "community": 102,
+      "community": 5,
       "norm_label": "pipelineoutcome"
     },
     {
@@ -4054,7 +4054,7 @@
       "source_location": "L130",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_continuepipeline",
-      "community": 102,
+      "community": 5,
       "norm_label": ".continuepipeline()"
     },
     {
@@ -4064,7 +4064,7 @@
       "source_location": "L130",
       "_origin": "ast",
       "id": "dialoguestate",
-      "community": 102,
+      "community": 5,
       "norm_label": "dialoguestate"
     },
     {
@@ -4074,7 +4074,7 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_continueslotfilling",
-      "community": 102,
+      "community": 5,
       "norm_label": ".continueslotfilling()"
     },
     {
@@ -4084,7 +4084,7 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_chatpipelineservice_java_intentdefinition",
-      "community": 102,
+      "community": 5,
       "norm_label": "intentdefinition"
     },
     {
@@ -4094,7 +4094,7 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_startnewturn",
-      "community": 102,
+      "community": 5,
       "norm_label": ".startnewturn()"
     },
     {
@@ -4104,7 +4104,7 @@
       "source_location": "L182",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_cachehit",
-      "community": 102,
+      "community": 5,
       "norm_label": ".cachehit()"
     },
     {
@@ -4114,7 +4114,7 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_tocandidateintents",
-      "community": 102,
+      "community": 5,
       "norm_label": ".tocandidateintents()"
     },
     {
@@ -4124,7 +4124,7 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_chatpipelineservice_java_list",
-      "community": 102,
+      "community": 5,
       "norm_label": "list"
     },
     {
@@ -4134,7 +4134,7 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_chatpipelineservice_java_document",
-      "community": 102,
+      "community": 5,
       "norm_label": "document"
     },
     {
@@ -4144,7 +4144,7 @@
       "source_location": "L202",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_classifyandroute",
-      "community": 102,
+      "community": 5,
       "norm_label": ".classifyandroute()"
     },
     {
@@ -4154,7 +4154,7 @@
       "source_location": "L237",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_generateanswer",
-      "community": 102,
+      "community": 5,
       "norm_label": ".generateanswer()"
     },
     {
@@ -4164,7 +4164,7 @@
       "source_location": "L263",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_outofscope",
-      "community": 102,
+      "community": 5,
       "norm_label": ".outofscope()"
     },
     {
@@ -4224,7 +4224,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_dialoguestate",
-      "community": 112,
+      "community": 5,
       "norm_label": "dialoguestate.java"
     },
     {
@@ -4234,7 +4234,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "rag_dialoguestate_dialoguestate",
-      "community": 112,
+      "community": 5,
       "norm_label": "dialoguestate"
     },
     {
@@ -4244,7 +4244,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "rag_dialoguestate_dialoguestate_newstate",
-      "community": 112,
+      "community": 5,
       "norm_label": ".newstate()"
     },
     {
@@ -4254,7 +4254,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_dialoguestate_java_uuid",
-      "community": 112,
+      "community": 5,
       "norm_label": "uuid"
     },
     {
@@ -4694,7 +4694,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_knowledgeretrievalservice",
-      "community": 113,
+      "community": 5,
       "norm_label": "knowledgeretrievalservice.java"
     },
     {
@@ -4704,7 +4704,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "rag_knowledgeretrievalservice_knowledgeretrievalservice",
-      "community": 113,
+      "community": 5,
       "norm_label": "knowledgeretrievalservice"
     },
     {
@@ -4714,7 +4714,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "rag_knowledgeretrievalservice_knowledgeretrievalservice_knowledgeretrievalservice",
-      "community": 113,
+      "community": 5,
       "norm_label": ".knowledgeretrievalservice()"
     },
     {
@@ -4724,7 +4724,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_knowledgeretrievalservice_java_vectorstore",
-      "community": 113,
+      "community": 5,
       "norm_label": "vectorstore"
     },
     {
@@ -4734,7 +4734,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "rag_knowledgeretrievalservice_knowledgeretrievalservice_retrieve",
-      "community": 113,
+      "community": 5,
       "norm_label": ".retrieve()"
     },
     {
@@ -4744,7 +4744,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_knowledgeretrievalservice_java_string",
-      "community": 113,
+      "community": 5,
       "norm_label": "string"
     },
     {
@@ -4754,7 +4754,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_knowledgeretrievalservice_java_mono",
-      "community": 113,
+      "community": 5,
       "norm_label": "mono"
     },
     {
@@ -4764,7 +4764,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_knowledgeretrievalservice_java_list",
-      "community": 113,
+      "community": 5,
       "norm_label": "list"
     },
     {
@@ -4774,7 +4774,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_knowledgeretrievalservice_java_document",
-      "community": 113,
+      "community": 5,
       "norm_label": "document"
     },
     {
@@ -4784,7 +4784,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_promptbuilder",
-      "community": 112,
+      "community": 5,
       "norm_label": "promptbuilder.java"
     },
     {
@@ -4794,7 +4794,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "rag_promptbuilder_promptbuilder",
-      "community": 112,
+      "community": 5,
       "norm_label": "promptbuilder"
     },
     {
@@ -4804,7 +4804,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "rag_promptbuilder_promptbuilder_build",
-      "community": 112,
+      "community": 5,
       "norm_label": ".build()"
     },
     {
@@ -4814,7 +4814,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_promptbuilder_java_intentdefinition",
-      "community": 112,
+      "community": 5,
       "norm_label": "intentdefinition"
     },
     {
@@ -4824,7 +4824,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_promptbuilder_java_map",
-      "community": 112,
+      "community": 5,
       "norm_label": "map"
     },
     {
@@ -4834,7 +4834,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_promptbuilder_java_string",
-      "community": 112,
+      "community": 5,
       "norm_label": "string"
     },
     {
@@ -4844,7 +4844,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_promptbuilder_java_assembledprompt",
-      "community": 112,
+      "community": 5,
       "norm_label": "assembledprompt"
     },
     {
@@ -4854,7 +4854,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_querynormalizationservice",
-      "community": 115,
+      "community": 5,
       "norm_label": "querynormalizationservice.java"
     },
     {
@@ -4864,7 +4864,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "rag_querynormalizationservice_querynormalizationservice",
-      "community": 115,
+      "community": 5,
       "norm_label": "querynormalizationservice"
     },
     {
@@ -4874,7 +4874,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "rag_querynormalizationservice_querynormalizationservice_querynormalizationservice",
-      "community": 115,
+      "community": 5,
       "norm_label": ".querynormalizationservice()"
     },
     {
@@ -4884,7 +4884,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_querynormalizationservice_java_chatclient",
-      "community": 115,
+      "community": 5,
       "norm_label": "chatclient"
     },
     {
@@ -4894,7 +4894,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "rag_querynormalizationservice_querynormalizationservice_normalize",
-      "community": 115,
+      "community": 5,
       "norm_label": ".normalize()"
     },
     {
@@ -4904,7 +4904,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_querynormalizationservice_java_string",
-      "community": 115,
+      "community": 5,
       "norm_label": "string"
     },
     {
@@ -4914,7 +4914,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_querynormalizationservice_java_mono",
-      "community": 115,
+      "community": 5,
       "norm_label": "mono"
     },
     {
@@ -4924,7 +4924,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_responsevalidator",
-      "community": 99,
+      "community": 79,
       "norm_label": "responsevalidator.java"
     },
     {
@@ -4934,7 +4934,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "rag_responsevalidator_responsevalidator",
-      "community": 99,
+      "community": 79,
       "norm_label": "responsevalidator"
     },
     {
@@ -4944,7 +4944,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "rag_responsevalidator_responsevalidator_responsevalidator",
-      "community": 99,
+      "community": 79,
       "norm_label": ".responsevalidator()"
     },
     {
@@ -4954,7 +4954,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_responsevalidator_java_chatclient",
-      "community": 99,
+      "community": 79,
       "norm_label": "chatclient"
     },
     {
@@ -4964,7 +4964,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "rag_responsevalidator_responsevalidator_validate",
-      "community": 99,
+      "community": 79,
       "norm_label": ".validate()"
     },
     {
@@ -4974,7 +4974,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_responsevalidator_java_string",
-      "community": 99,
+      "community": 79,
       "norm_label": "string"
     },
     {
@@ -4984,7 +4984,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_responsevalidator_java_intentdefinition",
-      "community": 99,
+      "community": 79,
       "norm_label": "intentdefinition"
     },
     {
@@ -4994,7 +4994,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_responsevalidator_java_mono",
-      "community": 99,
+      "community": 79,
       "norm_label": "mono"
     },
     {
@@ -5004,7 +5004,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "boolean",
-      "community": 99,
+      "community": 79,
       "norm_label": "boolean"
     },
     {
@@ -5134,7 +5134,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "rag_semanticcacheservice_semanticcacheservice_lookup",
-      "community": 103,
+      "community": 14,
       "norm_label": ".lookup()"
     },
     {
@@ -5144,7 +5144,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_semanticcacheservice_java_string",
-      "community": 103,
+      "community": 14,
       "norm_label": "string"
     },
     {
@@ -5164,7 +5164,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "rag_semanticcacheservice_semanticcacheservice_store",
-      "community": 103,
+      "community": 14,
       "norm_label": ".store()"
     },
     {
@@ -5174,7 +5174,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_semanticcacheservice_java_void",
-      "community": 103,
+      "community": 14,
       "norm_label": "void"
     },
     {
@@ -5184,7 +5184,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_slotfillingservice",
-      "community": 116,
+      "community": 5,
       "norm_label": "slotfillingservice.java"
     },
     {
@@ -5194,7 +5194,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "rag_slotfillingservice_slotfillingservice",
-      "community": 116,
+      "community": 5,
       "norm_label": "slotfillingservice"
     },
     {
@@ -5204,7 +5204,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "rag_slotfillingservice_slotfillingservice_missingslots",
-      "community": 116,
+      "community": 5,
       "norm_label": ".missingslots()"
     },
     {
@@ -5214,7 +5214,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_intentdefinition",
-      "community": 116,
+      "community": 5,
       "norm_label": "intentdefinition"
     },
     {
@@ -5224,7 +5224,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_map",
-      "community": 116,
+      "community": 5,
       "norm_label": "map"
     },
     {
@@ -5234,7 +5234,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_string",
-      "community": 116,
+      "community": 5,
       "norm_label": "string"
     },
     {
@@ -5244,7 +5244,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_list",
-      "community": 116,
+      "community": 5,
       "norm_label": "list"
     },
     {
@@ -6114,7 +6114,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest",
-      "community": 114,
+      "community": 5,
       "norm_label": "chatservicevalidateparticipantidstest.java"
     },
     {
@@ -6124,7 +6124,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest",
-      "community": 114,
+      "community": 5,
       "norm_label": "chatservicevalidateparticipantidstest"
     },
     {
@@ -6134,7 +6134,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_setup",
-      "community": 114,
+      "community": 5,
       "norm_label": ".setup()"
     },
     {
@@ -6144,7 +6144,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicevalidateparticipantidstest_java_beforeeach",
-      "community": 114,
+      "community": 5,
       "norm_label": "beforeeach"
     },
     {
@@ -6154,7 +6154,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_addparticipantsucceedswhenallparticipantidsarevalid",
-      "community": 114,
+      "community": 5,
       "norm_label": ".addparticipantsucceedswhenallparticipantidsarevalid()"
     },
     {
@@ -6164,7 +6164,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicevalidateparticipantidstest_java_test",
-      "community": 114,
+      "community": 5,
       "norm_label": "test"
     },
     {
@@ -6174,7 +6174,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_addparticipantfailswhenparticipantidisnotarealuser",
-      "community": 114,
+      "community": 5,
       "norm_label": ".addparticipantfailswhenparticipantidisnotarealuser()"
     },
     {
@@ -6204,7 +6204,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "rag_chatpipelineservicetest_chatpipelineservicetest_setup",
-      "community": 103,
+      "community": 5,
       "norm_label": ".setup()"
     },
     {
@@ -6214,7 +6214,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_rag_chatpipelineservicetest_java_beforeeach",
-      "community": 103,
+      "community": 79,
       "norm_label": "beforeeach"
     },
     {
@@ -6314,7 +6314,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_responsevalidatortest",
-      "community": 99,
+      "community": 79,
       "norm_label": "responsevalidatortest.java"
     },
     {
@@ -6324,7 +6324,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "rag_responsevalidatortest_responsevalidatortest",
-      "community": 99,
+      "community": 79,
       "norm_label": "responsevalidatortest"
     },
     {
@@ -6334,7 +6334,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "rag_responsevalidatortest_responsevalidatortest_validatereturnstruewhenanswerisgrounded",
-      "community": 99,
+      "community": 79,
       "norm_label": ".validatereturnstruewhenanswerisgrounded()"
     },
     {
@@ -6344,7 +6344,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_rag_responsevalidatortest_java_test",
-      "community": 99,
+      "community": 79,
       "norm_label": "test"
     },
     {
@@ -6354,7 +6354,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "rag_responsevalidatortest_responsevalidatortest_validatereturnsfalsewhenanswerisnotgrounded",
-      "community": 99,
+      "community": 79,
       "norm_label": ".validatereturnsfalsewhenanswerisnotgrounded()"
     },
     {
@@ -6364,7 +6364,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "rag_responsevalidatortest_responsevalidatortest_validateskipsthellmcallwhendisabled",
-      "community": 99,
+      "community": 79,
       "norm_label": ".validateskipsthellmcallwhendisabled()"
     },
     {
@@ -6374,7 +6374,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "rag_responsevalidatortest_responsevalidatortest_intent",
-      "community": 99,
+      "community": 79,
       "norm_label": ".intent()"
     },
     {
@@ -6384,7 +6384,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_rag_responsevalidatortest_java_intentdefinition",
-      "community": 99,
+      "community": 79,
       "norm_label": "intentdefinition"
     },
     {
@@ -6394,7 +6394,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest",
-      "community": 103,
+      "community": 14,
       "norm_label": "semanticcacheservicetest.java"
     },
     {
@@ -6404,7 +6404,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest",
-      "community": 103,
+      "community": 14,
       "norm_label": "semanticcacheservicetest"
     },
     {
@@ -6414,7 +6414,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest_lookupreturnsthecachedansweronahit",
-      "community": 103,
+      "community": 14,
       "norm_label": ".lookupreturnsthecachedansweronahit()"
     },
     {
@@ -6424,7 +6424,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_rag_semanticcacheservicetest_java_test",
-      "community": 103,
+      "community": 14,
       "norm_label": "test"
     },
     {
@@ -6434,7 +6434,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest_lookupreturnsemptywhennodocumentmatches",
-      "community": 103,
+      "community": 14,
       "norm_label": ".lookupreturnsemptywhennodocumentmatches()"
     },
     {
@@ -6444,7 +6444,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest_lookupskipsthevectorstorewhendisabled",
-      "community": 103,
+      "community": 14,
       "norm_label": ".lookupskipsthevectorstorewhendisabled()"
     },
     {
@@ -6454,7 +6454,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest_storeaddsadocumentwiththeanswerasmetadata",
-      "community": 103,
+      "community": 14,
       "norm_label": ".storeaddsadocumentwiththeanswerasmetadata()"
     },
     {
@@ -6464,7 +6464,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest_storeskipsthevectorstorewhendisabled",
-      "community": 103,
+      "community": 14,
       "norm_label": ".storeskipsthevectorstorewhendisabled()"
     },
     {
@@ -7266,36 +7266,6 @@
       "id": "daily_2026_07_22_code_style_tooling",
       "community": 96,
       "norm_label": "code style & tooling"
-    },
-    {
-      "label": "2026-08-12.md",
-      "file_type": "document",
-      "source_file": "docs/wiki/Daily/2026-08-12.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "daily_2026_08_12",
-      "community": 117,
-      "norm_label": "2026-08-12.md"
-    },
-    {
-      "label": "2026-08-12",
-      "file_type": "document",
-      "source_file": "docs/wiki/Daily/2026-08-12.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "daily_2026_08_12_2026_08_12",
-      "community": 117,
-      "norm_label": "2026-08-12"
-    },
-    {
-      "label": "Build & IDE tooling",
-      "file_type": "document",
-      "source_file": "docs/wiki/Daily/2026-08-12.md",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "daily_2026_08_12_build_ide_tooling",
-      "community": 117,
-      "norm_label": "build & ide tooling"
     },
     {
       "label": "Chat.md",
@@ -8101,7 +8071,7 @@
       "label": "AWS",
       "file_type": "document",
       "source_file": "docs/wiki/Plan/README.md",
-      "source_location": "L38",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "plan_readme_aws",
       "community": 15,
@@ -8111,7 +8081,7 @@
       "label": "CI/CD",
       "file_type": "document",
       "source_file": "docs/wiki/Plan/README.md",
-      "source_location": "L41",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "plan_readme_ci_cd",
       "community": 15,
@@ -8121,7 +8091,7 @@
       "label": "Plan",
       "file_type": "document",
       "source_file": "docs/wiki/Plan/README.md",
-      "source_location": "L45",
+      "source_location": "L43",
       "_origin": "ast",
       "id": "plan_readme_plan",
       "community": 15,
@@ -8131,7 +8101,7 @@
       "label": "Current repository structure",
       "file_type": "document",
       "source_file": "docs/wiki/Plan/README.md",
-      "source_location": "L51",
+      "source_location": "L49",
       "_origin": "ast",
       "id": "plan_readme_current_repository_structure",
       "community": 15,
@@ -9048,136 +9018,6 @@
       "norm_label": "related documents"
     },
     {
-      "label": "running-locally.md",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "plan_running_locally",
-      "community": 111,
-      "norm_label": "running-locally.md"
-    },
-    {
-      "label": "Running Locally",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "plan_running_locally_running_locally",
-      "community": 111,
-      "norm_label": "running locally"
-    },
-    {
-      "label": "Prerequisites",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "plan_running_locally_prerequisites",
-      "community": 111,
-      "norm_label": "prerequisites"
-    },
-    {
-      "label": "1. Start the dependencies",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L17",
-      "_origin": "ast",
-      "id": "plan_running_locally_1_start_the_dependencies",
-      "community": 111,
-      "norm_label": "1. start the dependencies"
-    },
-    {
-      "label": "2. Create the Cassandra keyspace (one-time)",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L27",
-      "_origin": "ast",
-      "id": "plan_running_locally_2_create_the_cassandra_keyspace_one_time",
-      "community": 111,
-      "norm_label": "2. create the cassandra keyspace (one-time)"
-    },
-    {
-      "label": "3. Export AWS credentials",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L39",
-      "_origin": "ast",
-      "id": "plan_running_locally_3_export_aws_credentials",
-      "community": 111,
-      "norm_label": "3. export aws credentials"
-    },
-    {
-      "label": "4. Run the backend",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L61",
-      "_origin": "ast",
-      "id": "plan_running_locally_4_run_the_backend",
-      "community": 111,
-      "norm_label": "4. run the backend"
-    },
-    {
-      "label": "5. Run the frontend",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L78",
-      "_origin": "ast",
-      "id": "plan_running_locally_5_run_the_frontend",
-      "community": 111,
-      "norm_label": "5. run the frontend"
-    },
-    {
-      "label": "Exercising the API directly",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L90",
-      "_origin": "ast",
-      "id": "plan_running_locally_exercising_the_api_directly",
-      "community": 111,
-      "norm_label": "exercising the api directly"
-    },
-    {
-      "label": "Running from the container images",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L116",
-      "_origin": "ast",
-      "id": "plan_running_locally_running_from_the_container_images",
-      "community": 111,
-      "norm_label": "running from the container images"
-    },
-    {
-      "label": "Running the tests",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L149",
-      "_origin": "ast",
-      "id": "plan_running_locally_running_the_tests",
-      "community": 111,
-      "norm_label": "running the tests"
-    },
-    {
-      "label": "Troubleshooting",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L175",
-      "_origin": "ast",
-      "id": "plan_running_locally_troubleshooting",
-      "community": 111,
-      "norm_label": "troubleshooting"
-    },
-    {
-      "label": "Related documents",
-      "file_type": "document",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L186",
-      "_origin": "ast",
-      "id": "plan_running_locally_related_documents",
-      "community": 111,
-      "norm_label": "related documents"
-    },
-    {
       "label": "vector-store-schema.md",
       "file_type": "document",
       "source_file": "docs/wiki/Plan/vector-store-schema.md",
@@ -9341,7 +9181,7 @@
       "label": "Daily",
       "file_type": "document",
       "source_file": "docs/wiki/index.md",
-      "source_location": "L55",
+      "source_location": "L54",
       "_origin": "ast",
       "id": "wiki_index_daily",
       "community": 48,
@@ -15417,9 +15257,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package",
-      "target": "client_package_dependencies"
+      "target": "client_package_dependencies",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15427,9 +15267,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L16",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package",
-      "target": "client_package_devdependencies"
+      "target": "client_package_devdependencies",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15437,9 +15277,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package",
-      "target": "client_package_name"
+      "target": "client_package_name",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15447,9 +15287,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package",
-      "target": "client_package_private"
+      "target": "client_package_private",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15457,9 +15297,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package",
-      "target": "client_package_scripts"
+      "target": "client_package_scripts",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15467,9 +15307,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package",
-      "target": "client_package_type"
+      "target": "client_package_type",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15477,9 +15317,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package",
-      "target": "client_package_version"
+      "target": "client_package_version",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15487,9 +15327,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_scripts",
-      "target": "client_package_scripts_build"
+      "target": "client_package_scripts_build",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15497,9 +15337,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_scripts",
-      "target": "client_package_scripts_dev"
+      "target": "client_package_scripts_dev",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15507,9 +15347,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_scripts",
-      "target": "client_package_scripts_lint"
+      "target": "client_package_scripts_lint",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15517,9 +15357,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_scripts",
-      "target": "client_package_scripts_preview"
+      "target": "client_package_scripts_preview",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15527,9 +15367,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_dependencies",
-      "target": "client_package_dependencies_react"
+      "target": "client_package_dependencies_react",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15537,9 +15377,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_dependencies",
-      "target": "client_package_dependencies_react_dom"
+      "target": "client_package_dependencies_react_dom",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15547,9 +15387,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L21",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_devdependencies",
-      "target": "client_package_devdependencies_eslint"
+      "target": "client_package_devdependencies_eslint",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15557,9 +15397,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L17",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_devdependencies",
-      "target": "client_package_devdependencies_eslint_js"
+      "target": "client_package_devdependencies_eslint_js",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15567,9 +15407,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L22",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_devdependencies",
-      "target": "client_package_devdependencies_eslint_plugin_react_hooks"
+      "target": "client_package_devdependencies_eslint_plugin_react_hooks",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15577,9 +15417,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L23",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_devdependencies",
-      "target": "client_package_devdependencies_eslint_plugin_react_refresh"
+      "target": "client_package_devdependencies_eslint_plugin_react_refresh",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15587,9 +15427,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L24",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_devdependencies",
-      "target": "client_package_devdependencies_globals"
+      "target": "client_package_devdependencies_globals",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15597,9 +15437,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L18",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_devdependencies",
-      "target": "client_package_devdependencies_types_react"
+      "target": "client_package_devdependencies_types_react",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15607,9 +15447,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L19",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_devdependencies",
-      "target": "client_package_devdependencies_types_react_dom"
+      "target": "client_package_devdependencies_types_react_dom",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15617,9 +15457,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L25",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_devdependencies",
-      "target": "client_package_devdependencies_typescript"
+      "target": "client_package_devdependencies_typescript",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15627,9 +15467,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L26",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_devdependencies",
-      "target": "client_package_devdependencies_typescript_eslint"
+      "target": "client_package_devdependencies_typescript_eslint",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15637,9 +15477,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_devdependencies",
-      "target": "client_package_devdependencies_vite"
+      "target": "client_package_devdependencies_vite",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15647,9 +15487,9 @@
       "source_file": "modules/client/package.json",
       "source_location": "L20",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_package_devdependencies",
-      "target": "client_package_devdependencies_vitejs_plugin_react"
+      "target": "client_package_devdependencies_vitejs_plugin_react",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -15658,9 +15498,9 @@
       "source_file": "modules/client/src/App.tsx",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "app_authcontext"
+      "target": "app_authcontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -15669,9 +15509,9 @@
       "source_file": "modules/client/src/App.tsx",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "app_authcontext_authprovider"
+      "target": "app_authcontext_authprovider",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -15680,9 +15520,9 @@
       "source_file": "modules/client/src/App.tsx",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "app_authcontext_useauth"
+      "target": "app_authcontext_useauth",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -15691,9 +15531,9 @@
       "source_file": "modules/client/src/App.tsx",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "auth_authpage"
+      "target": "auth_authpage",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -15702,9 +15542,9 @@
       "source_file": "modules/client/src/App.tsx",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "components_chatwindow"
+      "target": "components_chatwindow",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -15713,9 +15553,9 @@
       "source_file": "modules/client/src/App.tsx",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "components_startchatform"
+      "target": "components_startchatform",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -15724,9 +15564,9 @@
       "source_file": "modules/client/src/App.tsx",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "components_startchatform_startchatform"
+      "target": "components_startchatform_startchatform",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15734,9 +15574,9 @@
       "source_file": "modules/client/src/App.tsx",
       "source_location": "L31",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_app"
+      "target": "src_app_app",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15744,9 +15584,9 @@
       "source_file": "modules/client/src/App.tsx",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_app",
-      "target": "src_app_appshell"
+      "target": "src_app_appshell",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -15755,9 +15595,9 @@
       "source_file": "modules/client/src/main.tsx",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_main",
-      "target": "src_app"
+      "target": "src_app",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -15766,9 +15606,9 @@
       "source_file": "modules/client/src/App.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_app_appshell",
-      "target": "app_authcontext_useauth"
+      "target": "app_authcontext_useauth",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -15777,9 +15617,9 @@
       "source_file": "modules/client/src/main.tsx",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "src_main",
-      "target": "src_app_app"
+      "target": "src_app_app",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15787,9 +15627,9 @@
       "source_file": "modules/client/src/app/AuthContext.tsx",
       "source_location": "L16",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_authcontext",
-      "target": "app_authcontext_authcontext"
+      "target": "app_authcontext_authcontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15797,9 +15637,9 @@
       "source_file": "modules/client/src/app/AuthContext.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_authcontext",
-      "target": "app_authcontext_authcontextvalue"
+      "target": "app_authcontext_authcontextvalue",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15807,9 +15647,9 @@
       "source_file": "modules/client/src/app/AuthContext.tsx",
       "source_location": "L18",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_authcontext",
-      "target": "app_authcontext_authprovider"
+      "target": "app_authcontext_authprovider",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15817,9 +15657,9 @@
       "source_file": "modules/client/src/app/AuthContext.tsx",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_authcontext",
-      "target": "app_authcontext_credentials"
+      "target": "app_authcontext_credentials",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15827,9 +15667,9 @@
       "source_file": "modules/client/src/app/AuthContext.tsx",
       "source_location": "L36",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "app_authcontext",
-      "target": "app_authcontext_useauth"
+      "target": "app_authcontext_useauth",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -15838,9 +15678,9 @@
       "source_file": "modules/client/src/features/auth/AuthPage.tsx",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "auth_authpage",
-      "target": "app_authcontext"
+      "target": "app_authcontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -15849,9 +15689,9 @@
       "source_file": "modules/client/src/features/chat/components/ChatWindow.tsx",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_chatwindow",
-      "target": "app_authcontext"
+      "target": "app_authcontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -15860,9 +15700,9 @@
       "source_file": "modules/client/src/features/chat/components/StartChatForm.tsx",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_startchatform",
-      "target": "app_authcontext"
+      "target": "app_authcontext",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -15871,9 +15711,9 @@
       "source_file": "modules/client/src/features/auth/AuthPage.tsx",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "auth_authpage",
-      "target": "app_authcontext_useauth"
+      "target": "app_authcontext_useauth",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -15893,9 +15733,9 @@
       "source_file": "modules/client/src/features/chat/components/ChatWindow.tsx",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_chatwindow",
-      "target": "app_authcontext_useauth"
+      "target": "app_authcontext_useauth",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -15915,9 +15755,9 @@
       "source_file": "modules/client/src/features/chat/components/StartChatForm.tsx",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_startchatform",
-      "target": "app_authcontext_useauth"
+      "target": "app_authcontext_useauth",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -15936,9 +15776,9 @@
       "source_file": "modules/client/src/features/auth/AuthPage.tsx",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "auth_authpage",
-      "target": "auth_authpage_authpage"
+      "target": "auth_authpage_authpage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15946,9 +15786,9 @@
       "source_file": "modules/client/src/features/auth/AuthPage.tsx",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "auth_authpage",
-      "target": "auth_authpage_mode"
+      "target": "auth_authpage_mode",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15956,9 +15796,9 @@
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
       "source_location": "L86",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "api_chatapi",
-      "target": "api_chatapi_parsesseframe"
+      "target": "api_chatapi_parsesseframe",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15966,9 +15806,9 @@
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "api_chatapi",
-      "target": "api_chatapi_startchat"
+      "target": "api_chatapi_startchat",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15976,9 +15816,9 @@
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "api_chatapi",
-      "target": "api_chatapi_startchatparams"
+      "target": "api_chatapi_startchatparams",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15986,9 +15826,9 @@
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
       "source_location": "L47",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "api_chatapi",
-      "target": "api_chatapi_streammessage"
+      "target": "api_chatapi_streammessage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -15996,9 +15836,9 @@
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
       "source_location": "L35",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "api_chatapi",
-      "target": "api_chatapi_streammessageparams"
+      "target": "api_chatapi_streammessageparams",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -16007,9 +15847,9 @@
       "source_file": "modules/client/src/features/chat/components/StartChatForm.tsx",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_startchatform",
-      "target": "api_chatapi"
+      "target": "api_chatapi",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -16018,9 +15858,9 @@
       "source_file": "modules/client/src/features/chat/hooks/useChatStream.ts",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "hooks_usechatstream",
-      "target": "api_chatapi"
+      "target": "api_chatapi",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16029,9 +15869,9 @@
       "source_file": "modules/client/src/features/chat/components/StartChatForm.tsx",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_startchatform",
-      "target": "api_chatapi_startchat"
+      "target": "api_chatapi_startchat",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -16040,9 +15880,9 @@
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
       "source_location": "L75",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "api_chatapi_streammessage",
-      "target": "api_chatapi_parsesseframe"
+      "target": "api_chatapi_parsesseframe",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16051,9 +15891,9 @@
       "source_file": "modules/client/src/features/chat/hooks/useChatStream.ts",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "hooks_usechatstream",
-      "target": "api_chatapi_streammessage"
+      "target": "api_chatapi_streammessage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16061,9 +15901,9 @@
       "source_file": "modules/client/src/features/chat/components/ChatWindow.tsx",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_chatwindow",
-      "target": "components_chatwindow_chatwindow"
+      "target": "components_chatwindow_chatwindow",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -16072,9 +15912,9 @@
       "source_file": "modules/client/src/features/chat/components/ChatWindow.tsx",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_chatwindow",
-      "target": "components_messagebubble"
+      "target": "components_messagebubble",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -16083,9 +15923,9 @@
       "source_file": "modules/client/src/features/chat/components/ChatWindow.tsx",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_chatwindow",
-      "target": "hooks_usechatstream"
+      "target": "hooks_usechatstream",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16094,9 +15934,9 @@
       "source_file": "modules/client/src/features/chat/components/ChatWindow.tsx",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_chatwindow",
-      "target": "hooks_usechatstream_usechatstream"
+      "target": "hooks_usechatstream_usechatstream",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -16115,9 +15955,9 @@
       "source_file": "modules/client/src/features/chat/components/MessageBubble.tsx",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_messagebubble",
-      "target": "components_messagebubble_messagebubble"
+      "target": "components_messagebubble_messagebubble",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -16126,9 +15966,9 @@
       "source_file": "modules/client/src/features/chat/components/MessageBubble.tsx",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_messagebubble",
-      "target": "types_chat_types"
+      "target": "types_chat_types",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16137,9 +15977,9 @@
       "source_file": "modules/client/src/features/chat/components/MessageBubble.tsx",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_messagebubble",
-      "target": "types_chat_types_chatmessage"
+      "target": "types_chat_types_chatmessage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16147,9 +15987,9 @@
       "source_file": "modules/client/src/features/chat/components/StartChatForm.tsx",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_startchatform",
-      "target": "components_startchatform_startchatform"
+      "target": "components_startchatform_startchatform",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16157,9 +15997,9 @@
       "source_file": "modules/client/src/features/chat/hooks/useChatStream.ts",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "hooks_usechatstream",
-      "target": "hooks_usechatstream_usechatstream"
+      "target": "hooks_usechatstream_usechatstream",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -16168,9 +16008,9 @@
       "source_file": "modules/client/src/features/chat/hooks/useChatStream.ts",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "hooks_usechatstream",
-      "target": "types_chat_types"
+      "target": "types_chat_types",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16179,9 +16019,9 @@
       "source_file": "modules/client/src/features/chat/hooks/useChatStream.ts",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "hooks_usechatstream",
-      "target": "types_chat_types_chatmessage"
+      "target": "types_chat_types_chatmessage",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16190,9 +16030,9 @@
       "source_file": "modules/client/src/features/chat/hooks/useChatStream.ts",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "hooks_usechatstream",
-      "target": "types_chat_types_dialoguestatus"
+      "target": "types_chat_types_dialoguestatus",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16200,9 +16040,9 @@
       "source_file": "modules/client/src/features/chat/types/chat.types.ts",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "types_chat_types",
-      "target": "types_chat_types_chatmessage"
+      "target": "types_chat_types_chatmessage",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16210,9 +16050,9 @@
       "source_file": "modules/client/src/features/chat/types/chat.types.ts",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "types_chat_types",
-      "target": "types_chat_types_dialoguestatus"
+      "target": "types_chat_types_dialoguestatus",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16220,9 +16060,9 @@
       "source_file": "modules/client/src/features/chat/types/chat.types.ts",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "types_chat_types",
-      "target": "types_chat_types_startchatformvalues"
+      "target": "types_chat_types_startchatformvalues",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16230,9 +16070,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L2",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig",
-      "target": "client_tsconfig_compileroptions"
+      "target": "client_tsconfig_compileroptions",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16240,9 +16080,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L15",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig",
-      "target": "client_tsconfig_include"
+      "target": "client_tsconfig_include",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16250,9 +16090,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig_compileroptions",
-      "target": "client_tsconfig_compileroptions_isolatedmodules"
+      "target": "client_tsconfig_compileroptions_isolatedmodules",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16260,9 +16100,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L12",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig_compileroptions",
-      "target": "client_tsconfig_compileroptions_jsx"
+      "target": "client_tsconfig_compileroptions_jsx",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16270,9 +16110,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig_compileroptions",
-      "target": "client_tsconfig_compileroptions_lib"
+      "target": "client_tsconfig_compileroptions_lib",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16280,9 +16120,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig_compileroptions",
-      "target": "client_tsconfig_compileroptions_module"
+      "target": "client_tsconfig_compileroptions_module",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16290,9 +16130,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig_compileroptions",
-      "target": "client_tsconfig_compileroptions_moduleresolution"
+      "target": "client_tsconfig_compileroptions_moduleresolution",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16300,9 +16140,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig_compileroptions",
-      "target": "client_tsconfig_compileroptions_noemit"
+      "target": "client_tsconfig_compileroptions_noemit",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16310,9 +16150,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig_compileroptions",
-      "target": "client_tsconfig_compileroptions_resolvejsonmodule"
+      "target": "client_tsconfig_compileroptions_resolvejsonmodule",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16320,9 +16160,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig_compileroptions",
-      "target": "client_tsconfig_compileroptions_skiplibcheck"
+      "target": "client_tsconfig_compileroptions_skiplibcheck",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16330,9 +16170,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig_compileroptions",
-      "target": "client_tsconfig_compileroptions_strict"
+      "target": "client_tsconfig_compileroptions_strict",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16340,9 +16180,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig_compileroptions",
-      "target": "client_tsconfig_compileroptions_target"
+      "target": "client_tsconfig_compileroptions_target",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -16350,9 +16190,9 @@
       "source_file": "modules/client/tsconfig.json",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "client_tsconfig_compileroptions",
-      "target": "client_tsconfig_compileroptions_usedefineforclassfields"
+      "target": "client_tsconfig_compileroptions_usedefineforclassfields",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -17518,9 +17358,9 @@
       "source_file": "modules/server/src/main/java/com/example/demo_chat/config/ChatClientConfig.java",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "config_chatclientconfig",
-      "target": "modules_server_src_main_java_com_example_demo_chat_config_chatclientconfig_java_chatmodel"
+      "target": "modules_server_src_main_java_com_example_demo_chat_config_chatclientconfig_java_chatmodel",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -17561,9 +17401,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "context": "parameter_type",
-      "confidence_score": 1.0,
       "source": "config_chatclientconfig_chatclientconfig_chatclient",
-      "target": "modules_server_src_main_java_com_example_demo_chat_config_chatclientconfig_java_chatmodel"
+      "target": "modules_server_src_main_java_com_example_demo_chat_config_chatclientconfig_java_chatmodel",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -17776,9 +17616,9 @@
       "source_file": "modules/server/src/main/java/com/example/demo_chat/config/SemanticCacheVectorStoreConfig.java",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "config_semanticcachevectorstoreconfig",
-      "target": "modules_server_src_main_java_com_example_demo_chat_config_semanticcachevectorstoreconfig_java_embeddingmodel"
+      "target": "modules_server_src_main_java_com_example_demo_chat_config_semanticcachevectorstoreconfig_java_embeddingmodel",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17841,9 +17681,9 @@
       "source_location": "L21",
       "weight": 1.0,
       "context": "parameter_type",
-      "confidence_score": 1.0,
       "source": "config_semanticcachevectorstoreconfig_semanticcachevectorstoreconfig_semanticcachevectorstore",
-      "target": "modules_server_src_main_java_com_example_demo_chat_config_semanticcachevectorstoreconfig_java_embeddingmodel"
+      "target": "modules_server_src_main_java_com_example_demo_chat_config_semanticcachevectorstoreconfig_java_embeddingmodel",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -22389,9 +22229,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L114",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests",
-      "target": "demo_chat_demochatapplicationtests_stubbedrockmodels"
+      "target": "demo_chat_demochatapplicationtests_stubbedrockmodels",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -22400,9 +22240,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_bean"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_bean",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -22411,9 +22251,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L16",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_beforeall"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_beforeall",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -22422,9 +22262,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L18",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_chatmodel"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_chatmodel",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -22433,9 +22273,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L29",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_dynamicpropertyregistry"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_dynamicpropertyregistry",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -22444,9 +22284,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L30",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_dynamicpropertysource"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_dynamicpropertysource",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -22455,9 +22295,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L21",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_embeddingmodel"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_embeddingmodel",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -22476,9 +22316,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L74",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_demochatapplicationtests",
-      "target": "demo_chat_demochatapplicationtests_demochatapplicationtests_containerproperties"
+      "target": "demo_chat_demochatapplicationtests_demochatapplicationtests_containerproperties",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -22496,9 +22336,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L100",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_demochatapplicationtests",
-      "target": "demo_chat_demochatapplicationtests_demochatapplicationtests_createkeyspace"
+      "target": "demo_chat_demochatapplicationtests_demochatapplicationtests_createkeyspace",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -22506,9 +22346,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L150",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_demochatapplicationtests",
-      "target": "demo_chat_demochatapplicationtests_demochatapplicationtests_intentdefinitionsareloadedfromtheknowledgebase"
+      "target": "demo_chat_demochatapplicationtests_demochatapplicationtests_intentdefinitionsareloadedfromtheknowledgebase",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -22517,9 +22357,9 @@
       "source_location": "L74",
       "weight": 1.0,
       "context": "parameter_type",
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_demochatapplicationtests_containerproperties",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_dynamicpropertyregistry"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_dynamicpropertyregistry",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -22528,9 +22368,9 @@
       "source_location": "L74",
       "weight": 1.0,
       "context": "attribute",
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_demochatapplicationtests_containerproperties",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_dynamicpropertysource"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_dynamicpropertysource",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -22539,9 +22379,9 @@
       "source_location": "L100",
       "weight": 1.0,
       "context": "attribute",
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_demochatapplicationtests_createkeyspace",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_beforeall"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_beforeall",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -22549,9 +22389,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L132",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_stubbedrockmodels",
-      "target": "demo_chat_demochatapplicationtests_stubbedrockmodels_chatmodel"
+      "target": "demo_chat_demochatapplicationtests_stubbedrockmodels_chatmodel",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -22559,9 +22399,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java",
       "source_location": "L117",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_stubbedrockmodels",
-      "target": "demo_chat_demochatapplicationtests_stubbedrockmodels_embeddingmodel"
+      "target": "demo_chat_demochatapplicationtests_stubbedrockmodels_embeddingmodel",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -22570,9 +22410,9 @@
       "source_location": "L117",
       "weight": 1.0,
       "context": "attribute",
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_stubbedrockmodels_embeddingmodel",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_bean"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_bean",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -22581,9 +22421,9 @@
       "source_location": "L117",
       "weight": 1.0,
       "context": "return_type",
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_stubbedrockmodels_embeddingmodel",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_embeddingmodel"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_embeddingmodel",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -22592,9 +22432,9 @@
       "source_location": "L132",
       "weight": 1.0,
       "context": "attribute",
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_stubbedrockmodels_chatmodel",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_bean"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_bean",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -22603,9 +22443,9 @@
       "source_location": "L132",
       "weight": 1.0,
       "context": "return_type",
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_stubbedrockmodels_chatmodel",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_chatmodel"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_chatmodel",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -22625,9 +22465,9 @@
       "source_location": "L150",
       "weight": 1.0,
       "context": "attribute",
-      "confidence_score": 1.0,
       "source": "demo_chat_demochatapplicationtests_demochatapplicationtests_intentdefinitionsareloadedfromtheknowledgebase",
-      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_test"
+      "target": "modules_server_src_test_java_com_example_demo_chat_demochatapplicationtests_java_test",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23430,9 +23270,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/user/UserRepositoryTest.java",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "user_userrepositorytest",
-      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_beforeall"
+      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_beforeall",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -23441,9 +23281,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/user/UserRepositoryTest.java",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "user_userrepositorytest",
-      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_dynamicpropertyregistry"
+      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_dynamicpropertyregistry",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -23452,9 +23292,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/user/UserRepositoryTest.java",
       "source_location": "L11",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "user_userrepositorytest",
-      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_dynamicpropertysource"
+      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_dynamicpropertysource",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -23534,9 +23374,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "context": "parameter_type",
-      "confidence_score": 1.0,
       "source": "user_userrepositorytest_userrepositorytest_r2dbcproperties",
-      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_dynamicpropertyregistry"
+      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_dynamicpropertyregistry",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -23545,9 +23385,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "context": "attribute",
-      "confidence_score": 1.0,
       "source": "user_userrepositorytest_userrepositorytest_r2dbcproperties",
-      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_dynamicpropertysource"
+      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_dynamicpropertysource",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -23556,9 +23396,9 @@
       "source_location": "L36",
       "weight": 1.0,
       "context": "attribute",
-      "confidence_score": 1.0,
       "source": "user_userrepositorytest_userrepositorytest_migrate",
-      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_beforeall"
+      "target": "modules_server_src_test_java_com_example_demo_chat_user_userrepositorytest_java_beforeall",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -23621,9 +23461,9 @@
       "source_file": "scripts/validate-intents.mjs",
       "source_location": "L21",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scripts_validate_intents",
-      "target": "scripts_validate_intents_array_fields"
+      "target": "scripts_validate_intents_array_fields",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23631,9 +23471,9 @@
       "source_file": "scripts/validate-intents.mjs",
       "source_location": "L22",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scripts_validate_intents",
-      "target": "scripts_validate_intents_boolean_fields"
+      "target": "scripts_validate_intents_boolean_fields",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23641,9 +23481,9 @@
       "source_file": "scripts/validate-intents.mjs",
       "source_location": "L103",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scripts_validate_intents",
-      "target": "scripts_validate_intents_dir"
+      "target": "scripts_validate_intents_dir",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23651,9 +23491,9 @@
       "source_file": "scripts/validate-intents.mjs",
       "source_location": "L25",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scripts_validate_intents",
-      "target": "scripts_validate_intents_errors"
+      "target": "scripts_validate_intents_errors",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23661,9 +23501,9 @@
       "source_file": "scripts/validate-intents.mjs",
       "source_location": "L29",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scripts_validate_intents",
-      "target": "scripts_validate_intents_fail"
+      "target": "scripts_validate_intents_fail",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23671,9 +23511,9 @@
       "source_file": "scripts/validate-intents.mjs",
       "source_location": "L23",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scripts_validate_intents",
-      "target": "scripts_validate_intents_known_fields"
+      "target": "scripts_validate_intents_known_fields",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23681,9 +23521,9 @@
       "source_file": "scripts/validate-intents.mjs",
       "source_location": "L26",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scripts_validate_intents",
-      "target": "scripts_validate_intents_seenintentids"
+      "target": "scripts_validate_intents_seenintentids",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23691,9 +23531,9 @@
       "source_file": "scripts/validate-intents.mjs",
       "source_location": "L27",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scripts_validate_intents",
-      "target": "scripts_validate_intents_seenquestions"
+      "target": "scripts_validate_intents_seenquestions",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23701,9 +23541,9 @@
       "source_file": "scripts/validate-intents.mjs",
       "source_location": "L14",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scripts_validate_intents",
-      "target": "scripts_validate_intents_string_fields"
+      "target": "scripts_validate_intents_string_fields",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23711,9 +23551,9 @@
       "source_file": "scripts/validate-intents.mjs",
       "source_location": "L33",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scripts_validate_intents",
-      "target": "scripts_validate_intents_validate"
+      "target": "scripts_validate_intents_validate",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -23722,9 +23562,9 @@
       "source_file": "scripts/validate-intents.mjs",
       "source_location": "L36",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "scripts_validate_intents_validate",
-      "target": "scripts_validate_intents_fail"
+      "target": "scripts_validate_intents_fail",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23842,9 +23682,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L69",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "claude_commands",
-      "target": "claude_client"
+      "target": "claude_client",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23852,9 +23692,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L82",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "claude_commands",
-      "target": "claude_knowledge_base"
+      "target": "claude_knowledge_base",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23862,9 +23702,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L45",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "claude_commands",
-      "target": "claude_server"
+      "target": "claude_server",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24112,9 +23952,9 @@
       "source_file": "docs/wiki/Daily/2026-07-22.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "daily_2026_07_22",
-      "target": "daily_2026_07_22_2026_07_22"
+      "target": "daily_2026_07_22_2026_07_22",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24122,28 +23962,8 @@
       "source_file": "docs/wiki/Daily/2026-07-22.md",
       "source_location": "L3",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "daily_2026_07_22_2026_07_22",
-      "target": "daily_2026_07_22_code_style_tooling"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Daily/2026-08-12.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "daily_2026_08_12",
-      "target": "daily_2026_08_12_2026_08_12",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Daily/2026-08-12.md",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "daily_2026_08_12_2026_08_12",
-      "target": "daily_2026_08_12_build_ide_tooling",
+      "target": "daily_2026_07_22_code_style_tooling",
       "confidence_score": 1.0
     },
     {
@@ -24982,9 +24802,9 @@
       "source_file": "docs/wiki/Plan/frontend-chat-mvp.md",
       "source_location": "L1",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_frontend_chat_mvp",
-      "target": "plan_frontend_chat_mvp_frontend_chat_mvp_auth_start_chat_sse_streaming"
+      "target": "plan_frontend_chat_mvp_frontend_chat_mvp_auth_start_chat_sse_streaming",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24992,9 +24812,9 @@
       "source_file": "docs/wiki/Plan/frontend-chat-mvp.md",
       "source_location": "L20",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_frontend_chat_mvp_frontend_chat_mvp_auth_start_chat_sse_streaming",
-      "target": "plan_frontend_chat_mvp_backend_constraints_that_shaped_the_design"
+      "target": "plan_frontend_chat_mvp_backend_constraints_that_shaped_the_design",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25002,9 +24822,9 @@
       "source_file": "docs/wiki/Plan/frontend-chat-mvp.md",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_frontend_chat_mvp_frontend_chat_mvp_auth_start_chat_sse_streaming",
-      "target": "plan_frontend_chat_mvp_context"
+      "target": "plan_frontend_chat_mvp_context",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25012,9 +24832,9 @@
       "source_file": "docs/wiki/Plan/frontend-chat-mvp.md",
       "source_location": "L86",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_frontend_chat_mvp_frontend_chat_mvp_auth_start_chat_sse_streaming",
-      "target": "plan_frontend_chat_mvp_related_documents"
+      "target": "plan_frontend_chat_mvp_related_documents",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25022,9 +24842,9 @@
       "source_file": "docs/wiki/Plan/frontend-chat-mvp.md",
       "source_location": "L70",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_frontend_chat_mvp_frontend_chat_mvp_auth_start_chat_sse_streaming",
-      "target": "plan_frontend_chat_mvp_verification"
+      "target": "plan_frontend_chat_mvp_verification",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25032,9 +24852,9 @@
       "source_file": "docs/wiki/Plan/frontend-chat-mvp.md",
       "source_location": "L51",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_frontend_chat_mvp_frontend_chat_mvp_auth_start_chat_sse_streaming",
-      "target": "plan_frontend_chat_mvp_what_was_built"
+      "target": "plan_frontend_chat_mvp_what_was_built",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25052,9 +24872,9 @@
       "source_file": "docs/wiki/Plan/frontend.md",
       "source_location": "L95",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_frontend_react_frontend_project_structure",
-      "target": "plan_frontend_backend_integration_points"
+      "target": "plan_frontend_backend_integration_points",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25092,9 +24912,9 @@
       "source_file": "docs/wiki/Plan/github-actions.md",
       "source_location": "L26",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_github_actions_ci_cd_github_actions",
-      "target": "plan_github_actions_backend_ci_yml_stages_implemented"
+      "target": "plan_github_actions_backend_ci_yml_stages_implemented",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25122,9 +24942,9 @@
       "source_file": "docs/wiki/Plan/github-actions.md",
       "source_location": "L44",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_github_actions_ci_cd_github_actions",
-      "target": "plan_github_actions_frontend_ci_yml_stages_implemented"
+      "target": "plan_github_actions_frontend_ci_yml_stages_implemented",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25142,9 +24962,9 @@
       "source_file": "docs/wiki/Plan/github-actions.md",
       "source_location": "L59",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_github_actions_ci_cd_github_actions",
-      "target": "plan_github_actions_knowledge_base_lint_yml_implemented"
+      "target": "plan_github_actions_knowledge_base_lint_yml_implemented",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25352,9 +25172,9 @@
       "source_file": "docs/wiki/Plan/local-vs-aws.md",
       "source_location": "L26",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_local_vs_aws_local_aws_component_mapping",
-      "target": "plan_local_vs_aws_switching_via_spring_profiles_implemented"
+      "target": "plan_local_vs_aws_switching_via_spring_profiles_implemented",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25632,9 +25452,9 @@
       "source_file": "docs/wiki/Plan/roadmap.md",
       "source_location": "L75",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_roadmap_phase_3_staging_in_aws",
-      "target": "plan_roadmap_phase_3a_profiles_containers_ci_done"
+      "target": "plan_roadmap_phase_3a_profiles_containers_ci_done",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -25642,128 +25462,8 @@
       "source_file": "docs/wiki/Plan/roadmap.md",
       "source_location": "L100",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "plan_roadmap_phase_3_staging_in_aws",
-      "target": "plan_roadmap_phase_3b_needs_an_aws_account_open"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "plan_running_locally",
-      "target": "plan_running_locally_running_locally",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_1_start_the_dependencies",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L27",
-      "weight": 1.0,
-      "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_2_create_the_cassandra_keyspace_one_time",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L39",
-      "weight": 1.0,
-      "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_3_export_aws_credentials",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L61",
-      "weight": 1.0,
-      "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_4_run_the_backend",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L78",
-      "weight": 1.0,
-      "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_5_run_the_frontend",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L90",
-      "weight": 1.0,
-      "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_exercising_the_api_directly",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_prerequisites",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L186",
-      "weight": 1.0,
-      "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_related_documents",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L116",
-      "weight": 1.0,
-      "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_running_from_the_container_images",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L149",
-      "weight": 1.0,
-      "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_running_the_tests",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Plan/running-locally.md",
-      "source_location": "L175",
-      "weight": 1.0,
-      "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_troubleshooting",
+      "target": "plan_roadmap_phase_3b_needs_an_aws_account_open",
       "confidence_score": 1.0
     },
     {
@@ -27660,5 +27360,5 @@
       "source_file": "docs/wiki/docs/Plan/rag-pipeline.md"
     }
   ],
-  "built_at_commit": "d05a7b1ea6170a4063fb23fd43cb703623d812c9"
+  "built_at_commit": "68fe72526c392eed5ee8d7532a136ec4c89630ed"
 }
