@@ -76,7 +76,7 @@ modules/server/src/main/resources/
 Start local dependencies (Postgres, Cassandra, Qdrant, Kafka):
 
 ```bash
-docker compose -f modules/server/src/main/resources/local/docker-compose.yml up -d
+make up   # or: docker compose -f modules/server/src/main/resources/local/docker-compose.yml up -d
 ```
 
 You'll also need AWS credentials with Bedrock access for chat completions and embeddings (the app
@@ -87,7 +87,7 @@ a live Bedrock call.
 Run the app (no profile set → `local`):
 
 ```bash
-./gradlew :server:bootRun
+make run   # or: ./gradlew :server:bootRun
 ```
 
 To run against a deployed environment's configuration instead, set `SPRING_PROFILES_ACTIVE=staging`
@@ -95,6 +95,10 @@ To run against a deployed environment's configuration instead, set `SPRING_PROFI
 profiles read every host and credential from the environment and fail fast if a secret is missing.
 
 ## Commands
+
+The root `Makefile` wraps all of these — `make help` lists them (`make up`, `make run`, `make test`,
+`make client-dev`, `make docker`, `make ci`, …). It's a thin alias layer over the tools below, so
+either form works.
 
 Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tasks live under the
 `:server` module.

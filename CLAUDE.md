@@ -42,6 +42,10 @@ The root `build.gradle` no longer exists — plugins/dependencies live in each m
 
 ## Commands
 
+The root `Makefile` wraps everything below in one entry point — run `make help` for the list (e.g.
+`make up`, `make run`, `make test`, `make client-dev`, `make ci`). It is a thin alias layer only; the
+underlying commands are still the ones documented here, and new commands should be added to both.
+
 ### Server
 
 Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tasks run against the
