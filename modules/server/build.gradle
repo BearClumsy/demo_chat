@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'eclipse'
 	id 'org.springframework.boot' version '4.0.7'
 	id 'io.spring.dependency-management' version '1.1.7'
 	id 'com.diffplug.spotless' version '8.8.0'
@@ -78,5 +79,34 @@ spotless {
 	java {
 		googleJavaFormat()
 		target 'src/*/java/**/*.java'
+	}
+}
+
+// Read by the Gradle Tooling API when Buildship/jdtls builds its classpath model, so sources and
+// javadoc are fetched and attached. Do not run the generated `eclipse`/`eclipseClasspath` tasks —
+// they rewrite .classpath with explicit lib entries and drop the Buildship container.
+eclipse {
+	classpath {
+		downloadSources = true
+		downloadJavadoc = true
+	}
+}
+
+tasks.register('downloadDependencySources') {
+	description = 'Resolves -sources and -javadoc jars into the Gradle cache.'
+	group = 'help'
+	doLast {
+		def componentIds = configurations.testRuntimeClasspath.incoming.resolutionResult
+			.allDependencies.findAll { it instanceof ResolvedDependencyResult }
+			.collect { it.selected.id }
+		dependencies.createArtifactResolutionQuery()
+			.forComponents(componentIds)
+			.withArtifacts(JvmLibrary, SourcesArtifact, JavadocArtifact)
+			.execute()
+			.resolvedComponents
+			.each { c ->
+				c.getArtifacts(SourcesArtifact).each { logger.lifecycle("src  ${it.file ?: it}") }
+				c.getArtifacts(JavadocArtifact).each { logger.lifecycle("doc  ${it.file ?: it}") }
+			}
 	}
 }

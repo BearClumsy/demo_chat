@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Plan/rag-pipeline.md",
+                "file": "Plan/running-locally.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "rag-pipeline"
+              "title": "running-locally"
             }
           }
         ]
@@ -187,6 +187,7 @@
   },
   "active": "560e54d5fbfa1a26",
   "lastOpenFiles": [
+    "Plan/rag-pipeline.md",
     "index.md.tmp.16109.d6a44f249999",
     "Plan/running-locally.md",
     "Plan/local-vs-aws.md.tmp.16109.ee886b6844a9",
@@ -203,9 +204,7 @@
     "Plan/roadmap.md.tmp.6305.dc0c1b9ce4ce",
     "Plan/roadmap.md.tmp.6305.1c587dd8970b",
     "Plan/local-vs-aws.md.tmp.6305.db066c0570d4",
-    "Plan/local-vs-aws.md.tmp.6305.35e95f387ea6",
     "Daily/2026-07-15.md",
-    "Plan/rag-pipeline.md",
     "index.md",
     "Plan/vector-store-schema.md",
     "Plan/roadmap.md",
