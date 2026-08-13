@@ -1,9 +1,26 @@
+// The Flyway Gradle plugin loads its database plugins and JDBC drivers from the buildscript
+// classloader, not from the project's configurations — without these two the flyway* tasks fail with
+// "No Flyway database plugin found to handle jdbc:postgresql://…". Keep the versions in step with the
+// plugin version below and the driver the app resolves at runtime.
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'org.flywaydb:flyway-database-postgresql:11.14.1'
+		classpath 'org.postgresql:postgresql:42.7.11'
+	}
+}
+
 plugins {
 	id 'java'
 	id 'eclipse'
 	id 'org.springframework.boot' version '4.0.7'
 	id 'io.spring.dependency-management' version '1.1.7'
 	id 'com.diffplug.spotless' version '8.8.0'
+	// Pinned to the flyway-core version the Spring Boot BOM resolves, so the standalone tasks below
+	// run the same engine that migrates on app startup.
+	id 'org.flywaydb.flyway' version '11.14.1'
 }
 
 group = 'com.example'
@@ -69,6 +86,22 @@ dependencyManagement {
 		mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
 		mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
 	}
+}
+
+// Standalone Flyway tasks (:server:flywayMigrate / :server:flywayInfo) for applying or inspecting the
+// Postgres schema without booting the app. The app still migrates on startup via
+// spring-boot-starter-flyway; `schemas` MUST match `spring.flyway.schemas` in the profile properties
+// or the two paths build separate flyway_schema_history tables and re-run each other's migrations.
+// Defaults target the local docker-compose Postgres; override per environment with -Pflyway.* or
+// the FLYWAY_* environment variables.
+flyway {
+	url = findProperty('flyway.url') ?: System.getenv('FLYWAY_URL') ?: 'jdbc:postgresql://localhost:5432/demo_chat'
+	user = findProperty('flyway.user') ?: System.getenv('FLYWAY_USER') ?: 'demo_chat'
+	password = findProperty('flyway.password') ?: System.getenv('FLYWAY_PASSWORD') ?: 'demo_chat'
+	schemas = ['demo_chat']
+	locations = ["filesystem:${projectDir}/src/main/resources/db/migration"]
+	// `flywayClean` drops every object in the schema — keep it unavailable.
+	cleanDisabled = true
 }
 
 tasks.named('test') {

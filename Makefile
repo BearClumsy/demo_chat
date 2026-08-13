@@ -45,6 +45,23 @@ nuke: ## Stop the local containers AND delete their data volumes
 	$(COMPOSE) down -v
 
 # ---------------------------------------------------------------------------
+# Database migrations (Postgres / Flyway)
+# ---------------------------------------------------------------------------
+#
+# The app applies pending migrations on startup, so `make run` already covers the normal case. These
+# targets are for applying or inspecting the schema without booting the app. Both need `make up`
+# first, and both default to the local docker-compose Postgres — see the `flyway` block in
+# modules/server/build.gradle for the -Pflyway.* / FLYWAY_* overrides.
+
+.PHONY: migrate
+migrate: ## Apply pending Flyway migrations to local Postgres
+	$(GRADLEW) :server:flywayMigrate
+
+.PHONY: migrate-info
+migrate-info: ## Show applied/pending migration state
+	$(GRADLEW) :server:flywayInfo
+
+# ---------------------------------------------------------------------------
 # Server (Gradle, :server module)
 # ---------------------------------------------------------------------------
 #

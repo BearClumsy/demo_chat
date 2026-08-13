@@ -109,6 +109,13 @@ Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tas
 - Run a single test class: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests"`
 - Check/apply formatting: `./gradlew :server:spotlessCheck` / `./gradlew :server:spotlessApply`
 - Clean build output: `./gradlew clean`
+- Apply Flyway migrations without starting the app: `./gradlew :server:flywayMigrate`
+- Show applied/pending migration state: `./gradlew :server:flywayInfo`
+
+The app also migrates on startup, so `bootRun` already covers the normal case — the two tasks above
+are for applying or inspecting the schema on its own. They target the local Postgres by default;
+override with `-Pflyway.url=…` (also `flyway.user` / `flyway.password`) or the `FLYWAY_*` environment
+variables.
 
 Frontend (from `modules/client/`): `npm run dev`, `npm run lint`, `npm run build`.
 

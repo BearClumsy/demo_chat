@@ -103,6 +103,13 @@ Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tas
 - Check formatting (Spotless + Google Java Format): `./gradlew :server:spotlessCheck`
 - Apply formatting: `./gradlew :server:spotlessApply`
 - Clean build output: `./gradlew clean`
+- Apply Flyway migrations without starting the app: `./gradlew :server:flywayMigrate`
+- Show applied/pending migration state: `./gradlew :server:flywayInfo`
+
+The app migrates on startup too, so `bootRun` covers the normal case; the two `flyway*` tasks exist
+for applying/inspecting the schema on its own. They default to the local Postgres and are overridden
+with `-Pflyway.url=…` / `-Pflyway.user=…` / `-Pflyway.password=…` or the matching `FLYWAY_*`
+environment variables (`flyway {}` block in `modules/server/build.gradle`).
 
 - Build the container image: `docker build -f modules/server/Dockerfile -t demo-chat-server .` (build
   context is the **repository root**, not `modules/server`, because the Gradle wrapper lives there)
@@ -213,6 +220,14 @@ this for both the `support_kb` and `semantic_cache` stores.
   locally and in tests but defaults to `none` in staging/prod (`${CASSANDRA_SCHEMA_ACTION:none}`), so
   new Cassandra tables need DDL applied by hand outside the app. Flyway covers Postgres only (currently
   a single `V1__create_users_table.sql`).
+- **Flyway is configured in two places and they must agree.** Boot migrates on startup from
+  `spring.flyway.schemas` in the profile properties; the `flyway {}` block in
+  `modules/server/build.gradle` backs the standalone `flywayMigrate`/`flywayInfo` tasks. If the
+  `schemas` value diverges, the two build *separate* `flyway_schema_history` tables and each re-runs
+  the other's migrations. The plugin version is pinned to the `flyway-core` version the Boot BOM
+  resolves (11.14.1) for the same reason, and its Postgres support comes from the `buildscript`
+  classpath at the top of that file — without those entries the tasks fail with "No Flyway database
+  plugin found to handle jdbc:postgresql://…".
 - **`DialogueStatus.READY_TO_ANSWER` is declared but never assigned** by the pipeline — don't route on it.
 - **Adding a `@SpringBootTest`**: the stub Bedrock `ChatModel`/`EmbeddingModel` beans live in a nested
   `@TestConfiguration StubBedrockModels` class inside `DemoChatApplicationTests`, not in a shared support
