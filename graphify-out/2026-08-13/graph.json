@@ -274,7 +274,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_oe",
-      "community": 92,
+      "community": 102,
       "norm_label": "oe()"
     },
     {
@@ -284,7 +284,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ke",
-      "community": 92,
+      "community": 102,
       "norm_label": "ke()"
     },
     {
@@ -294,7 +294,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ye",
-      "community": 92,
+      "community": 102,
       "norm_label": "ye()"
     },
     {
@@ -304,7 +304,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_qe",
-      "community": 92,
+      "community": 102,
       "norm_label": "qe()"
     },
     {
@@ -314,7 +314,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_te",
-      "community": 92,
+      "community": 102,
       "norm_label": "te()"
     },
     {
@@ -334,7 +334,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ie",
-      "community": 92,
+      "community": 102,
       "norm_label": "ie()"
     },
     {
@@ -344,7 +344,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_v",
-      "community": 92,
+      "community": 102,
       "norm_label": "v()"
     },
     {
@@ -394,7 +394,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_m_buildcomponents",
-      "community": 92,
+      "community": 102,
       "norm_label": "._buildcomponents()"
     },
     {
@@ -444,7 +444,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_m_parselocalcolor",
-      "community": 92,
+      "community": 102,
       "norm_label": "._parselocalcolor()"
     },
     {
@@ -1504,7 +1504,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_bi",
-      "community": 93,
+      "community": 21,
       "norm_label": "bi()"
     },
     {
@@ -3804,7 +3804,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice",
-      "community": 102,
+      "community": 5,
       "norm_label": "chatpipelineservice"
     },
     {
@@ -3974,7 +3974,7 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_chatpipelineservice_java_string",
-      "community": 102,
+      "community": 5,
       "norm_label": "string"
     },
     {
@@ -4044,7 +4044,7 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "pipelineoutcome",
-      "community": 102,
+      "community": 5,
       "norm_label": "pipelineoutcome"
     },
     {
@@ -4054,7 +4054,7 @@
       "source_location": "L130",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_continuepipeline",
-      "community": 102,
+      "community": 5,
       "norm_label": ".continuepipeline()"
     },
     {
@@ -4064,7 +4064,7 @@
       "source_location": "L130",
       "_origin": "ast",
       "id": "dialoguestate",
-      "community": 102,
+      "community": 5,
       "norm_label": "dialoguestate"
     },
     {
@@ -4074,7 +4074,7 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_continueslotfilling",
-      "community": 102,
+      "community": 5,
       "norm_label": ".continueslotfilling()"
     },
     {
@@ -4084,7 +4084,7 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_chatpipelineservice_java_intentdefinition",
-      "community": 102,
+      "community": 5,
       "norm_label": "intentdefinition"
     },
     {
@@ -4094,7 +4094,7 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_startnewturn",
-      "community": 102,
+      "community": 5,
       "norm_label": ".startnewturn()"
     },
     {
@@ -4104,7 +4104,7 @@
       "source_location": "L182",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_cachehit",
-      "community": 102,
+      "community": 5,
       "norm_label": ".cachehit()"
     },
     {
@@ -4114,7 +4114,7 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_tocandidateintents",
-      "community": 102,
+      "community": 5,
       "norm_label": ".tocandidateintents()"
     },
     {
@@ -4124,7 +4124,7 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_chatpipelineservice_java_list",
-      "community": 102,
+      "community": 5,
       "norm_label": "list"
     },
     {
@@ -4134,7 +4134,7 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_chatpipelineservice_java_document",
-      "community": 102,
+      "community": 5,
       "norm_label": "document"
     },
     {
@@ -4144,7 +4144,7 @@
       "source_location": "L202",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_classifyandroute",
-      "community": 102,
+      "community": 5,
       "norm_label": ".classifyandroute()"
     },
     {
@@ -4154,7 +4154,7 @@
       "source_location": "L237",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_generateanswer",
-      "community": 102,
+      "community": 5,
       "norm_label": ".generateanswer()"
     },
     {
@@ -4164,7 +4164,7 @@
       "source_location": "L263",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_outofscope",
-      "community": 102,
+      "community": 5,
       "norm_label": ".outofscope()"
     },
     {
@@ -4224,7 +4224,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_dialoguestate",
-      "community": 112,
+      "community": 5,
       "norm_label": "dialoguestate.java"
     },
     {
@@ -4234,7 +4234,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "rag_dialoguestate_dialoguestate",
-      "community": 112,
+      "community": 5,
       "norm_label": "dialoguestate"
     },
     {
@@ -4244,7 +4244,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "rag_dialoguestate_dialoguestate_newstate",
-      "community": 112,
+      "community": 5,
       "norm_label": ".newstate()"
     },
     {
@@ -4254,7 +4254,7 @@
       "source_location": "L50",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_dialoguestate_java_uuid",
-      "community": 112,
+      "community": 5,
       "norm_label": "uuid"
     },
     {
@@ -4784,7 +4784,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_promptbuilder",
-      "community": 112,
+      "community": 5,
       "norm_label": "promptbuilder.java"
     },
     {
@@ -4794,7 +4794,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "rag_promptbuilder_promptbuilder",
-      "community": 112,
+      "community": 5,
       "norm_label": "promptbuilder"
     },
     {
@@ -4804,7 +4804,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "rag_promptbuilder_promptbuilder_build",
-      "community": 112,
+      "community": 5,
       "norm_label": ".build()"
     },
     {
@@ -4814,7 +4814,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_promptbuilder_java_intentdefinition",
-      "community": 112,
+      "community": 5,
       "norm_label": "intentdefinition"
     },
     {
@@ -4824,7 +4824,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_promptbuilder_java_map",
-      "community": 112,
+      "community": 5,
       "norm_label": "map"
     },
     {
@@ -4834,7 +4834,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_promptbuilder_java_string",
-      "community": 112,
+      "community": 5,
       "norm_label": "string"
     },
     {
@@ -4844,7 +4844,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_promptbuilder_java_assembledprompt",
-      "community": 112,
+      "community": 5,
       "norm_label": "assembledprompt"
     },
     {
@@ -5094,7 +5094,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_semanticcacheservice",
-      "community": 14,
+      "community": 79,
       "norm_label": "semanticcacheservice.java"
     },
     {
@@ -5104,7 +5104,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "rag_semanticcacheservice_semanticcacheservice",
-      "community": 14,
+      "community": 79,
       "norm_label": "semanticcacheservice"
     },
     {
@@ -5114,7 +5114,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "rag_semanticcacheservice_semanticcacheservice_semanticcacheservice",
-      "community": 14,
+      "community": 79,
       "norm_label": ".semanticcacheservice()"
     },
     {
@@ -5124,7 +5124,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_semanticcacheservice_java_vectorstore",
-      "community": 14,
+      "community": 79,
       "norm_label": "vectorstore"
     },
     {
@@ -5134,7 +5134,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "rag_semanticcacheservice_semanticcacheservice_lookup",
-      "community": 103,
+      "community": 79,
       "norm_label": ".lookup()"
     },
     {
@@ -5144,7 +5144,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_semanticcacheservice_java_string",
-      "community": 103,
+      "community": 79,
       "norm_label": "string"
     },
     {
@@ -5154,7 +5154,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_semanticcacheservice_java_mono",
-      "community": 14,
+      "community": 79,
       "norm_label": "mono"
     },
     {
@@ -5164,7 +5164,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "rag_semanticcacheservice_semanticcacheservice_store",
-      "community": 103,
+      "community": 79,
       "norm_label": ".store()"
     },
     {
@@ -5174,7 +5174,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_semanticcacheservice_java_void",
-      "community": 103,
+      "community": 79,
       "norm_label": "void"
     },
     {
@@ -5184,7 +5184,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_slotfillingservice",
-      "community": 116,
+      "community": 79,
       "norm_label": "slotfillingservice.java"
     },
     {
@@ -5194,7 +5194,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "rag_slotfillingservice_slotfillingservice",
-      "community": 116,
+      "community": 79,
       "norm_label": "slotfillingservice"
     },
     {
@@ -5204,7 +5204,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "rag_slotfillingservice_slotfillingservice_missingslots",
-      "community": 116,
+      "community": 79,
       "norm_label": ".missingslots()"
     },
     {
@@ -5214,7 +5214,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_intentdefinition",
-      "community": 116,
+      "community": 79,
       "norm_label": "intentdefinition"
     },
     {
@@ -5224,7 +5224,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_map",
-      "community": 116,
+      "community": 79,
       "norm_label": "map"
     },
     {
@@ -5234,7 +5234,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_string",
-      "community": 116,
+      "community": 79,
       "norm_label": "string"
     },
     {
@@ -5244,7 +5244,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_list",
-      "community": 116,
+      "community": 79,
       "norm_label": "list"
     },
     {
@@ -6114,7 +6114,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest",
-      "community": 114,
+      "community": 5,
       "norm_label": "chatservicevalidateparticipantidstest.java"
     },
     {
@@ -6124,7 +6124,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest",
-      "community": 114,
+      "community": 5,
       "norm_label": "chatservicevalidateparticipantidstest"
     },
     {
@@ -6134,7 +6134,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_setup",
-      "community": 114,
+      "community": 5,
       "norm_label": ".setup()"
     },
     {
@@ -6144,7 +6144,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicevalidateparticipantidstest_java_beforeeach",
-      "community": 114,
+      "community": 5,
       "norm_label": "beforeeach"
     },
     {
@@ -6154,7 +6154,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_addparticipantsucceedswhenallparticipantidsarevalid",
-      "community": 114,
+      "community": 5,
       "norm_label": ".addparticipantsucceedswhenallparticipantidsarevalid()"
     },
     {
@@ -6164,7 +6164,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicevalidateparticipantidstest_java_test",
-      "community": 114,
+      "community": 5,
       "norm_label": "test"
     },
     {
@@ -6174,7 +6174,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_addparticipantfailswhenparticipantidisnotarealuser",
-      "community": 114,
+      "community": 5,
       "norm_label": ".addparticipantfailswhenparticipantidisnotarealuser()"
     },
     {
@@ -6204,7 +6204,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "rag_chatpipelineservicetest_chatpipelineservicetest_setup",
-      "community": 103,
+      "community": 79,
       "norm_label": ".setup()"
     },
     {
@@ -6214,7 +6214,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_rag_chatpipelineservicetest_java_beforeeach",
-      "community": 103,
+      "community": 79,
       "norm_label": "beforeeach"
     },
     {
@@ -6394,7 +6394,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest",
-      "community": 103,
+      "community": 79,
       "norm_label": "semanticcacheservicetest.java"
     },
     {
@@ -6404,7 +6404,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest",
-      "community": 103,
+      "community": 79,
       "norm_label": "semanticcacheservicetest"
     },
     {
@@ -6414,7 +6414,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest_lookupreturnsthecachedansweronahit",
-      "community": 103,
+      "community": 79,
       "norm_label": ".lookupreturnsthecachedansweronahit()"
     },
     {
@@ -6424,7 +6424,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_rag_semanticcacheservicetest_java_test",
-      "community": 103,
+      "community": 79,
       "norm_label": "test"
     },
     {
@@ -6434,7 +6434,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest_lookupreturnsemptywhennodocumentmatches",
-      "community": 103,
+      "community": 79,
       "norm_label": ".lookupreturnsemptywhennodocumentmatches()"
     },
     {
@@ -6444,7 +6444,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest_lookupskipsthevectorstorewhendisabled",
-      "community": 103,
+      "community": 79,
       "norm_label": ".lookupskipsthevectorstorewhendisabled()"
     },
     {
@@ -6454,7 +6454,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest_storeaddsadocumentwiththeanswerasmetadata",
-      "community": 103,
+      "community": 79,
       "norm_label": ".storeaddsadocumentwiththeanswerasmetadata()"
     },
     {
@@ -6464,7 +6464,7 @@
       "source_location": "L76",
       "_origin": "ast",
       "id": "rag_semanticcacheservicetest_semanticcacheservicetest_storeskipsthevectorstorewhendisabled",
-      "community": 103,
+      "community": 79,
       "norm_label": ".storeskipsthevectorstorewhendisabled()"
     },
     {
@@ -6871,17 +6871,37 @@
       "label": "Module layout",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L26",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "claude_module_layout",
       "community": 16,
       "norm_label": "module layout"
     },
     {
+      "label": "Server package map",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "claude_server_package_map",
+      "community": 16,
+      "norm_label": "server package map"
+    },
+    {
+      "label": "API surface",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L71",
+      "_origin": "ast",
+      "id": "claude_api_surface",
+      "community": 16,
+      "norm_label": "api surface"
+    },
+    {
       "label": "Commands",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L43",
+      "source_location": "L85",
       "_origin": "ast",
       "id": "claude_commands",
       "community": 16,
@@ -6891,7 +6911,7 @@
       "label": "Server",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L45",
+      "source_location": "L91",
       "_origin": "ast",
       "id": "claude_server",
       "community": 16,
@@ -6901,7 +6921,7 @@
       "label": "Client",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L69",
+      "source_location": "L115",
       "_origin": "ast",
       "id": "claude_client",
       "community": 16,
@@ -6911,7 +6931,7 @@
       "label": "Knowledge base",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L82",
+      "source_location": "L128",
       "_origin": "ast",
       "id": "claude_knowledge_base",
       "community": 16,
@@ -6921,7 +6941,7 @@
       "label": "Toolchain",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L87",
+      "source_location": "L133",
       "_origin": "ast",
       "id": "claude_toolchain",
       "community": 16,
@@ -6931,7 +6951,7 @@
       "label": "Architecture (from declared dependencies)",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L98",
+      "source_location": "L144",
       "_origin": "ast",
       "id": "claude_architecture_from_declared_dependencies",
       "community": 16,
@@ -6941,17 +6961,27 @@
       "label": "Configuration",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L130",
+      "source_location": "L178",
       "_origin": "ast",
       "id": "claude_configuration",
       "community": 16,
       "norm_label": "configuration"
     },
     {
+      "label": "Gotchas",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L201",
+      "_origin": "ast",
+      "id": "claude_gotchas",
+      "community": 16,
+      "norm_label": "gotchas"
+    },
+    {
       "label": "Knowledge Sources",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L153",
+      "source_location": "L229",
       "_origin": "ast",
       "id": "claude_knowledge_sources",
       "community": 16,
@@ -6961,7 +6991,7 @@
       "label": "graphify",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L161",
+      "source_location": "L237",
       "_origin": "ast",
       "id": "claude_graphify",
       "community": 16,
@@ -6971,7 +7001,7 @@
       "label": "Working with this Vault",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L171",
+      "source_location": "L247",
       "_origin": "ast",
       "id": "claude_working_with_this_vault",
       "community": 16,
@@ -7051,7 +7081,7 @@
       "label": "Documentation",
       "file_type": "document",
       "source_file": "README.md",
-      "source_location": "L126",
+      "source_location": "L130",
       "_origin": "ast",
       "id": "readme_documentation",
       "community": 88,
@@ -7281,21 +7311,31 @@
       "label": "2026-08-12",
       "file_type": "document",
       "source_file": "docs/wiki/Daily/2026-08-12.md",
-      "source_location": "L1",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "daily_2026_08_12_2026_08_12",
       "community": 117,
       "norm_label": "2026-08-12"
     },
     {
-      "label": "Build & IDE tooling",
+      "label": "Root Makefile",
       "file_type": "document",
       "source_file": "docs/wiki/Daily/2026-08-12.md",
-      "source_location": "L3",
+      "source_location": "L9",
       "_origin": "ast",
-      "id": "daily_2026_08_12_build_ide_tooling",
+      "id": "daily_2026_08_12_root_makefile",
       "community": 117,
-      "norm_label": "build & ide tooling"
+      "norm_label": "root makefile"
+    },
+    {
+      "label": "Wiki & tooling notes",
+      "file_type": "document",
+      "source_file": "docs/wiki/Daily/2026-08-12.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "daily_2026_08_12_wiki_tooling_notes",
+      "community": 117,
+      "norm_label": "wiki & tooling notes"
     },
     {
       "label": "Chat.md",
@@ -23800,6 +23840,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CLAUDE.md",
+      "source_location": "L201",
+      "weight": 1.0,
+      "source": "claude_claude_md",
+      "target": "claude_gotchas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
       "source_location": "L68",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -23835,6 +23885,26 @@
       "confidence_score": 1.0,
       "source": "claude_claude_md",
       "target": "claude_toolchain"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L71",
+      "weight": 1.0,
+      "source": "claude_module_layout",
+      "target": "claude_api_surface",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "claude_module_layout",
+      "target": "claude_server_package_map",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24132,18 +24202,28 @@
       "source_file": "docs/wiki/Daily/2026-08-12.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "daily_2026_08_12",
-      "target": "daily_2026_08_12_2026_08_12",
+      "target": "daily_2026_08_12_2026_08_12"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/wiki/Daily/2026-08-12.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "daily_2026_08_12_2026_08_12",
+      "target": "daily_2026_08_12_root_makefile",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/wiki/Daily/2026-08-12.md",
-      "source_location": "L3",
+      "source_location": "L33",
       "weight": 1.0,
       "source": "daily_2026_08_12_2026_08_12",
-      "target": "daily_2026_08_12_build_ide_tooling",
+      "target": "daily_2026_08_12_wiki_tooling_notes",
       "confidence_score": 1.0
     },
     {
@@ -25652,9 +25732,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally",
-      "target": "plan_running_locally_running_locally",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_running_locally"
     },
     {
       "relation": "contains",
@@ -25662,9 +25742,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_1_start_the_dependencies",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_1_start_the_dependencies"
     },
     {
       "relation": "contains",
@@ -25672,9 +25752,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_2_create_the_cassandra_keyspace_one_time",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_2_create_the_cassandra_keyspace_one_time"
     },
     {
       "relation": "contains",
@@ -25682,9 +25762,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_3_export_aws_credentials",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_3_export_aws_credentials"
     },
     {
       "relation": "contains",
@@ -25692,9 +25772,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L61",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_4_run_the_backend",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_4_run_the_backend"
     },
     {
       "relation": "contains",
@@ -25702,9 +25782,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L78",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_5_run_the_frontend",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_5_run_the_frontend"
     },
     {
       "relation": "contains",
@@ -25712,9 +25792,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_exercising_the_api_directly",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_exercising_the_api_directly"
     },
     {
       "relation": "contains",
@@ -25722,9 +25802,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_prerequisites",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_prerequisites"
     },
     {
       "relation": "contains",
@@ -25732,9 +25812,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L186",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_related_documents",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_related_documents"
     },
     {
       "relation": "contains",
@@ -25742,9 +25822,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L116",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_running_from_the_container_images",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_running_from_the_container_images"
     },
     {
       "relation": "contains",
@@ -25752,9 +25832,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L149",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_running_the_tests",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_running_the_tests"
     },
     {
       "relation": "contains",
@@ -25762,9 +25842,9 @@
       "source_file": "docs/wiki/Plan/running-locally.md",
       "source_location": "L175",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plan_running_locally_running_locally",
-      "target": "plan_running_locally_troubleshooting",
-      "confidence_score": 1.0
+      "target": "plan_running_locally_troubleshooting"
     },
     {
       "relation": "contains",
@@ -27660,5 +27740,5 @@
       "source_file": "docs/wiki/docs/Plan/rag-pipeline.md"
     }
   ],
-  "built_at_commit": "d05a7b1ea6170a4063fb23fd43cb703623d812c9"
+  "built_at_commit": "e363d74dd0c69daaf95f3084465155d8d243f0dc"
 }

@@ -14,9 +14,11 @@
 ## Used By
 
 - [[Chat]] — `ChatService.startChat()` creates a new row on chat start; `getChatForParticipant()` reads
-  it (and checks `participant_ids` for access); `addParticipant()` updates `participant_ids`;
-  `ChatPipelineService.appendMessages()` appends the user + assistant turn to `messages` after every
-  `POST /api/chats/{chatId}/messages` (or the SSE `.../messages/stream` variant) call.
+  it (and checks `participant_ids` for access); `addParticipant()` updates `participant_ids`, but only
+  after routing through `getChatForParticipant()` itself, so the caller must already be listed in
+  `participant_ids` to extend the list; `ChatPipelineService.appendMessages()` appends the user +
+  assistant turn to `messages` after every `POST /api/chats/{chatId}/messages` (or the SSE
+  `.../messages/stream` variant) call.
 
 ## Notes
 

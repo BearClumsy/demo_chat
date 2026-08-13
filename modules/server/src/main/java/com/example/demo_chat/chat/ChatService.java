@@ -58,13 +58,15 @@ public class ChatService {
 
   /**
    * @param chatId the chat to add the participant to
+   * @param currentUserId the id of the authenticated user adding the participant
    * @param userId the id of the user to add as a participant
    * @return the updated chat, or empty if no chat has this id
+   * @throws AccessDeniedException if {@code currentUserId} isn't already a participant in the chat
    * @throws IllegalArgumentException if {@code userId} isn't a real user
    */
-  public Mono<ChatHistory> addParticipant(UUID chatId, UUID userId) {
-    return validateParticipantIds(List.of(userId))
-        .then(chatHistoryRepository.findById(chatId))
+  public Mono<ChatHistory> addParticipant(UUID chatId, UUID currentUserId, UUID userId) {
+    return getChatForParticipant(chatId, currentUserId)
+        .flatMap(chatHistory -> validateParticipantIds(List.of(userId)).thenReturn(chatHistory))
         .flatMap(
             chatHistory -> {
               if (chatHistory.getParticipantIds().contains(userId)) {

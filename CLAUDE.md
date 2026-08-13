@@ -75,12 +75,14 @@ formLogin are disabled (`config/SecurityConfig.java`).
 
 - `POST /api/users` (201, 409 on duplicate email/login) · `GET /api/users/{id}`
 - `POST /api/chats` — 403 if the request's `currentUserId` doesn't match the authenticated principal
-- `POST /api/chats/{chatId}/participants`
+- `POST /api/chats/{chatId}/participants` — the caller must already be a participant
 - `POST /api/chats/{chatId}/messages` → `SendMessageResponse{reply, status}`
 - `POST /api/chats/{chatId}/messages/stream` → SSE `token` events, then one `done` event carrying the
   `DialogueStatus` name
 
-Non-participants get 403 from `ChatService.getChatForParticipant`.
+Every `/{chatId}/**` endpoint routes through `ChatService.getChatForParticipant`, so non-participants
+get 403 (and unknown chat ids 404) uniformly — including `addParticipant`, which takes the caller's id
+as its own parameter rather than trusting the request body.
 
 ## Commands
 
@@ -106,8 +108,8 @@ Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tas
   context is the **repository root**, not `modules/server`, because the Gradle wrapper lives there)
 
 Tests use JUnit 5 (`useJUnitPlatform()` is configured in `modules/server/build.gradle`). They require a
-running Docker daemon — `DemoChatApplicationTests` and `UserRepositoryTest` start Postgres, Cassandra,
-and Qdrant via Testcontainers — but **not** AWS credentials: `application-test.properties` sets
+running Docker daemon — `DemoChatApplicationTests` starts Postgres, Cassandra, and Qdrant via
+Testcontainers, and `UserRepositoryTest` starts Postgres alone — but **not** AWS credentials: `application-test.properties` sets
 `spring.ai.model.{chat,embedding}=none` and the test supplies stub Bedrock beans. If Docker isn't at
 the default socket (e.g. Colima), export `DOCKER_HOST` and
 `TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock`.
@@ -216,8 +218,9 @@ this for both the `support_kb` and `semantic_cache` stores.
   `@TestConfiguration StubBedrockModels` class inside `DemoChatApplicationTests`, not in a shared support
   class — a new full-context test has to bring its own or reuse that one.
 - **Intent JSON rules beyond the record's shape**, all enforced by `scripts/validate-intents.mjs`:
-  `intent_id` must equal the filename stem, canonical questions must be globally unique
-  (case-insensitively) across every file, each `{placeholder}` in `answer_template` must be listed in
+  `intent_id` must equal the filename stem, no two *different* files may claim the same canonical
+  question (case-insensitively — repeats **within** one file are deliberately allowed, see
+  `scripts/validate-intents.mjs:82`), each `{placeholder}` in `answer_template` must be listed in
   `required_slots`, and unknown fields are rejected.
 - **Client auth is in-memory only.** `src/app/AuthContext.tsx` holds `{userId, login, password}` and
   builds a Basic header from it; there is no login endpoint and no persistence, so a page refresh logs

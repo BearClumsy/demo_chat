@@ -46,15 +46,19 @@ public class ChatController {
   }
 
   /**
+   * @param principal the authenticated user adding the participant
    * @param chatId the chat to add the participant to
    * @param request the participant's user id
    * @return 204 if the participant was added, or 404 if no chat has this id
+   * @throws AccessDeniedException if {@code principal} isn't a participant in the chat
    */
   @PostMapping("/{chatId}/participants")
   public Mono<ResponseEntity<Void>> addParticipant(
-      @PathVariable UUID chatId, @Valid @RequestBody ParticipantRequest request) {
+      @AuthenticationPrincipal UserPrincipal principal,
+      @PathVariable UUID chatId,
+      @Valid @RequestBody ParticipantRequest request) {
     return chatService
-        .addParticipant(chatId, request.userId())
+        .addParticipant(chatId, principal.getId(), request.userId())
         .map(chatHistory -> ResponseEntity.noContent().<Void>build())
         .defaultIfEmpty(ResponseEntity.notFound().build());
   }

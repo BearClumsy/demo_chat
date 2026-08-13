@@ -20,8 +20,8 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1785597576.4758627,
-    "ast_hash": "74a3cd4740d3c573303d891b4d467429",
+    "mtime": 1786624651.333462,
+    "ast_hash": "9c2a9b472502a4aee79ef929e6f4ce4d",
     "semantic_hash": ""
   },
   "docs/wiki/Features/_template.md": {
@@ -50,7 +50,7 @@
     "semantic_hash": "4cca1777cc6b6b8ff395a29be8106652"
   },
   "docs/wiki/index.md": {
-    "mtime": 1786546465.78887,
+    "mtime": 1786567545.4019532,
     "ast_hash": "afe639310818b617fdbdfea8ab9ce48c",
     "semantic_hash": ""
   },
@@ -115,8 +115,8 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1785597544.7681847,
-    "ast_hash": "e1526a5f918afb903af6228b4574354a",
+    "mtime": 1786567351.6652222,
+    "ast_hash": "a5e40a434318bdc30197c572d00f1ad3",
     "semantic_hash": ""
   },
   "docs/wiki/Daily/2026-07-14.md": {
@@ -160,7 +160,7 @@
     "semantic_hash": ""
   },
   "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java": {
-    "mtime": 1784143457.8181138,
+    "mtime": 1786563766.4561508,
     "ast_hash": "b31bd9f29a890cc5bb03ed854a9e90ff",
     "semantic_hash": ""
   },
@@ -180,7 +180,7 @@
     "semantic_hash": ""
   },
   "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java": {
-    "mtime": 1784145342.3622196,
+    "mtime": 1786562339.741417,
     "ast_hash": "3440715b3d10d4ef7f32785354bb6f10",
     "semantic_hash": ""
   },
@@ -630,8 +630,8 @@
     "semantic_hash": ""
   },
   "docs/wiki/Daily/2026-08-12.md": {
-    "mtime": 1786546463.482478,
-    "ast_hash": "f4c7e0668259a7c13dfc95534222c7ef",
+    "mtime": 1786567545.4055731,
+    "ast_hash": "5ee819104d14abcf49b850b81f47bfcd",
     "semantic_hash": ""
   },
   "docs/wiki/Plan/running-locally.md": {
