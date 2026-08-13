@@ -6,8 +6,14 @@
 
 GRADLEW   := ./gradlew
 CLIENT_DIR := modules/client
-COMPOSE   := docker compose -f modules/server/src/main/resources/local/docker-compose.yml
 IMAGE_TAG ?= dev
+
+# Prefer the `docker compose` CLI plugin, falling back to the standalone `docker-compose` binary —
+# some setups (Colima without Docker Desktop, Homebrew's docker-compose) only have the latter, where
+# `docker compose` fails with "unknown command". Assigned with `=`, not `:=`, so the probe only runs
+# for the targets below that actually use it.
+COMPOSE_BIN = $(shell docker compose version >/dev/null 2>&1 && echo docker compose || echo docker-compose)
+COMPOSE = $(COMPOSE_BIN) -f modules/server/src/main/resources/local/docker-compose.yml
 
 .DEFAULT_GOAL := help
 
