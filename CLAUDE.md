@@ -7,11 +7,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This project has moved past scaffolding. Phases 1 and 2 of the roadmap (see
 `docs/wiki/Plan/roadmap.md`) are implemented: user management + Spring Security auth (Postgres via
 R2DBC), authenticated chat creation with participant validation and message history (Cassandra), and an
-8-stage RAG pipeline — normalize → semantic-cache check → retrieve → classify intent → slot-fill →
-generate → output-side groundedness guardrail — orchestrated by `ChatPipelineService`. Retrieval and the
-semantic cache are both backed by Qdrant (`support_kb` and `semantic_cache` collections). Replies are
-available either as a plain JSON response or SSE-streamed (buffer-then-chunk, not live token generation)
-via `POST /api/chats/{chatId}/messages/stream`. See `README.md` for a fuller overview.
+8-stage RAG pipeline orchestrated by `ChatPipelineService`. Each stage class carries its number in its
+javadoc: 1 `QueryNormalizationService` → 2 `KnowledgeRetrievalService` → 3 `IntentClassificationService`
+→ 4 `ScopeFilter` → 5 `SlotFillingService` → 6 `PromptBuilder` → 7 `AnswerGenerationService` →
+8 `ResponseValidator` (output-side groundedness guardrail). The semantic-cache lookup is not a numbered
+stage — it runs between normalization and retrieval and short-circuits the rest of the turn on a hit.
+Retrieval and the semantic cache are both backed by Qdrant (`support_kb` and `semantic_cache`
+collections). Replies are available either as a plain JSON response or SSE-streamed (buffer-then-chunk,
+not live token generation) via `POST /api/chats/{chatId}/messages/stream`. See `README.md` for a fuller
+overview.
 
 A React chat MVP now exists under `modules/client` (auth + chat screens against the endpoints above), but
 it is not wired into the Gradle build yet — see "Module layout" below. Phase 3a is also done: Spring
@@ -19,9 +23,13 @@ Profiles (`local`/`staging`/`prod`), Dockerfiles for both modules, and GitHub Ac
 `frontend-ci`, `knowledge-base-lint` under `.github/workflows/`). Still outstanding: the AWS half of
 Phase 3 — Terraform, ECR, and the deploy workflows. Bedrock/Qdrant calls remain on `Schedulers.boundedElastic()` bridging (a deliberate, accepted
 scope boundary — neither has a reactive-native client in this Spring AI version); only Postgres/JPA had a
-real reactive alternative (R2DBC) and has been migrated. Test coverage now includes an R2DBC repository
-slice test, a `ChatService` unit test, RAG pipeline unit tests (guardrail, semantic cache, text chunking,
-groundedness validation), and a `ChatController` SSE slice test, alongside the original context-load test.
+real reactive alternative (R2DBC) and has been migrated.
+
+The full test set (`modules/server/src/test/java/com/example/demo_chat/`):
+`DemoChatApplicationTests` (Testcontainers context load + intent registration), `ChatPipelineServiceTest`
+(pipeline routing with all collaborators mocked), `ResponseValidatorTest`, `SemanticCacheServiceTest`,
+`TextChunkerTest`, `ChatControllerStreamTest` (SSE slice), `ChatServiceValidateParticipantIdsTest`, and
+`UserRepositoryTest` (`@DataR2dbcTest` + Postgres container).
 
 ## Module layout
 
@@ -33,12 +41,46 @@ This is a multi-module Gradle build, with modules under `modules/`:
 - `modules/client` — React 19 + TypeScript + Vite frontend (package-by-feature: `src/features/auth`,
   `src/features/chat/{api,components,hooks,types}`, shared app-level state in `src/app/AuthContext.tsx`).
   Talks to the backend's `/api/**` endpoints; the Vite dev server proxies `/api` to
-  `http://localhost:8080` (see `vite.config.ts`). It is a real app now, but its `build.gradle` is still
-  just a placeholder comment — it is **not** wired into the Gradle multi-module build, so build/run/test
-  it directly with `npm`, not `./gradlew`.
+  `http://localhost:8080` (see `vite.config.ts`). `settings.gradle` does `include 'client'`, but
+  `modules/client/build.gradle` is a one-line placeholder comment — the module is registered with no
+  build logic, so build/run/lint it with `npm`, not `./gradlew`.
 
 The root `build.gradle` no longer exists — plugins/dependencies live in each module's own
 `build.gradle`, wired together via the root `settings.gradle`.
+
+### Server package map
+
+Server code is package-by-feature under `com.example.demo_chat`:
+
+- `config/` — `SecurityConfig` (WebFlux security), `ChatClientConfig`, `PasswordEncoderConfig`, and
+  `SemanticCacheVectorStoreConfig`, which declares the **second** Qdrant `VectorStore` bean (qualified
+  `semanticCacheVectorStore`) alongside the autoconfigured knowledge-base one.
+- `common/` — `ValidationExceptionHandler`, the single `@RestControllerAdvice`.
+- `user/` — R2DBC `User`/`UserRepository`, `UserService`, `UserController`, `SecurityUserDetailsService`
+  + `UserPrincipal`, request/response records.
+- `chat/` — `ChatController` (JSON + SSE), `ChatService`, Cassandra `ChatHistory` and the `ChatMessage`
+  UDT + `ChatHistoryRepository`, DTO records.
+- `rag/` — the pipeline: `ChatPipelineService` plus the eight stage classes listed above,
+  `SemanticCacheService`, `IntentDefinitionRegistry`/`IntentDefinition`, `KnowledgeBaseIndexer` (an
+  `ApplicationRunner`), Cassandra `DialogueState`/`DialogueStateRepository`/`DialogueStatus`,
+  `TextChunker`, and the value records `IntentClassification`, `GroundednessCheck`, `AssembledPrompt`.
+
+Note the storage split this implies: **both** chat history and dialogue state are Cassandra. Postgres
+holds only `users`.
+
+### API surface
+
+Everything is HTTP Basic authenticated except `POST /api/users` and `/actuator/health(/**)`; CSRF and
+formLogin are disabled (`config/SecurityConfig.java`).
+
+- `POST /api/users` (201, 409 on duplicate email/login) · `GET /api/users/{id}`
+- `POST /api/chats` — 403 if the request's `currentUserId` doesn't match the authenticated principal
+- `POST /api/chats/{chatId}/participants`
+- `POST /api/chats/{chatId}/messages` → `SendMessageResponse{reply, status}`
+- `POST /api/chats/{chatId}/messages/stream` → SSE `token` events, then one `done` event carrying the
+  `DialogueStatus` name
+
+Non-participants get 403 from `ChatService.getChatForParticipant`.
 
 ## Commands
 
@@ -76,7 +118,7 @@ Not a Gradle task — run these from `modules/client/` directly (`npm install` f
 is missing):
 
 - Run the dev server (proxies `/api` to the backend on `:8080`): `npm run dev`
-- Lint (ESLint 9 flat config in `eslint.config.js`): `npm run lint`
+- Lint (ESLint 10, flat config in `eslint.config.js`): `npm run lint`
 - Type-check and build: `npm run build`
 - Preview a production build: `npm run preview`
 - Build the container image (nginx + static build): `docker build -t demo-chat-client modules/client`
@@ -120,8 +162,10 @@ implemented (see "Project status" above); where a piece is still pending, it's c
   migrations with — any relational schema (e.g. app/user data distinct from vector or chat-memory
   storage) is Postgres, version-controlled via Flyway migrations. Migration files belong under
   `src/main/resources/db/migration` following Flyway's `V<version>__description.sql` naming.
-- **Messaging**: `spring-boot-starter-kafka` — expect async event production/consumption alongside the
-  synchronous chat API. Not yet wired up.
+- **Messaging**: `spring-boot-starter-kafka` — the starter is on the classpath and
+  `spring.kafka.bootstrap-servers` is set in all three profiles, but there is **zero** producer,
+  consumer, or listener code in `src/main/java`. Treat Kafka as aspirational, not as an existing
+  integration point.
 - **Observability**: `spring-boot-starter-actuator` — health/metrics endpoints are expected to be enabled.
 - Lombok is available (`compileOnly` + annotation processor) for reducing boilerplate on entities/DTOs.
 
@@ -153,6 +197,34 @@ Bedrock credentials are never in these files — they come from the AWS credenti
 startup itself needs Bedrock unless the Qdrant collections already exist, because creating a collection
 calls the embedding model for its dimensions; `spring.ai.vectorstore.qdrant.initialize-schema` governs
 this for both the `support_kb` and `semantic_cache` stores.
+
+## Gotchas
+
+- **Jackson 3, not Jackson 2.** The `rag` records import `tools.jackson.databind.*`, not
+  `com.fasterxml.jackson.*`. A copied Jackson 2 snippet will not compile.
+- **`ChatHistory`'s primary key is misnamed.** `@PrimaryKey("user_id")` on the `chat_history` table
+  actually holds the **chat** id (`modules/server/src/main/java/com/example/demo_chat/chat/ChatHistory.java:22`).
+- **`demo-chat.rag.reindex-on-startup` is the one `demo-chat.*` key not in `application.properties`.**
+  Its code default is `true` (`rag/KnowledgeBaseIndexer.java:27`); it is set per-profile instead —
+  `true` in local, `false` in staging, prod, and test.
+- **Cassandra has no migration tool.** `spring.cassandra.schema-action` is `create-if-not-exists`
+  locally and in tests but defaults to `none` in staging/prod (`${CASSANDRA_SCHEMA_ACTION:none}`), so
+  new Cassandra tables need DDL applied by hand outside the app. Flyway covers Postgres only (currently
+  a single `V1__create_users_table.sql`).
+- **`DialogueStatus.READY_TO_ANSWER` is declared but never assigned** by the pipeline — don't route on it.
+- **Adding a `@SpringBootTest`**: the stub Bedrock `ChatModel`/`EmbeddingModel` beans live in a nested
+  `@TestConfiguration StubBedrockModels` class inside `DemoChatApplicationTests`, not in a shared support
+  class — a new full-context test has to bring its own or reuse that one.
+- **Intent JSON rules beyond the record's shape**, all enforced by `scripts/validate-intents.mjs`:
+  `intent_id` must equal the filename stem, canonical questions must be globally unique
+  (case-insensitively) across every file, each `{placeholder}` in `answer_template` must be listed in
+  `required_slots`, and unknown fields are rejected.
+- **Client auth is in-memory only.** `src/app/AuthContext.tsx` holds `{userId, login, password}` and
+  builds a Basic header from it; there is no login endpoint and no persistence, so a page refresh logs
+  you out. There is also no router — `App.tsx` switches screens with `useState`.
+- **Client SSE behind nginx**: `modules/client/nginx.conf.template` proxies `/api/` to `${BACKEND_URL}`
+  (default `http://server:8080`) with `proxy_buffering off` — that flag is what keeps streaming working
+  in the container image.
 
 ## Knowledge Sources
 
