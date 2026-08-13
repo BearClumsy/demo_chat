@@ -90,18 +90,18 @@
     "semantic_hash": "f5a744cfe43a46023e12b4dceef687c0"
   },
   "docs/wiki/Features/Chat.md": {
-    "mtime": 1783968365.89536,
-    "ast_hash": "ae5ab114968dfe29bebec80a80d7c391",
-    "semantic_hash": "ae5ab114968dfe29bebec80a80d7c391"
+    "mtime": 1786625431.238752,
+    "ast_hash": "6cfa39383dee18ed61547dc888e29552",
+    "semantic_hash": ""
   },
   "docs/wiki/Features/User.md": {
-    "mtime": 1784640503.122246,
-    "ast_hash": "fc0dc5a5bf601121b5c585854ecfe81a",
+    "mtime": 1786625529.7155623,
+    "ast_hash": "603e1033dcfdc3d92520facf6c632780",
     "semantic_hash": ""
   },
   "docs/wiki/Infrastructure/Cassandra/chat_history.md": {
-    "mtime": 1784144834.4525535,
-    "ast_hash": "68ccda5f19618329a04a71fa34a30b55",
+    "mtime": 1786625284.739856,
+    "ast_hash": "8a624325d10e0f3918dfd407e630262a",
     "semantic_hash": ""
   },
   "docs/wiki/Infrastructure/Postgres/users.md": {
@@ -310,8 +310,8 @@
     "semantic_hash": ""
   },
   "modules/server/src/main/java/com/example/demo_chat/rag/ResponseValidator.java": {
-    "mtime": 1786625197.9287868,
-    "ast_hash": "c3c4848e16003b3d5b77b71a8e2921e8",
+    "mtime": 1786625880.6399474,
+    "ast_hash": "af361e069cdb9bf2cf8fabd11d8aaa9d",
     "semantic_hash": ""
   },
   "modules/server/src/main/java/com/example/demo_chat/rag/ScopeFilter.java": {
@@ -395,8 +395,8 @@
     "semantic_hash": ""
   },
   "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java": {
-    "mtime": 1785595368.3049216,
-    "ast_hash": "3adead938c5757cb5d746e42ffbd0526",
+    "mtime": 1786628145.5246954,
+    "ast_hash": "2a042ef98f38b26619b12ebe01e41153",
     "semantic_hash": ""
   },
   "modules/server/src/test/java/com/example/demo_chat/chat/ChatControllerStreamTest.java": {
@@ -430,13 +430,13 @@
     "semantic_hash": ""
   },
   "modules/server/src/test/java/com/example/demo_chat/user/UserRepositoryTest.java": {
-    "mtime": 1784730362.9079785,
-    "ast_hash": "967aa525c5a35783dda3253e65fe4035",
+    "mtime": 1786628136.515061,
+    "ast_hash": "73aa3dce5104fd9a401483c44b2e3ed9",
     "semantic_hash": ""
   },
   "docs/wiki/Daily/2026-07-15.md": {
-    "mtime": 1784146158.955908,
-    "ast_hash": "113517ea9c42d6cfc69d844b8acb73d0",
+    "mtime": 1786627726.5224853,
+    "ast_hash": "8aab52a430703b77bebe9f3cf4491dd9",
     "semantic_hash": ""
   },
   "docs/wiki/Infrastructure/Cassandra/dialogue_state.md": {

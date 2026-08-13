@@ -1344,7 +1344,7 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ec",
-      "community": 21,
+      "community": 93,
       "norm_label": "ec()"
     },
     {
@@ -1394,7 +1394,7 @@
       "source_location": "L72",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ac",
-      "community": 21,
+      "community": 93,
       "norm_label": "ac()"
     },
     {
@@ -1474,7 +1474,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_vc",
-      "community": 21,
+      "community": 14,
       "norm_label": "vc()"
     },
     {
@@ -1484,7 +1484,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_bc",
-      "community": 21,
+      "community": 14,
       "norm_label": "bc()"
     },
     {
@@ -1554,7 +1554,7 @@
       "source_location": "L74",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_kc",
-      "community": 21,
+      "community": 93,
       "norm_label": "kc()"
     },
     {
@@ -1684,7 +1684,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ka",
-      "community": 21,
+      "community": 14,
       "norm_label": "ka()"
     },
     {
@@ -1934,7 +1934,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_cu",
-      "community": 94,
+      "community": 21,
       "norm_label": "cu()"
     },
     {
@@ -1944,7 +1944,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_yn",
-      "community": 94,
+      "community": 21,
       "norm_label": "yn()"
     },
     {
@@ -1954,7 +1954,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_xu",
-      "community": 94,
+      "community": 21,
       "norm_label": "xu()"
     },
     {
@@ -7271,7 +7271,7 @@
       "label": "Documentation",
       "file_type": "document",
       "source_file": "docs/wiki/Daily/2026-07-15.md",
-      "source_location": "L62",
+      "source_location": "L68",
       "_origin": "ast",
       "id": "daily_2026_07_15_documentation",
       "community": 104,
@@ -7381,7 +7381,7 @@
       "label": "Requirements",
       "file_type": "document",
       "source_file": "docs/wiki/Features/Chat.md",
-      "source_location": "L11",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "features_chat_requirements",
       "community": 36,
@@ -7391,7 +7391,7 @@
       "label": "Infrastructure Used",
       "file_type": "document",
       "source_file": "docs/wiki/Features/Chat.md",
-      "source_location": "L17",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "features_chat_infrastructure_used",
       "community": 36,
@@ -7401,7 +7401,7 @@
       "label": "Decisions",
       "file_type": "document",
       "source_file": "docs/wiki/Features/Chat.md",
-      "source_location": "L21",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "features_chat_decisions",
       "community": 36,
@@ -7411,7 +7411,7 @@
       "label": "Open Questions",
       "file_type": "document",
       "source_file": "docs/wiki/Features/Chat.md",
-      "source_location": "L35",
+      "source_location": "L54",
       "_origin": "ast",
       "id": "features_chat_open_questions",
       "community": 36,
@@ -7421,7 +7421,7 @@
       "label": "Related Code",
       "file_type": "document",
       "source_file": "docs/wiki/Features/Chat.md",
-      "source_location": "L45",
+      "source_location": "L64",
       "_origin": "ast",
       "id": "features_chat_related_code",
       "community": 36,
@@ -7431,7 +7431,7 @@
       "label": "Source Log",
       "file_type": "document",
       "source_file": "docs/wiki/Features/Chat.md",
-      "source_location": "L54",
+      "source_location": "L81",
       "_origin": "ast",
       "id": "features_chat_source_log",
       "community": 36,
@@ -7461,7 +7461,7 @@
       "label": "Overview",
       "file_type": "document",
       "source_file": "docs/wiki/Features/User.md",
-      "source_location": "L5",
+      "source_location": "L6",
       "_origin": "ast",
       "id": "features_user_overview",
       "community": 38,
@@ -7471,7 +7471,7 @@
       "label": "Requirements",
       "file_type": "document",
       "source_file": "docs/wiki/Features/User.md",
-      "source_location": "L11",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "features_user_requirements",
       "community": 38,
@@ -7481,7 +7481,7 @@
       "label": "Infrastructure Used",
       "file_type": "document",
       "source_file": "docs/wiki/Features/User.md",
-      "source_location": "L19",
+      "source_location": "L22",
       "_origin": "ast",
       "id": "features_user_infrastructure_used",
       "community": 38,
@@ -7491,7 +7491,7 @@
       "label": "Decisions",
       "file_type": "document",
       "source_file": "docs/wiki/Features/User.md",
-      "source_location": "L23",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "features_user_decisions",
       "community": 38,
@@ -7501,7 +7501,7 @@
       "label": "Open Questions",
       "file_type": "document",
       "source_file": "docs/wiki/Features/User.md",
-      "source_location": "L40",
+      "source_location": "L52",
       "_origin": "ast",
       "id": "features_user_open_questions",
       "community": 38,
@@ -7511,7 +7511,7 @@
       "label": "Related Code",
       "file_type": "document",
       "source_file": "docs/wiki/Features/User.md",
-      "source_location": "L46",
+      "source_location": "L61",
       "_origin": "ast",
       "id": "features_user_related_code",
       "community": 38,
@@ -7521,7 +7521,7 @@
       "label": "Source Log",
       "file_type": "document",
       "source_file": "docs/wiki/Features/User.md",
-      "source_location": "L58",
+      "source_location": "L81",
       "_origin": "ast",
       "id": "features_user_source_log",
       "community": 38,
@@ -7711,7 +7711,7 @@
       "label": "Notes",
       "file_type": "document",
       "source_file": "docs/wiki/Infrastructure/Cassandra/chat_history.md",
-      "source_location": "L21",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "cassandra_chat_history_notes",
       "community": 60,
@@ -16657,9 +16657,9 @@
       "source_location": "L55",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "chat_chatcontroller_chatcontroller_addparticipant",
-      "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_userprincipal",
-      "confidence_score": 1.0
+      "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_userprincipal"
     },
     {
       "relation": "references",
@@ -17287,9 +17287,9 @@
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "chat_chatservice_chatservice_addparticipant",
-      "target": "chat_chatservice_chatservice_getchatforparticipant",
-      "confidence_score": 1.0
+      "target": "chat_chatservice_chatservice_getchatforparticipant"
     },
     {
       "relation": "calls",
@@ -22878,9 +22878,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest",
-      "target": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_addparticipantfailswhencallerisnotaparticipant",
-      "confidence_score": 1.0
+      "target": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_addparticipantfailswhencallerisnotaparticipant"
     },
     {
       "relation": "method",
@@ -22941,9 +22941,9 @@
       "source_location": "L85",
       "weight": 1.0,
       "context": "attribute",
+      "confidence_score": 1.0,
       "source": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_addparticipantfailswhencallerisnotaparticipant",
-      "target": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicevalidateparticipantidstest_java_test",
-      "confidence_score": 1.0
+      "target": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicevalidateparticipantidstest_java_test"
     },
     {
       "relation": "references",
@@ -27815,5 +27815,5 @@
       "source_file": "docs/wiki/docs/Plan/rag-pipeline.md"
     }
   ],
-  "built_at_commit": "02543d66469735d1c89eeb52430182aac44f8f40"
+  "built_at_commit": "aec16c1c7de2ea3681e482ac7a1beb145c3b05c8"
 }

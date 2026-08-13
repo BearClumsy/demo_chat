@@ -1,16 +1,16 @@
 # Graph Report - demo_chat  (2026-08-13)
 
 ## Corpus Check
-- 123 files · ~36,110 words
+- 123 files · ~36,841 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1057 nodes · 1589 edges · 109 communities (88 shown, 21 thin omitted)
+- 1057 nodes · 1589 edges · 110 communities (89 shown, 21 thin omitted)
 - Extraction: 87% EXTRACTED · 13% INFERRED · 0% AMBIGUOUS · INFERRED: 201 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `02543d66`
+- Built from commit: `aec16c1c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -29,6 +29,7 @@
 - [[_COMMUNITY_Obsidian Catppuccin Theme|Obsidian Catppuccin Theme]]
 - [[_COMMUNITY_Password Encoder Config|Password Encoder Config]]
 - [[_COMMUNITY_Application Smoke Test|Application Smoke Test]]
+- [[_COMMUNITY_Community 14|Community 14]]
 - [[_COMMUNITY_Gradle Wrapper Script|Gradle Wrapper Script]]
 - [[_COMMUNITY_Application Entry Point|Application Entry Point]]
 - [[_COMMUNITY_Obsidian App Settings|Obsidian App Settings]]
@@ -143,7 +144,7 @@
 - **Local-to-AWS Multi-Datastore Infrastructure Mapping** — docs_wiki_docs_plan_overview_system_components, docs_wiki_docs_plan_backend_stack, docs_wiki_docs_plan_local_vs_aws_mapping_table, docs_wiki_docs_plan_infrastructure_aws_services [INFERRED 0.85]
 - **Answer Generation and Guardrail Pipeline** — docs_wiki_docs_plan_rag_pipeline_stages, docs_wiki_docs_plan_prompt_engineering_prompt_structure, docs_wiki_docs_plan_prompt_engineering_output_guardrails, docs_wiki_docs_plan_intent_matching_two_stage_filter [INFERRED 0.75]
 
-## Communities (109 total, 21 thin omitted)
+## Communities (110 total, 21 thin omitted)
 
 ### Community 0 - "Plan Docs: Target Architecture"
 Cohesion: 0.07
@@ -201,6 +202,10 @@ Nodes (9): PasswordEncoderConfig, Bean, CreateUserRequest, Mono, User, UserRespo
 Cohesion: 0.20
 Nodes (9): DemoChatApplicationTests, StubBedrockModels, Bean, BeforeAll, ChatModel, DynamicPropertyRegistry, DynamicPropertySource, EmbeddingModel (+1 more)
 
+### Community 14 - "Community 14"
+Cohesion: 0.67
+Nodes (3): bc(), ka(), vc()
+
 ### Community 15 - "Gradle Wrapper Script"
 Cohesion: 0.18
 Nodes (10): Architecture, AWS, CI/CD, Current repository structure, Data, Documentation, Environments, Plan (+2 more)
@@ -215,7 +220,7 @@ Nodes (9): `backend-ci.yml` — stages (implemented), CI/CD: GitHub Actions, `de
 
 ### Community 21 - "Build Directory"
 Cohesion: 0.04
-Nodes (34): ac(), addSettingChild(), bc(), bl(), Cl(), de(), Dl(), ea() (+26 more)
+Nodes (31): addSettingChild(), bl(), Cl(), Cu(), de(), Dl(), ea(), fn() (+23 more)
 
 ### Community 35 - "Community 35"
 Cohesion: 0.27
@@ -378,12 +383,12 @@ Cohesion: 0.10
 Nodes (10): ie(), ke(), M, oe(), Ot(), qe(), S(), Te() (+2 more)
 
 ### Community 93 - "Community 93"
-Cohesion: 0.20
-Nodes (29): Aa(), At(), Bi(), c(), Cr(), dc(), Ee(), Er() (+21 more)
+Cohesion: 0.17
+Nodes (32): Aa(), ac(), At(), Bi(), c(), Cr(), dc(), ec() (+24 more)
 
 ### Community 94 - "Community 94"
-Cohesion: 0.12
-Nodes (24): bu(), Cu(), du(), gu(), Ht(), hu(), Je(), Ki() (+16 more)
+Cohesion: 0.14
+Nodes (21): bu(), du(), gu(), Ht(), hu(), Je(), Ki(), lu() (+13 more)
 
 ### Community 95 - "Community 95"
 Cohesion: 0.19
