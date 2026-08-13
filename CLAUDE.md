@@ -108,8 +108,10 @@ Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tas
 
 The app migrates on startup too, so `bootRun` covers the normal case; the two `flyway*` tasks exist
 for applying/inspecting the schema on its own. They default to the local Postgres and are overridden
-with `-Pflyway.url=…` / `-Pflyway.user=…` / `-Pflyway.password=…` or the matching `FLYWAY_*`
-environment variables (`flyway {}` block in `modules/server/build.gradle`).
+with `-Pflyway.url=…` / `-Pflyway.user=…` / `-Pflyway.password=…` / `-Pflyway.schemas=…` or the
+matching `FLYWAY_*` environment variables (`flyway {}` block in `modules/server/build.gradle`).
+Staging and prod set `spring.flyway.schemas` from `POSTGRES_SCHEMA`, so pass
+`FLYWAY_SCHEMAS=$POSTGRES_SCHEMA` when targeting them — see the Gotchas entry below.
 
 - Build the container image: `docker build -f modules/server/Dockerfile -t demo-chat-server .` (build
   context is the **repository root**, not `modules/server`, because the Gradle wrapper lives there)
@@ -224,7 +226,13 @@ this for both the `support_kb` and `semantic_cache` stores.
   `spring.flyway.schemas` in the profile properties; the `flyway {}` block in
   `modules/server/build.gradle` backs the standalone `flywayMigrate`/`flywayInfo` tasks. If the
   `schemas` value diverges, the two build *separate* `flyway_schema_history` tables and each re-runs
-  the other's migrations. The plugin version is pinned to the `flyway-core` version the Boot BOM
+  the other's migrations. Staging/prod resolve `spring.flyway.schemas` from `${POSTGRES_SCHEMA}`
+  while the Gradle block defaults to `demo_chat`, so migrating against them needs an explicit
+  `FLYWAY_SCHEMAS` / `-Pflyway.schemas`. In practice `POSTGRES_SCHEMA` is pinned anyway:
+  `V1__create_users_table.sql` hardcodes `demo_chat.users`, so any other value produces a schema
+  the app cannot read. Changing it needs a new migration, not an edit to V1 — V1 is already applied
+  everywhere and rewriting it changes its checksum and fails `flyway validate` on startup.
+  The plugin version is pinned to the `flyway-core` version the Boot BOM
   resolves (11.14.1) for the same reason, and its Postgres support comes from the `buildscript`
   classpath at the top of that file — without those entries the tasks fail with "No Flyway database
   plugin found to handle jdbc:postgresql://…".

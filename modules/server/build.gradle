@@ -92,13 +92,15 @@ dependencyManagement {
 // Postgres schema without booting the app. The app still migrates on startup via
 // spring-boot-starter-flyway; `schemas` MUST match `spring.flyway.schemas` in the profile properties
 // or the two paths build separate flyway_schema_history tables and re-run each other's migrations.
+// Staging and prod resolve that property from POSTGRES_SCHEMA, so migrating against either means
+// passing FLYWAY_SCHEMAS=$POSTGRES_SCHEMA alongside the connection overrides.
 // Defaults target the local docker-compose Postgres; override per environment with -Pflyway.* or
 // the FLYWAY_* environment variables.
 flyway {
 	url = findProperty('flyway.url') ?: System.getenv('FLYWAY_URL') ?: 'jdbc:postgresql://localhost:5432/demo_chat'
 	user = findProperty('flyway.user') ?: System.getenv('FLYWAY_USER') ?: 'demo_chat'
 	password = findProperty('flyway.password') ?: System.getenv('FLYWAY_PASSWORD') ?: 'demo_chat'
-	schemas = ['demo_chat']
+	schemas = [findProperty('flyway.schemas') ?: System.getenv('FLYWAY_SCHEMAS') ?: 'demo_chat']
 	locations = ["filesystem:${projectDir}/src/main/resources/db/migration"]
 	// `flywayClean` drops every object in the schema — keep it unavailable.
 	cleanDisabled = true
