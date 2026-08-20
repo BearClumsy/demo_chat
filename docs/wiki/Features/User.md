@@ -48,6 +48,14 @@ participant validation resolve against these ids (see [[Chat]]).
 - **`UserPrincipal` exposes `getId()`** on top of `UserDetails` so handlers can use the authenticated
   user's id (`@AuthenticationPrincipal`) without a second lookup — this is what the chat endpoints check
   authorization against.
+- **Standalone Flyway tasks (`flywayMigrate`/`flywayInfo`) exist so the `users` schema can be migrated
+  without booting the app** — CI, a fresh DB, or ad-hoc ops. `flywayClean` is deliberately disabled
+  (`cleanDisabled = true`). Their `schemas` setting is overridable (`-Pflyway.schemas` /
+  `FLYWAY_SCHEMAS`), not hardcoded, matching the existing `url`/`user`/`password` override pattern —
+  a hardcoded value would silently build a second, divergent `flyway_schema_history` table against
+  staging/prod, where `spring.flyway.schemas` resolves from `${POSTGRES_SCHEMA}` at runtime instead.
+  Boot's own startup migration and these standalone tasks must agree on `schemas` or each re-runs the
+  other's migrations.
 
 ## Open Questions
 
@@ -77,6 +85,9 @@ participant validation resolve against these ids (see [[Chat]]).
 - `modules/server/src/main/resources/db/migration/V1__create_users_table.sql`
 - `modules/server/src/test/java/com/example/demo_chat/user/UserRepositoryTest.java` — `@DataR2dbcTest`
   against a Postgres container
+- `modules/server/build.gradle` — `buildscript {}` and `flyway {}` blocks backing the standalone
+  `flywayMigrate`/`flywayInfo` tasks
+- `Makefile` — `migrate` / `migrate-info` targets wrapping those tasks
 
 ## Source Log
 
@@ -87,3 +98,6 @@ participant validation resolve against these ids (see [[Chat]]).
   R2DBC driver and that `UserService` bridged blocking JPA with `Schedulers.boundedElastic()`, and it
   listed "no authentication yet" as an open question. Both were overtaken by the R2DBC migration and the
   Spring Security work.
+- **2026-08-20** — routine Features review found this note predated two same-day commits: the standalone
+  Flyway `flywayMigrate`/`flywayInfo` tasks and the follow-up fix making their `schemas` setting
+  overridable instead of hardcoded. Added both to Decisions and Related Code.

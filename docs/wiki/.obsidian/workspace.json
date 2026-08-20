@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Plan/running-locally.md",
+                "file": "Features/Chat.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "running-locally"
+              "title": "Chat"
             }
           }
         ]
@@ -187,13 +187,17 @@
   },
   "active": "560e54d5fbfa1a26",
   "lastOpenFiles": [
+    "Features/User.md.tmp.89973.c4aa278cd1d6",
+    "Features/User.md.tmp.89973.0e0a1192493c",
+    "Features/_template.md",
+    "Plan/README.md",
+    "Features/User.md",
+    "Plan/running-locally.md",
     "Plan/rag-pipeline.md",
     "index.md.tmp.16109.d6a44f249999",
-    "Plan/running-locally.md",
     "Plan/local-vs-aws.md.tmp.16109.ee886b6844a9",
     "Plan/github-actions.md.tmp.16109.3e40b31bc6ae",
     "Plan/overview.md",
-    "Plan/README.md",
     "Plan/backend.md",
     "Plan/frontend.md",
     "Plan/frontend-chat-mvp.md",
@@ -203,7 +207,6 @@
     "Plan/github-actions.md.tmp.6305.07334615623d",
     "Plan/roadmap.md.tmp.6305.dc0c1b9ce4ce",
     "Plan/roadmap.md.tmp.6305.1c587dd8970b",
-    "Plan/local-vs-aws.md.tmp.6305.db066c0570d4",
     "Daily/2026-07-15.md",
     "index.md",
     "Plan/vector-store-schema.md",
@@ -215,12 +218,10 @@
     "Plan/github-actions.md",
     "Plan/dialogue-state.md",
     "Features/Chat.md",
-    "Features/User.md",
     "Infrastructure/Cassandra/chat_history.md",
     "Infrastructure/Cassandra/dialogue_state.md",
     "Infrastructure/Postgres/users.md",
     "Infrastructure/Qdrant/_template.md",
-    "Infrastructure/Qdrant/support_kb.md",
-    "Infrastructure/Qdrant/semantic_cache.md"
+    "Infrastructure/Qdrant/support_kb.md"
   ]
 }
