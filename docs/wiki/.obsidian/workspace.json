@@ -187,6 +187,8 @@
   },
   "active": "560e54d5fbfa1a26",
   "lastOpenFiles": [
+    "index.md.tmp.9131.3f624108b322",
+    "Daily/2026-08-20.md",
     "Features/User.md.tmp.89973.c4aa278cd1d6",
     "Features/User.md.tmp.89973.0e0a1192493c",
     "Features/_template.md",
@@ -206,7 +208,6 @@
     "Features/User.md.tmp.6305.f4c0eebb75b8",
     "Plan/github-actions.md.tmp.6305.07334615623d",
     "Plan/roadmap.md.tmp.6305.dc0c1b9ce4ce",
-    "Plan/roadmap.md.tmp.6305.1c587dd8970b",
     "Daily/2026-07-15.md",
     "index.md",
     "Plan/vector-store-schema.md",
@@ -221,7 +222,6 @@
     "Infrastructure/Cassandra/chat_history.md",
     "Infrastructure/Cassandra/dialogue_state.md",
     "Infrastructure/Postgres/users.md",
-    "Infrastructure/Qdrant/_template.md",
-    "Infrastructure/Qdrant/support_kb.md"
+    "Infrastructure/Qdrant/_template.md"
   ]
 }
