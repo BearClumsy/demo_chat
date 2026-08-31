@@ -99,7 +99,13 @@ is everything that needs one (open).
 
 ### Phase 3b — needs an AWS account (open)
 
-- [ ] Terraform: VPC, ECS, ALB, RDS (Postgres), Amazon Keyspaces/Cassandra, Qdrant on EC2
+- [~] Terraform: VPC, ECS, ALB, RDS (Postgres), Amazon Keyspaces/Cassandra, Qdrant on EC2 (+ MSK).
+      **Code skeleton done, not applied**: `infra/terraform/` (`modules/{vpc,alb,ecs-service,
+      rds-postgres,keyspaces,qdrant-ec2,msk,bedrock-iam}`, `envs/{staging,prod}`), CI-linted by the
+      new `terraform-lint` workflow (`fmt` + `validate` + `tflint`, no AWS credentials). Still needs
+      an account: `terraform apply`, the S3/DynamoDB state backend, real AMI/cert/secret values,
+      and porting the full `chat_history`/`dialogue_state` Keyspaces schemas. See
+      [infrastructure.md](infrastructure.md).
 - [ ] `deploy-staging` workflow + ECR repositories and image pushes (OIDC, no static keys)
 - [ ] Knowledge-base reindexing as a CI job (`QdrantDocumentLoader.reindex()` on merge, per
       [vector-store-schema.md](vector-store-schema.md)) — `KnowledgeBaseIndexer` still reindexes on

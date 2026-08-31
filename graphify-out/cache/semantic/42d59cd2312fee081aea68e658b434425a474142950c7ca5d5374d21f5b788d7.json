@@ -1,0 +1,1 @@
+{"nodes": [], "edges": [{"source": "keyspaces_module", "target": "container_env_contract", "relation": "shares_data_with", "confidence": "INFERRED", "confidence_score": 0.85, "source_file": "infra/terraform/modules/keyspaces/outputs.tf", "source_location": null, "weight": 1.0}], "hyperedges": []}

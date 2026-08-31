@@ -141,6 +141,19 @@ No test runner is configured for the client yet.
 - Validate the intent JSON files the way CI does: `node scripts/validate-intents.mjs`. Its rules mirror
   the `IntentDefinition` record, so keep the two in sync when adding a field.
 
+### Infrastructure (Terraform)
+
+- `infra/terraform/` holds the AWS staging/prod IaC. It is **lint-only** — there is no AWS account
+  yet, so `terraform plan`/`apply` have never run; resource shapes and the env-var wiring are meant
+  to be right but AWS-specific values (AMI ids, cert/secret ARNs) are `TODO` variables.
+- Lint it the way CI does: `make tf-lint` (needs `terraform` or `tofu` + `tflint` on PATH). It runs
+  `fmt -check`, `validate` on `envs/staging` and `envs/prod` with `init -backend=false`, and
+  `tflint --recursive`. No AWS credentials are used. The `terraform-lint` GitHub workflow
+  (`.github/workflows/terraform-lint.yml`, path-filtered to `infra/**`) runs the same steps.
+- `envs/staging` and `envs/prod` are duplicated on purpose (same rationale as the duplicated
+  `application-{staging,prod}.properties`). Each env's `container_env` output must stay in sync with
+  the matching `application-*.properties` env-var contract — see `infra/terraform/README.md`.
+
 ## Toolchain
 
 - Java 26 (via Gradle toolchain in `modules/server/build.gradle` — do not assume the system JDK

@@ -149,6 +149,30 @@ docker-client: ## Build the client image (nginx + static build)
 docker: docker-server docker-client ## Build both container images
 
 # ---------------------------------------------------------------------------
+# Infrastructure (Terraform, infra/terraform — lint only, never applied)
+# ---------------------------------------------------------------------------
+#
+# There is no AWS account for this project yet, so the Terraform is CI-linted but not applied.
+# Needs `terraform` (or `tofu`) and `tflint` on PATH. Mirrors the terraform-lint GitHub workflow.
+# No AWS credentials are used: fmt/validate/tflint never call AWS and init runs with -backend=false.
+
+TF_DIR := infra/terraform
+TF_BIN = $(shell command -v terraform >/dev/null 2>&1 && echo terraform || echo tofu)
+
+.PHONY: tf-lint
+tf-lint: ## Lint the Terraform (fmt check + validate staging/prod + tflint)
+	$(TF_BIN) fmt -check -recursive $(TF_DIR)
+	$(TF_BIN) -chdir=$(TF_DIR)/envs/staging init -backend=false -input=false
+	$(TF_BIN) -chdir=$(TF_DIR)/envs/staging validate
+	$(TF_BIN) -chdir=$(TF_DIR)/envs/prod init -backend=false -input=false
+	$(TF_BIN) -chdir=$(TF_DIR)/envs/prod validate
+	cd $(TF_DIR) && tflint --init && tflint --recursive
+
+.PHONY: tf-fmt
+tf-fmt: ## Rewrite the Terraform files to canonical format
+	$(TF_BIN) fmt -recursive $(TF_DIR)
+
+# ---------------------------------------------------------------------------
 # Aggregate
 # ---------------------------------------------------------------------------
 
