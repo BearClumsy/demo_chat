@@ -1,0 +1,1 @@
+{"nodes": [], "edges": [{"source": "app_subnet_cidr_ingress_rationale", "target": "msk_main_aws_security_group_msk", "relation": "rationale_for", "confidence": "EXTRACTED", "confidence_score": 1.0, "source_file": "infra/terraform/modules/msk/variables.tf", "source_location": null, "weight": 1.0}], "hyperedges": []}

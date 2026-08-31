@@ -2,9 +2,10 @@
 
 [← Back to README](README.md) · [AWS infrastructure](infrastructure.md)
 
-**Status:** partially implemented. The three CI workflows exist and run; the deploy workflows do not,
+**Status:** partially implemented. Four CI/lint workflows exist and run; the deploy workflows do not,
 because they need an AWS account and an ECR repository that don't exist yet (Phase 3b in
-[roadmap.md](roadmap.md)).
+[roadmap.md](roadmap.md)). `terraform-lint` is the AWS-credential-free half of the Terraform work —
+it lints the `infra/terraform/` skeleton but nothing is planned or applied.
 
 ## Workflow file structure
 
@@ -14,6 +15,7 @@ because they need an AWS account and an ECR repository that don't exist yet (Pha
     ├── backend-ci.yml           # IMPLEMENTED - spotlessCheck, tests, server image build
     ├── frontend-ci.yml          # IMPLEMENTED - eslint, tsc/vite build, client image build
     ├── knowledge-base-lint.yml  # IMPLEMENTED - scripts/validate-intents.mjs
+    ├── terraform-lint.yml       # IMPLEMENTED - fmt -check, validate (staging+prod), tflint; no AWS creds
     ├── deploy-staging.yml       # planned - deploy to ECS staging
     └── deploy-prod.yml          # planned - deploy to ECS prod on a release tag
 ```
@@ -81,6 +83,27 @@ that passes also loads at startup:
 A separate workflow, because the knowledge base changes more frequently
 and by different people (content managers/support staff) than the code —
 it needs a lightweight gate without a full application build.
+
+## `terraform-lint.yml` (implemented)
+
+```
+trigger: pull_request, push to main
+         (paths: infra/**, .github/workflows/terraform-lint.yml)
+
+1. checkout
+2. hashicorp/setup-terraform (pinned)
+3. terraform fmt -check -recursive infra/terraform
+4. terraform -chdir=infra/terraform/envs/staging init -backend=false && ... validate
+5. terraform -chdir=infra/terraform/envs/prod    init -backend=false && ... validate
+6. terraform-linters/setup-tflint (pinned) → tflint --init && tflint --recursive
+```
+
+The AWS-credential-free half of Phase 3b's Terraform item. **No AWS credentials are configured** in
+the job: `fmt`, `validate` and `tflint` never call AWS, and `init -backend=false` skips the S3
+state backend. Nothing is planned or applied. Own lightweight lane, path-filtered to `infra/**`, so
+it does not drag in a Gradle build — same rationale as `knowledge-base-lint`. The eventual
+`deploy-staging` / `deploy-prod` workflows are what will actually run `terraform plan`/`apply`
+(under OIDC, against a real account).
 
 ## `deploy-staging.yml`
 

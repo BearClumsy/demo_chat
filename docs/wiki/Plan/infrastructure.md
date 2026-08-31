@@ -2,10 +2,15 @@
 
 [← Back to README](README.md) · [Local ↔ AWS mapping](local-vs-aws.md)
 
-**Status:** planned, not yet provisioned — no Terraform, AWS resources, or `infra/` directory exist in
-this repo yet. Everything below is target design. Updated only to swap the outdated Redis/ElastiCache
-references for the project's actual chat-state store (Cassandra) — the AWS deployment itself is still
-future work, same as [github-actions.md](github-actions.md).
+**Status:** planned, not yet provisioned. A **lint-only Terraform skeleton now exists** under
+`infra/terraform/` — `modules/{vpc, alb, ecs-service, rds-postgres, keyspaces, qdrant-ec2, msk,
+bedrock-iam}` plus duplicated `envs/{staging, prod}` roots, CI-linted by the `terraform-lint`
+workflow (`fmt` + `validate` + `tflint`, no AWS credentials). Nothing is applied: there is no AWS
+account, `terraform plan`/`apply` have never run, the S3/DynamoDB state backend is commented out,
+and AWS-specific values (AMI ids, ACM cert ARNs, Secrets Manager ARNs) are `TODO` variables. The
+diagram and module notes below are the target design; `infra/terraform/README.md` tracks what the
+skeleton does and does not cover yet. The AWS deployment itself is still future work, same as
+[github-actions.md](github-actions.md).
 
 ## Diagram (high level)
 
@@ -91,28 +96,31 @@ VPC
 
 ## Terraform structure (IaC)
 
+The lint-only skeleton that now exists (`[~]` in [roadmap.md](roadmap.md) Phase 3b):
+
 ```
 infra/terraform/
+├── .tflint.hcl                   # terraform + aws rulesets
+├── README.md                     # what the skeleton covers / what is still TODO
 ├── modules/
-│   ├── vpc/
-│   ├── ecs-service/
-│   ├── alb/
+│   ├── vpc/                       # 2–3 AZ × {public, app, data} subnets, per-AZ NAT
+│   ├── alb/                       # :80→:443 redirect, HTTPS listener, ip target group
+│   ├── ecs-service/               # cluster + Fargate service + task def + task SG + log group
 │   ├── rds-postgres/
-│   ├── keyspaces/                 # or cassandra-ec2/ for self-managed
-│   ├── qdrant-ec2/
-│   ├── bedrock-iam/
-│   └── s3-cloudfront/
+│   ├── keyspaces/                 # keyspace + open_chats_by_bucket only (see README caveat)
+│   ├── qdrant-ec2/               # single EC2 host + data EBS volume
+│   ├── msk/                       # added — the KAFKA_BOOTSTRAP_SERVERS contract needs it
+│   └── bedrock-iam/               # task role (InvokeModel) + execution role
 ├── envs/
-│   ├── staging/
-│   │   ├── main.tf
-│   │   ├── variables.tf
-│   │   └── terraform.tfvars
-│   └── prod/
-│       ├── main.tf
-│       ├── variables.tf
-│       └── terraform.tfvars
-└── backend.tf                 # S3 + DynamoDB lock for state
+│   ├── staging/                   # versions.tf, main.tf, variables.tf, outputs.tf, terraform.tfvars
+│   └── prod/                      # duplicated from staging on purpose (as with the *.properties)
 ```
+
+Each env's `versions.tf` carries the `backend "s3"` block **commented out** (S3 + DynamoDB lock)
+until the state bucket exists; CI runs `terraform init -backend=false`. Not yet built, vs. the
+original target above: `s3-cloudfront/` (React static hosting) and a `cassandra-ec2/` alternative
+to `keyspaces/`. The full `chat_history` / `dialogue_state` Keyspaces tables (they use the
+`ChatMessage` UDT) still need porting from the JPA entities / `db/cassandra/*.cql`.
 
 ## Related documents
 

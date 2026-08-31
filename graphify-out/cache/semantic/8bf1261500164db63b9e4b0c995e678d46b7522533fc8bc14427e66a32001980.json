@@ -1,0 +1,1 @@
+{"nodes": [{"id": "chat_sendmessageresponse_sendmessageresponse", "label": "SendMessageResponse", "file_type": "code", "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/SendMessageResponse.java", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}

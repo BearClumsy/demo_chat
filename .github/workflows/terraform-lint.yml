@@ -1,0 +1,57 @@
+# Lints the Terraform under infra/terraform/ without touching AWS. No credentials are configured;
+# fmt / validate / tflint never call AWS, and `init -backend=false` skips the S3 state backend.
+# Nothing is planned or applied - that half of Phase 3b needs an AWS account.
+name: terraform-lint
+
+on:
+  pull_request:
+    paths:
+      - "infra/**"
+      - ".github/workflows/terraform-lint.yml"
+  push:
+    branches: [main]
+    paths:
+      - "infra/**"
+      - ".github/workflows/terraform-lint.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: terraform-lint-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.8"
+          # Don't wrap the terraform binary — `fmt -check` must surface its own exit code.
+          terraform_wrapper: false
+
+      - name: terraform fmt
+        run: terraform fmt -check -recursive infra/terraform
+
+      - name: terraform validate (staging)
+        run: |
+          terraform -chdir=infra/terraform/envs/staging init -backend=false -input=false
+          terraform -chdir=infra/terraform/envs/staging validate
+
+      - name: terraform validate (prod)
+        run: |
+          terraform -chdir=infra/terraform/envs/prod init -backend=false -input=false
+          terraform -chdir=infra/terraform/envs/prod validate
+
+      - uses: terraform-linters/setup-tflint@v4
+        with:
+          tflint_version: "v0.53.0"
+
+      - name: tflint
+        working-directory: infra/terraform
+        run: |
+          tflint --init
+          tflint --recursive
