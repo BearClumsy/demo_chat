@@ -20,11 +20,12 @@
       └───────────────┘ └────────────┘  └────────────────┘ └───────────────┘ └──────────────┘
 ```
 
-There is no Redis and no Ollama in this project — chat/session persistence is Cassandra (a plain reactive
+There is no Redis in this project — chat/session persistence is Cassandra (a plain reactive
 Cassandra repository for both `ChatHistory` and `DialogueState`; the declared
 `spring-ai-starter-model-chat-memory-repository-cassandra` dependency is not wired up — see
-[dialogue-state.md](dialogue-state.md) for why), and the only configured LLM provider is Amazon Bedrock
-(no local-model profile exists). Qdrant now backs two collections: `support_kb` (the knowledge base) and
+[dialogue-state.md](dialogue-state.md) for why). The default (and only production) LLM provider is
+Amazon Bedrock; the `local,offline` Spring profile instead points chat + embeddings at a local Ollama
+so the app can run with no AWS — see [local-vs-aws.md](local-vs-aws.md). Qdrant now backs two collections: `support_kb` (the knowledge base) and
 `semantic_cache` (Phase 2's semantic cache, see [vector-store-schema.md](vector-store-schema.md)); both
 are called by the RAG pipeline (see [rag-pipeline.md](rag-pipeline.md)). Postgres is R2DBC-backed for the
 app (Phase 2) but still needs a blocking JDBC `DataSource` for Flyway migrations only. Kafka is still a

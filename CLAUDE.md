@@ -97,14 +97,18 @@ Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tas
 
 - Build: `./gradlew :server:build`
 - Run the app: `./gradlew :server:bootRun`
-- Run the app with no AWS: `make run-offline` (profile `local,offline` — chat + embeddings come from a
-  local Ollama server on `:11434`; run `ollama serve` and `make ollama-pull` first)
+- Run the app with no AWS: `make run-offline` (profile `local,offline` — chat + embeddings come from
+  Ollama on `:11434`; run `make up-offline` first, which starts the Ollama container and pulls its
+  models). On Apple Silicon the container is CPU-only; a native `ollama serve` on the host also works
+  and is faster.
 - Run all tests: `./gradlew :server:test`
 - Run a single test class: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests"`
 - Run a single test method: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests.contextLoads"`
 - Check formatting (Spotless + Google Java Format): `./gradlew :server:spotlessCheck`
 - Apply formatting: `./gradlew :server:spotlessApply`
 - Clean build output: `./gradlew clean`
+- Download dependency source/javadoc jars into the Gradle cache: `./gradlew :server:downloadDependencySources`
+  (or `make sources`). IDE-driven fetch is already on via the `eclipse` plugin's `downloadSources`.
 - Apply Flyway migrations without starting the app: `./gradlew :server:flywayMigrate`
 - Show applied/pending migration state: `./gradlew :server:flywayInfo`
 
@@ -276,7 +280,8 @@ this for both the `support_kb` and `semantic_cache` stores.
   staging/prod need it created out of band.
 - **`offline` profile uses 768-dim embeddings** (`nomic-embed-text`) vs Bedrock Titan's 1024. Switching
   a machine between `make run` and `make run-offline` against the same Qdrant volume fails on insert
-  (collection dimension mismatch) — `make nuke && make up` between the two, or the KB reindex errors.
+  (collection dimension mismatch) — `make nuke` then `make up` / `make up-offline` between the two, or
+  the KB reindex errors.
 - **Flyway is configured in two places and they must agree.** Boot migrates on startup from
   `spring.flyway.schemas` in the profile properties; the `flyway {}` block in
   `modules/server/build.gradle` backs the standalone `flywayMigrate`/`flywayInfo` tasks. If the
@@ -292,6 +297,14 @@ this for both the `support_kb` and `semantic_cache` stores.
   classpath at the top of that file — without those entries the tasks fail with "No Flyway database
   plugin found to handle jdbc:postgresql://…".
 - **`DialogueStatus.READY_TO_ANSWER` is declared but never assigned** by the pipeline — don't route on it.
+- **A fixed test user is seeded locally by a Flyway migration outside `db/migration`.**
+  `local/db/migration/R__seed_local_test_user.sql` (repeatable, idempotent `INSERT ... ON CONFLICT
+  (login) DO NOTHING`) creates login `testuser` / password `password`,
+  id `00000000-0000-0000-0000-000000000001`. It is picked up **only locally**: `spring.flyway.locations`
+  lists `classpath:local/db/migration` in `application-local.properties` but not in the staging/prod
+  files, and the `flyway {}` block in `build.gradle` adds the `filesystem:` equivalent only when
+  `flywayMigrate` targets the default local DB (no `flyway.url` / `FLYWAY_URL` override). Applied on
+  startup with the rest, or via `make migrate`.
 - **Adding a `@SpringBootTest`**: the stub Bedrock `ChatModel`/`EmbeddingModel` beans live in a nested
   `@TestConfiguration StubBedrockModels` class inside `DemoChatApplicationTests`, not in a shared support
   class — a new full-context test has to bring its own or reuse that one.

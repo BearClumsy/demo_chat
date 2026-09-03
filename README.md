@@ -90,6 +90,21 @@ Run the app (no profile set → `local`):
 make run   # or: ./gradlew :server:bootRun
 ```
 
+A fixed test user is seeded locally by `local/db/migration/R__seed_local_test_user.sql` — a Flyway
+migration on `spring.flyway.locations` only under the `local` profile (so also `local,offline`), never
+in `staging` / `prod` — so manual API calls don't need a fresh `POST /api/users` each time:
+
+| field | value |
+| --- | --- |
+| login / password | `testuser` / `password` |
+| id | `00000000-0000-0000-0000-000000000001` |
+
+```bash
+curl -u testuser:password http://localhost:8080/api/users/00000000-0000-0000-0000-000000000001
+```
+
+It applies with the other migrations on startup, or via `make migrate`.
+
 To run against a deployed environment's configuration instead, set `SPRING_PROFILES_ACTIVE=staging`
 (or `prod`) and supply `POSTGRES_*`, `CASSANDRA_*`, `QDRANT_*`, and `KAFKA_BOOTSTRAP_SERVERS` — those
 profiles read every host and credential from the environment and fail fast if a secret is missing.
@@ -109,6 +124,7 @@ Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tas
 - Run a single test class: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests"`
 - Check/apply formatting: `./gradlew :server:spotlessCheck` / `./gradlew :server:spotlessApply`
 - Clean build output: `./gradlew clean`
+- Download dependency source/javadoc jars: `./gradlew :server:downloadDependencySources` (or `make sources`)
 - Apply Flyway migrations without starting the app: `./gradlew :server:flywayMigrate`
 - Show applied/pending migration state: `./gradlew :server:flywayInfo`
 

@@ -11,7 +11,7 @@ the AWS resources themselves are still planned — no Terraform yet.
 | Role | Local (docker-compose) | AWS (staging/prod — planned) |
 |---|---|---|
 | Vector store | Qdrant in a container | Qdrant on EC2/ECS (self-managed) or Amazon OpenSearch with vector engine |
-| LLM inference | Amazon Bedrock (no local/offline provider — there's no Ollama or other local-model dependency in this project) | Amazon Bedrock (managed) |
+| LLM inference | Amazon Bedrock by default; the `local,offline` profile swaps in a local **Ollama** (the `offline`-profile compose service via `make up-offline`, or a native install) so the app runs with no AWS | Amazon Bedrock (managed) |
 | Chat history / dialogue state | Cassandra in a container | Amazon Keyspaces (Cassandra-compatible, managed) or self-managed Cassandra on EC2 |
 | User accounts | Postgres in a container (R2DBC app access, JDBC/Flyway for migrations) | RDS for PostgreSQL |
 | Application | Spring Boot in a container | Deployment on a self-managed **kubeadm cluster on EC2**, behind ingress-nginx + an ALB (see [kubernetes.md](kubernetes.md)) |
@@ -20,15 +20,18 @@ the AWS resources themselves are still planned — no Terraform yet.
 | Secrets/config | `application-local.properties` (hardcoded dev values) | `application-{staging,prod}.properties`, every value from an env var — AWS Secrets Manager + Parameter Store supply them (planned) |
 | Logs/metrics | stdout + docker logs, Actuator endpoints | CloudWatch Logs + CloudWatch Metrics (planned) |
 
-There is no Redis and no Ollama anywhere in this project's dependency set — those were part of an
-earlier draft of this plan and have been superseded by Cassandra (chat history) and Bedrock-only (LLM).
+There is no Redis anywhere in this project's dependency set — it was part of an earlier draft of this
+plan and has been superseded by Cassandra (chat history). Ollama is not a dependency either, but the
+`local,offline` profile does talk to one at runtime as a no-AWS substitute for Bedrock (chat +
+embeddings); Bedrock stays the default and the only production provider.
 
 ## Switching via Spring Profiles (implemented)
 
 ```
-SPRING_PROFILES_ACTIVE unset     → application-local.properties   (docker-compose stack)
-SPRING_PROFILES_ACTIVE=staging   → application-staging.properties (managed AWS services)
-SPRING_PROFILES_ACTIVE=prod      → application-prod.properties
+SPRING_PROFILES_ACTIVE unset        → application-local.properties    (docker-compose stack)
+SPRING_PROFILES_ACTIVE=local,offline → + application-offline.properties (Ollama instead of Bedrock, no AWS)
+SPRING_PROFILES_ACTIVE=staging      → application-staging.properties  (managed AWS services)
+SPRING_PROFILES_ACTIVE=prod         → application-prod.properties
 ```
 
 `application.properties` keeps only what doesn't vary by environment — Bedrock model ids, Qdrant
@@ -63,12 +66,15 @@ modules/server/src/main/resources/local/docker-compose.yml
 ├── postgres   (port 5432)  — users table (R2DBC app access, JDBC/Flyway for migrations)
 ├── cassandra  (port 9042)  — chat_history + dialogue_state tables
 ├── qdrant     (ports 6333/6334) — support_kb (knowledge base) + semantic_cache (Phase 2) collections
-└── kafka      (port 9092)       — declared, still not used by any code
+├── kafka      (port 9092)       — declared, still not used by any code
+└── ollama     (port 11434)      — only under the `offline` Compose profile (`make up-offline`); chat +
+                                   embedding provider for the `local,offline` Spring profile
 ```
 
 The application itself is not part of this compose file (it's run separately via `./gradlew :server:bootRun`),
-and there is no LocalStack/S3/SQS emulation, no Ollama entry, and no `app` service — all of which appear
-in the earlier draft of this document but don't reflect the current setup.
+and there is no LocalStack/S3/SQS emulation and no `app` service — both appeared in an earlier draft of
+this document but don't reflect the current setup. The `ollama` service is real but profile-gated, so a
+plain `make up` still starts only the four services above it.
 
 ## Related documents
 

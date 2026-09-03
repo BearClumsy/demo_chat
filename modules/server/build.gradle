@@ -104,7 +104,15 @@ flyway {
 	user = findProperty('flyway.user') ?: System.getenv('FLYWAY_USER') ?: 'demo_chat'
 	password = findProperty('flyway.password') ?: System.getenv('FLYWAY_PASSWORD') ?: 'demo_chat'
 	schemas = [findProperty('flyway.schemas') ?: System.getenv('FLYWAY_SCHEMAS') ?: 'demo_chat']
-	locations = ["filesystem:${projectDir}/src/main/resources/db/migration"]
+	// `local/db/migration` holds local-only seed data (matches spring.flyway.locations in
+	// application-local.properties). Include it only when this task targets the default local
+	// Postgres — pointing it at staging/prod requires an explicit flyway.url / FLYWAY_URL, which
+	// drops the seed location.
+	def targetingLocalDb = !(findProperty('flyway.url') ?: System.getenv('FLYWAY_URL'))
+	locations = targetingLocalDb
+		? ["filesystem:${projectDir}/src/main/resources/db/migration",
+		   "filesystem:${projectDir}/src/main/resources/local/db/migration"]
+		: ["filesystem:${projectDir}/src/main/resources/db/migration"]
 	// `flywayClean` drops every object in the schema — keep it unavailable.
 	cleanDisabled = true
 }

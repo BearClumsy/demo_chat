@@ -32,17 +32,23 @@ help: ## List the available targets
 up: ## Start the local Postgres/Cassandra/Qdrant/Kafka containers
 	$(COMPOSE) up -d
 
+.PHONY: up-offline
+up-offline: ## Start the local containers + Ollama; on first run pulls its models (~5 GB) and blocks until done
+	$(COMPOSE) --profile offline up -d --remove-orphans
+	@echo ">>> Ensuring the offline models are in the Ollama container (first run / post-nuke downloads ~5 GB)..."
+	$(COMPOSE) exec -T ollama sh -c 'until ollama list >/dev/null 2>&1; do sleep 1; done; ollama pull llama3.1 && ollama pull nomic-embed-text'
+
 .PHONY: down
 down: ## Stop the local containers (keeps volumes)
-	$(COMPOSE) down
+	$(COMPOSE) --profile offline down --remove-orphans
 
 .PHONY: logs
 logs: ## Follow the local container logs
 	$(COMPOSE) logs -f
 
 .PHONY: nuke
-nuke: ## Stop the local containers AND delete their data volumes
-	$(COMPOSE) down -v
+nuke: ## Stop the local containers AND delete their data volumes (external ollama-models is kept)
+	$(COMPOSE) --profile offline down -v --remove-orphans
 
 # ---------------------------------------------------------------------------
 # Database migrations (Postgres / Flyway)
@@ -81,13 +87,13 @@ run: ## Run the server with the `local` profile (needs `make up` first)
 	$(GRADLEW) :server:bootRun
 
 .PHONY: run-offline
-run-offline: ## Run the server with no AWS — local Ollama for chat + embeddings (needs `ollama serve` + `make ollama-pull`)
+run-offline: ## Run the server with no AWS — containerised Ollama for chat + embeddings (needs `make up-offline` first)
 	SPRING_PROFILES_ACTIVE=local,offline $(GRADLEW) :server:bootRun
 
 .PHONY: ollama-pull
-ollama-pull: ## Pull the Ollama models the `offline` profile expects
-	ollama pull llama3.1
-	ollama pull nomic-embed-text
+ollama-pull: ## Re-pull the `offline` profile models into the running Ollama container
+	$(COMPOSE) exec ollama ollama pull llama3.1
+	$(COMPOSE) exec ollama ollama pull nomic-embed-text
 
 .PHONY: test
 test: ## Run all server tests
@@ -109,6 +115,10 @@ fmt-check: ## Check Spotless formatting without rewriting files
 .PHONY: clean
 clean: ## Delete the Gradle build output
 	$(GRADLEW) clean
+
+.PHONY: sources
+sources: ## Resolve dependency -sources / -javadoc jars into the Gradle cache
+	$(GRADLEW) :server:downloadDependencySources
 
 # ---------------------------------------------------------------------------
 # Client (npm, modules/client — not wired into the Gradle build)

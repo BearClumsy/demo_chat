@@ -5,9 +5,12 @@
 ## Phase 1 — Local prototype
 
 - [x] docker-compose: **Postgres + Cassandra + Qdrant + Kafka** (`modules/server/src/main/resources/local/docker-compose.yml`)
-      — the original "Qdrant + Redis (Ollama on host)" assumption was superseded; there's no Redis or
-      Ollama in this project. Cassandra's heap is capped (`MAX_HEAP_SIZE`/`HEAP_NEWSIZE`) so it fits
-      alongside the other three services on a memory-constrained local Docker VM.
+      — the original "Qdrant + Redis (Ollama on host)" assumption was superseded: there's no Redis in
+      this project, and Ollama is no longer a host prerequisite — an `ollama` service (plus a one-shot
+      model-pull) gated behind the `offline` Compose profile (`make up-offline`) now backs the
+      `local,offline` Spring profile's no-AWS run; a plain `make up` is unchanged. Cassandra's heap is
+      capped (`MAX_HEAP_SIZE`/`HEAP_NEWSIZE`) so it fits alongside the other three services on a
+      memory-constrained local Docker VM.
 - [x] Backend skeleton — but as `chat/`, `user/`, `rag/`, `common/`, `config/` feature packages (see
       [backend.md](backend.md)), not the originally-planned `api`/`service`/`orchestration`/`domain`/
       `infrastructure` layered split. No `local` Spring Profile exists yet — one `application.properties`.
@@ -52,8 +55,8 @@ AWS credentials end-to-end.
       start a chat, `useChatStream` hook parsing the `token`/`done` SSE frames by hand since native
       `EventSource` can't POST or send an `Authorization` header). See
       [frontend-chat-mvp.md](frontend-chat-mvp.md) for the design decisions and known gaps (no chat
-      listing/restore endpoint, no lookup-by-login endpoint). **Not yet verified against a live backend**
-      — this machine has no AWS Bedrock credentials, so the backend can't boot to test against.
+      listing/restore endpoint, no lookup-by-login endpoint). Verifiable end-to-end without AWS since
+      the `local,offline` profile added (`make up-offline` + `make run-offline`); still no CI coverage.
 - [ ] Redis for dialogue state (instead of in-memory) — **superseded**: dialogue/chat state now lives in
       Cassandra, not Redis (see [overview.md](overview.md)).
 - [x] Output-side guardrail validation — `ResponseValidator` implemented: a groundedness check
@@ -81,6 +84,12 @@ is everything that needs one (open).
       Secrets have no defaults, so a missing one fails startup instead of falling back to a dev value.
       Staging/prod also cap actuator exposure to `health,info,metrics` and set
       `reindex-on-startup=false`. See [local-vs-aws.md](local-vs-aws.md).
+- [x] No-AWS local run — `application-offline.properties`, activated as `local,offline`
+      (`make run-offline`), points `spring.ai.model.{chat,embedding}` at Ollama instead of Bedrock so
+      the app boots with no AWS credentials (chat = `llama3.1`, embeddings = `nomic-embed-text`, 768-dim;
+      groundedness guardrail disabled since small local models are unreliable at the JSON verdict).
+      Ollama runs either as a native install or as the `offline`-profile compose service started by
+      `make up-offline`.
 - [x] The test suite runs anywhere — `DemoChatApplicationTests` was a bare `@SpringBootTest` that only
       passed against a running docker-compose stack plus AWS credentials. It now starts Postgres,
       Cassandra, and Qdrant as Testcontainers and stubs only the Bedrock `ChatModel`/`EmbeddingModel`

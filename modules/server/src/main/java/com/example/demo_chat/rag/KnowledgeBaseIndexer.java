@@ -1,5 +1,7 @@
 package com.example.demo_chat.rag;
 
+import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,8 +15,10 @@ import reactor.core.scheduler.Schedulers;
 
 /**
  * Pushes every {@link IntentDefinition} into the Qdrant {@code support_kb} collection on startup.
- * Document ids are the intent id, so re-running this on every restart just upserts the same points
- * rather than duplicating them.
+ * Document ids are a name-based UUID derived from the intent id (Qdrant requires point ids to be an
+ * unsigned integer or a UUID), so re-running this on every restart just upserts the same points
+ * rather than duplicating them. The intent id itself is kept in the {@code topic} metadata, which
+ * is what the pipeline reads back.
  *
  * <p>Staging/prod disable startup reindexing ({@code demo-chat.rag.reindex-on-startup=false}). The
  * Kubernetes bootstrap Job (see {@code infra/k8s/manifest-*.yaml}) instead starts the server image
@@ -59,10 +63,19 @@ public class KnowledgeBaseIndexer implements ApplicationRunner {
 
   private Document toDocument(IntentDefinition intent) {
     return Document.builder()
-        .id(intent.intentId())
+        .id(deterministicId(intent.intentId()))
         .text(intent.knowledgeSnippet())
         .metadata("topic", intent.intentId())
         .metadata("allowed", intent.allowed())
         .build();
+  }
+
+  /**
+   * Maps an intent id to a stable name-based (v3) UUID. Qdrant point ids must be an unsigned
+   * integer or a UUID, so the intent id can't be used verbatim; deriving it keeps re-indexing
+   * idempotent.
+   */
+  private static String deterministicId(String intentId) {
+    return UUID.nameUUIDFromBytes(intentId.getBytes(StandardCharsets.UTF_8)).toString();
   }
 }

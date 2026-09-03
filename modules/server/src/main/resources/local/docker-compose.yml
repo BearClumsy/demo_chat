@@ -69,7 +69,35 @@ services:
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
+  # Local, no-AWS chat + embedding provider for the `offline` Spring profile (`make run-offline`).
+  # Gated behind the `offline` Compose profile so plain `make up` (the Bedrock path) never starts it.
+  # `make up-offline` starts it AND pulls the models synchronously (the pull can't be a compose
+  # sidecar — `up -d` would return before it finishes and `make run-offline` would race the app
+  # against a half-downloaded model, failing collection sizing with a 404).
+  #
+  # On Apple Silicon this runs CPU-only — Docker Desktop / Colima do not pass the Metal GPU through
+  # to Linux containers — so it is slower than a native Ollama install, which stays supported. The
+  # llama3.1 (8B) model also wants ~6-8 GB RAM on top of Postgres/Cassandra/Qdrant/Kafka; raise the
+  # Docker VM memory if it gets OOM-killed, or switch the offline profile to a smaller model
+  # (e.g. llama3.2:3b in application-offline.properties + the `make up-offline` pull commands).
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["offline"]
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-models:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 10s
+      retries: 15
+
 volumes:
   postgres-data:
   cassandra-data:
   qdrant-data:
+  # Holds the pulled Ollama models. Compose-managed, so `make nuke` (`down -v`) wipes it too and the
+  # next `make up-offline` re-pulls (~5 GB). `make up-offline` blocks on that pull, so a fresh run is
+  # always in a working state even after a nuke.
+  ollama-models:
