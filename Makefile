@@ -80,6 +80,15 @@ build: ## Build the server (compiles + runs the tests)
 run: ## Run the server with the `local` profile (needs `make up` first)
 	$(GRADLEW) :server:bootRun
 
+.PHONY: run-offline
+run-offline: ## Run the server with no AWS — local Ollama for chat + embeddings (needs `ollama serve` + `make ollama-pull`)
+	SPRING_PROFILES_ACTIVE=local,offline $(GRADLEW) :server:bootRun
+
+.PHONY: ollama-pull
+ollama-pull: ## Pull the Ollama models the `offline` profile expects
+	ollama pull llama3.1
+	ollama pull nomic-embed-text
+
 .PHONY: test
 test: ## Run all server tests
 	$(GRADLEW) :server:test

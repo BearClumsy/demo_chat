@@ -33,6 +33,19 @@ services:
       timeout: 10s
       retries: 15
 
+  # Cassandra has no migration tool and spring.cassandra.schema-action only creates tables, not the
+  # keyspace itself — so the app fails to start against a fresh volume without this. Idempotent,
+  # runs once, exits.
+  cassandra-init:
+    image: cassandra:5
+    depends_on:
+      cassandra:
+        condition: service_healthy
+    restart: "no"
+    command: >
+      cqlsh cassandra -e
+      "CREATE KEYSPACE IF NOT EXISTS demo_chat WITH replication = {'class':'SimpleStrategy','replication_factor':1};"
+
   qdrant:
     image: qdrant/qdrant:latest
     ports:

@@ -97,6 +97,8 @@ Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tas
 
 - Build: `./gradlew :server:build`
 - Run the app: `./gradlew :server:bootRun`
+- Run the app with no AWS: `make run-offline` (profile `local,offline` — chat + embeddings come from a
+  local Ollama server on `:11434`; run `ollama serve` and `make ollama-pull` first)
 - Run all tests: `./gradlew :server:test`
 - Run a single test class: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests"`
 - Run a single test method: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests.contextLoads"`
@@ -245,6 +247,10 @@ Configuration is split by Spring Profile under `src/main/resources/`:
   default** so a missing one fails startup instead of falling back to a dev value. These two files
   duplicate each other on purpose: `spring.config.import` of a shared file does not take effect from a
   profile-specific document, and it fails silently by falling back to Boot's defaults.
+- `application-offline.properties` — deltas only, activated as `local,offline` (`make run-offline`).
+  Points `spring.ai.model.{chat,embedding}` at a local Ollama server instead of Bedrock, so the app
+  runs with no AWS credentials. `application.properties` now pins both selectors to the Bedrock values
+  explicitly (needed once a second model starter is on the classpath).
 
 When adding a connection setting, add it to all three environment files, not just `application.properties`.
 
@@ -265,7 +271,12 @@ this for both the `support_kb` and `semantic_cache` stores.
 - **Cassandra has no migration tool.** `spring.cassandra.schema-action` is `create-if-not-exists`
   locally and in tests but defaults to `none` in staging/prod (`${CASSANDRA_SCHEMA_ACTION:none}`), so
   new Cassandra tables need DDL applied by hand outside the app. Flyway covers Postgres only (currently
-  a single `V1__create_users_table.sql`).
+  a single `V1__create_users_table.sql`). `schema-action` also does **not** create the *keyspace* —
+  locally the `cassandra-init` one-shot service in `local/docker-compose.yml` does that on `make up`;
+  staging/prod need it created out of band.
+- **`offline` profile uses 768-dim embeddings** (`nomic-embed-text`) vs Bedrock Titan's 1024. Switching
+  a machine between `make run` and `make run-offline` against the same Qdrant volume fails on insert
+  (collection dimension mismatch) — `make nuke && make up` between the two, or the KB reindex errors.
 - **Flyway is configured in two places and they must agree.** Boot migrates on startup from
   `spring.flyway.schemas` in the profile properties; the `flyway {}` block in
   `modules/server/build.gradle` backs the standalone `flywayMigrate`/`flywayInfo` tasks. If the
