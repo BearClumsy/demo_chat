@@ -21,7 +21,7 @@ COMPOSE = $(COMPOSE_BIN) -f modules/server/src/main/resources/local/docker-compo
 
 .PHONY: help
 help: ## List the available targets
-	@grep -hE '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) \
+	@grep -hE '^[a-zA-Z0-9_-]+:.*?## ' $(MAKEFILE_LIST) \
 		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-18s\033[0m %s\n", $$1, $$2}'
 
 # ---------------------------------------------------------------------------
@@ -171,6 +171,52 @@ tf-lint: ## Lint the Terraform (fmt check + validate staging/prod + tflint)
 .PHONY: tf-fmt
 tf-fmt: ## Rewrite the Terraform files to canonical format
 	$(TF_BIN) fmt -recursive $(TF_DIR)
+
+# ---------------------------------------------------------------------------
+# Kubernetes (infra/k8s — lint only, never applied; see docs/wiki/Plan/kubernetes.md)
+# ---------------------------------------------------------------------------
+#
+# Needs `kubeconform`, `kubectl` and `shellcheck` on PATH. Mirrors the manifests-lint workflow.
+# No cluster and no AWS credentials are involved.
+
+K8S_DIR   := infra/k8s
+ECR_REGISTRY ?= REGISTRY_UNSET
+
+.PHONY: k8s-lint
+k8s-lint: ## Lint the k8s manifests (kubeconform + kubectl dry-run + shellcheck)
+	kubeconform -strict -ignore-missing-schemas -summary $(K8S_DIR)/manifest-staging.yaml $(K8S_DIR)/manifest-prod.yaml
+	kubectl apply --dry-run=client -f $(K8S_DIR)/manifest-staging.yaml
+	kubectl apply --dry-run=client -f $(K8S_DIR)/manifest-prod.yaml
+	shellcheck $(K8S_DIR)/addons/install.sh
+
+.PHONY: k8s-render-staging
+k8s-render-staging: ## Substitute the image placeholders with dummies and re-check the YAML
+	sed -e 's#IMAGE_PLACEHOLDER_SERVER#demo-chat-server:dev#' -e 's#IMAGE_PLACEHOLDER_CLIENT#demo-chat-client:dev#' \
+		$(K8S_DIR)/manifest-staging.yaml | kubeconform -strict -ignore-missing-schemas -summary -
+
+.PHONY: k8s-render-prod
+k8s-render-prod: ## Substitute the image placeholders with dummies and re-check the YAML
+	sed -e 's#IMAGE_PLACEHOLDER_SERVER#demo-chat-server:dev#' -e 's#IMAGE_PLACEHOLDER_CLIENT#demo-chat-client:dev#' \
+		$(K8S_DIR)/manifest-prod.yaml | kubeconform -strict -ignore-missing-schemas -summary -
+
+.PHONY: k8s-addons
+k8s-addons: ## Install the cluster add-ons (Calico, metrics-server, ingress-nginx, NTH) — needs kube context
+	$(K8S_DIR)/addons/install.sh
+
+.PHONY: k8s-apply-staging
+k8s-apply-staging: ## BREAK-GLASS: kubectl apply the staging manifest against the current context
+	kubectl apply -f $(K8S_DIR)/manifest-staging.yaml
+
+.PHONY: k8s-apply-prod
+k8s-apply-prod: ## BREAK-GLASS: kubectl apply the prod manifest against the current context
+	kubectl apply -f $(K8S_DIR)/manifest-prod.yaml
+
+.PHONY: docker-push
+docker-push: docker ## Tag both images with $(IMAGE_TAG) and push to $(ECR_REGISTRY)
+	docker tag demo-chat-server:$(IMAGE_TAG) $(ECR_REGISTRY)/demo-chat-server:$(IMAGE_TAG)
+	docker tag demo-chat-client:$(IMAGE_TAG) $(ECR_REGISTRY)/demo-chat-client:$(IMAGE_TAG)
+	docker push $(ECR_REGISTRY)/demo-chat-server:$(IMAGE_TAG)
+	docker push $(ECR_REGISTRY)/demo-chat-client:$(IMAGE_TAG)
 
 # ---------------------------------------------------------------------------
 # Aggregate

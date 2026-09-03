@@ -1,0 +1,137 @@
+# Deploy to prod on a release tag. Same shape as deploy-staging with: a manual-approval gate
+# (GitHub Environment "production"), a blocking Trivy scan, the release tag as the image tag, and
+# an automatic rollback (SSM) if the smoke test fails.
+#
+# SKELETON — never run. The cluster and the `vars` do not exist yet. Gated only by manifests-lint.
+#
+# Required GitHub Environment "production" configuration (from `terraform output`, prod env):
+#   vars.AWS_REGION  vars.AWS_DEPLOY_ROLE_ARN
+#   vars.ECR_SERVER_REPO  vars.ECR_CLIENT_REPO
+#   vars.K8S_DEPLOY_BUCKET  vars.SSM_DEPLOY_DOCUMENT  vars.SSM_ROLLBACK_DOCUMENT
+#   vars.RDS_ENDPOINT  vars.QDRANT_HOST  vars.KAFKA_BOOTSTRAP_SERVERS
+#   vars.SECRET_ARN_POSTGRES_PASSWORD  vars.SECRET_ARN_CASSANDRA_USER
+#   vars.SECRET_ARN_CASSANDRA_PASSWORD vars.SECRET_ARN_QDRANT_API_KEY
+#   vars.CHAT_HOSTNAME
+name: deploy-prod
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION }}
+      IMAGE_TAG: ${{ github.ref_name }}
+      SERVER_IMAGE: ${{ vars.ECR_SERVER_REPO }}:${{ github.ref_name }}
+      CLIENT_IMAGE: ${{ vars.ECR_CLIENT_REPO }}:${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Log in to Amazon ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and push the server image
+        run: |
+          docker build -f modules/server/Dockerfile -t "$SERVER_IMAGE" .
+          docker push "$SERVER_IMAGE"
+
+      - name: Build and push the client image
+        run: |
+          docker build -t "$CLIENT_IMAGE" modules/client
+          docker push "$CLIENT_IMAGE"
+
+      - name: Scan the server image (Trivy, blocking on CRITICAL)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          image-ref: ${{ env.SERVER_IMAGE }}
+          severity: CRITICAL
+          exit-code: "1"
+
+      - name: Render the manifest
+        run: |
+          mkdir -p out
+          sed \
+            -e "s#IMAGE_PLACEHOLDER_SERVER#${SERVER_IMAGE}#g" \
+            -e "s#IMAGE_PLACEHOLDER_CLIENT#${CLIENT_IMAGE}#g" \
+            -e "s#REPLACE_rds_endpoint#${{ vars.RDS_ENDPOINT }}#g" \
+            -e "s#REPLACE_qdrant_private_dns#${{ vars.QDRANT_HOST }}#g" \
+            -e "s#REPLACE_msk_bootstrap_brokers_tls#${{ vars.KAFKA_BOOTSTRAP_SERVERS }}#g" \
+            -e "s#chat.demo-chat.example.com#${{ vars.CHAT_HOSTNAME }}#g" \
+            infra/k8s/manifest-prod.yaml > out/manifest.yaml
+
+      - name: Render the Secret from Secrets Manager
+        run: |
+          get() { aws secretsmanager get-secret-value --secret-id "$1" --query SecretString --output text; }
+          kubectl create secret generic demo-chat-secrets \
+            --namespace demo-chat \
+            --from-literal=POSTGRES_PASSWORD="$(get "${{ vars.SECRET_ARN_POSTGRES_PASSWORD }}")" \
+            --from-literal=CASSANDRA_USER="$(get "${{ vars.SECRET_ARN_CASSANDRA_USER }}")" \
+            --from-literal=CASSANDRA_PASSWORD="$(get "${{ vars.SECRET_ARN_CASSANDRA_PASSWORD }}")" \
+            --from-literal=QDRANT_API_KEY="$(get "${{ vars.SECRET_ARN_QDRANT_API_KEY }}")" \
+            --dry-run=client -o yaml > out/secret.yaml
+
+      - name: Stage rendered manifests in S3
+        run: |
+          aws s3 cp out/manifest.yaml "s3://${{ vars.K8S_DEPLOY_BUCKET }}/deploy/${IMAGE_TAG}/manifest.yaml"
+          aws s3 cp out/secret.yaml   "s3://${{ vars.K8S_DEPLOY_BUCKET }}/deploy/${IMAGE_TAG}/secret.yaml"
+
+      - name: Resolve a control-plane node
+        id: node
+        run: |
+          instance_id="$(aws ssm describe-instance-information \
+            --filters "Key=tag:k8s-role,Values=control-plane" "Key=PingStatus,Values=Online" \
+            --query 'InstanceInformationList[0].InstanceId' --output text)"
+          test "$instance_id" != "None" || { echo "no online control-plane node"; exit 1; }
+          echo "id=$instance_id" >> "$GITHUB_OUTPUT"
+
+      - name: Apply via SSM
+        run: |
+          command_id="$(aws ssm send-command \
+            --document-name "${{ vars.SSM_DEPLOY_DOCUMENT }}" \
+            --instance-ids "${{ steps.node.outputs.id }}" \
+            --parameters "S3Uri=s3://${{ vars.K8S_DEPLOY_BUCKET }}/deploy/${IMAGE_TAG}/" \
+            --output-s3-bucket-name "${{ vars.K8S_DEPLOY_BUCKET }}" \
+            --output-s3-key-prefix "ssm-out/${IMAGE_TAG}" \
+            --query 'Command.CommandId' --output text)"
+          aws ssm wait command-executed --command-id "$command_id" --instance-id "${{ steps.node.outputs.id }}" || true
+          aws ssm get-command-invocation --command-id "$command_id" --instance-id "${{ steps.node.outputs.id }}" \
+            --query 'StandardOutputContent' --output text || true
+          status="$(aws ssm get-command-invocation --command-id "$command_id" --instance-id "${{ steps.node.outputs.id }}" --query 'Status' --output text)"
+          test "$status" = "Success"
+
+      - name: Smoke test
+        id: smoke
+        run: |
+          base="https://${{ vars.CHAT_HOSTNAME }}"
+          curl -fsS "$base/actuator/health" | grep -q '"status":"UP"'
+          curl -fsS -N --max-time 20 "$base/api/actuator/health" >/dev/null
+
+      - name: Roll back on smoke-test failure
+        if: failure() && steps.smoke.conclusion == 'failure'
+        run: |
+          command_id="$(aws ssm send-command \
+            --document-name "${{ vars.SSM_ROLLBACK_DOCUMENT }}" \
+            --instance-ids "${{ steps.node.outputs.id }}" \
+            --query 'Command.CommandId' --output text)"
+          aws ssm wait command-executed --command-id "$command_id" --instance-id "${{ steps.node.outputs.id }}" || true
+          aws ssm get-command-invocation --command-id "$command_id" --instance-id "${{ steps.node.outputs.id }}" \
+            --query 'StandardOutputContent' --output text || true

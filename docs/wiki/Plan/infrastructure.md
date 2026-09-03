@@ -1,16 +1,20 @@
 # AWS Infrastructure
 
-[← Back to README](README.md) · [Local ↔ AWS mapping](local-vs-aws.md)
+[← Back to README](README.md) · [Local ↔ AWS mapping](local-vs-aws.md) · [Kubernetes layer](kubernetes.md)
+
+> **Compute pivot (2026-09-03).** The app now deploys to **self-managed Kubernetes (kubeadm) on
+> EC2** behind the NGINX Ingress Controller, not ECS Fargate — see [kubernetes.md](kubernetes.md).
+> The Terraform gained `modules/{k8s-cluster, alb-k8s, ecr, github-oidc}` and the `envs/*` were
+> rewired; `ecs-service`, `alb` and `bedrock-iam` are retained lint-clean but no longer
+> instantiated. The ECS-shaped diagram and notes below are kept as background; the "ECS Fargate"
+> rows now read as "kubeadm worker nodes".
 
 **Status:** planned, not yet provisioned. A **lint-only Terraform skeleton now exists** under
-`infra/terraform/` — `modules/{vpc, alb, ecs-service, rds-postgres, keyspaces, qdrant-ec2, msk,
-bedrock-iam}` plus duplicated `envs/{staging, prod}` roots, CI-linted by the `terraform-lint`
-workflow (`fmt` + `validate` + `tflint`, no AWS credentials). Nothing is applied: there is no AWS
-account, `terraform plan`/`apply` have never run, the S3/DynamoDB state backend is commented out,
-and AWS-specific values (AMI ids, ACM cert ARNs, Secrets Manager ARNs) are `TODO` variables. The
-diagram and module notes below are the target design; `infra/terraform/README.md` tracks what the
-skeleton does and does not cover yet. The AWS deployment itself is still future work, same as
-[github-actions.md](github-actions.md).
+`infra/terraform/`, CI-linted by the `terraform-lint` workflow (`fmt` + `validate` + `tflint`, no
+AWS credentials). Nothing is applied: there is no AWS account, `terraform plan`/`apply` have never
+run, the S3/DynamoDB state backend is commented out, and AWS-specific values (AMI ids, ACM cert
+ARNs, Secrets Manager ARNs, `github_org`, `admin_cidr`) are `TODO` variables. `infra/terraform/README.md`
+tracks what the skeleton does and does not cover yet.
 
 ## Diagram (high level)
 

@@ -145,14 +145,45 @@ No test runner is configured for the client yet.
 
 - `infra/terraform/` holds the AWS staging/prod IaC. It is **lint-only** — there is no AWS account
   yet, so `terraform plan`/`apply` have never run; resource shapes and the env-var wiring are meant
-  to be right but AWS-specific values (AMI ids, cert/secret ARNs) are `TODO` variables.
+  to be right but AWS-specific values (AMI ids, cert/secret ARNs, `github_org`, `admin_cidr`) are
+  `TODO` variables.
 - Lint it the way CI does: `make tf-lint` (needs `terraform` or `tofu` + `tflint` on PATH). It runs
   `fmt -check`, `validate` on `envs/staging` and `envs/prod` with `init -backend=false`, and
   `tflint --recursive`. No AWS credentials are used. The `terraform-lint` GitHub workflow
   (`.github/workflows/terraform-lint.yml`, path-filtered to `infra/**`) runs the same steps.
 - `envs/staging` and `envs/prod` are duplicated on purpose (same rationale as the duplicated
   `application-{staging,prod}.properties`). Each env's `container_env` output must stay in sync with
-  the matching `application-*.properties` env-var contract — see `infra/terraform/README.md`.
+  the matching `application-*.properties` env-var contract **and** the `demo-chat-config` ConfigMap
+  in `infra/k8s/manifest-*.yaml` — see `infra/terraform/README.md`.
+- **Deploy target is Kubernetes (kubeadm on EC2), not ECS.** `envs/*` call `k8s-cluster`,
+  `alb-k8s`, `ecr`, `github-oidc` (plus `vpc`/`rds-postgres`/`keyspaces`/`qdrant-ec2`/`msk`). The
+  `ecs-service`, `alb` and `bedrock-iam` modules are **retained as lint-clean references** but no
+  longer instantiated (each has a README saying so) — do not delete or gut them (`tflint` would
+  flag `terraform_unused_declarations`).
+
+### Infrastructure (Kubernetes)
+
+- `infra/k8s/` holds the app manifests — one consolidated multi-doc file per env
+  (`manifest-{staging,prod}.yaml`, deliberately duplicated) plus `addons/` (pinned Calico /
+  metrics-server / ingress-nginx / node-termination-handler installs). Also **lint-only** — no
+  cluster. See `docs/wiki/Plan/kubernetes.md`.
+- Lint the way CI does: `make k8s-lint` (needs `kubeconform` + `kubectl` + `shellcheck`). The
+  `manifests-lint` workflow (`.github/workflows/manifests-lint.yml`, path `infra/k8s/**`) runs
+  `kubeconform` + `kubectl --dry-run=client` + `shellcheck` on the add-on/user-data scripts +
+  `actionlint` on the deploy workflows. No AWS credentials.
+- `deploy-staging.yml` (push to `main`) and `deploy-prod.yml` (tag `v*`, `environment: production`
+  approval) build+push images to ECR via GitHub OIDC, render the manifest + Secret, stage them in
+  S3, and `kubectl apply` on a control-plane node through **SSM Run Command** — CI never opens a
+  connection to kube-apiserver. Both workflows are skeletons: they reference GitHub Environment
+  `vars.*` that only exist once Terraform is applied.
+- Image placeholders `IMAGE_PLACEHOLDER_SERVER` / `_CLIENT` and ConfigMap `REPLACE_*` values are
+  substituted at deploy time. The `Secret` object ships with `REPLACE_AT_DEPLOY` placeholders on
+  purpose — a deploy that skips the secret-render step then fails fast.
+- The client image switched to `nginxinc/nginx-unprivileged` (listens on 8080) and the server
+  Dockerfile pins uid 10001, so the `demo-chat` namespace can run PodSecurity `restricted`.
+- The KB bootstrap `Job` runs the server image with `--reindex-and-exit` (new one-shot mode in
+  `KnowledgeBaseIndexer`) to seed Qdrant `support_kb`, since staging/prod keep
+  `reindex-on-startup=false`.
 
 ## Toolchain
 

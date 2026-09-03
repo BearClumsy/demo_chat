@@ -1,6 +1,6 @@
 # Local ↔ AWS: Component Mapping
 
-[← Back to README](README.md) · [AWS infrastructure](infrastructure.md)
+[← Back to README](README.md) · [AWS infrastructure](infrastructure.md) · [Kubernetes layer](kubernetes.md)
 
 **Status:** the local stack described here matches `modules/server/src/main/resources/local/docker-compose.yml` today.
 Spring Profiles now exist (see below), so the *configuration* side of local ↔ AWS switching is done;
@@ -14,7 +14,7 @@ the AWS resources themselves are still planned — no Terraform yet.
 | LLM inference | Amazon Bedrock (no local/offline provider — there's no Ollama or other local-model dependency in this project) | Amazon Bedrock (managed) |
 | Chat history / dialogue state | Cassandra in a container | Amazon Keyspaces (Cassandra-compatible, managed) or self-managed Cassandra on EC2 |
 | User accounts | Postgres in a container (R2DBC app access, JDBC/Flyway for migrations) | RDS for PostgreSQL |
-| Application | Spring Boot in a container | ECS Fargate (or EKS), behind an ALB |
+| Application | Spring Boot in a container | Deployment on a self-managed **kubeadm cluster on EC2**, behind ingress-nginx + an ALB (see [kubernetes.md](kubernetes.md)) |
 | Messaging | Kafka in a container | Amazon MSK (planned — not yet used by any code) |
 | Object storage | not used yet | Amazon S3 (planned) |
 | Secrets/config | `application-local.properties` (hardcoded dev values) | `application-{staging,prod}.properties`, every value from an env var — AWS Secrets Manager + Parameter Store supply them (planned) |

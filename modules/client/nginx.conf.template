@@ -1,12 +1,20 @@
 # Rendered by the nginx image's entrypoint (envsubst over /etc/nginx/templates/*.template), so
-# BACKEND_URL can point at the backend container, an ALB, or localhost without rebuilding the image.
+# BACKEND_URL can point at the backend container, a Service, an ALB, or localhost without
+# rebuilding the image.
 
 server {
-    listen 80;
+    listen 8080;
     server_name _;
 
     root /usr/share/nginx/html;
     index index.html;
+
+    # Liveness/readiness probe target (Kubernetes, Docker HEALTHCHECK). Cheap, no logging.
+    location = /healthz {
+        access_log off;
+        add_header Content-Type text/plain;
+        return 200 "ok\n";
+    }
 
     # The client is a single-page app: unknown paths are routes, not missing files.
     location / {

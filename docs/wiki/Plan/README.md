@@ -36,11 +36,14 @@ replies) is also implemented, though not yet verified against a live backend —
 - [Local ↔ AWS: component mapping](local-vs-aws.md) — includes the Spring Profile split (implemented)
 
 ### AWS
-- [AWS infrastructure (network, services, Terraform)](infrastructure.md) — *planned, not yet provisioned*
+- [AWS infrastructure (network, services, Terraform)](infrastructure.md) — *lint-only skeleton, not yet provisioned*
+- [Kubernetes deploy layer (kubeadm on EC2)](kubernetes.md) — *lint-only skeleton (2026-09-03); the
+  chosen compute model, replacing ECS Fargate*
 
 ### CI/CD
 - [GitHub Actions: build and deploy pipelines](github-actions.md) — CI implemented (`backend-ci`,
-  `frontend-ci`, `knowledge-base-lint`); the deploy workflows are *planned*
+  `frontend-ci`, `knowledge-base-lint`, `terraform-lint`, `manifests-lint`); `deploy-staging` /
+  `deploy-prod` exist as skeletons
 
 ### Plan
 - [Phased implementation roadmap](roadmap.md)

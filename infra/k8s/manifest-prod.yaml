@@ -1,0 +1,525 @@
+# demo_chat — prod (kubeadm on EC2, behind ingress-nginx + an ALB).
+#
+# Duplicated on purpose from manifest-staging.yaml — same rationale as
+# application-{staging,prod}.properties and infra/terraform/envs/{staging,prod}. Divergences from
+# staging: replica counts, HPA bounds, resource requests, and the Ingress host. (The log level
+# lives in application-prod.properties, not here.)
+#
+# Apply: the deploy workflow renders IMAGE_PLACEHOLDER_* + the Secret and runs
+#   kubectl apply -f manifest-prod.yaml
+# on a control-plane node via SSM (see infra/k8s/README.md). Add-ons (Calico, ingress-nginx,
+# metrics-server, ...) must already be installed — infra/k8s/addons/.
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo-chat
+  labels:
+    app.kubernetes.io/part-of: demo-chat
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/enforce-version: latest
+    pod-security.kubernetes.io/warn: restricted
+    pod-security.kubernetes.io/audit: restricted
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: demo-chat-app
+value: 100000
+globalDefault: false
+description: "demo_chat server and client pods — evicted after cluster add-ons, before batch jobs."
+---
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: demo-chat-batch
+value: 10000
+globalDefault: false
+description: "demo_chat one-shot jobs (knowledge-base bootstrap) — first to be evicted under pressure."
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: demo-chat
+  namespace: demo-chat
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-chat-config
+  namespace: demo-chat
+data:
+  # Every key mirrors infra/terraform/envs/prod container_env and
+  # modules/server/src/main/resources/application-prod.properties. Non-secret only.
+  SPRING_PROFILES_ACTIVE: "prod"
+  POSTGRES_HOST: "REPLACE_rds_endpoint"
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: "demo_chat"
+  POSTGRES_USER: "demo_chat"
+  CASSANDRA_CONTACT_POINTS: "cassandra.eu-central-1.amazonaws.com"
+  CASSANDRA_PORT: "9142"
+  CASSANDRA_LOCAL_DATACENTER: "eu-central-1"
+  CASSANDRA_KEYSPACE: "demo_chat"
+  QDRANT_HOST: "REPLACE_qdrant_private_dns"
+  QDRANT_PORT: "6334"
+  QDRANT_USE_TLS: "false"
+  QDRANT_INITIALIZE_SCHEMA: "false"
+  KAFKA_BOOTSTRAP_SERVERS: "REPLACE_msk_bootstrap_brokers_tls"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-chat-secrets
+  namespace: demo-chat
+  annotations:
+    demo-chat/managed-by: "deploy workflow — values are read from AWS Secrets Manager and rendered at deploy time"
+type: Opaque
+stringData:
+  # PLACEHOLDERS. The deploy workflow overwrites this object with real values via
+  # `kubectl create secret generic demo-chat-secrets --from-literal=... --dry-run=client -o yaml`.
+  # Leaving the placeholders is a safety net: the app has no defaults for these, so a deploy that
+  # skips the secret-render step fails fast and visibly instead of running with a fake password.
+  POSTGRES_PASSWORD: "REPLACE_AT_DEPLOY"
+  CASSANDRA_USER: "REPLACE_AT_DEPLOY"
+  CASSANDRA_PASSWORD: "REPLACE_AT_DEPLOY"
+  QDRANT_API_KEY: "REPLACE_AT_DEPLOY"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-chat-server
+  namespace: demo-chat
+  labels:
+    app.kubernetes.io/name: demo-chat-server
+spec:
+  replicas: 3
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: demo-chat-server
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: demo-chat-server
+        app.kubernetes.io/part-of: demo-chat
+    spec:
+      serviceAccountName: demo-chat
+      priorityClassName: demo-chat-app
+      terminationGracePeriodSeconds: 300
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: demo-chat-server
+      containers:
+        - name: server
+          image: IMAGE_PLACEHOLDER_SERVER
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: demo-chat-config
+            - secretRef:
+                name: demo-chat-secrets
+          startupProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: http
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 6
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: "1"
+              memory: 1536Mi
+            limits:
+              cpu: "2"
+              memory: 3Gi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-chat-server
+  namespace: demo-chat
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: demo-chat-server
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-chat-client
+  namespace: demo-chat
+  labels:
+    app.kubernetes.io/name: demo-chat-client
+spec:
+  replicas: 2
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: demo-chat-client
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: demo-chat-client
+        app.kubernetes.io/part-of: demo-chat
+    spec:
+      serviceAccountName: demo-chat
+      priorityClassName: demo-chat-app
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 101
+        runAsGroup: 101
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: client
+          image: IMAGE_PLACEHOLDER_CLIENT
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: BACKEND_URL
+              value: "http://demo-chat-server:8080"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 15
+            timeoutSeconds: 3
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: "50m"
+              memory: 64Mi
+            limits:
+              cpu: "200m"
+              memory: 128Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: cache
+              mountPath: /var/cache/nginx
+            - name: run
+              mountPath: /var/run
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: cache
+          emptyDir: {}
+        - name: run
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-chat-client
+  namespace: demo-chat
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: demo-chat-client
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-chat-web
+  namespace: demo-chat
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: chat.demo-chat.example.com # REPLACE with the real production hostname
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: demo-chat-client
+                port:
+                  name: http
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-chat-api
+  namespace: demo-chat
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: chat.demo-chat.example.com # REPLACE with the real production hostname
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: demo-chat-server
+                port:
+                  name: http
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: demo-chat-server
+  namespace: demo-chat
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: demo-chat-server
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: demo-chat-client
+  namespace: demo-chat
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: demo-chat-client
+  minReplicas: 2
+  maxReplicas: 4
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: demo-chat-server
+  namespace: demo-chat
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: demo-chat-server
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: demo-chat-client
+  namespace: demo-chat
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: demo-chat-client
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress
+  namespace: demo-chat
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-nginx
+  namespace: demo-chat
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/part-of: demo-chat
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ingress-nginx
+      ports:
+        - protocol: TCP
+          port: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress
+  namespace: demo-chat
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/part-of: demo-chat
+  policyTypes:
+    - Egress
+  egress:
+    - to:
+        - namespaceSelector: {}
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    - to:
+        - ipBlock:
+            cidr: 10.30.0.0/16
+      ports:
+        - protocol: TCP
+          port: 5432
+        - protocol: TCP
+          port: 9142
+        - protocol: TCP
+          port: 6334
+        - protocol: TCP
+          port: 9094
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+      ports:
+        - protocol: TCP
+          port: 443
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: demo-chat-kb-bootstrap
+  namespace: demo-chat
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: 600
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: demo-chat-kb-bootstrap
+        app.kubernetes.io/part-of: demo-chat
+    spec:
+      serviceAccountName: demo-chat
+      priorityClassName: demo-chat-batch
+      restartPolicy: Never
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: reindex
+          image: IMAGE_PLACEHOLDER_SERVER
+          args: ["--reindex-and-exit"]
+          envFrom:
+            - configMapRef:
+                name: demo-chat-config
+            - secretRef:
+                name: demo-chat-secrets
+          env:
+            - name: QDRANT_INITIALIZE_SCHEMA
+              value: "true"
+            - name: DEMO_CHAT_RAG_REINDEX_ON_STARTUP
+              value: "true"
+          resources:
+            requests:
+              cpu: "1"
+              memory: 1536Mi
+            limits:
+              cpu: "2"
+              memory: 3Gi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}

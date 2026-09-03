@@ -1,0 +1,170 @@
+#!/usr/bin/env bash
+# Control-plane node bootstrap. Rendered by Terraform templatefile(); ${...} is a Terraform
+# interpolation, $${...} is a literal shell brace expansion.
+set -euxo pipefail
+
+AWS_REGION="${aws_region}"
+CLUSTER_NAME="${cluster_name}"
+SSM_PREFIX="${ssm_prefix}"
+K8S_VERSION="${kubernetes_version}"
+API_ENDPOINT="${api_endpoint}"
+POD_CIDR="${pod_cidr}"
+KMS_KEY_ID="${kms_key_id}"
+SNAPSHOT_BUCKET="${snapshot_bucket}"
+SINGLE_CP="${single_control_plane}"
+
+export DEBIAN_FRONTEND=noninteractive
+INSTANCE_ID="$(curl -s http://169.254.169.254/latest/meta-data/instance-id)"
+
+# --- 1. Base packages: containerd, kubeadm/kubelet/kubectl (held), chrony, awscli -----------
+/opt/bootstrap/install-kube.sh "$K8S_VERSION"          # baked into the AMI (see infra/k8s/addons/README.md)
+systemctl enable --now chrony containerd
+
+# Dedicated etcd disk.
+if ! blkid /dev/xvdf; then mkfs.ext4 -L etcd /dev/xvdf; fi
+mkdir -p /var/lib/etcd
+grep -q '/var/lib/etcd' /etc/fstab || echo 'LABEL=etcd /var/lib/etcd ext4 defaults,nofail 0 2' >> /etc/fstab
+mount -a
+
+put_param() {  # name value  -- SecureString, KMS-encrypted, overwrite
+  aws ssm put-parameter --region "$AWS_REGION" --overwrite \
+    --name "$1" --type SecureString --key-id "$KMS_KEY_ID" --value "$2"
+}
+
+get_param() {  # name
+  aws ssm get-parameter --region "$AWS_REGION" --with-decryption \
+    --name "$1" --query Parameter.Value --output text 2>/dev/null || true
+}
+
+# --- 2. Seed election: first writer of init-lock (no --overwrite) runs kubeadm init ---------
+IS_SEED=0
+if aws ssm put-parameter --region "$AWS_REGION" --name "$SSM_PREFIX/init-lock" \
+      --type String --value "$INSTANCE_ID" 2>/dev/null; then
+  IS_SEED=1
+fi
+
+write_encryption_config() {
+  mkdir -p /etc/kubernetes/enc
+  KEY="$(head -c 32 /dev/urandom | base64)"
+  cat > /etc/kubernetes/enc/encryption-config.yaml <<EOF
+apiVersion: apiserver.config.k8s.io/v1
+kind: EncryptionConfiguration
+resources:
+  - resources: ["secrets"]
+    providers:
+      - aescbc:
+          keys:
+            - name: key1
+              secret: $KEY
+      - identity: {}
+EOF
+}
+
+if [ "$IS_SEED" = "1" ]; then
+  write_encryption_config
+  cat > /tmp/kubeadm-init.yaml <<EOF
+apiVersion: kubeadm.k8s.io/v1beta4
+kind: ClusterConfiguration
+clusterName: $CLUSTER_NAME
+controlPlaneEndpoint: "$API_ENDPOINT:6443"
+networking:
+  podSubnet: "$POD_CIDR"
+apiServer:
+  extraArgs:
+    - name: encryption-provider-config
+      value: /etc/kubernetes/enc/encryption-config.yaml
+  extraVolumes:
+    - name: enc
+      hostPath: /etc/kubernetes/enc
+      mountPath: /etc/kubernetes/enc
+      readOnly: true
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+EOF
+
+  kubeadm init --config /tmp/kubeadm-init.yaml --upload-certs
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+  # Publish join material.
+  WORKER_JOIN="$(kubeadm token create --ttl 24h --print-join-command)"
+  CERT_KEY="$(kubeadm init phase upload-certs --upload-certs 2>/dev/null | tail -1)"
+  CP_JOIN="$WORKER_JOIN --control-plane --certificate-key $CERT_KEY"
+  put_param "$SSM_PREFIX/worker-join-command" "$WORKER_JOIN"
+  put_param "$SSM_PREFIX/controlplane-join-command" "$CP_JOIN"
+  put_param "$SSM_PREFIX/bootstrap-complete" "$(date -u +%FT%TZ)"
+else
+  # Join as an additional control-plane node once the seed has published.
+  for _ in $(seq 1 60); do
+    CP_JOIN="$(get_param "$SSM_PREFIX/controlplane-join-command")"
+    [ -n "$CP_JOIN" ] && break
+    sleep 15
+  done
+  [ -n "$CP_JOIN" ] || { echo "controlplane-join-command never appeared" >&2; exit 1; }
+  eval "$CP_JOIN"
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+fi
+
+# --- 3. systemd timers: refresh join tokens + certificate-key, and snapshot etcd -----------
+cat > /usr/local/bin/k8s-refresh-join.sh <<EOF
+#!/usr/bin/env bash
+set -euo pipefail
+export KUBECONFIG=/etc/kubernetes/admin.conf
+WORKER_JOIN="\$(kubeadm token create --ttl 24h --print-join-command)"
+CERT_KEY="\$(kubeadm init phase upload-certs --upload-certs 2>/dev/null | tail -1)"
+aws ssm put-parameter --region "$AWS_REGION" --overwrite --type SecureString --key-id "$KMS_KEY_ID" \
+  --name "$SSM_PREFIX/worker-join-command" --value "\$WORKER_JOIN"
+aws ssm put-parameter --region "$AWS_REGION" --overwrite --type SecureString --key-id "$KMS_KEY_ID" \
+  --name "$SSM_PREFIX/controlplane-join-command" \
+  --value "\$WORKER_JOIN --control-plane --certificate-key \$CERT_KEY"
+EOF
+chmod +x /usr/local/bin/k8s-refresh-join.sh
+
+cat > /usr/local/bin/k8s-etcd-snapshot.sh <<EOF
+#!/usr/bin/env bash
+set -euo pipefail
+SNAP="/tmp/etcd-\$(date -u +%Y%m%dT%H%M%SZ).db"
+ETCDCTL_API=3 etcdctl --endpoints=https://127.0.0.1:2379 \
+  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+  --cert=/etc/kubernetes/pki/etcd/server.crt \
+  --key=/etc/kubernetes/pki/etcd/server.key \
+  snapshot save "\$SNAP"
+aws s3 cp "\$SNAP" "s3://$SNAPSHOT_BUCKET/etcd-snapshots/\$(hostname)/" --region "$AWS_REGION"
+rm -f "\$SNAP"
+EOF
+chmod +x /usr/local/bin/k8s-etcd-snapshot.sh
+
+for unit in k8s-refresh-join k8s-etcd-snapshot; do
+  cat > /etc/systemd/system/$unit.service <<EOF
+[Unit]
+Description=$unit
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/$unit.sh
+EOF
+done
+
+cat > /etc/systemd/system/k8s-refresh-join.timer <<EOF
+[Unit]
+Description=Refresh kubeadm join material every 6h
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=6h
+[Install]
+WantedBy=timers.target
+EOF
+
+cat > /etc/systemd/system/k8s-etcd-snapshot.timer <<EOF
+[Unit]
+Description=Snapshot etcd to S3 hourly
+[Timer]
+OnBootSec=15min
+OnUnitActiveSec=1h
+[Install]
+WantedBy=timers.target
+EOF
+
+systemctl daemon-reload
+systemctl enable --now k8s-refresh-join.timer k8s-etcd-snapshot.timer
+
+echo "control-plane bootstrap complete (seed=$IS_SEED single_cp=$SINGLE_CP)"

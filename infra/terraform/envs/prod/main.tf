@@ -7,9 +7,10 @@ locals {
   }
 
   # Non-secret container environment. Every key here must line up with a property in
-  # modules/server/src/main/resources/application-prod.properties. Secret values
-  # (POSTGRES_PASSWORD, CASSANDRA_PASSWORD, QDRANT_API_KEY) are injected separately from
-  # Secrets Manager via var.task_secret_arns and are intentionally absent.
+  # modules/server/src/main/resources/application-prod.properties and with the ConfigMap in
+  # infra/k8s/manifest-prod.yaml. Secret values (POSTGRES_PASSWORD, CASSANDRA_USER,
+  # CASSANDRA_PASSWORD, QDRANT_API_KEY) come from Secrets Manager, are rendered into the k8s
+  # Secret by the deploy workflow, and are intentionally absent here.
   plaintext_env = {
     SPRING_PROFILES_ACTIVE = "prod"
 
@@ -30,6 +31,13 @@ locals {
 
     KAFKA_BOOTSTRAP_SERVERS = module.msk.bootstrap_brokers_tls
   }
+
+  # OIDC subjects allowed to assume the deploy role: release tags and the production GitHub
+  # Environment (which carries the manual-approval gate).
+  github_deploy_subjects = [
+    "repo:${var.github_org}/demo_chat:ref:refs/tags/v*",
+    "repo:${var.github_org}/demo_chat:environment:production",
+  ]
 }
 
 module "vpc" {
@@ -44,23 +52,20 @@ module "vpc" {
   tags                = local.tags
 }
 
-module "alb" {
-  source = "../../modules/alb"
+module "ecr" {
+  source = "../../modules/ecr"
+
+  tags = local.tags
+}
+
+module "alb_k8s" {
+  source = "../../modules/alb-k8s"
 
   name              = local.name
   vpc_id            = module.vpc.vpc_id
   public_subnet_ids = module.vpc.public_subnet_ids
   certificate_arn   = var.acm_certificate_arn
   tags              = local.tags
-}
-
-module "bedrock_iam" {
-  source = "../../modules/bedrock-iam"
-
-  name        = local.name
-  aws_region  = var.region
-  secret_arns = values(var.task_secret_arns)
-  tags        = local.tags
 }
 
 module "rds_postgres" {
@@ -108,22 +113,51 @@ module "msk" {
   tags                   = local.tags
 }
 
-module "ecs_service" {
-  source = "../../modules/ecs-service"
+module "k8s_cluster" {
+  source = "../../modules/k8s-cluster"
 
-  name                  = local.name
-  aws_region            = var.region
-  vpc_id                = module.vpc.vpc_id
-  app_subnet_ids        = module.vpc.app_subnet_ids
-  alb_target_group_arn  = module.alb.target_group_arn
-  alb_security_group_id = module.alb.alb_security_group_id
-  image                 = var.server_image
-  desired_count         = var.desired_count
-  cpu                   = 2048
-  memory                = 4096
-  task_role_arn         = module.bedrock_iam.task_role_arn
-  execution_role_arn    = module.bedrock_iam.execution_role_arn
-  plaintext_env         = local.plaintext_env
-  secret_arns           = var.task_secret_arns
-  tags                  = local.tags
+  name       = local.name
+  env        = "prod"
+  aws_region = var.region
+
+  vpc_id           = module.vpc.vpc_id
+  vpc_cidr         = var.vpc_cidr
+  app_subnet_ids   = module.vpc.app_subnet_ids
+  app_subnet_cidrs = var.app_subnet_cidrs
+
+  node_ami_id        = var.node_ami_id
+  kubernetes_version = var.kubernetes_version
+  admin_cidr         = var.admin_cidr
+
+  control_plane_desired_count = 3
+  control_plane_instance_type = "m6i.large"
+  worker_instance_type        = "m6i.xlarge"
+  worker_desired_count        = 3
+  worker_min_size             = 3
+  worker_max_size             = 6
+
+  alb_security_group_id     = module.alb_k8s.alb_security_group_id
+  ingress_target_group_arns = [module.alb_k8s.target_group_arn]
+  ecr_repository_arns       = module.ecr.repository_arns
+
+  tags = local.tags
+}
+
+module "github_oidc" {
+  source = "../../modules/github-oidc"
+
+  name       = local.name
+  aws_region = var.region
+
+  # If staging and prod share one AWS account, set this to false and pass
+  # existing_oidc_provider_arn — the provider is an account-global singleton.
+  create_oidc_provider = true
+  allowed_subjects     = local.github_deploy_subjects
+
+  ecr_repository_arns = module.ecr.repository_arns
+  secret_arns         = values(var.task_secret_arns)
+  deploy_bucket_arn   = module.k8s_cluster.deploy_bucket_arn
+  ssm_document_arns   = module.k8s_cluster.ssm_document_arns
+
+  tags = local.tags
 }

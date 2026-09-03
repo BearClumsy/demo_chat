@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Worker node bootstrap. Rendered by Terraform templatefile(); ${...} is a Terraform
+# interpolation, everything $-prefixed without braces is a shell variable.
+set -euxo pipefail
+
+AWS_REGION="${aws_region}"
+SSM_PREFIX="${ssm_prefix}"
+K8S_VERSION="${kubernetes_version}"
+WORKER_ASG_NAME="${worker_asg_name}"
+
+export DEBIAN_FRONTEND=noninteractive
+TOKEN="$(curl -s -X PUT 'http://169.254.169.254/latest/api/token' -H 'X-aws-ec2-metadata-token-ttl-seconds: 300')"
+INSTANCE_ID="$(curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-id)"
+
+abandon_and_exit() {
+  aws autoscaling complete-lifecycle-action --region "$AWS_REGION" \
+    --lifecycle-hook-name wait-for-kubeadm-join --auto-scaling-group-name "$WORKER_ASG_NAME" \
+    --instance-id "$INSTANCE_ID" --lifecycle-action-result ABANDON || true
+  exit 1
+}
+trap abandon_and_exit ERR
+
+# --- 1. Base packages + ECR credential provider (needed on non-EKS AMIs) -------------------
+/opt/bootstrap/install-kube.sh "$K8S_VERSION"              # baked into the AMI
+/opt/bootstrap/install-ecr-credential-provider.sh          # writes /etc/kubernetes/image-credential-provider/
+systemctl enable --now chrony containerd
+
+# --- 2. Pull the worker join command from SSM (bounded wait for the seed) ------------------
+JOIN=""
+for _ in $(seq 1 60); do
+  JOIN="$(aws ssm get-parameter --region "$AWS_REGION" --with-decryption \
+    --name "$SSM_PREFIX/worker-join-command" --query Parameter.Value --output text 2>/dev/null || true)"
+  [ -n "$JOIN" ] && [ "$JOIN" != "None" ] && break
+  sleep 15
+done
+[ -n "$JOIN" ] && [ "$JOIN" != "None" ] || { echo "worker-join-command never appeared" >&2; abandon_and_exit; }
+
+eval "$JOIN --cri-socket unix:///run/containerd/containerd.sock"
+
+# --- 3. Release the ASG lifecycle hook so the node can enter the ingress target group ------
+trap - ERR
+aws autoscaling complete-lifecycle-action --region "$AWS_REGION" \
+  --lifecycle-hook-name wait-for-kubeadm-join --auto-scaling-group-name "$WORKER_ASG_NAME" \
+  --instance-id "$INSTANCE_ID" --lifecycle-action-result CONTINUE
+
+echo "worker bootstrap complete"

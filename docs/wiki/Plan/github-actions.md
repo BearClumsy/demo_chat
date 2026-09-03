@@ -1,11 +1,19 @@
 # CI/CD: GitHub Actions
 
-[← Back to README](README.md) · [AWS infrastructure](infrastructure.md)
+[← Back to README](README.md) · [AWS infrastructure](infrastructure.md) · [Kubernetes layer](kubernetes.md)
 
-**Status:** partially implemented. Four CI/lint workflows exist and run; the deploy workflows do not,
-because they need an AWS account and an ECR repository that don't exist yet (Phase 3b in
-[roadmap.md](roadmap.md)). `terraform-lint` is the AWS-credential-free half of the Terraform work —
-it lints the `infra/terraform/` skeleton but nothing is planned or applied.
+**Status:** partially implemented. Five CI/lint workflows exist and run: `backend-ci`,
+`frontend-ci`, `knowledge-base-lint`, `terraform-lint`, and (2026-09-03) **`manifests-lint`**
+(`kubeconform` + `kubectl --dry-run=client` + `shellcheck` on the add-on / user-data scripts +
+`actionlint` on the deploy workflows, path `infra/k8s/**`, no AWS credentials).
+
+**`deploy-staging.yml`** (push to `main`) and **`deploy-prod.yml`** (tag `v*`,
+`environment: production` approval) now exist **as skeletons** — the deploy design below, written
+out. They build+push images to ECR via GitHub OIDC, render `infra/k8s/manifest-<env>.yaml` + the
+`demo-chat-secrets` object, stage them in S3, and `kubectl apply` on a kubeadm control-plane node
+through **SSM Run Command** (no inbound kube-apiserver). They cannot run yet: no AWS account, and
+they reference GitHub Environment `vars.*` that only exist once Terraform is applied. See
+[kubernetes.md](kubernetes.md) for the mechanics.
 
 ## Workflow file structure
 

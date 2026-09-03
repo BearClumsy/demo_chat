@@ -1,0 +1,83 @@
+# Lints the Kubernetes manifests, add-on scripts and deploy workflows without touching AWS or a
+# cluster. No credentials. Mirrors terraform-lint.yml / knowledge-base-lint.yml.
+name: manifests-lint
+
+on:
+  pull_request:
+    paths:
+      - "infra/k8s/**"
+      - ".github/workflows/manifests-lint.yml"
+      - ".github/workflows/deploy-staging.yml"
+      - ".github/workflows/deploy-prod.yml"
+  push:
+    branches: [main]
+    paths:
+      - "infra/k8s/**"
+      - ".github/workflows/manifests-lint.yml"
+      - ".github/workflows/deploy-staging.yml"
+      - ".github/workflows/deploy-prod.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: manifests-lint-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install kubeconform
+        run: |
+          curl -fsSL -o /tmp/kubeconform.tar.gz \
+            https://github.com/yannh/kubeconform/releases/download/v0.6.7/kubeconform-linux-amd64.tar.gz
+          tar -xzf /tmp/kubeconform.tar.gz -C /tmp
+          sudo install /tmp/kubeconform /usr/local/bin/kubeconform
+
+      - uses: azure/setup-kubectl@v4
+        with:
+          version: v1.31.1
+
+      # Built-in API groups only (apps/v1, autoscaling/v2, policy/v1, networking.k8s.io/v1,
+      # scheduling.k8s.io/v1, batch/v1) — no external CRD schemas needed.
+      - name: kubeconform
+        run: |
+          kubeconform -strict -ignore-missing-schemas -summary \
+            infra/k8s/manifest-staging.yaml infra/k8s/manifest-prod.yaml
+
+      - name: kubectl --dry-run=client
+        run: |
+          kubectl apply --dry-run=client -f infra/k8s/manifest-staging.yaml
+          kubectl apply --dry-run=client -f infra/k8s/manifest-prod.yaml
+
+      - name: Render check (image placeholders substitute to valid YAML)
+        run: |
+          for env in staging prod; do
+            sed -e 's#IMAGE_PLACEHOLDER_SERVER#example.dkr.ecr.eu-central-1.amazonaws.com/demo-chat-server:test#' \
+                -e 's#IMAGE_PLACEHOLDER_CLIENT#example.dkr.ecr.eu-central-1.amazonaws.com/demo-chat-client:test#' \
+                "infra/k8s/manifest-$env.yaml" > "/tmp/rendered-$env.yaml"
+            kubeconform -strict -ignore-missing-schemas -summary "/tmp/rendered-$env.yaml"
+          done
+
+      - name: shellcheck
+        run: |
+          sudo apt-get update && sudo apt-get install -y shellcheck
+          shellcheck infra/k8s/addons/install.sh
+          # Strip Terraform interpolations from the user-data templates, then lint the shell.
+          for t in infra/terraform/modules/k8s-cluster/templates/*.sh.tftpl; do
+            sed -E 's/\$\{[a-z_]+\}/PLACEHOLDER/g' "$t" > "/tmp/$(basename "$t" .tftpl)"
+            shellcheck -e SC2154,SC2016 "/tmp/$(basename "$t" .tftpl)" || true
+          done
+
+      - name: actionlint
+        run: |
+          bash <(curl -fsSL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          # -shellcheck= disables the embedded-run-script shellcheck pass; workflow syntax and
+          # expression checks still run. The add-on/user-data shell is linted above.
+          ./actionlint -shellcheck= -color \
+            .github/workflows/manifests-lint.yml \
+            .github/workflows/deploy-staging.yml \
+            .github/workflows/deploy-prod.yml

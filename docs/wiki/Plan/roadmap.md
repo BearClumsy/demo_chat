@@ -99,18 +99,29 @@ is everything that needs one (open).
 
 ### Phase 3b — needs an AWS account (open)
 
-- [~] Terraform: VPC, ECS, ALB, RDS (Postgres), Amazon Keyspaces/Cassandra, Qdrant on EC2 (+ MSK).
-      **Code skeleton done, not applied**: `infra/terraform/` (`modules/{vpc,alb,ecs-service,
-      rds-postgres,keyspaces,qdrant-ec2,msk,bedrock-iam}`, `envs/{staging,prod}`), CI-linted by the
-      new `terraform-lint` workflow (`fmt` + `validate` + `tflint`, no AWS credentials). Still needs
-      an account: `terraform apply`, the S3/DynamoDB state backend, real AMI/cert/secret values,
-      and porting the full `chat_history`/`dialogue_state` Keyspaces schemas. See
+**Compute pivot (2026-09-03):** the deploy target is now **self-managed Kubernetes (kubeadm) on
+EC2** behind the NGINX Ingress Controller, not ECS Fargate. See [kubernetes.md](kubernetes.md). The
+ECS modules (`ecs-service`, `alb`, `bedrock-iam`) are retained lint-clean but no longer
+instantiated.
+
+- [~] Terraform: VPC, RDS (Postgres), Amazon Keyspaces/Cassandra, Qdrant on EC2, MSK — plus the
+      Kubernetes layer: `modules/{k8s-cluster, alb-k8s, ecr, github-oidc}`, `envs/{staging,prod}`
+      rewired. **Code skeleton done, not applied**, CI-linted by `terraform-lint`. Still needs an
+      account: `terraform apply`, the S3/DynamoDB state backend, real `node_ami_id` / cert / secret
+      ARNs / `github_org` / `admin_cidr`, the actual `kubeadm init` + `make k8s-addons`, and
+      porting the full `chat_history`/`dialogue_state` Keyspaces schemas. See
       [infrastructure.md](infrastructure.md).
-- [ ] `deploy-staging` workflow + ECR repositories and image pushes (OIDC, no static keys)
-- [ ] Knowledge-base reindexing as a CI job (`QdrantDocumentLoader.reindex()` on merge, per
-      [vector-store-schema.md](vector-store-schema.md)) — `KnowledgeBaseIndexer` still reindexes on
-      startup under the `local` profile (idempotent, since document ids are the intent id); staging and
-      prod now disable it, so the pipeline has to take over that job before either is usable.
+- [~] `infra/k8s/` — consolidated `manifest-{staging,prod}.yaml` (Deployments, probes, Ingress
+      objects with SSE annotations, HPA/PDB/NetworkPolicy, the KB-bootstrap Job) + `addons/`
+      (pinned Calico / metrics-server / ingress-nginx / NTH). CI-linted by the new `manifests-lint`
+      workflow (`kubeconform` + `kubectl --dry-run` + `shellcheck` + `actionlint`).
+- [~] `deploy-staging.yml` + `deploy-prod.yml` + `ecr` module + GitHub OIDC role — written as
+      skeletons (OIDC → ECR push → render → S3 → SSM Run Command → `kubectl apply` on a
+      control-plane node; no inbound kube-apiserver). They reference GitHub Environment `vars.*`
+      that only exist once Terraform is applied.
+- [x] Knowledge-base reindexing off the startup path — `KnowledgeBaseIndexer` gained a
+      `--reindex-and-exit` one-shot mode; the `demo-chat-kb-bootstrap` Job runs it to seed Qdrant
+      `support_kb`. (A CI-triggered reindex on KB changes is still a possible future refinement.)
 - [ ] Validate intent matching and prompts against real Bedrock
 - [ ] Load testing of the pipeline (retrieval + generation latency)
 
