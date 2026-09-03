@@ -13,6 +13,7 @@ macOS with Colima; the only machine-specific parts are called out.
 | Java 26 | Provisioned by the Gradle toolchain — use `./gradlew`, don't rely on the system JDK. |
 | Node 22+ | For the React client and `scripts/validate-intents.mjs`. |
 | AWS credentials with Bedrock access | Required to *start* the app, not just to chat — see step 3. |
+| Docker VM ≥ ~12 GiB (offline profile only) | `make run-offline` runs `llama3.1` (8B) in the Ollama container alongside Postgres/Cassandra/Qdrant/Kafka. The default 2 GiB Colima VM OOM-kills it on the first chat turn — `colima stop && colima start --cpu 6 --memory 16`. |
 
 ## 1. Start the dependencies
 
@@ -113,6 +114,11 @@ curl -N -u ada:hunter2hunter2 -X POST localhost:8080/api/chats/<chat-id>/message
 The stream emits `token` events followed by one `done` event — buffer-then-chunk, not live token
 generation, so the guardrail can run before anything reaches the client.
 
+`make verify-chat` (wrapping `scripts/verify-chat.sh`) does steps 2–3 non-interactively against a
+running backend using the seeded `testuser` login, and fails loudly with the HTTP status and body if
+the chat path is broken — the quickest check that a Colima resize (`make colima-offline`) fixed the
+offline-profile `llama3.1` OOM.
+
 ## Running from the container images
 
 The `local` profile hardcodes `localhost`, which is wrong inside a container. Use the `staging` profile
@@ -178,6 +184,7 @@ cd modules/client && npm run lint            # ESLint
 |---|---|
 | `Could not reach any contact point ... 9042` | The `demo_chat` keyspace doesn't exist — step 2. |
 | Cassandra container `Exited (137)` | OOM-killed; raise the Docker VM's memory. |
+| `llama-server process has terminated: exit status 1 ... ggml_aligned_malloc: insufficient memory` (offline profile, first chat turn, at `QueryNormalizationService`) | Colima VM too small to load `llama3.1` — `colima stop && colima start --cpu 6 --memory 16`, or switch the offline profile to `llama3.2:3b`. |
 | `Unable to load region from any of the providers` at startup | No `AWS_REGION`/credentials, and the Qdrant collections don't exist yet — step 3. |
 | Startup reaches Bedrock and gets 403 | Credentials resolve but lack Bedrock model access. |
 | `DockerClientProviderStrategy` failure in tests | Non-default Docker socket — set `DOCKER_HOST`. |

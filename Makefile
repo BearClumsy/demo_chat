@@ -50,6 +50,13 @@ logs: ## Follow the local container logs
 nuke: ## Stop the local containers AND delete their data volumes (external ollama-models is kept)
 	$(COMPOSE) --profile offline down -v --remove-orphans
 
+.PHONY: colima-offline
+colima-offline: ## Resize the Colima VM to 6 CPU / 16 GiB (what the offline llama3.1 needs) and restart it
+	-colima stop
+	colima start --cpu 6 --memory 16
+	@colima list
+	@echo ">>> VM resized. Next: make up-offline && make run-offline && make verify-chat"
+
 # ---------------------------------------------------------------------------
 # Database migrations (Postgres / Flyway)
 # ---------------------------------------------------------------------------
@@ -94,6 +101,10 @@ run-offline: ## Run the server with no AWS — containerised Ollama for chat + e
 ollama-pull: ## Re-pull the `offline` profile models into the running Ollama container
 	$(COMPOSE) exec ollama ollama pull llama3.1
 	$(COMPOSE) exec ollama ollama pull nomic-embed-text
+
+.PHONY: verify-chat
+verify-chat: ## Smoke-test the RAG chat end to end against a running backend (seeded testuser)
+	./scripts/verify-chat.sh
 
 .PHONY: test
 test: ## Run all server tests

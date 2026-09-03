@@ -77,9 +77,11 @@ services:
   #
   # On Apple Silicon this runs CPU-only — Docker Desktop / Colima do not pass the Metal GPU through
   # to Linux containers — so it is slower than a native Ollama install, which stays supported. The
-  # llama3.1 (8B) model also wants ~6-8 GB RAM on top of Postgres/Cassandra/Qdrant/Kafka; raise the
-  # Docker VM memory if it gets OOM-killed, or switch the offline profile to a smaller model
-  # (e.g. llama3.2:3b in application-offline.properties + the `make up-offline` pull commands).
+  # llama3.1 (8B) model also wants ~6-8 GB RAM on top of Postgres/Cassandra/Qdrant/Kafka, so the
+  # Docker VM needs >= ~12 GiB — the default 2 GiB Colima VM OOM-kills llama3.1 on the first chat
+  # turn (`ggml_aligned_malloc: insufficient memory`). Fix: `colima stop && colima start --cpu 6
+  # --memory 16`. Or switch the offline profile to a smaller model (e.g. llama3.2:3b in
+  # application-offline.properties + the `make up-offline` pull commands).
   ollama:
     image: ollama/ollama:latest
     profiles: ["offline"]

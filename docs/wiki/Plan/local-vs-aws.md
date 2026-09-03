@@ -68,7 +68,9 @@ modules/server/src/main/resources/local/docker-compose.yml
 ├── qdrant     (ports 6333/6334) — support_kb (knowledge base) + semantic_cache (Phase 2) collections
 ├── kafka      (port 9092)       — declared, still not used by any code
 └── ollama     (port 11434)      — only under the `offline` Compose profile (`make up-offline`); chat +
-                                   embedding provider for the `local,offline` Spring profile
+                                   embedding provider for the `local,offline` Spring profile. Needs
+                                   ~5 GB RAM in the VM for `llama3.1` on top of the four services
+                                   above — the Docker VM must be >= ~12 GiB (Colima defaults to 2).
 ```
 
 The application itself is not part of this compose file (it's run separately via `./gradlew :server:bootRun`),

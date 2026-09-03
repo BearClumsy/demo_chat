@@ -44,6 +44,15 @@ public class DialogueState {
   private Instant updatedAt;
 
   /**
+   * @return the slots collected so far, never {@code null} — Cassandra materialises an empty map
+   *     column as {@code null} on read, so a persisted-then-reloaded state has {@code slots ==
+   *     null}.
+   */
+  public Map<String, String> getSlots() {
+    return slots == null ? Map.of() : slots;
+  }
+
+  /**
    * @param chatId the chat this dialogue state belongs to
    * @return a fresh dialogue state with no intent or slots collected yet
    */

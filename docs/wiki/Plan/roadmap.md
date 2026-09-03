@@ -89,7 +89,8 @@ is everything that needs one (open).
       the app boots with no AWS credentials (chat = `llama3.1`, embeddings = `nomic-embed-text`, 768-dim;
       groundedness guardrail disabled since small local models are unreliable at the JSON verdict).
       Ollama runs either as a native install or as the `offline`-profile compose service started by
-      `make up-offline`.
+      `make up-offline`; the containerised path needs a Docker VM of >= ~12 GiB (Colima's default
+      2 GiB OOM-kills `llama3.1` on the first chat turn).
 - [x] The test suite runs anywhere — `DemoChatApplicationTests` was a bare `@SpringBootTest` that only
       passed against a running docker-compose stack plus AWS credentials. It now starts Postgres,
       Cassandra, and Qdrant as Testcontainers and stubs only the Bedrock `ChatModel`/`EmbeddingModel`

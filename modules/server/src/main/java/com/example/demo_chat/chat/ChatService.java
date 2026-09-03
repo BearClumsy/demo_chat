@@ -20,40 +20,44 @@ public class ChatService {
 
   /**
    * @param currentUserId the id of the authenticated user starting the chat
-   * @param participantIds the ids of the other users to invite into the chat
+   * @param participantIds the ids of the other users to invite into the chat; may be empty or
+   *     {@code null} to start a chat with only the AI assistant
    * @param title the chat's title
    * @param message the chat's initial message
    * @return the new chat's id
-   * @throws IllegalArgumentException if {@code participantIds} includes {@code currentUserId} or
-   *     any id that isn't a real user
+   * @throws IllegalArgumentException if a non-empty {@code participantIds} includes {@code
+   *     currentUserId} or any id that isn't a real user
    */
   public Mono<UUID> startChat(
       UUID currentUserId, List<UUID> participantIds, String title, MessageRequest message) {
-    if (participantIds.contains(currentUserId)) {
+    var others = participantIds == null ? List.<UUID>of() : participantIds;
+    if (others.contains(currentUserId)) {
       return Mono.error(new IllegalArgumentException("Cannot start a chat with yourself"));
     }
-    return validateParticipantIds(participantIds)
-        .then(
-            Mono.defer(
-                () -> {
-                  var allParticipantIds = new ArrayList<UUID>();
-                  allParticipantIds.add(currentUserId);
-                  allParticipantIds.addAll(participantIds);
-                  var chatMessage =
-                      ChatMessage.builder()
-                          .senderId(message.userId())
-                          .content(message.message())
-                          .sentAt(message.datetime())
-                          .build();
-                  var chatHistory =
-                      ChatHistory.builder()
-                          .userId(UUID.randomUUID())
-                          .participantIds(allParticipantIds)
-                          .title(title)
-                          .messages(List.of(chatMessage))
-                          .build();
-                  return chatHistoryRepository.save(chatHistory).map(ChatHistory::getUserId);
-                }));
+    var validation = others.isEmpty() ? Mono.<Void>empty() : validateParticipantIds(others);
+    return validation.then(
+        Mono.defer(
+            () -> {
+              // The caller is always prepended, so the stored list is never an empty Cassandra
+              // collection (which would read back as null and break getChatForParticipant).
+              var allParticipantIds = new ArrayList<UUID>();
+              allParticipantIds.add(currentUserId);
+              allParticipantIds.addAll(others);
+              var chatMessage =
+                  ChatMessage.builder()
+                      .senderId(message.userId())
+                      .content(message.message())
+                      .sentAt(message.datetime())
+                      .build();
+              var chatHistory =
+                  ChatHistory.builder()
+                      .userId(UUID.randomUUID())
+                      .participantIds(allParticipantIds)
+                      .title(title)
+                      .messages(List.of(chatMessage))
+                      .build();
+              return chatHistoryRepository.save(chatHistory).map(ChatHistory::getUserId);
+            }));
   }
 
   /**

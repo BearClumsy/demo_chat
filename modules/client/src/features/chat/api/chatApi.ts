@@ -7,6 +7,7 @@ export type StartChatParams = {
 };
 
 export async function startChat(params: StartChatParams): Promise<string> {
+  const participantId = params.participantId.trim();
   const response = await fetch("/api/chats", {
     method: "POST",
     headers: {
@@ -15,7 +16,7 @@ export async function startChat(params: StartChatParams): Promise<string> {
     },
     body: JSON.stringify({
       currentUserId: params.currentUserId,
-      participantIds: [params.participantId],
+      participantIds: participantId ? [participantId] : [],
       title: params.title,
       message: {
         userId: params.currentUserId,
@@ -26,10 +27,38 @@ export async function startChat(params: StartChatParams): Promise<string> {
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to start chat (${response.status})`);
+    throw new Error(await startChatError(response));
   }
 
   return response.json();
+}
+
+/**
+ * Turns a failed POST /api/chats response into a readable message. The backend emits an
+ * RFC 7807 ProblemDetail ({ detail, errors }) for bean-validation failures; the plain
+ * IllegalArgumentException path has no body, so fall back to the bare status code.
+ */
+async function startChatError(response: Response): Promise<string> {
+  try {
+    const problem = await response.json();
+    const parts: string[] = [];
+    if (problem?.detail) {
+      parts.push(String(problem.detail));
+    }
+    if (problem?.errors && typeof problem.errors === "object") {
+      parts.push(
+        Object.entries(problem.errors)
+          .map(([field, msg]) => `${field}: ${msg}`)
+          .join("; "),
+      );
+    }
+    if (parts.length > 0) {
+      return `Failed to start chat (${response.status}): ${parts.join(" — ")}`;
+    }
+  } catch {
+    // body wasn't JSON — fall through to the bare status message
+  }
+  return `Failed to start chat (${response.status})`;
 }
 
 export type StreamMessageParams = {

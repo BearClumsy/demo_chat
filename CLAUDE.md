@@ -87,7 +87,8 @@ as its own parameter rather than trusting the request body.
 ## Commands
 
 The root `Makefile` wraps everything below in one entry point — run `make help` for the list (e.g.
-`make up`, `make run`, `make test`, `make client-dev`, `make ci`). It is a thin alias layer only; the
+`make up`, `make run`, `make test`, `make client-dev`, `make ci`, `make verify-chat`). It is a thin
+alias layer only; the
 underlying commands are still the ones documented here, and new commands should be added to both.
 
 ### Server
@@ -100,7 +101,14 @@ Use the Gradle wrapper (`./gradlew`), not a system-installed Gradle. Backend tas
 - Run the app with no AWS: `make run-offline` (profile `local,offline` — chat + embeddings come from
   Ollama on `:11434`; run `make up-offline` first, which starts the Ollama container and pulls its
   models). On Apple Silicon the container is CPU-only; a native `ollama serve` on the host also works
-  and is faster.
+  and is faster. The containerised path needs a Docker VM of **≥ ~12 GiB** — the default 2 GiB Colima
+  VM OOM-kills `llama3.1` on the first chat turn (`ggml_aligned_malloc: insufficient memory` at
+  `QueryNormalizationService`); fix with `colima stop && colima start --cpu 6 --memory 16`, or the
+  `make colima-offline` alias for the same.
+- Smoke-test the RAG chat end to end against a running backend: `make verify-chat` (wraps
+  `scripts/verify-chat.sh` — health check, then `POST /api/chats` + `POST /api/chats/{id}/messages`
+  as the seeded `testuser`, asserting a non-empty reply). `BASE_URL` / `LOGIN` / `PASSWORD` /
+  `USER_ID` / `MESSAGE` env vars override the defaults.
 - Run all tests: `./gradlew :server:test`
 - Run a single test class: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests"`
 - Run a single test method: `./gradlew :server:test --tests "com.example.demo_chat.DemoChatApplicationTests.contextLoads"`

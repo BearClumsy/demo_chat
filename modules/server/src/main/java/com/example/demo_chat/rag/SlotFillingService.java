@@ -14,6 +14,7 @@ public class SlotFillingService {
    * @return the required slots that haven't been filled yet, in declaration order
    */
   public List<String> missingSlots(IntentDefinition intent, Map<String, String> slots) {
-    return intent.requiredSlots().stream().filter(slot -> !slots.containsKey(slot)).toList();
+    var filled = slots == null ? Map.<String, String>of() : slots;
+    return intent.requiredSlots().stream().filter(slot -> !filled.containsKey(slot)).toList();
   }
 }

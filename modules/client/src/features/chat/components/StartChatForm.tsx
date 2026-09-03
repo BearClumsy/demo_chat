@@ -41,12 +41,11 @@ export default function StartChatForm({ onStarted }: { onStarted: (chatId: strin
       </label>
 
       <label className="start-chat-field">
-        <span>Participant user ID</span>
+        <span>Participant user ID (optional)</span>
         <input
           value={participantId}
           onChange={(event) => setParticipantId(event.target.value)}
-          placeholder="UUID of another existing user"
-          required
+          placeholder="Leave blank to chat only with the assistant"
         />
       </label>
 

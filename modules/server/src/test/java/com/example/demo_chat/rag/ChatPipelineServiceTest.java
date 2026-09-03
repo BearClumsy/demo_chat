@@ -11,6 +11,7 @@ import static org.mockito.Mockito.when;
 import com.example.demo_chat.chat.ChatHistory;
 import com.example.demo_chat.chat.ChatHistoryRepository;
 import com.example.demo_chat.chat.SendMessageResponse;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -175,6 +176,30 @@ class ChatPipelineServiceTest {
         .expectNextMatches(tokenEvent("3-5 "))
         .expectNextMatches(tokenEvent("days."))
         .expectNextMatches(event -> "done".equals(event.event()) && "ANSWERED".equals(event.data()))
+        .verifyComplete();
+  }
+
+  @Test
+  void continuesSlotFillingWhenReloadedStateHasNullSlots() {
+    // Cassandra reads an empty map column back as null, so a persisted SLOT_FILLING state returns
+    // with slots == null on the next turn. The pipeline must not NPE on it.
+    var reloaded =
+        DialogueState.builder()
+            .chatId(CHAT_ID)
+            .status(DialogueStatus.SLOT_FILLING)
+            .currentIntentId("refund_status")
+            .slots(null)
+            .updatedAt(Instant.now())
+            .build();
+    when(dialogueStateRepository.findById(CHAT_ID)).thenReturn(Mono.just(reloaded));
+    when(slotFillingService.missingSlots(eq(intent), any())).thenReturn(List.of("order_id"));
+    when(answerGenerationService.generateClarifyingQuestion(intent, "order_id"))
+        .thenReturn(Mono.just("What is your order id?"));
+
+    chatPipelineService
+        .handleMessage(CHAT_ID, USER_ID, RAW_MESSAGE)
+        .as(StepVerifier::create)
+        .expectNext(new SendMessageResponse("What is your order id?", "SLOT_FILLING"))
         .verifyComplete();
   }
 
