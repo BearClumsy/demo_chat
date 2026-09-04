@@ -2,14 +2,25 @@ import { useState, type FormEvent } from "react";
 import { useAuth } from "../../../app/AuthContext";
 import { useChatStream } from "../hooks/useChatStream";
 import MessageBubble from "./MessageBubble";
+import type { ChatMessage, DialogueStatus } from "../types/chat.types";
 import "./ChatWindow.css";
 
-export default function ChatWindow({ chatId }: { chatId: string }) {
+export default function ChatWindow({
+  chatId,
+  initialMessages,
+  initialStatus,
+}: {
+  chatId: string;
+  initialMessages?: ChatMessage[];
+  initialStatus?: DialogueStatus | null;
+}) {
   const { authHeader, credentials } = useAuth();
   const { messages, streamingReply, status, isStreaming, error, send } = useChatStream(
     chatId,
     authHeader!,
     credentials!.userId,
+    initialMessages,
+    initialStatus,
   );
   const [draft, setDraft] = useState("");
 

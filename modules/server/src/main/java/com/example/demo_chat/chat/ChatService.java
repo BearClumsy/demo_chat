@@ -1,5 +1,6 @@
 package com.example.demo_chat.chat;
 
+import com.example.demo_chat.rag.ChatPipelineService;
 import com.example.demo_chat.user.User;
 import com.example.demo_chat.user.UserRepository;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class ChatService {
 
   private final ChatHistoryRepository chatHistoryRepository;
   private final UserRepository userRepository;
+  private final ChatPipelineService chatPipelineService;
 
   /**
    * @param currentUserId the id of the authenticated user starting the chat
@@ -24,11 +26,12 @@ public class ChatService {
    *     {@code null} to start a chat with only the AI assistant
    * @param title the chat's title
    * @param message the chat's initial message
-   * @return the new chat's id
+   * @return the new chat's id together with the assistant's reply to the opening message and the
+   *     resulting dialogue status
    * @throws IllegalArgumentException if a non-empty {@code participantIds} includes {@code
    *     currentUserId} or any id that isn't a real user
    */
-  public Mono<UUID> startChat(
+  public Mono<StartChatResponse> startChat(
       UUID currentUserId, List<UUID> participantIds, String title, MessageRequest message) {
     var others = participantIds == null ? List.<UUID>of() : participantIds;
     if (others.contains(currentUserId)) {
@@ -43,20 +46,22 @@ public class ChatService {
               var allParticipantIds = new ArrayList<UUID>();
               allParticipantIds.add(currentUserId);
               allParticipantIds.addAll(others);
-              var chatMessage =
-                  ChatMessage.builder()
-                      .senderId(message.userId())
-                      .content(message.message())
-                      .sentAt(message.datetime())
-                      .build();
+              var chatId = UUID.randomUUID();
               var chatHistory =
                   ChatHistory.builder()
-                      .userId(UUID.randomUUID())
+                      .userId(chatId)
                       .participantIds(allParticipantIds)
                       .title(title)
-                      .messages(List.of(chatMessage))
+                      .messages(List.of())
                       .build();
-              return chatHistoryRepository.save(chatHistory).map(ChatHistory::getUserId);
+              return chatHistoryRepository
+                  .save(chatHistory)
+                  .then(
+                      chatPipelineService.handleMessage(
+                          chatId, message.userId(), message.message()))
+                  .map(
+                      response ->
+                          new StartChatResponse(chatId, response.reply(), response.status()));
             }));
   }
 

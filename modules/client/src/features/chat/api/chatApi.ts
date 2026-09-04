@@ -6,7 +6,13 @@ export type StartChatParams = {
   message: string;
 };
 
-export async function startChat(params: StartChatParams): Promise<string> {
+export type StartChatResult = {
+  chatId: string;
+  reply: string;
+  status: string;
+};
+
+export async function startChat(params: StartChatParams): Promise<StartChatResult> {
   const participantId = params.participantId.trim();
   const response = await fetch("/api/chats", {
     method: "POST",
@@ -120,7 +126,11 @@ function parseSseFrame(frame: string): { event: string; data: string } | null {
     if (line.startsWith("event:")) {
       event = line.slice("event:".length).trim();
     } else if (line.startsWith("data:")) {
-      dataLines.push(line.slice("data:".length).trim());
+      // Trailing spaces are meaningful here: TextChunker.chunk() appends a trailing space to
+      // every word-chunk but the last so tokens can be concatenated back into the original text.
+      // Only strip the single conventional leading space after the colon, per the SSE spec.
+      const raw = line.slice("data:".length);
+      dataLines.push(raw.startsWith(" ") ? raw.slice(1) : raw);
     }
   }
 
