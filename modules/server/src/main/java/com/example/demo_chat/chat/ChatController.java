@@ -29,12 +29,13 @@ public class ChatController {
   /**
    * @param principal the authenticated user starting the chat
    * @param request the chat's participants, title, and initial message
-   * @return the new chat's id
+   * @return the new chat's id, the assistant's reply to the opening message, and the resulting
+   *     dialogue status
    * @throws AccessDeniedException if {@code request.currentUserId()} doesn't match the
    *     authenticated user
    */
   @PostMapping
-  public Mono<ResponseEntity<UUID>> startChat(
+  public Mono<ResponseEntity<StartChatResponse>> startChat(
       @AuthenticationPrincipal UserPrincipal principal,
       @Valid @RequestBody StartChatRequest request) {
     if (!principal.getId().equals(request.currentUserId())) {

@@ -187,6 +187,7 @@
   },
   "active": "560e54d5fbfa1a26",
   "lastOpenFiles": [
+    "Daily/2026-09-04.md",
     "Daily/2026-09-03.md.tmp.64928.867923e08726",
     "Plan/running-locally.md.tmp.64928.ce55fe4606bd",
     "index.md.tmp.9131.3f624108b322",
@@ -207,7 +208,6 @@
     "Plan/frontend-chat-mvp.md",
     "Plan/frontend.md.tmp.6305.8489853db77d",
     "Infrastructure/Qdrant/support_kb.md.tmp.6305.9fe8f8fd9ce7",
-    "Features/User.md.tmp.6305.f4c0eebb75b8",
     "Daily/2026-07-15.md",
     "index.md",
     "Plan/vector-store-schema.md",

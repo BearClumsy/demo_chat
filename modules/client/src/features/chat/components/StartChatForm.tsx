@@ -1,9 +1,13 @@
 import { useState, type FormEvent } from "react";
 import { useAuth } from "../../../app/AuthContext";
-import { startChat } from "../api/chatApi";
+import { startChat, type StartChatResult } from "../api/chatApi";
 import "./StartChatForm.css";
 
-export default function StartChatForm({ onStarted }: { onStarted: (chatId: string) => void }) {
+export default function StartChatForm({
+  onStarted,
+}: {
+  onStarted: (result: StartChatResult, firstMessage: string) => void;
+}) {
   const { authHeader, credentials } = useAuth();
   const [title, setTitle] = useState("");
   const [participantId, setParticipantId] = useState("");
@@ -16,14 +20,14 @@ export default function StartChatForm({ onStarted }: { onStarted: (chatId: strin
     setError(null);
     setIsSubmitting(true);
     try {
-      const chatId = await startChat({
+      const result = await startChat({
         authHeader: authHeader!,
         currentUserId: credentials!.userId,
         participantId,
         title,
         message,
       });
-      onStarted(chatId);
+      onStarted(result, message);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to start chat");
     } finally {

@@ -3,10 +3,12 @@ package com.example.demo_chat.chat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyIterable;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.example.demo_chat.rag.ChatPipelineService;
 import com.example.demo_chat.user.UserRepository;
 import java.time.Instant;
 import java.util.List;
@@ -28,13 +30,14 @@ class ChatServiceStartChatTest {
 
   @Mock private ChatHistoryRepository chatHistoryRepository;
   @Mock private UserRepository userRepository;
+  @Mock private ChatPipelineService chatPipelineService;
 
   private ChatService chatService;
 
   @BeforeEach
   void setUp() {
     MockitoAnnotations.openMocks(this);
-    chatService = new ChatService(chatHistoryRepository, userRepository);
+    chatService = new ChatService(chatHistoryRepository, userRepository, chatPipelineService);
   }
 
   private static MessageRequest message(UUID userId) {
@@ -46,6 +49,8 @@ class ChatServiceStartChatTest {
     var callerId = UUID.randomUUID();
     when(chatHistoryRepository.save(any(ChatHistory.class)))
         .thenAnswer(invocation -> Mono.just(invocation.getArgument(0)));
+    when(chatPipelineService.handleMessage(any(UUID.class), any(UUID.class), anyString()))
+        .thenReturn(Mono.just(new SendMessageResponse("We'll look into it.", "ANSWERED")));
 
     chatService
         .startChat(callerId, List.of(), "Refund help", message(callerId))

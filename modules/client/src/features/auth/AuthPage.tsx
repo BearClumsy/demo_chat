@@ -6,7 +6,7 @@ type Mode = "login" | "signup";
 
 export default function AuthPage() {
   const { signIn } = useAuth();
-  const [mode, setMode] = useState<Mode>("signup");
+  const [mode, setMode] = useState<Mode>("login");
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 

@@ -45,7 +45,7 @@ class ChatControllerStartChatTest {
   void startsAChatWhenParticipantIdsIsAbsent() {
     var chatId = UUID.randomUUID();
     when(chatService.startChat(eq(USER_ID), eq(List.of()), eq("Refund help"), any()))
-        .thenReturn(Mono.just(chatId));
+        .thenReturn(Mono.just(new StartChatResponse(chatId, "How can I help?", "ANSWERED")));
 
     webTestClient
         .mutateWith(mockUser(principal()))
@@ -60,8 +60,8 @@ class ChatControllerStartChatTest {
         .exchange()
         .expectStatus()
         .isOk()
-        .expectBody(UUID.class)
-        .isEqualTo(chatId);
+        .expectBody(StartChatResponse.class)
+        .isEqualTo(new StartChatResponse(chatId, "How can I help?", "ANSWERED"));
   }
 
   private static UserPrincipal principal() {

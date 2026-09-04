@@ -6,6 +6,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.example.demo_chat.rag.ChatPipelineService;
 import com.example.demo_chat.user.User;
 import com.example.demo_chat.user.UserRepository;
 import java.util.List;
@@ -27,13 +28,14 @@ class ChatServiceValidateParticipantIdsTest {
 
   @Mock private ChatHistoryRepository chatHistoryRepository;
   @Mock private UserRepository userRepository;
+  @Mock private ChatPipelineService chatPipelineService;
 
   private ChatService chatService;
 
   @BeforeEach
   void setUp() {
     MockitoAnnotations.openMocks(this);
-    chatService = new ChatService(chatHistoryRepository, userRepository);
+    chatService = new ChatService(chatHistoryRepository, userRepository, chatPipelineService);
   }
 
   @Test

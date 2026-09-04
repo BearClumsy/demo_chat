@@ -7,6 +7,7 @@
 GRADLEW   := ./gradlew
 CLIENT_DIR := modules/client
 IMAGE_TAG ?= dev
+APP_PORT  ?= 8080
 
 # Prefer the `docker compose` CLI plugin, falling back to the standalone `docker-compose` binary —
 # some setups (Colima without Docker Desktop, Homebrew's docker-compose) only have the latter, where
@@ -96,6 +97,16 @@ run: ## Run the server with the `local` profile (needs `make up` first)
 .PHONY: run-offline
 run-offline: ## Run the server with no AWS — containerised Ollama for chat + embeddings (needs `make up-offline` first)
 	SPRING_PROFILES_ACTIVE=local,offline $(GRADLEW) :server:bootRun
+
+.PHONY: stop
+stop: ## Stop the locally running Java app (whatever is listening on APP_PORT); containers are untouched, see `make down`
+	@PID="$$(lsof -ti tcp:$(APP_PORT) -sTCP:LISTEN 2>/dev/null)"; \
+	if [ -z "$$PID" ]; then \
+		echo "No Java app listening on port $(APP_PORT) — nothing to stop."; \
+	else \
+		echo "Stopping Java app (pid(s): $$PID) on port $(APP_PORT)..."; \
+		kill $$PID; \
+	fi
 
 .PHONY: ollama-pull
 ollama-pull: ## Re-pull the `offline` profile models into the running Ollama container
