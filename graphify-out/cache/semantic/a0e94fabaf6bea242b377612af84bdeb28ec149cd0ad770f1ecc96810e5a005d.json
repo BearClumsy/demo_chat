@@ -1,0 +1,1 @@
+{"nodes": [{"id": "chat_startchatresponse_startchatresponse", "label": "StartChatResponse", "file_type": "code", "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/StartChatResponse.java", "source_location": "6", "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}

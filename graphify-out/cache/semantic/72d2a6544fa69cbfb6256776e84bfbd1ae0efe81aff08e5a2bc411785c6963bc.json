@@ -1,0 +1,1 @@
+{"nodes": [{"id": "resources_application_streaming_sse_timeout", "label": "App SSE Streaming Timeout Ceiling (300s)", "file_type": "rationale", "source_file": "modules/server/src/main/resources/application.properties", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}

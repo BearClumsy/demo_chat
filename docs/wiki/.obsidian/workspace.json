@@ -187,7 +187,12 @@
   },
   "active": "560e54d5fbfa1a26",
   "lastOpenFiles": [
+    "Plan/kubernetes.md",
     "Daily/2026-09-04.md",
+    "Daily/2026-09-03.md",
+    "Infrastructure/Postgres/chat_finished_events.md",
+    "Infrastructure/Kafka/chat.finished.v1.md",
+    "Infrastructure/Cassandra/open_chats_by_bucket.md",
     "Daily/2026-09-03.md.tmp.64928.867923e08726",
     "Plan/running-locally.md.tmp.64928.ce55fe4606bd",
     "index.md.tmp.9131.3f624108b322",
@@ -217,11 +222,6 @@
     "Plan/intent-matching.md",
     "Plan/infrastructure.md",
     "Plan/github-actions.md",
-    "Plan/dialogue-state.md",
-    "Features/Chat.md",
-    "Infrastructure/Cassandra/chat_history.md",
-    "Infrastructure/Cassandra/dialogue_state.md",
-    "Infrastructure/Postgres/users.md",
-    "Infrastructure/Qdrant/_template.md"
+    "Plan/dialogue-state.md"
   ]
 }
