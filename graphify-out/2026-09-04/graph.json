@@ -548,7 +548,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_oe",
-      "community": 5,
+      "community": 144,
       "norm_label": "oe()"
     },
     {
@@ -558,7 +558,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ke",
-      "community": 5,
+      "community": 144,
       "norm_label": "ke()"
     },
     {
@@ -568,7 +568,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ye",
-      "community": 5,
+      "community": 144,
       "norm_label": "ye()"
     },
     {
@@ -578,7 +578,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_qe",
-      "community": 5,
+      "community": 144,
       "norm_label": "qe()"
     },
     {
@@ -588,7 +588,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_te",
-      "community": 5,
+      "community": 144,
       "norm_label": "te()"
     },
     {
@@ -608,7 +608,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ie",
-      "community": 5,
+      "community": 144,
       "norm_label": "ie()"
     },
     {
@@ -618,7 +618,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_v",
-      "community": 5,
+      "community": 144,
       "norm_label": "v()"
     },
     {
@@ -668,7 +668,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_m_buildcomponents",
-      "community": 5,
+      "community": 144,
       "norm_label": "._buildcomponents()"
     },
     {
@@ -718,7 +718,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_m_parselocalcolor",
-      "community": 5,
+      "community": 144,
       "norm_label": "._parselocalcolor()"
     },
     {
@@ -1748,7 +1748,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_vc",
-      "community": 89,
+      "community": 1,
       "norm_label": "vc()"
     },
     {
@@ -1758,7 +1758,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_bc",
-      "community": 89,
+      "community": 1,
       "norm_label": "bc()"
     },
     {
@@ -1958,7 +1958,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_ka",
-      "community": 89,
+      "community": 1,
       "norm_label": "ka()"
     },
     {
@@ -2208,7 +2208,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_cu",
-      "community": 1,
+      "community": 18,
       "norm_label": "cu()"
     },
     {
@@ -2218,7 +2218,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_yn",
-      "community": 1,
+      "community": 18,
       "norm_label": "yn()"
     },
     {
@@ -2228,7 +2228,7 @@
       "source_location": "L96",
       "_origin": "ast",
       "id": "obsidian_style_settings_main_xu",
-      "community": 1,
+      "community": 18,
       "norm_label": "xu()"
     },
     {
@@ -2731,7 +2731,7 @@
       "label": "AppShell()",
       "file_type": "code",
       "source_file": "modules/client/src/App.tsx",
-      "source_location": "L10",
+      "source_location": "L8",
       "_origin": "ast",
       "id": "src_app_appshell",
       "community": 14,
@@ -2741,7 +2741,7 @@
       "label": "App()",
       "file_type": "code",
       "source_file": "modules/client/src/App.tsx",
-      "source_location": "L62",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "src_app_app",
       "community": 14,
@@ -2858,20 +2858,10 @@
       "norm_label": "startchatparams"
     },
     {
-      "label": "StartChatResult",
-      "file_type": "code",
-      "source_file": "modules/client/src/features/chat/api/chatApi.ts",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "api_chatapi_startchatresult",
-      "community": 14,
-      "norm_label": "startchatresult"
-    },
-    {
       "label": "startChat()",
       "file_type": "code",
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
-      "source_location": "L15",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "api_chatapi_startchat",
       "community": 14,
@@ -2881,7 +2871,7 @@
       "label": "startChatError()",
       "file_type": "code",
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
-      "source_location": "L47",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "api_chatapi_startchaterror",
       "community": 14,
@@ -2891,7 +2881,7 @@
       "label": "StreamMessageParams",
       "file_type": "code",
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
-      "source_location": "L70",
+      "source_location": "L64",
       "_origin": "ast",
       "id": "api_chatapi_streammessageparams",
       "community": 14,
@@ -2901,7 +2891,7 @@
       "label": "streamMessage()",
       "file_type": "code",
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
-      "source_location": "L82",
+      "source_location": "L76",
       "_origin": "ast",
       "id": "api_chatapi_streammessage",
       "community": 14,
@@ -2911,7 +2901,7 @@
       "label": "parseSseFrame()",
       "file_type": "code",
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
-      "source_location": "L121",
+      "source_location": "L115",
       "_origin": "ast",
       "id": "api_chatapi_parsesseframe",
       "community": 14,
@@ -2931,7 +2921,7 @@
       "label": "ChatWindow()",
       "file_type": "code",
       "source_file": "modules/client/src/features/chat/components/ChatWindow.tsx",
-      "source_location": "L8",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "components_chatwindow_chatwindow",
       "community": 14,
@@ -3271,7 +3261,7 @@
       "label": ".startChat()",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L37",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "chat_chatcontroller_chatcontroller_startchat",
       "community": 11,
@@ -3281,7 +3271,7 @@
       "label": "UserPrincipal",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L37",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_userprincipal",
       "community": 11,
@@ -3291,7 +3281,7 @@
       "label": "StartChatRequest",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L37",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "startchatrequest",
       "community": 11,
@@ -3301,7 +3291,7 @@
       "label": "Mono",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L37",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_mono",
       "community": 11,
@@ -3311,27 +3301,27 @@
       "label": "ResponseEntity",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L37",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_responseentity",
       "community": 11,
       "norm_label": "responseentity"
     },
     {
-      "label": "StartChatResponse",
+      "label": "UUID",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L37",
+      "source_location": "L36",
       "_origin": "ast",
-      "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_startchatresponse",
+      "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_uuid",
       "community": 11,
-      "norm_label": "startchatresponse"
+      "norm_label": "uuid"
     },
     {
       "label": "PostMapping",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L37",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_postmapping",
       "community": 11,
@@ -3341,27 +3331,17 @@
       "label": ".addParticipant()",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L56",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "chat_chatcontroller_chatcontroller_addparticipant",
       "community": 11,
       "norm_label": ".addparticipant()"
     },
     {
-      "label": "UUID",
-      "file_type": "code",
-      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L56",
-      "_origin": "ast",
-      "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_uuid",
-      "community": 11,
-      "norm_label": "uuid"
-    },
-    {
       "label": "ParticipantRequest",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L56",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "participantrequest",
       "community": 11,
@@ -3371,7 +3351,7 @@
       "label": "Void",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L56",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_void",
       "community": 11,
@@ -3381,7 +3361,7 @@
       "label": ".sendMessage()",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L74",
+      "source_location": "L73",
       "_origin": "ast",
       "id": "chat_chatcontroller_chatcontroller_sendmessage",
       "community": 11,
@@ -3391,7 +3371,7 @@
       "label": "SendMessageRequest",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L74",
+      "source_location": "L73",
       "_origin": "ast",
       "id": "sendmessagerequest",
       "community": 11,
@@ -3401,7 +3381,7 @@
       "label": "SendMessageResponse",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L74",
+      "source_location": "L73",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_sendmessageresponse",
       "community": 11,
@@ -3411,7 +3391,7 @@
       "label": ".sendMessageStream()",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L98",
+      "source_location": "L97",
       "_origin": "ast",
       "id": "chat_chatcontroller_chatcontroller_sendmessagestream",
       "community": 11,
@@ -3421,7 +3401,7 @@
       "label": "Flux",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L98",
+      "source_location": "L97",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_flux",
       "community": 11,
@@ -3431,7 +3411,7 @@
       "label": "ServerSentEvent",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L98",
+      "source_location": "L97",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_serversentevent",
       "community": 11,
@@ -3441,7 +3421,7 @@
       "label": "String",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L98",
+      "source_location": "L97",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_string",
       "community": 11,
@@ -3514,137 +3494,127 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "chat_chatservice",
-      "community": 13,
+      "community": 11,
       "norm_label": "chatservice.java"
     },
     {
       "label": "ChatService",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L15",
+      "source_location": "L14",
       "_origin": "ast",
       "id": "chat_chatservice_chatservice",
-      "community": 13,
+      "community": 11,
       "norm_label": "chatservice"
     },
     {
       "label": ".startChat()",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L34",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "chat_chatservice_chatservice_startchat",
-      "community": 13,
+      "community": 11,
       "norm_label": ".startchat()"
     },
     {
       "label": "UUID",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L34",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatservice_java_uuid",
-      "community": 13,
+      "community": 11,
       "norm_label": "uuid"
     },
     {
       "label": "List",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L34",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatservice_java_list",
-      "community": 13,
+      "community": 11,
       "norm_label": "list"
     },
     {
       "label": "String",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L34",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatservice_java_string",
-      "community": 13,
+      "community": 11,
       "norm_label": "string"
     },
     {
       "label": "MessageRequest",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L34",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatservice_java_messagerequest",
-      "community": 13,
+      "community": 11,
       "norm_label": "messagerequest"
     },
     {
       "label": "Mono",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L34",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatservice_java_mono",
-      "community": 13,
+      "community": 11,
       "norm_label": "mono"
-    },
-    {
-      "label": "StartChatResponse",
-      "file_type": "code",
-      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L34",
-      "_origin": "ast",
-      "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatservice_java_startchatresponse",
-      "community": 13,
-      "norm_label": "startchatresponse"
     },
     {
       "label": ".addParticipant()",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L76",
+      "source_location": "L71",
       "_origin": "ast",
       "id": "chat_chatservice_chatservice_addparticipant",
-      "community": 13,
+      "community": 11,
       "norm_label": ".addparticipant()"
     },
     {
       "label": "ChatHistory",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L76",
+      "source_location": "L71",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatservice_java_chathistory",
-      "community": 13,
+      "community": 11,
       "norm_label": "chathistory"
     },
     {
       "label": ".getChatForParticipant()",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L97",
+      "source_location": "L92",
       "_origin": "ast",
       "id": "chat_chatservice_chatservice_getchatforparticipant",
-      "community": 13,
+      "community": 11,
       "norm_label": ".getchatforparticipant()"
     },
     {
       "label": ".validateParticipantIds()",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L109",
+      "source_location": "L104",
       "_origin": "ast",
       "id": "chat_chatservice_chatservice_validateparticipantids",
-      "community": 13,
+      "community": 11,
       "norm_label": ".validateparticipantids()"
     },
     {
       "label": "Void",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L109",
+      "source_location": "L104",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_chat_chatservice_java_void",
-      "community": 13,
+      "community": 11,
       "norm_label": "void"
     },
     {
@@ -3698,23 +3668,13 @@
       "norm_label": "startchatrequest.java"
     },
     {
-      "label": "StartChatResponse.java",
-      "file_type": "code",
-      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/StartChatResponse.java",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "chat_startchatresponse",
-      "community": 144,
-      "norm_label": "startchatresponse.java"
-    },
-    {
       "label": "ValidationExceptionHandler.java",
       "file_type": "code",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/common/ValidationExceptionHandler.java",
       "source_location": "L1",
       "_origin": "ast",
       "id": "common_validationexceptionhandler",
-      "community": 47,
+      "community": 10,
       "norm_label": "validationexceptionhandler.java"
     },
     {
@@ -3724,7 +3684,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "common_validationexceptionhandler_validationexceptionhandler",
-      "community": 47,
+      "community": 10,
       "norm_label": "validationexceptionhandler"
     },
     {
@@ -3734,7 +3694,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "common_validationexceptionhandler_validationexceptionhandler_handlevalidationexception",
-      "community": 47,
+      "community": 10,
       "norm_label": ".handlevalidationexception()"
     },
     {
@@ -3744,7 +3704,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "webexchangebindexception",
-      "community": 47,
+      "community": 10,
       "norm_label": "webexchangebindexception"
     },
     {
@@ -3754,7 +3714,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "problemdetail",
-      "community": 47,
+      "community": 10,
       "norm_label": "problemdetail"
     },
     {
@@ -3764,7 +3724,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_common_validationexceptionhandler_java_exceptionhandler",
-      "community": 47,
+      "community": 10,
       "norm_label": "exceptionhandler"
     },
     {
@@ -3774,7 +3734,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "common_validationexceptionhandler_validationexceptionhandler_handleinvalidchatparticipants",
-      "community": 47,
+      "community": 10,
       "norm_label": ".handleinvalidchatparticipants()"
     },
     {
@@ -3784,7 +3744,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_common_validationexceptionhandler_java_responsestatus",
-      "community": 47,
+      "community": 10,
       "norm_label": "responsestatus"
     },
     {
@@ -3794,7 +3754,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "common_validationexceptionhandler_validationexceptionhandler_handlecurrentusermismatch",
-      "community": 47,
+      "community": 10,
       "norm_label": ".handlecurrentusermismatch()"
     },
     {
@@ -3974,7 +3934,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "config_semanticcachevectorstoreconfig",
-      "community": 8,
+      "community": 13,
       "norm_label": "semanticcachevectorstoreconfig.java"
     },
     {
@@ -3984,7 +3944,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "config_semanticcachevectorstoreconfig_semanticcachevectorstoreconfig",
-      "community": 8,
+      "community": 13,
       "norm_label": "semanticcachevectorstoreconfig"
     },
     {
@@ -3994,7 +3954,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "config_semanticcachevectorstoreconfig_semanticcachevectorstoreconfig_semanticcachevectorstore",
-      "community": 8,
+      "community": 13,
       "norm_label": ".semanticcachevectorstore()"
     },
     {
@@ -4004,7 +3964,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "qdrantclient",
-      "community": 8,
+      "community": 13,
       "norm_label": "qdrantclient"
     },
     {
@@ -4014,7 +3974,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_config_semanticcachevectorstoreconfig_java_embeddingmodel",
-      "community": 8,
+      "community": 13,
       "norm_label": "embeddingmodel"
     },
     {
@@ -4024,7 +3984,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_config_semanticcachevectorstoreconfig_java_string",
-      "community": 8,
+      "community": 13,
       "norm_label": "string"
     },
     {
@@ -4034,7 +3994,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_config_semanticcachevectorstoreconfig_java_vectorstore",
-      "community": 8,
+      "community": 13,
       "norm_label": "vectorstore"
     },
     {
@@ -4044,7 +4004,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_config_semanticcachevectorstoreconfig_java_bean",
-      "community": 8,
+      "community": 13,
       "norm_label": "bean"
     },
     {
@@ -4064,7 +4024,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_answergenerationservice",
-      "community": 31,
+      "community": 147,
       "norm_label": "answergenerationservice.java"
     },
     {
@@ -4074,7 +4034,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "rag_answergenerationservice_answergenerationservice",
-      "community": 31,
+      "community": 147,
       "norm_label": "answergenerationservice"
     },
     {
@@ -4084,7 +4044,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "rag_answergenerationservice_answergenerationservice_answergenerationservice",
-      "community": 31,
+      "community": 147,
       "norm_label": ".answergenerationservice()"
     },
     {
@@ -4094,7 +4054,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_answergenerationservice_java_chatclient",
-      "community": 31,
+      "community": 147,
       "norm_label": "chatclient"
     },
     {
@@ -4104,7 +4064,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "rag_answergenerationservice_answergenerationservice_generate",
-      "community": 31,
+      "community": 20,
       "norm_label": ".generate()"
     },
     {
@@ -4114,7 +4074,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_answergenerationservice_java_assembledprompt",
-      "community": 31,
+      "community": 20,
       "norm_label": "assembledprompt"
     },
     {
@@ -4124,7 +4084,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_answergenerationservice_java_mono",
-      "community": 31,
+      "community": 147,
       "norm_label": "mono"
     },
     {
@@ -4134,7 +4094,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_answergenerationservice_java_string",
-      "community": 31,
+      "community": 147,
       "norm_label": "string"
     },
     {
@@ -4144,7 +4104,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "rag_answergenerationservice_answergenerationservice_generateclarifyingquestion",
-      "community": 31,
+      "community": 147,
       "norm_label": ".generateclarifyingquestion()"
     },
     {
@@ -4154,7 +4114,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_answergenerationservice_java_intentdefinition",
-      "community": 31,
+      "community": 147,
       "norm_label": "intentdefinition"
     },
     {
@@ -4184,7 +4144,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice",
-      "community": 31,
+      "community": 47,
       "norm_label": "chatpipelineservice"
     },
     {
@@ -4194,7 +4154,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_chatpipelineservice",
-      "community": 31,
+      "community": 74,
       "norm_label": ".chatpipelineservice()"
     },
     {
@@ -4204,7 +4164,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_chatpipelineservice_java_intentdefinitionregistry",
-      "community": 31,
+      "community": 74,
       "norm_label": "intentdefinitionregistry"
     },
     {
@@ -4214,7 +4174,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "querynormalizationservice",
-      "community": 31,
+      "community": 74,
       "norm_label": "querynormalizationservice"
     },
     {
@@ -4224,7 +4184,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "knowledgeretrievalservice",
-      "community": 31,
+      "community": 74,
       "norm_label": "knowledgeretrievalservice"
     },
     {
@@ -4234,7 +4194,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "intentclassificationservice",
-      "community": 31,
+      "community": 74,
       "norm_label": "intentclassificationservice"
     },
     {
@@ -4244,7 +4204,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "scopefilter",
-      "community": 31,
+      "community": 74,
       "norm_label": "scopefilter"
     },
     {
@@ -4254,7 +4214,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "slotfillingservice",
-      "community": 31,
+      "community": 74,
       "norm_label": "slotfillingservice"
     },
     {
@@ -4264,7 +4224,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "promptbuilder",
-      "community": 31,
+      "community": 74,
       "norm_label": "promptbuilder"
     },
     {
@@ -4274,7 +4234,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "answergenerationservice",
-      "community": 31,
+      "community": 74,
       "norm_label": "answergenerationservice"
     },
     {
@@ -4284,7 +4244,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "responsevalidator",
-      "community": 31,
+      "community": 74,
       "norm_label": "responsevalidator"
     },
     {
@@ -4294,7 +4254,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "semanticcacheservice",
-      "community": 31,
+      "community": 74,
       "norm_label": "semanticcacheservice"
     },
     {
@@ -4304,7 +4264,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "dialoguestaterepository",
-      "community": 31,
+      "community": 74,
       "norm_label": "dialoguestaterepository"
     },
     {
@@ -4314,7 +4274,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "chathistoryrepository",
-      "community": 31,
+      "community": 20,
       "norm_label": "chathistoryrepository"
     },
     {
@@ -4324,7 +4284,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "textchunker",
-      "community": 31,
+      "community": 74,
       "norm_label": "textchunker"
     },
     {
@@ -4334,7 +4294,7 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_handlemessage",
-      "community": 31,
+      "community": 20,
       "norm_label": ".handlemessage()"
     },
     {
@@ -4424,7 +4384,7 @@
       "source_location": "L117",
       "_origin": "ast",
       "id": "pipelineoutcome",
-      "community": 31,
+      "community": 47,
       "norm_label": "pipelineoutcome"
     },
     {
@@ -4434,7 +4394,7 @@
       "source_location": "L130",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_continuepipeline",
-      "community": 31,
+      "community": 47,
       "norm_label": ".continuepipeline()"
     },
     {
@@ -4444,7 +4404,7 @@
       "source_location": "L130",
       "_origin": "ast",
       "id": "dialoguestate",
-      "community": 31,
+      "community": 47,
       "norm_label": "dialoguestate"
     },
     {
@@ -4454,7 +4414,7 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_continueslotfilling",
-      "community": 31,
+      "community": 47,
       "norm_label": ".continueslotfilling()"
     },
     {
@@ -4464,7 +4424,7 @@
       "source_location": "L140",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_chatpipelineservice_java_intentdefinition",
-      "community": 31,
+      "community": 47,
       "norm_label": "intentdefinition"
     },
     {
@@ -4474,7 +4434,7 @@
       "source_location": "L162",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_startnewturn",
-      "community": 31,
+      "community": 47,
       "norm_label": ".startnewturn()"
     },
     {
@@ -4484,7 +4444,7 @@
       "source_location": "L182",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_cachehit",
-      "community": 31,
+      "community": 47,
       "norm_label": ".cachehit()"
     },
     {
@@ -4524,7 +4484,7 @@
       "source_location": "L202",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_classifyandroute",
-      "community": 31,
+      "community": 47,
       "norm_label": ".classifyandroute()"
     },
     {
@@ -4534,7 +4494,7 @@
       "source_location": "L237",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_generateanswer",
-      "community": 31,
+      "community": 47,
       "norm_label": ".generateanswer()"
     },
     {
@@ -4544,7 +4504,7 @@
       "source_location": "L263",
       "_origin": "ast",
       "id": "rag_chatpipelineservice_chatpipelineservice_outofscope",
-      "community": 31,
+      "community": 47,
       "norm_label": ".outofscope()"
     },
     {
@@ -4604,7 +4564,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_dialoguestate",
-      "community": 31,
+      "community": 22,
       "norm_label": "dialoguestate.java"
     },
     {
@@ -4614,7 +4574,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "rag_dialoguestate_dialoguestate",
-      "community": 31,
+      "community": 150,
       "norm_label": "dialoguestate"
     },
     {
@@ -4624,7 +4584,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "rag_dialoguestate_dialoguestate_getslots",
-      "community": 31,
+      "community": 47,
       "norm_label": ".getslots()"
     },
     {
@@ -4634,7 +4594,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_dialoguestate_java_map",
-      "community": 31,
+      "community": 22,
       "norm_label": "map"
     },
     {
@@ -4644,7 +4604,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_dialoguestate_java_string",
-      "community": 31,
+      "community": 47,
       "norm_label": "string"
     },
     {
@@ -4654,7 +4614,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "rag_dialoguestate_dialoguestate_newstate",
-      "community": 31,
+      "community": 150,
       "norm_label": ".newstate()"
     },
     {
@@ -4664,7 +4624,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_dialoguestate_java_uuid",
-      "community": 31,
+      "community": 150,
       "norm_label": "uuid"
     },
     {
@@ -4714,7 +4674,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_intentclassification",
-      "community": 8,
+      "community": 89,
       "norm_label": "intentclassification.java"
     },
     {
@@ -4724,7 +4684,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_intentclassificationservice",
-      "community": 8,
+      "community": 89,
       "norm_label": "intentclassificationservice.java"
     },
     {
@@ -4734,7 +4694,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "rag_intentclassificationservice_intentclassificationservice",
-      "community": 8,
+      "community": 89,
       "norm_label": "intentclassificationservice"
     },
     {
@@ -4744,7 +4704,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "rag_intentclassificationservice_intentclassificationservice_intentclassificationservice",
-      "community": 8,
+      "community": 89,
       "norm_label": ".intentclassificationservice()"
     },
     {
@@ -4754,7 +4714,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_intentclassificationservice_java_chatclient",
-      "community": 8,
+      "community": 89,
       "norm_label": "chatclient"
     },
     {
@@ -4764,7 +4724,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "rag_intentclassificationservice_intentclassificationservice_classify",
-      "community": 8,
+      "community": 89,
       "norm_label": ".classify()"
     },
     {
@@ -4774,7 +4734,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_intentclassificationservice_java_string",
-      "community": 8,
+      "community": 89,
       "norm_label": "string"
     },
     {
@@ -4784,7 +4744,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_intentclassificationservice_java_list",
-      "community": 8,
+      "community": 89,
       "norm_label": "list"
     },
     {
@@ -4794,7 +4754,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_intentclassificationservice_java_intentdefinition",
-      "community": 8,
+      "community": 89,
       "norm_label": "intentdefinition"
     },
     {
@@ -4804,7 +4764,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_intentclassificationservice_java_mono",
-      "community": 8,
+      "community": 89,
       "norm_label": "mono"
     },
     {
@@ -4814,7 +4774,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_intentclassificationservice_java_intentclassification",
-      "community": 8,
+      "community": 89,
       "norm_label": "intentclassification"
     },
     {
@@ -5454,7 +5414,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_scopefilter",
-      "community": 8,
+      "community": 148,
       "norm_label": "scopefilter.java"
     },
     {
@@ -5464,7 +5424,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "rag_scopefilter_scopefilter",
-      "community": 8,
+      "community": 148,
       "norm_label": "scopefilter"
     },
     {
@@ -5474,7 +5434,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "rag_scopefilter_scopefilter_scopefilter",
-      "community": 8,
+      "community": 148,
       "norm_label": ".scopefilter()"
     },
     {
@@ -5484,7 +5444,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "rag_scopefilter_scopefilter_resolve",
-      "community": 8,
+      "community": 148,
       "norm_label": ".resolve()"
     },
     {
@@ -5494,7 +5454,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_scopefilter_java_intentclassification",
-      "community": 8,
+      "community": 148,
       "norm_label": "intentclassification"
     },
     {
@@ -5504,7 +5464,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_scopefilter_java_list",
-      "community": 8,
+      "community": 148,
       "norm_label": "list"
     },
     {
@@ -5514,7 +5474,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_scopefilter_java_intentdefinition",
-      "community": 8,
+      "community": 148,
       "norm_label": "intentdefinition"
     },
     {
@@ -5524,7 +5484,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_scopefilter_java_optional",
-      "community": 8,
+      "community": 148,
       "norm_label": "optional"
     },
     {
@@ -5624,7 +5584,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_slotfillingservice",
-      "community": 31,
+      "community": 146,
       "norm_label": "slotfillingservice.java"
     },
     {
@@ -5634,7 +5594,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "rag_slotfillingservice_slotfillingservice",
-      "community": 31,
+      "community": 146,
       "norm_label": "slotfillingservice"
     },
     {
@@ -5644,7 +5604,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "rag_slotfillingservice_slotfillingservice_missingslots",
-      "community": 31,
+      "community": 146,
       "norm_label": ".missingslots()"
     },
     {
@@ -5654,7 +5614,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_intentdefinition",
-      "community": 31,
+      "community": 146,
       "norm_label": "intentdefinition"
     },
     {
@@ -5664,7 +5624,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_map",
-      "community": 31,
+      "community": 146,
       "norm_label": "map"
     },
     {
@@ -5674,7 +5634,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_string",
-      "community": 31,
+      "community": 146,
       "norm_label": "string"
     },
     {
@@ -5684,7 +5644,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "modules_server_src_main_java_com_example_demo_chat_rag_slotfillingservice_java_list",
-      "community": 31,
+      "community": 146,
       "norm_label": "list"
     },
     {
@@ -6544,7 +6504,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "chat_chatcontrollerstreamtest",
-      "community": 13,
+      "community": 11,
       "norm_label": "chatcontrollerstreamtest.java"
     },
     {
@@ -6554,7 +6514,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "chat_chatcontrollerstreamtest_chatcontrollerstreamtest",
-      "community": 13,
+      "community": 11,
       "norm_label": "chatcontrollerstreamtest"
     },
     {
@@ -6564,7 +6524,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "chat_chatcontrollerstreamtest_chatcontrollerstreamtest_streamstokeneventsfollowedbyadoneevent",
-      "community": 13,
+      "community": 11,
       "norm_label": ".streamstokeneventsfollowedbyadoneevent()"
     },
     {
@@ -6574,7 +6534,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatcontrollerstreamtest_java_test",
-      "community": 13,
+      "community": 11,
       "norm_label": "test"
     },
     {
@@ -6584,7 +6544,7 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "chat_chatcontrollerstreamtest_chatcontrollerstreamtest_returnsnotfoundwhenthechatdoesnotexistorisnotaccessible",
-      "community": 13,
+      "community": 11,
       "norm_label": ".returnsnotfoundwhenthechatdoesnotexistorisnotaccessible()"
     },
     {
@@ -6594,7 +6554,7 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "chat_chatcontrollerstreamtest_chatcontrollerstreamtest_principal",
-      "community": 13,
+      "community": 11,
       "norm_label": ".principal()"
     },
     {
@@ -6604,7 +6564,7 @@
       "source_location": "L98",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatcontrollerstreamtest_java_userprincipal",
-      "community": 13,
+      "community": 11,
       "norm_label": "userprincipal"
     },
     {
@@ -6621,7 +6581,7 @@
       "label": "ChatServiceStartChatTest",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java",
-      "source_location": "L29",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "chat_chatservicestartchattest_chatservicestartchattest",
       "community": 11,
@@ -6631,7 +6591,7 @@
       "label": ".setUp()",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java",
-      "source_location": "L37",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "chat_chatservicestartchattest_chatservicestartchattest_setup",
       "community": 11,
@@ -6641,7 +6601,7 @@
       "label": "BeforeEach",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java",
-      "source_location": "L37",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicestartchattest_java_beforeeach",
       "community": 11,
@@ -6651,7 +6611,7 @@
       "label": ".message()",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java",
-      "source_location": "L43",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "chat_chatservicestartchattest_chatservicestartchattest_message",
       "community": 11,
@@ -6661,7 +6621,7 @@
       "label": "UUID",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java",
-      "source_location": "L43",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicestartchattest_java_uuid",
       "community": 11,
@@ -6671,7 +6631,7 @@
       "label": "MessageRequest",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java",
-      "source_location": "L43",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicestartchattest_java_messagerequest",
       "community": 11,
@@ -6681,7 +6641,7 @@
       "label": ".startChatWithNoParticipantsPersistsOnlyTheCaller()",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java",
-      "source_location": "L47",
+      "source_location": "L44",
       "_origin": "ast",
       "id": "chat_chatservicestartchattest_chatservicestartchattest_startchatwithnoparticipantspersistsonlythecaller",
       "community": 11,
@@ -6691,7 +6651,7 @@
       "label": "Test",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java",
-      "source_location": "L47",
+      "source_location": "L44",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicestartchattest_java_test",
       "community": 11,
@@ -6701,7 +6661,7 @@
       "label": ".startChatWithUnknownParticipantStillFails()",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java",
-      "source_location": "L67",
+      "source_location": "L62",
       "_origin": "ast",
       "id": "chat_chatservicestartchattest_chatservicestartchattest_startchatwithunknownparticipantstillfails",
       "community": 11,
@@ -6711,7 +6671,7 @@
       "label": ".startChatWithCallerAmongParticipantsFails()",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java",
-      "source_location": "L85",
+      "source_location": "L80",
       "_origin": "ast",
       "id": "chat_chatservicestartchattest_chatservicestartchattest_startchatwithcalleramongparticipantsfails",
       "community": 11,
@@ -6731,7 +6691,7 @@
       "label": "ChatServiceValidateParticipantIdsTest",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java",
-      "source_location": "L27",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest",
       "community": 30,
@@ -6741,7 +6701,7 @@
       "label": ".setUp()",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java",
-      "source_location": "L35",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_setup",
       "community": 30,
@@ -6751,7 +6711,7 @@
       "label": "BeforeEach",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java",
-      "source_location": "L35",
+      "source_location": "L33",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicevalidateparticipantidstest_java_beforeeach",
       "community": 30,
@@ -6761,7 +6721,7 @@
       "label": ".addParticipantSucceedsWhenAllParticipantIdsAreValid()",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java",
-      "source_location": "L41",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_addparticipantsucceedswhenallparticipantidsarevalid",
       "community": 30,
@@ -6771,7 +6731,7 @@
       "label": "Test",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java",
-      "source_location": "L41",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_chat_chatservicevalidateparticipantidstest_java_test",
       "community": 30,
@@ -6781,7 +6741,7 @@
       "label": ".addParticipantFailsWhenParticipantIdIsNotARealUser()",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java",
-      "source_location": "L63",
+      "source_location": "L61",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_addparticipantfailswhenparticipantidisnotarealuser",
       "community": 30,
@@ -6791,7 +6751,7 @@
       "label": ".addParticipantFailsWhenCallerIsNotAParticipant()",
       "file_type": "code",
       "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java",
-      "source_location": "L87",
+      "source_location": "L85",
       "_origin": "ast",
       "id": "chat_chatservicevalidateparticipantidstest_chatservicevalidateparticipantidstest_addparticipantfailswhencallerisnotaparticipant",
       "community": 30,
@@ -6804,7 +6764,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_chatpipelineservicetest",
-      "community": 31,
+      "community": 20,
       "norm_label": "chatpipelineservicetest.java"
     },
     {
@@ -6814,7 +6774,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "rag_chatpipelineservicetest_chatpipelineservicetest",
-      "community": 31,
+      "community": 20,
       "norm_label": "chatpipelineservicetest"
     },
     {
@@ -6834,7 +6794,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_rag_chatpipelineservicetest_java_beforeeach",
-      "community": 8,
+      "community": 20,
       "norm_label": "beforeeach"
     },
     {
@@ -6844,7 +6804,7 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "rag_chatpipelineservicetest_chatpipelineservicetest_groundedanswerisreturnedasansweredandcached",
-      "community": 31,
+      "community": 20,
       "norm_label": ".groundedanswerisreturnedasansweredandcached()"
     },
     {
@@ -6854,7 +6814,7 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_rag_chatpipelineservicetest_java_test",
-      "community": 31,
+      "community": 20,
       "norm_label": "test"
     },
     {
@@ -6864,7 +6824,7 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "rag_chatpipelineservicetest_chatpipelineservicetest_ungroundedanswerisreplacedbyescalationfallbackandnevercached",
-      "community": 31,
+      "community": 20,
       "norm_label": ".ungroundedanswerisreplacedbyescalationfallbackandnevercached()"
     },
     {
@@ -6874,7 +6834,7 @@
       "source_location": "L151",
       "_origin": "ast",
       "id": "rag_chatpipelineservicetest_chatpipelineservicetest_cachehitskipsretrievalclassificationandgeneration",
-      "community": 31,
+      "community": 20,
       "norm_label": ".cachehitskipsretrievalclassificationandgeneration()"
     },
     {
@@ -6884,7 +6844,7 @@
       "source_location": "L165",
       "_origin": "ast",
       "id": "rag_chatpipelineservicetest_chatpipelineservicetest_handlemessagestreamemitstokenchunksthenadoneevent",
-      "community": 31,
+      "community": 20,
       "norm_label": ".handlemessagestreamemitstokenchunksthenadoneevent()"
     },
     {
@@ -6894,7 +6854,7 @@
       "source_location": "L182",
       "_origin": "ast",
       "id": "rag_chatpipelineservicetest_chatpipelineservicetest_continuesslotfillingwhenreloadedstatehasnullslots",
-      "community": 31,
+      "community": 20,
       "norm_label": ".continuesslotfillingwhenreloadedstatehasnullslots()"
     },
     {
@@ -6904,7 +6864,7 @@
       "source_location": "L206",
       "_origin": "ast",
       "id": "rag_chatpipelineservicetest_chatpipelineservicetest_tokenevent",
-      "community": 31,
+      "community": 20,
       "norm_label": ".tokenevent()"
     },
     {
@@ -6914,7 +6874,7 @@
       "source_location": "L206",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_rag_chatpipelineservicetest_java_string",
-      "community": 31,
+      "community": 20,
       "norm_label": "string"
     },
     {
@@ -6924,7 +6884,7 @@
       "source_location": "L206",
       "_origin": "ast",
       "id": "predicate",
-      "community": 31,
+      "community": 20,
       "norm_label": "predicate"
     },
     {
@@ -6934,7 +6894,7 @@
       "source_location": "L206",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_rag_chatpipelineservicetest_java_serversentevent",
-      "community": 31,
+      "community": 20,
       "norm_label": "serversentevent"
     },
     {
@@ -7104,7 +7064,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "rag_slotfillingservicetest",
-      "community": 31,
+      "community": 146,
       "norm_label": "slotfillingservicetest.java"
     },
     {
@@ -7114,7 +7074,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "rag_slotfillingservicetest_slotfillingservicetest",
-      "community": 31,
+      "community": 146,
       "norm_label": "slotfillingservicetest"
     },
     {
@@ -7124,7 +7084,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "rag_slotfillingservicetest_slotfillingservicetest_nullslotsmeanseveryrequiredslotismissing",
-      "community": 31,
+      "community": 146,
       "norm_label": ".nullslotsmeanseveryrequiredslotismissing()"
     },
     {
@@ -7134,7 +7094,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "modules_server_src_test_java_com_example_demo_chat_rag_slotfillingservicetest_java_test",
-      "community": 31,
+      "community": 146,
       "norm_label": "test"
     },
     {
@@ -7144,7 +7104,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "rag_slotfillingservicetest_slotfillingservicetest_filledslotsareexcludedindeclarationorder",
-      "community": 31,
+      "community": 146,
       "norm_label": ".filledslotsareexcludedindeclarationorder()"
     },
     {
@@ -7154,7 +7114,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "rag_slotfillingservicetest_slotfillingservicetest_nomissingslotswhenallfilled",
-      "community": 31,
+      "community": 146,
       "norm_label": ".nomissingslotswhenallfilled()"
     },
     {
@@ -8420,84 +8380,14 @@
       "norm_label": "chat: `participantids` now optional \u2014 assistant-only chats (not this session)"
     },
     {
-      "label": "Slot-filling NPE on the second turn of a dialogue \u2014 empty Cassandra map reads back null",
+      "label": "Working tree at end of day (uncommitted)",
       "file_type": "document",
       "source_file": "docs/wiki/Daily/2026-09-03.md",
       "source_location": "L238",
       "_origin": "ast",
-      "id": "daily_2026_09_03_slot_filling_npe_on_the_second_turn_of_a_dialogue_empty_cassandra_map_reads_back_null",
-      "community": 50,
-      "norm_label": "slot-filling npe on the second turn of a dialogue \u2014 empty cassandra map reads back null"
-    },
-    {
-      "label": "Working tree at end of day (uncommitted)",
-      "file_type": "document",
-      "source_file": "docs/wiki/Daily/2026-09-03.md",
-      "source_location": "L259",
-      "_origin": "ast",
       "id": "daily_2026_09_03_working_tree_at_end_of_day_uncommitted",
       "community": 50,
       "norm_label": "working tree at end of day (uncommitted)"
-    },
-    {
-      "label": "2026-09-04.md",
-      "file_type": "document",
-      "source_file": "docs/wiki/Daily/2026-09-04.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "daily_2026_09_04",
-      "community": 74,
-      "norm_label": "2026-09-04.md"
-    },
-    {
-      "label": "2026-09-04",
-      "file_type": "document",
-      "source_file": "docs/wiki/Daily/2026-09-04.md",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "daily_2026_09_04_2026_09_04",
-      "community": 74,
-      "norm_label": "2026-09-04"
-    },
-    {
-      "label": "Chat: three visibility bugs found on first real UI use, all fixed",
-      "file_type": "document",
-      "source_file": "docs/wiki/Daily/2026-09-04.md",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "daily_2026_09_04_chat_three_visibility_bugs_found_on_first_real_ui_use_all_fixed",
-      "community": 74,
-      "norm_label": "chat: three visibility bugs found on first real ui use, all fixed"
-    },
-    {
-      "label": "Auth: default the login/signup toggle to login",
-      "file_type": "document",
-      "source_file": "docs/wiki/Daily/2026-09-04.md",
-      "source_location": "L36",
-      "_origin": "ast",
-      "id": "daily_2026_09_04_auth_default_the_login_signup_toggle_to_login",
-      "community": 74,
-      "norm_label": "auth: default the login/signup toggle to login"
-    },
-    {
-      "label": "Tooling: `make stop` to kill a foregrounded local run",
-      "file_type": "document",
-      "source_file": "docs/wiki/Daily/2026-09-04.md",
-      "source_location": "L41",
-      "_origin": "ast",
-      "id": "daily_2026_09_04_tooling_make_stop_to_kill_a_foregrounded_local_run",
-      "community": 74,
-      "norm_label": "tooling: `make stop` to kill a foregrounded local run"
-    },
-    {
-      "label": "Working tree at end of day",
-      "file_type": "document",
-      "source_file": "docs/wiki/Daily/2026-09-04.md",
-      "source_location": "L48",
-      "_origin": "ast",
-      "id": "daily_2026_09_04_working_tree_at_end_of_day",
-      "community": 74,
-      "norm_label": "working tree at end of day"
     },
     {
       "label": "Chat.md",
@@ -11143,7 +11033,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 10,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "get /api/users/{id} endpoint",
       "id": "daily_2026_07_13_get_users_endpoint"
@@ -11157,7 +11047,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 10,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "post /api/users endpoint",
       "id": "daily_2026_07_13_post_users_endpoint"
@@ -11171,7 +11061,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 10,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "moved usercontroller to user package",
       "id": "daily_2026_07_13_usercontroller_move"
@@ -11581,7 +11471,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 10,
       "community_name": "Chat History Storage & Dialogue State",
       "norm_label": "chat feature",
       "id": "docs_wiki_features_chat"
@@ -11609,7 +11499,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 10,
       "community_name": "Chat History Storage & Dialogue State",
       "norm_label": "chat_history (cassandra table)",
       "id": "docs_wiki_infrastructure_cassandra_chat_history"
@@ -11651,7 +11541,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 28,
+      "community": 23,
       "community_name": "8-Stage RAG Pipeline Design",
       "norm_label": "semantic_cache (qdrant collection)",
       "id": "docs_wiki_infrastructure_qdrant_semantic_cache"
@@ -11665,7 +11555,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 19,
+      "community": 23,
       "community_name": "Knowledge Base & Deploy Workflow Docs",
       "norm_label": "support_kb (qdrant collection)",
       "id": "docs_wiki_infrastructure_qdrant_support_kb"
@@ -11735,7 +11625,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 10,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "react frontend structure",
       "id": "docs_wiki_plan_frontend"
@@ -11847,7 +11737,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 29,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "buffer-then-chunk sse streaming",
       "id": "sse_buffer_then_chunk"
@@ -11861,7 +11751,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 10,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "chatcontroller",
       "id": "docs_wiki_features_chat_chatcontroller"
@@ -11889,7 +11779,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 10,
       "community_name": "Chat History Storage & Dialogue State",
       "norm_label": "chathistory cassandra entity",
       "id": "docs_wiki_features_chat_chathistory_entity"
@@ -11903,7 +11793,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 10,
       "community_name": "Chat History Storage & Dialogue State",
       "norm_label": "chatmessage cassandra udt",
       "id": "docs_wiki_features_chat_chatmessage_udt"
@@ -11917,7 +11807,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 10,
       "community_name": "Chat History Storage & Dialogue State",
       "norm_label": "chathistoryrepository",
       "id": "docs_wiki_features_chat_chathistoryrepository"
@@ -11959,7 +11849,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 10,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "usercontroller",
       "id": "docs_wiki_features_user_usercontroller"
@@ -12127,7 +12017,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 19,
+      "community": 23,
       "community_name": "AWS Infrastructure Overview & TF Modules",
       "norm_label": "bedrock titan embedding model (amazon.titan-embed-text-v2:0, 768d)",
       "id": "bedrock_titan_embedding"
@@ -12225,7 +12115,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 19,
       "community_name": "Chat History Storage & Dialogue State",
       "norm_label": "terraform keyspaces module",
       "id": "tf_module_keyspaces"
@@ -12337,7 +12227,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 19,
+      "community": 10,
       "community_name": "WebFlux Security & Auth Config",
       "norm_label": "backend-ci workflow",
       "id": "workflow_backend_ci"
@@ -12379,7 +12269,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 19,
+      "community": 23,
       "community_name": "Knowledge Base & Deploy Workflow Docs",
       "norm_label": "deploy-staging workflow (planned)",
       "id": "workflow_deploy_staging"
@@ -12393,7 +12283,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 19,
+      "community": 23,
       "community_name": "Knowledge Base & Deploy Workflow Docs",
       "norm_label": "deploy-prod workflow (planned)",
       "id": "workflow_deploy_prod"
@@ -12435,7 +12325,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 10,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "authpage (signup + login form)",
       "id": "client_authpage"
@@ -12449,7 +12339,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 10,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "startchatform",
       "id": "client_startchatform"
@@ -12463,7 +12353,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 10,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "chatwindow / messagebubble",
       "id": "client_chatwindow"
@@ -12477,7 +12367,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 10,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "usechatstream hook",
       "id": "client_usechatstream"
@@ -12491,7 +12381,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 20,
+      "community": 10,
       "community_name": "Client Chat UI & User Endpoints",
       "norm_label": "chatapi (hand-rolled sse frame parser over fetch)",
       "id": "client_chatapi"
@@ -12533,7 +12423,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 19,
+      "community": 23,
       "community_name": "AWS Infrastructure Overview & TF Modules",
       "norm_label": "amazon bedrock (llm + embeddings)",
       "id": "aws_bedrock"
@@ -12547,7 +12437,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 22,
+      "community": 19,
       "community_name": "Chat History Storage & Dialogue State",
       "norm_label": "amazon keyspaces (cassandra-compatible)",
       "id": "aws_keyspaces"
@@ -18958,28 +18848,6 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "modules/client/src/App.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "src_app",
-      "target": "api_chatapi",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/client/src/App.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "src_app",
-      "target": "api_chatapi_startchatresult",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/client/src/App.tsx",
       "source_location": "L3",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -19076,28 +18944,6 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "modules/client/src/App.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "src_app",
-      "target": "types_chat_types",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/client/src/App.tsx",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "src_app",
-      "target": "types_chat_types_chatmessage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "modules/client/src/main.tsx",
       "source_location": "L3",
       "weight": 1.0,
@@ -19109,10 +18955,10 @@
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "modules/client/src/App.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_appshell",
       "target": "app_authcontext_useauth"
     },
@@ -19340,16 +19186,6 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "modules/client/src/features/chat/api/chatApi.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "source": "api_chatapi",
-      "target": "api_chatapi_startchatresult",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/client/src/features/chat/api/chatApi.ts",
       "source_location": "L47",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -19387,17 +19223,6 @@
       "confidence_score": 1.0,
       "source": "hooks_usechatstream",
       "target": "api_chatapi"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/client/src/features/chat/components/StartChatForm.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "components_startchatform",
-      "target": "api_chatapi_startchatresult",
-      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -19485,39 +19310,6 @@
       "confidence_score": 1.0,
       "source": "components_chatwindow",
       "target": "hooks_usechatstream_usechatstream"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/client/src/features/chat/components/ChatWindow.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "components_chatwindow",
-      "target": "types_chat_types",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/client/src/features/chat/components/ChatWindow.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "components_chatwindow",
-      "target": "types_chat_types_chatmessage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/client/src/features/chat/components/ChatWindow.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "components_chatwindow",
-      "target": "types_chat_types_dialoguestatus",
-      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -19992,17 +19784,6 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L37",
-      "weight": 1.0,
-      "context": "generic_arg",
-      "source": "chat_chatcontroller_chatcontroller_startchat",
-      "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_startchatresponse",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
       "source_location": "L36",
       "weight": 1.0,
       "context": "parameter_type",
@@ -20148,6 +19929,39 @@
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
       "source_location": "L55",
       "weight": 1.0,
+      "context": "parameter_type",
+      "confidence_score": 1.0,
+      "source": "chat_chatcontroller_chatcontroller_addparticipant",
+      "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_uuid"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
+      "source_location": "L73",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "confidence_score": 1.0,
+      "source": "chat_chatcontroller_chatcontroller_sendmessage",
+      "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_uuid"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
+      "source_location": "L97",
+      "weight": 1.0,
+      "context": "parameter_type",
+      "confidence_score": 1.0,
+      "source": "chat_chatcontroller_chatcontroller_sendmessagestream",
+      "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_uuid"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
+      "source_location": "L55",
+      "weight": 1.0,
       "context": "attribute",
       "confidence_score": 1.0,
       "source": "chat_chatcontroller_chatcontroller_addparticipant",
@@ -20174,17 +19988,6 @@
       "confidence_score": 1.0,
       "source": "chat_chatcontroller_chatcontroller_sendmessagestream",
       "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_postmapping"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L55",
-      "weight": 1.0,
-      "context": "parameter_type",
-      "confidence_score": 1.0,
-      "source": "chat_chatcontroller_chatcontroller_addparticipant",
-      "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_uuid"
     },
     {
       "relation": "references",
@@ -20218,28 +20021,6 @@
       "weight": 1.0,
       "source": "chat_chatcontroller_chatcontroller_addparticipant",
       "target": "user_userprincipal_userprincipal_getid"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L73",
-      "weight": 1.0,
-      "context": "parameter_type",
-      "confidence_score": 1.0,
-      "source": "chat_chatcontroller_chatcontroller_sendmessage",
-      "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_uuid"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java",
-      "source_location": "L97",
-      "weight": 1.0,
-      "context": "parameter_type",
-      "confidence_score": 1.0,
-      "source": "chat_chatcontroller_chatcontroller_sendmessagestream",
-      "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatcontroller_java_uuid"
     },
     {
       "relation": "calls",
@@ -20567,17 +20348,6 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L34",
-      "weight": 1.0,
-      "context": "generic_arg",
-      "source": "chat_chatservice_chatservice_startchat",
-      "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatservice_java_startchatresponse",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
       "source_location": "L30",
       "weight": 1.0,
       "context": "parameter_type",
@@ -20595,17 +20365,6 @@
       "confidence_score": 1.0,
       "source": "chat_chatservice_chatservice_startchat",
       "target": "modules_server_src_main_java_com_example_demo_chat_chat_chatservice_java_uuid"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java",
-      "source_location": "L60",
-      "weight": 1.0,
-      "source": "chat_chatservice_chatservice_startchat",
-      "target": "rag_chatpipelineservice_chatpipelineservice_handlemessage"
     },
     {
       "relation": "references",
@@ -22292,17 +22051,6 @@
       "target": "chathistoryrepository"
     },
     {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java",
-      "source_location": "L52",
-      "weight": 1.0,
-      "source": "chat_chatservicestartchattest_chatservicestartchattest_startchatwithnoparticipantspersistsonlythecaller",
-      "target": "rag_chatpipelineservice_chatpipelineservice_handlemessage"
-    },
-    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "modules/server/src/main/java/com/example/demo_chat/rag/ChatPipelineService.java",
@@ -23375,9 +23123,9 @@
       "source_file": "modules/server/src/main/java/com/example/demo_chat/rag/DialogueState.java",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "rag_dialoguestate",
-      "target": "modules_server_src_main_java_com_example_demo_chat_rag_dialoguestate_java_map"
+      "target": "modules_server_src_main_java_com_example_demo_chat_rag_dialoguestate_java_map",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -23426,9 +23174,9 @@
       "source_file": "modules/server/src/main/java/com/example/demo_chat/rag/DialogueState.java",
       "source_location": "L51",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "rag_dialoguestate_dialoguestate",
-      "target": "rag_dialoguestate_dialoguestate_getslots"
+      "target": "rag_dialoguestate_dialoguestate_getslots",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -23448,9 +23196,9 @@
       "source_location": "L51",
       "weight": 1.0,
       "context": "return_type",
-      "confidence_score": 1.0,
       "source": "rag_dialoguestate_dialoguestate_getslots",
-      "target": "modules_server_src_main_java_com_example_demo_chat_rag_dialoguestate_java_map"
+      "target": "modules_server_src_main_java_com_example_demo_chat_rag_dialoguestate_java_map",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -23459,9 +23207,9 @@
       "source_location": "L51",
       "weight": 1.0,
       "context": "generic_arg",
-      "confidence_score": 1.0,
       "source": "rag_dialoguestate_dialoguestate_getslots",
-      "target": "modules_server_src_main_java_com_example_demo_chat_rag_dialoguestate_java_string"
+      "target": "modules_server_src_main_java_com_example_demo_chat_rag_dialoguestate_java_string",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -27250,9 +26998,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/rag/ChatPipelineServiceTest.java",
       "source_location": "L182",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "rag_chatpipelineservicetest_chatpipelineservicetest",
-      "target": "rag_chatpipelineservicetest_chatpipelineservicetest_continuesslotfillingwhenreloadedstatehasnullslots"
+      "target": "rag_chatpipelineservicetest_chatpipelineservicetest_continuesslotfillingwhenreloadedstatehasnullslots",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -27344,9 +27092,9 @@
       "source_location": "L182",
       "weight": 1.0,
       "context": "attribute",
-      "confidence_score": 1.0,
       "source": "rag_chatpipelineservicetest_chatpipelineservicetest_continuesslotfillingwhenreloadedstatehasnullslots",
-      "target": "modules_server_src_test_java_com_example_demo_chat_rag_chatpipelineservicetest_java_test"
+      "target": "modules_server_src_test_java_com_example_demo_chat_rag_chatpipelineservicetest_java_test",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -27685,9 +27433,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/rag/SlotFillingServiceTest.java",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "rag_slotfillingservicetest",
-      "target": "modules_server_src_test_java_com_example_demo_chat_rag_slotfillingservicetest_java_test"
+      "target": "modules_server_src_test_java_com_example_demo_chat_rag_slotfillingservicetest_java_test",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -27695,9 +27443,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/rag/SlotFillingServiceTest.java",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "rag_slotfillingservicetest",
-      "target": "rag_slotfillingservicetest_slotfillingservicetest"
+      "target": "rag_slotfillingservicetest_slotfillingservicetest",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -27705,9 +27453,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/rag/SlotFillingServiceTest.java",
       "source_location": "L30",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "rag_slotfillingservicetest_slotfillingservicetest",
-      "target": "rag_slotfillingservicetest_slotfillingservicetest_filledslotsareexcludedindeclarationorder"
+      "target": "rag_slotfillingservicetest_slotfillingservicetest_filledslotsareexcludedindeclarationorder",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -27715,9 +27463,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/rag/SlotFillingServiceTest.java",
       "source_location": "L36",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "rag_slotfillingservicetest_slotfillingservicetest",
-      "target": "rag_slotfillingservicetest_slotfillingservicetest_nomissingslotswhenallfilled"
+      "target": "rag_slotfillingservicetest_slotfillingservicetest_nomissingslotswhenallfilled",
+      "confidence_score": 1.0
     },
     {
       "relation": "method",
@@ -27725,9 +27473,9 @@
       "source_file": "modules/server/src/test/java/com/example/demo_chat/rag/SlotFillingServiceTest.java",
       "source_location": "L24",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "rag_slotfillingservicetest_slotfillingservicetest",
-      "target": "rag_slotfillingservicetest_slotfillingservicetest_nullslotsmeanseveryrequiredslotismissing"
+      "target": "rag_slotfillingservicetest_slotfillingservicetest_nullslotsmeanseveryrequiredslotismissing",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -27736,9 +27484,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "context": "attribute",
-      "confidence_score": 1.0,
       "source": "rag_slotfillingservicetest_slotfillingservicetest_nullslotsmeanseveryrequiredslotismissing",
-      "target": "modules_server_src_test_java_com_example_demo_chat_rag_slotfillingservicetest_java_test"
+      "target": "modules_server_src_test_java_com_example_demo_chat_rag_slotfillingservicetest_java_test",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -27747,9 +27495,9 @@
       "source_location": "L30",
       "weight": 1.0,
       "context": "attribute",
-      "confidence_score": 1.0,
       "source": "rag_slotfillingservicetest_slotfillingservicetest_filledslotsareexcludedindeclarationorder",
-      "target": "modules_server_src_test_java_com_example_demo_chat_rag_slotfillingservicetest_java_test"
+      "target": "modules_server_src_test_java_com_example_demo_chat_rag_slotfillingservicetest_java_test",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -27758,9 +27506,9 @@
       "source_location": "L36",
       "weight": 1.0,
       "context": "attribute",
-      "confidence_score": 1.0,
       "source": "rag_slotfillingservicetest_slotfillingservicetest_nomissingslotswhenallfilled",
-      "target": "modules_server_src_test_java_com_example_demo_chat_rag_slotfillingservicetest_java_test"
+      "target": "modules_server_src_test_java_com_example_demo_chat_rag_slotfillingservicetest_java_test",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -29098,9 +28846,9 @@
       "source_file": "docs/wiki/Daily/2026-09-03.md",
       "source_location": "L191",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "daily_2026_09_03_offline_profile_commit_11374d4_then_containerise_ollama_and_boot_it_for_real",
-      "target": "daily_2026_09_03_chat_ooms_on_the_first_turn_colima_vm_too_small_for_llama3_1"
+      "target": "daily_2026_09_03_chat_ooms_on_the_first_turn_colima_vm_too_small_for_llama3_1",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -29108,9 +28856,9 @@
       "source_file": "docs/wiki/Daily/2026-09-03.md",
       "source_location": "L225",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "daily_2026_09_03_offline_profile_commit_11374d4_then_containerise_ollama_and_boot_it_for_real",
-      "target": "daily_2026_09_03_chat_participantids_now_optional_assistant_only_chats_not_this_session"
+      "target": "daily_2026_09_03_chat_participantids_now_optional_assistant_only_chats_not_this_session",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -29138,9 +28886,9 @@
       "source_file": "docs/wiki/Daily/2026-09-03.md",
       "source_location": "L212",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "daily_2026_09_03_offline_profile_commit_11374d4_then_containerise_ollama_and_boot_it_for_real",
-      "target": "daily_2026_09_03_make_colima_offline_make_verify_chat"
+      "target": "daily_2026_09_03_make_colima_offline_make_verify_chat",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -29151,16 +28899,6 @@
       "confidence_score": 1.0,
       "source": "daily_2026_09_03_offline_profile_commit_11374d4_then_containerise_ollama_and_boot_it_for_real",
       "target": "daily_2026_09_03_ollama_in_a_container_not_a_host_install"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Daily/2026-09-03.md",
-      "source_location": "L238",
-      "weight": 1.0,
-      "source": "daily_2026_09_03_offline_profile_commit_11374d4_then_containerise_ollama_and_boot_it_for_real",
-      "target": "daily_2026_09_03_slot_filling_npe_on_the_second_turn_of_a_dialogue_empty_cassandra_map_reads_back_null",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -29191,56 +28929,6 @@
       "confidence_score": 1.0,
       "source": "daily_2026_09_03_offline_profile_commit_11374d4_then_containerise_ollama_and_boot_it_for_real",
       "target": "daily_2026_09_03_working_tree_at_end_of_day_uncommitted"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Daily/2026-09-04.md",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "daily_2026_09_04",
-      "target": "daily_2026_09_04_2026_09_04",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Daily/2026-09-04.md",
-      "source_location": "L36",
-      "weight": 1.0,
-      "source": "daily_2026_09_04_2026_09_04",
-      "target": "daily_2026_09_04_auth_default_the_login_signup_toggle_to_login",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Daily/2026-09-04.md",
-      "source_location": "L9",
-      "weight": 1.0,
-      "source": "daily_2026_09_04_2026_09_04",
-      "target": "daily_2026_09_04_chat_three_visibility_bugs_found_on_first_real_ui_use_all_fixed",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Daily/2026-09-04.md",
-      "source_location": "L41",
-      "weight": 1.0,
-      "source": "daily_2026_09_04_2026_09_04",
-      "target": "daily_2026_09_04_tooling_make_stop_to_kill_a_foregrounded_local_run",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/wiki/Daily/2026-09-04.md",
-      "source_location": "L48",
-      "weight": 1.0,
-      "source": "daily_2026_09_04_2026_09_04",
-      "target": "daily_2026_09_04_working_tree_at_end_of_day",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -34940,5 +34628,5 @@
       "source_file": "modules/server/src/main/resources/knowledge-base/intents/order_status.json"
     }
   ],
-  "built_at_commit": "8dc87ef329c6636055baeef32ec83ff085f2e1a1"
+  "built_at_commit": "fb5bcb109466f9b1b410807a1ec7a02d886102f5"
 }
