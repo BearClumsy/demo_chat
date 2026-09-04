@@ -29,8 +29,26 @@
       "input_tokens": 563696,
       "output_tokens": 0,
       "files": 179
+    },
+    {
+      "run_id": null,
+      "date": "2026-09-04T19:15:38+00:00",
+      "input_tokens": 374881,
+      "output_tokens": 70979,
+      "estimated": true,
+      "token_source": "mixed",
+      "files": 219,
+      "status": "reconstructed",
+      "note": "Aborted run: 6 subagents extracted 111 files, then the pipeline stopped before Step 9 (version skew between skill 0.8.39 and package 0.9.15). Chunks 03-06 reported real subagent_tokens (79324/97450/89301/98492 = 364567); chunks 01-02 died on an HTTP 429 session limit and are estimated from file sizes. Reconstructed by hand on 2026-09-04 - not written by the pipeline. Timestamp is when the run saved its semantic cache."
+    },
+    {
+      "date": "2026-09-04T19:25:06.450279+00:00",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "estimated": false,
+      "files": 219
     }
   ],
-  "total_input_tokens": 897244,
-  "total_output_tokens": 0
+  "total_input_tokens": 1272125,
+  "total_output_tokens": 70979
 }

@@ -1,0 +1,1097 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1788553884.2964568,
+    "ast_hash": "0af9ebbf6886dcb563281db9f75cdf2b",
+    "semantic_hash": ""
+  },
+  ".claude/settings.local.json": {
+    "mtime": 1784035513.6563728,
+    "ast_hash": "adf03a30263e7eae5b762e8b678e3c15",
+    "semantic_hash": "adf03a30263e7eae5b762e8b678e3c15"
+  },
+  "gradlew": {
+    "mtime": 1783960338.0,
+    "ast_hash": "45bf2667b1fbec0e07e42808dc662b6b",
+    "semantic_hash": "45bf2667b1fbec0e07e42808dc662b6b"
+  },
+  "settings.gradle": {
+    "mtime": 1784640273.1255891,
+    "ast_hash": "d13040245c02e258f01c586e361a10fe",
+    "semantic_hash": "d13040245c02e258f01c586e361a10fe"
+  },
+  "CLAUDE.md": {
+    "mtime": 1788551669.2611995,
+    "ast_hash": "4990efedbb22d2f577575f97a73f23d4",
+    "semantic_hash": ""
+  },
+  "docs/wiki/Features/_template.md": {
+    "mtime": 1783961985.975616,
+    "ast_hash": "71883931a8ee00dd803cf1c3fd786357",
+    "semantic_hash": "71883931a8ee00dd803cf1c3fd786357"
+  },
+  "docs/wiki/Infrastructure/Cassandra/_template.md": {
+    "mtime": 1783962001.4438732,
+    "ast_hash": "840c5054291f56838ac7fb4cab5e7689",
+    "semantic_hash": "840c5054291f56838ac7fb4cab5e7689"
+  },
+  "docs/wiki/Infrastructure/Kafka/_template.md": {
+    "mtime": 1783961993.847569,
+    "ast_hash": "049f69cc5c586101ec93834b592ef6bd",
+    "semantic_hash": "049f69cc5c586101ec93834b592ef6bd"
+  },
+  "docs/wiki/Infrastructure/Postgres/_template.md": {
+    "mtime": 1783961997.6673782,
+    "ast_hash": "a7984f4d12cd74521146336ea926de4f",
+    "semantic_hash": "a7984f4d12cd74521146336ea926de4f"
+  },
+  "docs/wiki/Infrastructure/Qdrant/_template.md": {
+    "mtime": 1783962005.6755388,
+    "ast_hash": "4cca1777cc6b6b8ff395a29be8106652",
+    "semantic_hash": "4cca1777cc6b6b8ff395a29be8106652"
+  },
+  "docs/wiki/index.md": {
+    "mtime": 1788534527.6891582,
+    "ast_hash": "a39f4a1515ee2440a0271875497b8af9",
+    "semantic_hash": "a39f4a1515ee2440a0271875497b8af9"
+  },
+  "docs/wiki/.obsidian/app.json": {
+    "mtime": 1788548987.1339564,
+    "ast_hash": "125f4394d2ac48795cb33cfcf4b555eb",
+    "semantic_hash": "125f4394d2ac48795cb33cfcf4b555eb"
+  },
+  "docs/wiki/.obsidian/appearance.json": {
+    "mtime": 1788548987.134363,
+    "ast_hash": "874a9b15b7b6f1f8ebb4a395bf06bae6",
+    "semantic_hash": "874a9b15b7b6f1f8ebb4a395bf06bae6"
+  },
+  "docs/wiki/.obsidian/core-plugins.json": {
+    "mtime": 1788548986.9542956,
+    "ast_hash": "7c877bea49eaeabb100563bd157b9051",
+    "semantic_hash": "7c877bea49eaeabb100563bd157b9051"
+  },
+  "docs/wiki/.obsidian/themes/Catppuccin/manifest.json": {
+    "mtime": 1783968962.0036569,
+    "ast_hash": "5a79c6e7436a0a7dfce24da79669e7cc",
+    "semantic_hash": "5a79c6e7436a0a7dfce24da79669e7cc"
+  },
+  "docs/wiki/.obsidian/workspace.json": {
+    "mtime": 1788548987.5566695,
+    "ast_hash": "5962d1d67b182946f3c73c64698bad9b",
+    "semantic_hash": "5962d1d67b182946f3c73c64698bad9b"
+  },
+  ".claude/skills/daily-report/SKILL.md": {
+    "mtime": 1783968666.3453465,
+    "ast_hash": "f4ec934163d8bf94f3dce16e56b3952f",
+    "semantic_hash": "f4ec934163d8bf94f3dce16e56b3952f"
+  },
+  "docs/wiki/Daily/2026-07-13.md": {
+    "mtime": 1783968347.825298,
+    "ast_hash": "f5a744cfe43a46023e12b4dceef687c0",
+    "semantic_hash": "f5a744cfe43a46023e12b4dceef687c0"
+  },
+  "docs/wiki/Features/Chat.md": {
+    "mtime": 1788534527.59065,
+    "ast_hash": "6cfa39383dee18ed61547dc888e29552",
+    "semantic_hash": "6cfa39383dee18ed61547dc888e29552"
+  },
+  "docs/wiki/Features/User.md": {
+    "mtime": 1787248831.2379653,
+    "ast_hash": "a6e5c148f41d14e304aadeb9ffefb8dc",
+    "semantic_hash": "a6e5c148f41d14e304aadeb9ffefb8dc"
+  },
+  "docs/wiki/Infrastructure/Cassandra/chat_history.md": {
+    "mtime": 1788534527.5909495,
+    "ast_hash": "8a624325d10e0f3918dfd407e630262a",
+    "semantic_hash": "8a624325d10e0f3918dfd407e630262a"
+  },
+  "docs/wiki/Infrastructure/Postgres/users.md": {
+    "mtime": 1784145672.068576,
+    "ast_hash": "801b7d134cca1c562880a2ba9ea3f725",
+    "semantic_hash": "801b7d134cca1c562880a2ba9ea3f725"
+  },
+  ".claude/skills/java-rules/SKILL.md": {
+    "mtime": 1784142779.5345557,
+    "ast_hash": "846176399e9bd7616ef649f41926b684",
+    "semantic_hash": "846176399e9bd7616ef649f41926b684"
+  },
+  "README.md": {
+    "mtime": 1788534527.5894654,
+    "ast_hash": "cc777ce689e782d03b8906f510806b68",
+    "semantic_hash": "cc777ce689e782d03b8906f510806b68"
+  },
+  "docs/wiki/Daily/2026-07-14.md": {
+    "mtime": 1784055865.359701,
+    "ast_hash": "e942549abb28cdbf2ae0f73cb37f998f",
+    "semantic_hash": "e942549abb28cdbf2ae0f73cb37f998f"
+  },
+  "docs/wiki/.obsidian/community-plugins.json": {
+    "mtime": 1788548987.5397644,
+    "ast_hash": "831ea604bb5c8e4cabc4bd2f79277444",
+    "semantic_hash": "831ea604bb5c8e4cabc4bd2f79277444"
+  },
+  "docs/wiki/.obsidian/plugins/obsidian-style-settings/data.json": {
+    "mtime": 1784144372.209,
+    "ast_hash": "993c635ff9dbf501de29f1e87e8ee5d3",
+    "semantic_hash": "993c635ff9dbf501de29f1e87e8ee5d3"
+  },
+  "docs/wiki/.obsidian/plugins/obsidian-style-settings/main.js": {
+    "mtime": 1784144353.5338356,
+    "ast_hash": "177c659f2139ba32b2cc6248e44a9e0d",
+    "semantic_hash": "177c659f2139ba32b2cc6248e44a9e0d"
+  },
+  "docs/wiki/.obsidian/plugins/obsidian-style-settings/manifest.json": {
+    "mtime": 1784144353.272092,
+    "ast_hash": "70aa9940cfcae5a0023be5baca462f1b",
+    "semantic_hash": "70aa9940cfcae5a0023be5baca462f1b"
+  },
+  "modules/client/build.gradle": {
+    "mtime": 1784640049.2374756,
+    "ast_hash": "316f32ec8bc3362709c3002f2e4f101c",
+    "semantic_hash": "316f32ec8bc3362709c3002f2e4f101c"
+  },
+  "modules/server/build.gradle": {
+    "mtime": 1788534527.7414742,
+    "ast_hash": "f8129abf97f0dbadd1845929fbe306f3",
+    "semantic_hash": "f8129abf97f0dbadd1845929fbe306f3"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/DemoChatApplication.java": {
+    "mtime": 1783966080.929842,
+    "ast_hash": "af9172082a17860fd7363c0010599eca",
+    "semantic_hash": "af9172082a17860fd7363c0010599eca"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ChatController.java": {
+    "mtime": 1788534527.7417476,
+    "ast_hash": "bac85cf557598838aa9f99c6968581b8",
+    "semantic_hash": "bac85cf557598838aa9f99c6968581b8"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ChatHistory.java": {
+    "mtime": 1788534527.7419286,
+    "ast_hash": "344ebe09e311f12742747241ac06d88b",
+    "semantic_hash": "344ebe09e311f12742747241ac06d88b"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ChatHistoryRepository.java": {
+    "mtime": 1783967711.7536666,
+    "ast_hash": "4406d5e17631fe63489faa653ba77b1d",
+    "semantic_hash": "4406d5e17631fe63489faa653ba77b1d"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ChatMessage.java": {
+    "mtime": 1783967552.1305878,
+    "ast_hash": "e61538e15a8b42c3d9a62171c029ed70",
+    "semantic_hash": "e61538e15a8b42c3d9a62171c029ed70"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ChatService.java": {
+    "mtime": 1788534527.7423744,
+    "ast_hash": "98e5940f62d5b9bf6dd7949eadd48e47",
+    "semantic_hash": "98e5940f62d5b9bf6dd7949eadd48e47"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/MessageRequest.java": {
+    "mtime": 1784030597.1327014,
+    "ast_hash": "e1da495c008f2b3b75f19b80536dbd0a",
+    "semantic_hash": "e1da495c008f2b3b75f19b80536dbd0a"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/ParticipantRequest.java": {
+    "mtime": 1784018243.3336477,
+    "ast_hash": "2f6156a84668279712cf320a04a8b059",
+    "semantic_hash": "2f6156a84668279712cf320a04a8b059"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/SendMessageRequest.java": {
+    "mtime": 1784053934.956309,
+    "ast_hash": "4cb5f4d613a03c558c842a79463baaa6",
+    "semantic_hash": "4cb5f4d613a03c558c842a79463baaa6"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/SendMessageResponse.java": {
+    "mtime": 1784053936.0342572,
+    "ast_hash": "7460639bf45c89358c499acfc7a473ad",
+    "semantic_hash": "7460639bf45c89358c499acfc7a473ad"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/StartChatRequest.java": {
+    "mtime": 1788534527.742574,
+    "ast_hash": "da3f4ce841e661203689da19823f976d",
+    "semantic_hash": "da3f4ce841e661203689da19823f976d"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/common/ValidationExceptionHandler.java": {
+    "mtime": 1784031678.4425166,
+    "ast_hash": "f5edf1d1eafb95287646e2610828296e",
+    "semantic_hash": "f5edf1d1eafb95287646e2610828296e"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/config/ChatClientConfig.java": {
+    "mtime": 1784053937.9528444,
+    "ast_hash": "dc0eb689a289c84f73ef47a6263b85df",
+    "semantic_hash": "dc0eb689a289c84f73ef47a6263b85df"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/config/PasswordEncoderConfig.java": {
+    "mtime": 1783966912.6232173,
+    "ast_hash": "911e01c5f613d77a25c12ababae2b519",
+    "semantic_hash": "911e01c5f613d77a25c12ababae2b519"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/config/SecurityConfig.java": {
+    "mtime": 1785594943.8593433,
+    "ast_hash": "836c041b07affdb7e5fda9dd338351fc",
+    "semantic_hash": "836c041b07affdb7e5fda9dd338351fc"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/config/SemanticCacheVectorStoreConfig.java": {
+    "mtime": 1785596006.881629,
+    "ast_hash": "e1599b1e8ee35dc35195a221731a354d",
+    "semantic_hash": "e1599b1e8ee35dc35195a221731a354d"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/AnswerGenerationService.java": {
+    "mtime": 1784730333.522512,
+    "ast_hash": "631afa548e336730e812385e4553b8e7",
+    "semantic_hash": "631afa548e336730e812385e4553b8e7"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/AssembledPrompt.java": {
+    "mtime": 1784053913.5832665,
+    "ast_hash": "5bbfc2c2d68127241aad75accb5d8a6b",
+    "semantic_hash": "5bbfc2c2d68127241aad75accb5d8a6b"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/ChatPipelineService.java": {
+    "mtime": 1788534527.742978,
+    "ast_hash": "59829447afef2f398e72dc403c64a6ff",
+    "semantic_hash": "59829447afef2f398e72dc403c64a6ff"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/DialogueState.java": {
+    "mtime": 1788534527.74318,
+    "ast_hash": "e94dc3b676209c1165b00856951eeb4f",
+    "semantic_hash": "e94dc3b676209c1165b00856951eeb4f"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/DialogueStateRepository.java": {
+    "mtime": 1784053888.3859022,
+    "ast_hash": "9a39a93aa87d0ab9f71bcee64d12c456",
+    "semantic_hash": "9a39a93aa87d0ab9f71bcee64d12c456"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/DialogueStatus.java": {
+    "mtime": 1784145672.079374,
+    "ast_hash": "4449d61df4035b195f42570cb244fe2b",
+    "semantic_hash": "4449d61df4035b195f42570cb244fe2b"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/GroundednessCheck.java": {
+    "mtime": 1784142294.169687,
+    "ast_hash": "dc46e0e659add93ffedb334fec909d95",
+    "semantic_hash": "dc46e0e659add93ffedb334fec909d95"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/IntentClassification.java": {
+    "mtime": 1784053900.8872998,
+    "ast_hash": "57cd9aa7c778e7157f74e9291ea730f5",
+    "semantic_hash": "57cd9aa7c778e7157f74e9291ea730f5"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/IntentClassificationService.java": {
+    "mtime": 1784730318.2895188,
+    "ast_hash": "21ab44e0772a621e4afa8cf9666df8eb",
+    "semantic_hash": "21ab44e0772a621e4afa8cf9666df8eb"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/IntentDefinition.java": {
+    "mtime": 1784053866.1816843,
+    "ast_hash": "eea56338636ea885c09c76b9a3e37ded",
+    "semantic_hash": "eea56338636ea885c09c76b9a3e37ded"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/IntentDefinitionRegistry.java": {
+    "mtime": 1784730334.6198614,
+    "ast_hash": "4ecf17271f407a30058332a632a5daf9",
+    "semantic_hash": "4ecf17271f407a30058332a632a5daf9"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/KnowledgeBaseIndexer.java": {
+    "mtime": 1788534527.743395,
+    "ast_hash": "23524a9177b8747c4d45c5db56780bfb",
+    "semantic_hash": "23524a9177b8747c4d45c5db56780bfb"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/KnowledgeRetrievalService.java": {
+    "mtime": 1784053898.6388478,
+    "ast_hash": "f35995b112d63314a7bb2acc098e1c92",
+    "semantic_hash": "f35995b112d63314a7bb2acc098e1c92"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/PromptBuilder.java": {
+    "mtime": 1784730316.138978,
+    "ast_hash": "1de0cf3dd9b7299074595f1fc62159d1",
+    "semantic_hash": "1de0cf3dd9b7299074595f1fc62159d1"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/QueryNormalizationService.java": {
+    "mtime": 1784053895.0702412,
+    "ast_hash": "b57184932a37330c8864bb47375a4e7a",
+    "semantic_hash": "b57184932a37330c8864bb47375a4e7a"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/ResponseValidator.java": {
+    "mtime": 1786625880.6399474,
+    "ast_hash": "af361e069cdb9bf2cf8fabd11d8aaa9d",
+    "semantic_hash": "af361e069cdb9bf2cf8fabd11d8aaa9d"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/ScopeFilter.java": {
+    "mtime": 1784053910.3699052,
+    "ast_hash": "ff597430dbacf11f6a3d6fff84fb5c4a",
+    "semantic_hash": "ff597430dbacf11f6a3d6fff84fb5c4a"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/SemanticCacheService.java": {
+    "mtime": 1784730330.9568963,
+    "ast_hash": "0eb5955a82b2b971e93a080d0d4ea96f",
+    "semantic_hash": "0eb5955a82b2b971e93a080d0d4ea96f"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/SlotFillingService.java": {
+    "mtime": 1788534527.7435806,
+    "ast_hash": "7968bb77d368a12ab83527045ebe75b1",
+    "semantic_hash": "7968bb77d368a12ab83527045ebe75b1"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/rag/TextChunker.java": {
+    "mtime": 1784730335.4774973,
+    "ast_hash": "1ff8964ac1d50c7bb83717dcdbb1f4d7",
+    "semantic_hash": "1ff8964ac1d50c7bb83717dcdbb1f4d7"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/CreateUserRequest.java": {
+    "mtime": 1784026337.1848838,
+    "ast_hash": "939bbafa98d1a46e6f0aff00b84716d6",
+    "semantic_hash": "939bbafa98d1a46e6f0aff00b84716d6"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/SecurityUserDetailsService.java": {
+    "mtime": 1784142259.732731,
+    "ast_hash": "489f6f09dbd0414cba22d752e5912b6e",
+    "semantic_hash": "489f6f09dbd0414cba22d752e5912b6e"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/User.java": {
+    "mtime": 1784129768.3406425,
+    "ast_hash": "4ed75529a7fa98251cb3abb91b979b24",
+    "semantic_hash": "4ed75529a7fa98251cb3abb91b979b24"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/UserController.java": {
+    "mtime": 1783967670.3085058,
+    "ast_hash": "38f517733c3d0677b38ca399e121540f",
+    "semantic_hash": "38f517733c3d0677b38ca399e121540f"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/UserPrincipal.java": {
+    "mtime": 1784026268.9737244,
+    "ast_hash": "23fb8688e70ed9011d4d7b939be9b94c",
+    "semantic_hash": "23fb8688e70ed9011d4d7b939be9b94c"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/UserRepository.java": {
+    "mtime": 1784129771.6660333,
+    "ast_hash": "77b36af4e69fac49f4376c25657f6a3e",
+    "semantic_hash": "77b36af4e69fac49f4376c25657f6a3e"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/UserResponse.java": {
+    "mtime": 1783967691.970163,
+    "ast_hash": "e5f408861e3941fe5603d41a8476502f",
+    "semantic_hash": "e5f408861e3941fe5603d41a8476502f"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/user/UserService.java": {
+    "mtime": 1784129777.80898,
+    "ast_hash": "7a45a497ea4aeedb91421b02151785e5",
+    "semantic_hash": "7a45a497ea4aeedb91421b02151785e5"
+  },
+  "modules/server/src/main/resources/db/migration/V1__create_users_table.sql": {
+    "mtime": 1783962880.293979,
+    "ast_hash": "4eaa7e9eb16ffb182dcae75e641da181",
+    "semantic_hash": "4eaa7e9eb16ffb182dcae75e641da181"
+  },
+  "modules/server/src/main/resources/knowledge-base/intents/change_shipping_address.json": {
+    "mtime": 1784053663.630609,
+    "ast_hash": "de335966de27a6670590a1f42aa7f206",
+    "semantic_hash": "de335966de27a6670590a1f42aa7f206"
+  },
+  "modules/server/src/main/resources/knowledge-base/intents/order_status.json": {
+    "mtime": 1784053661.0296235,
+    "ast_hash": "f88353fda779e5cc662bd27bf6224fdf",
+    "semantic_hash": "f88353fda779e5cc662bd27bf6224fdf"
+  },
+  "modules/server/src/main/resources/knowledge-base/intents/refund_status.json": {
+    "mtime": 1784053658.931839,
+    "ast_hash": "8b346125afac97e06971d9507ff29946",
+    "semantic_hash": "8b346125afac97e06971d9507ff29946"
+  },
+  "modules/server/src/test/java/com/example/demo_chat/DemoChatApplicationTests.java": {
+    "mtime": 1788534527.744937,
+    "ast_hash": "2a042ef98f38b26619b12ebe01e41153",
+    "semantic_hash": "2a042ef98f38b26619b12ebe01e41153"
+  },
+  "modules/server/src/test/java/com/example/demo_chat/chat/ChatControllerStreamTest.java": {
+    "mtime": 1788534527.7453506,
+    "ast_hash": "038ddbec5cc42438266e8cd3d8b6bb90",
+    "semantic_hash": "038ddbec5cc42438266e8cd3d8b6bb90"
+  },
+  "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceValidateParticipantIdsTest.java": {
+    "mtime": 1788534527.7457144,
+    "ast_hash": "148116c6edb116edcd1889fd33f704a4",
+    "semantic_hash": "148116c6edb116edcd1889fd33f704a4"
+  },
+  "modules/server/src/test/java/com/example/demo_chat/rag/ChatPipelineServiceTest.java": {
+    "mtime": 1788534527.7459593,
+    "ast_hash": "cac60bdf555f7a7abac34c99b31d9ee5",
+    "semantic_hash": "cac60bdf555f7a7abac34c99b31d9ee5"
+  },
+  "modules/server/src/test/java/com/example/demo_chat/rag/ResponseValidatorTest.java": {
+    "mtime": 1784142342.7068844,
+    "ast_hash": "3d7d6f3e975e42c722790cab4bb59e24",
+    "semantic_hash": "3d7d6f3e975e42c722790cab4bb59e24"
+  },
+  "modules/server/src/test/java/com/example/demo_chat/rag/SemanticCacheServiceTest.java": {
+    "mtime": 1784730362.0488987,
+    "ast_hash": "6b0371b49538ad16ef5e1886e369b8e4",
+    "semantic_hash": "6b0371b49538ad16ef5e1886e369b8e4"
+  },
+  "modules/server/src/test/java/com/example/demo_chat/rag/TextChunkerTest.java": {
+    "mtime": 1784142834.1184478,
+    "ast_hash": "927e545240a276351889f7ec8bf5c4c1",
+    "semantic_hash": "927e545240a276351889f7ec8bf5c4c1"
+  },
+  "modules/server/src/test/java/com/example/demo_chat/user/UserRepositoryTest.java": {
+    "mtime": 1786628136.515061,
+    "ast_hash": "73aa3dce5104fd9a401483c44b2e3ed9",
+    "semantic_hash": "73aa3dce5104fd9a401483c44b2e3ed9"
+  },
+  "docs/wiki/Daily/2026-07-15.md": {
+    "mtime": 1786627726.5224853,
+    "ast_hash": "8aab52a430703b77bebe9f3cf4491dd9",
+    "semantic_hash": "8aab52a430703b77bebe9f3cf4491dd9"
+  },
+  "docs/wiki/Infrastructure/Cassandra/dialogue_state.md": {
+    "mtime": 1788534527.5911946,
+    "ast_hash": "722da0cc38a4211785116e2b1dd195fe",
+    "semantic_hash": "722da0cc38a4211785116e2b1dd195fe"
+  },
+  "docs/wiki/Infrastructure/Qdrant/semantic_cache.md": {
+    "mtime": 1784145672.076544,
+    "ast_hash": "b9271f70bad97494632025f0f1bc9f2b",
+    "semantic_hash": "b9271f70bad97494632025f0f1bc9f2b"
+  },
+  "docs/wiki/Infrastructure/Qdrant/support_kb.md": {
+    "mtime": 1784640511.8727074,
+    "ast_hash": "6b11413a10faec89f8dcf068fae1d9eb",
+    "semantic_hash": "6b11413a10faec89f8dcf068fae1d9eb"
+  },
+  "docs/wiki/Plan/README.md": {
+    "mtime": 1788534527.5915344,
+    "ast_hash": "25eeaf13442371b6d412e274ff09ab23",
+    "semantic_hash": "25eeaf13442371b6d412e274ff09ab23"
+  },
+  "docs/wiki/Plan/backend.md": {
+    "mtime": 1784640437.1007116,
+    "ast_hash": "7a9a4b246d0da2e58e71d751f15f2646",
+    "semantic_hash": "7a9a4b246d0da2e58e71d751f15f2646"
+  },
+  "docs/wiki/Plan/dialogue-state.md": {
+    "mtime": 1784143882.9580495,
+    "ast_hash": "f57963c412ba6d05d57e4ba748ff1d7c",
+    "semantic_hash": "f57963c412ba6d05d57e4ba748ff1d7c"
+  },
+  "docs/wiki/Plan/frontend.md": {
+    "mtime": 1784642910.542066,
+    "ast_hash": "51004ae085616acfaee7783d0f00d920",
+    "semantic_hash": "51004ae085616acfaee7783d0f00d920"
+  },
+  "docs/wiki/Plan/github-actions.md": {
+    "mtime": 1788534527.59182,
+    "ast_hash": "aaf5d2e2c6a4dc4403e798d41e6b9713",
+    "semantic_hash": "aaf5d2e2c6a4dc4403e798d41e6b9713"
+  },
+  "docs/wiki/Plan/infrastructure.md": {
+    "mtime": 1788534527.5921333,
+    "ast_hash": "ac38ceb76955a145c3211ada8718e722",
+    "semantic_hash": "ac38ceb76955a145c3211ada8718e722"
+  },
+  "docs/wiki/Plan/intent-matching.md": {
+    "mtime": 1784145857.960308,
+    "ast_hash": "bb29734fe026c5e1b494453044b7d259",
+    "semantic_hash": "bb29734fe026c5e1b494453044b7d259"
+  },
+  "docs/wiki/Plan/local-vs-aws.md": {
+    "mtime": 1788534527.6877613,
+    "ast_hash": "e1ddecdea970fae9261fd0f3bb4d791e",
+    "semantic_hash": "e1ddecdea970fae9261fd0f3bb4d791e"
+  },
+  "docs/wiki/Plan/overview.md": {
+    "mtime": 1788534527.6883528,
+    "ast_hash": "d3b98202d57d1626a6b525332baa9ba5",
+    "semantic_hash": "d3b98202d57d1626a6b525332baa9ba5"
+  },
+  "docs/wiki/Plan/prompt-engineering.md": {
+    "mtime": 1784145880.7449586,
+    "ast_hash": "95d200f78ae2335ff81bfe5935acd30c",
+    "semantic_hash": "95d200f78ae2335ff81bfe5935acd30c"
+  },
+  "docs/wiki/Plan/rag-pipeline.md": {
+    "mtime": 1784145428.6082175,
+    "ast_hash": "a1a8bcfcbf530b53feeb2719e9d2449f",
+    "semantic_hash": "a1a8bcfcbf530b53feeb2719e9d2449f"
+  },
+  "docs/wiki/Plan/roadmap.md": {
+    "mtime": 1788534527.6886487,
+    "ast_hash": "b87c875248a8ca810f62c79eddbc218e",
+    "semantic_hash": "b87c875248a8ca810f62c79eddbc218e"
+  },
+  "docs/wiki/Plan/vector-store-schema.md": {
+    "mtime": 1784145982.79739,
+    "ast_hash": "543f47aa815d62e41071c8371650367b",
+    "semantic_hash": "543f47aa815d62e41071c8371650367b"
+  },
+  "modules/server/src/main/resources/local/docker-compose.yml": {
+    "mtime": 1788534527.744517,
+    "ast_hash": "2b90c19b808cdb7e18cf19c0887a2470",
+    "semantic_hash": "2b90c19b808cdb7e18cf19c0887a2470"
+  },
+  "modules/client/eslint.config.js": {
+    "mtime": 1785595858.8687232,
+    "ast_hash": "cca3af5a2d7d602bdf5a3a58917eee2a",
+    "semantic_hash": "cca3af5a2d7d602bdf5a3a58917eee2a"
+  },
+  "modules/client/package.json": {
+    "mtime": 1785595862.2391245,
+    "ast_hash": "9d4e23979332b35dddc08e63825cf3f0",
+    "semantic_hash": "9d4e23979332b35dddc08e63825cf3f0"
+  },
+  "modules/client/src/App.tsx": {
+    "mtime": 1788534527.739691,
+    "ast_hash": "433a7d0f28dfa81adb76cafaeffb3a1d",
+    "semantic_hash": "433a7d0f28dfa81adb76cafaeffb3a1d"
+  },
+  "modules/client/src/app/AuthContext.tsx": {
+    "mtime": 1784641850.8439944,
+    "ast_hash": "4125a893f40027e22bd949e5b06f30d1",
+    "semantic_hash": "4125a893f40027e22bd949e5b06f30d1"
+  },
+  "modules/client/src/features/auth/AuthPage.tsx": {
+    "mtime": 1788534527.739928,
+    "ast_hash": "06a3635f9cb4b24ee130a6ddb656e54a",
+    "semantic_hash": "06a3635f9cb4b24ee130a6ddb656e54a"
+  },
+  "modules/client/src/features/chat/api/chatApi.ts": {
+    "mtime": 1788534527.7401896,
+    "ast_hash": "3c2991efa2dafcceab0cd0bbc83d0ee9",
+    "semantic_hash": "3c2991efa2dafcceab0cd0bbc83d0ee9"
+  },
+  "modules/client/src/features/chat/components/ChatWindow.tsx": {
+    "mtime": 1788534527.7406104,
+    "ast_hash": "d24fd228015a852c499551a7335ea629",
+    "semantic_hash": "d24fd228015a852c499551a7335ea629"
+  },
+  "modules/client/src/features/chat/components/MessageBubble.tsx": {
+    "mtime": 1784641887.1634622,
+    "ast_hash": "b3fb5aecd316cc0c65c4478c775e3e6e",
+    "semantic_hash": "b3fb5aecd316cc0c65c4478c775e3e6e"
+  },
+  "modules/client/src/features/chat/components/StartChatForm.tsx": {
+    "mtime": 1788534527.740812,
+    "ast_hash": "9184ad2bb455e54541c5d5d1ace739da",
+    "semantic_hash": "9184ad2bb455e54541c5d5d1ace739da"
+  },
+  "modules/client/src/features/chat/hooks/useChatStream.ts": {
+    "mtime": 1788534527.7410364,
+    "ast_hash": "d78cf96aa29f33574b911f8f47221450",
+    "semantic_hash": "d78cf96aa29f33574b911f8f47221450"
+  },
+  "modules/client/src/features/chat/types/chat.types.ts": {
+    "mtime": 1784641858.461071,
+    "ast_hash": "1ad590ec2b6ab26e20cb41b5407e6114",
+    "semantic_hash": "1ad590ec2b6ab26e20cb41b5407e6114"
+  },
+  "modules/client/src/main.tsx": {
+    "mtime": 1784641128.9495633,
+    "ast_hash": "0c5494871f4c6089cc4b483b279f3eaf",
+    "semantic_hash": "0c5494871f4c6089cc4b483b279f3eaf"
+  },
+  "modules/client/tsconfig.json": {
+    "mtime": 1784641117.9342842,
+    "ast_hash": "1863399395a9e64dc81c45698239c9a4",
+    "semantic_hash": "1863399395a9e64dc81c45698239c9a4"
+  },
+  "modules/client/vite.config.ts": {
+    "mtime": 1784641842.0139763,
+    "ast_hash": "eafe1eef759712f6a41dcdd8c8098cfe",
+    "semantic_hash": "eafe1eef759712f6a41dcdd8c8098cfe"
+  },
+  "scripts/validate-intents.mjs": {
+    "mtime": 1785595824.0523984,
+    "ast_hash": "ec93d86415bef8ed230f637b3495681b",
+    "semantic_hash": "ec93d86415bef8ed230f637b3495681b"
+  },
+  ".github/workflows/backend-ci.yml": {
+    "mtime": 1785595927.7647562,
+    "ast_hash": "b21c06020f11e764fd0d5e9f3299516b",
+    "semantic_hash": "b21c06020f11e764fd0d5e9f3299516b"
+  },
+  ".github/workflows/frontend-ci.yml": {
+    "mtime": 1785595927.765232,
+    "ast_hash": "df32ccb82bcba577d2a86bcf0c1519c3",
+    "semantic_hash": "df32ccb82bcba577d2a86bcf0c1519c3"
+  },
+  ".github/workflows/knowledge-base-lint.yml": {
+    "mtime": 1785595927.7655528,
+    "ast_hash": "ab6443cc1c956a72412991298a0094bb",
+    "semantic_hash": "ab6443cc1c956a72412991298a0094bb"
+  },
+  "docs/wiki/Daily/2026-07-22.md": {
+    "mtime": 1784824925.9696262,
+    "ast_hash": "4574f0629219aefeecb6112fef4a2e05",
+    "semantic_hash": "4574f0629219aefeecb6112fef4a2e05"
+  },
+  "docs/wiki/Plan/frontend-chat-mvp.md": {
+    "mtime": 1784642942.3677998,
+    "ast_hash": "e5e5b76f7dfec4ddbc5d889576b5e070",
+    "semantic_hash": "e5e5b76f7dfec4ddbc5d889576b5e070"
+  },
+  "modules/client/index.html": {
+    "mtime": 1784641124.102078,
+    "ast_hash": "3f40b595cc58614577b92a4a83d2f40a",
+    "semantic_hash": "3f40b595cc58614577b92a4a83d2f40a"
+  },
+  "docs/wiki/Daily/2026-08-12.md": {
+    "mtime": 1786567545.4055731,
+    "ast_hash": "5ee819104d14abcf49b850b81f47bfcd",
+    "semantic_hash": "5ee819104d14abcf49b850b81f47bfcd"
+  },
+  "docs/wiki/Plan/running-locally.md": {
+    "mtime": 1788534527.6889243,
+    "ast_hash": "ee5f86999703e0c5bbfcca92cb00b7dd",
+    "semantic_hash": "ee5f86999703e0c5bbfcca92cb00b7dd"
+  },
+  "docs/wiki/.obsidian/graph.json": {
+    "mtime": 1787248384.936,
+    "ast_hash": "ba210460a0e8ab73962c732d4c206110",
+    "semantic_hash": "ba210460a0e8ab73962c732d4c206110"
+  },
+  "infra/terraform/.tflint.hcl": {
+    "mtime": 1788204911.5135734,
+    "ast_hash": "0605ba95077e5672d9911b39c1b76d00",
+    "semantic_hash": "0605ba95077e5672d9911b39c1b76d00"
+  },
+  "infra/terraform/envs/prod/main.tf": {
+    "mtime": 1788534527.7302701,
+    "ast_hash": "c89fb244fb7cf23a159ce3b37ba8ad89",
+    "semantic_hash": "c89fb244fb7cf23a159ce3b37ba8ad89"
+  },
+  "infra/terraform/envs/prod/outputs.tf": {
+    "mtime": 1788534527.7305055,
+    "ast_hash": "db457ab6132cc6a7f9329e670b82e956",
+    "semantic_hash": "db457ab6132cc6a7f9329e670b82e956"
+  },
+  "infra/terraform/envs/prod/providers.tf": {
+    "mtime": 1788204911.5143683,
+    "ast_hash": "42256f8c1a93b962a2db2a4727bb4e45",
+    "semantic_hash": "42256f8c1a93b962a2db2a4727bb4e45"
+  },
+  "infra/terraform/envs/prod/terraform.tfvars": {
+    "mtime": 1788534527.730699,
+    "ast_hash": "651db0146d8a32f1b16cf3bf8f05705d",
+    "semantic_hash": "651db0146d8a32f1b16cf3bf8f05705d"
+  },
+  "infra/terraform/envs/prod/variables.tf": {
+    "mtime": 1788534527.7309365,
+    "ast_hash": "2ddce0f029e4dadd92c27d039a16242c",
+    "semantic_hash": "2ddce0f029e4dadd92c27d039a16242c"
+  },
+  "infra/terraform/envs/prod/versions.tf": {
+    "mtime": 1788204911.5148132,
+    "ast_hash": "db73f99ff2727f68d4378f1e8ecf9439",
+    "semantic_hash": "db73f99ff2727f68d4378f1e8ecf9439"
+  },
+  "infra/terraform/envs/staging/main.tf": {
+    "mtime": 1788534527.7336888,
+    "ast_hash": "0b58a99b0c7fa83070aa61bbe257825b",
+    "semantic_hash": "0b58a99b0c7fa83070aa61bbe257825b"
+  },
+  "infra/terraform/envs/staging/outputs.tf": {
+    "mtime": 1788534527.7339423,
+    "ast_hash": "a3d93937bc2f9a1f097f2563ab9b1297",
+    "semantic_hash": "a3d93937bc2f9a1f097f2563ab9b1297"
+  },
+  "infra/terraform/envs/staging/providers.tf": {
+    "mtime": 1788204911.5153341,
+    "ast_hash": "9c0f01fc1d64c8ea7cc9bf94c8c20c73",
+    "semantic_hash": "9c0f01fc1d64c8ea7cc9bf94c8c20c73"
+  },
+  "infra/terraform/envs/staging/terraform.tfvars": {
+    "mtime": 1788534527.7341545,
+    "ast_hash": "52adb8ffff6316d6be1b29593a7fda47",
+    "semantic_hash": "52adb8ffff6316d6be1b29593a7fda47"
+  },
+  "infra/terraform/envs/staging/variables.tf": {
+    "mtime": 1788534527.734385,
+    "ast_hash": "4ca16064aec0bcb93ab5c18c9149d551",
+    "semantic_hash": "4ca16064aec0bcb93ab5c18c9149d551"
+  },
+  "infra/terraform/envs/staging/versions.tf": {
+    "mtime": 1788204911.5159729,
+    "ast_hash": "13a52af0b2a1c9da389bcbde2501955c",
+    "semantic_hash": "13a52af0b2a1c9da389bcbde2501955c"
+  },
+  "infra/terraform/modules/alb/main.tf": {
+    "mtime": 1788204911.5162368,
+    "ast_hash": "68c0bbceeaa0baa693f6c2b3de01603f",
+    "semantic_hash": "68c0bbceeaa0baa693f6c2b3de01603f"
+  },
+  "infra/terraform/modules/alb/outputs.tf": {
+    "mtime": 1788204911.516392,
+    "ast_hash": "10f1093f76bd11e7f6c6e7cd54dafcb5",
+    "semantic_hash": "10f1093f76bd11e7f6c6e7cd54dafcb5"
+  },
+  "infra/terraform/modules/alb/variables.tf": {
+    "mtime": 1788204911.516544,
+    "ast_hash": "73264bcb07e07ab76020d177fab8c84c",
+    "semantic_hash": "73264bcb07e07ab76020d177fab8c84c"
+  },
+  "infra/terraform/modules/alb/versions.tf": {
+    "mtime": 1788204911.5166867,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  "infra/terraform/modules/bedrock-iam/main.tf": {
+    "mtime": 1788204911.5169175,
+    "ast_hash": "1139c73ac6f042e4084132b8e4ac7c9e",
+    "semantic_hash": "1139c73ac6f042e4084132b8e4ac7c9e"
+  },
+  "infra/terraform/modules/bedrock-iam/outputs.tf": {
+    "mtime": 1788204911.5170727,
+    "ast_hash": "d8b628e0bf7ed76d3ba47bc56b8365c5",
+    "semantic_hash": "d8b628e0bf7ed76d3ba47bc56b8365c5"
+  },
+  "infra/terraform/modules/bedrock-iam/variables.tf": {
+    "mtime": 1788204911.5172224,
+    "ast_hash": "956220e14911cf1943fe6331d5896aa5",
+    "semantic_hash": "956220e14911cf1943fe6331d5896aa5"
+  },
+  "infra/terraform/modules/bedrock-iam/versions.tf": {
+    "mtime": 1788204911.5173445,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  "infra/terraform/modules/ecs-service/main.tf": {
+    "mtime": 1788204911.5176222,
+    "ast_hash": "19ec3c3e36c4c9fa396e3134495f24e3",
+    "semantic_hash": "19ec3c3e36c4c9fa396e3134495f24e3"
+  },
+  "infra/terraform/modules/ecs-service/outputs.tf": {
+    "mtime": 1788204911.517959,
+    "ast_hash": "b5e5fc9abc08199f2c75c92f3ff0715d",
+    "semantic_hash": "b5e5fc9abc08199f2c75c92f3ff0715d"
+  },
+  "infra/terraform/modules/ecs-service/variables.tf": {
+    "mtime": 1788204911.5181026,
+    "ast_hash": "d1d87cda011e48af91541c9923e18620",
+    "semantic_hash": "d1d87cda011e48af91541c9923e18620"
+  },
+  "infra/terraform/modules/ecs-service/versions.tf": {
+    "mtime": 1788204911.5182314,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  "infra/terraform/modules/keyspaces/main.tf": {
+    "mtime": 1788204911.5184135,
+    "ast_hash": "0038a2a9bc7ad5aaedb3af08dbfa8150",
+    "semantic_hash": "0038a2a9bc7ad5aaedb3af08dbfa8150"
+  },
+  "infra/terraform/modules/keyspaces/outputs.tf": {
+    "mtime": 1788204911.5185535,
+    "ast_hash": "be76482da0c7aafd291a9113afa2c761",
+    "semantic_hash": "be76482da0c7aafd291a9113afa2c761"
+  },
+  "infra/terraform/modules/keyspaces/variables.tf": {
+    "mtime": 1788204911.51871,
+    "ast_hash": "75ef1d6d770f1586b57d5103007032b8",
+    "semantic_hash": "75ef1d6d770f1586b57d5103007032b8"
+  },
+  "infra/terraform/modules/keyspaces/versions.tf": {
+    "mtime": 1788204911.5188496,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  "infra/terraform/modules/msk/main.tf": {
+    "mtime": 1788204911.5190396,
+    "ast_hash": "de6023459b51df87f5e4826e31913495",
+    "semantic_hash": "de6023459b51df87f5e4826e31913495"
+  },
+  "infra/terraform/modules/msk/outputs.tf": {
+    "mtime": 1788204911.51918,
+    "ast_hash": "96a2e5e07b028b7b2d3208903aee6978",
+    "semantic_hash": "96a2e5e07b028b7b2d3208903aee6978"
+  },
+  "infra/terraform/modules/msk/variables.tf": {
+    "mtime": 1788204911.519322,
+    "ast_hash": "7cb92a4991f9e1a6a1693c7def3384c4",
+    "semantic_hash": "7cb92a4991f9e1a6a1693c7def3384c4"
+  },
+  "infra/terraform/modules/msk/versions.tf": {
+    "mtime": 1788204911.5194445,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  "infra/terraform/modules/qdrant-ec2/main.tf": {
+    "mtime": 1788204911.5196247,
+    "ast_hash": "1b340aa2da2bfb261d1724fb76355fd2",
+    "semantic_hash": "1b340aa2da2bfb261d1724fb76355fd2"
+  },
+  "infra/terraform/modules/qdrant-ec2/outputs.tf": {
+    "mtime": 1788204911.5197985,
+    "ast_hash": "88c215be5afd155c10be53bca9832eb3",
+    "semantic_hash": "88c215be5afd155c10be53bca9832eb3"
+  },
+  "infra/terraform/modules/qdrant-ec2/variables.tf": {
+    "mtime": 1788204911.5199502,
+    "ast_hash": "4a4c27a5efcfe1cb288836ab6eada3fd",
+    "semantic_hash": "4a4c27a5efcfe1cb288836ab6eada3fd"
+  },
+  "infra/terraform/modules/qdrant-ec2/versions.tf": {
+    "mtime": 1788204911.520092,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  "infra/terraform/modules/rds-postgres/main.tf": {
+    "mtime": 1788204911.5202916,
+    "ast_hash": "89b685e6b14c9fc480215812ea19752b",
+    "semantic_hash": "89b685e6b14c9fc480215812ea19752b"
+  },
+  "infra/terraform/modules/rds-postgres/outputs.tf": {
+    "mtime": 1788204911.520442,
+    "ast_hash": "d1f14f60ebceeb4fd35036a6bae52207",
+    "semantic_hash": "d1f14f60ebceeb4fd35036a6bae52207"
+  },
+  "infra/terraform/modules/rds-postgres/variables.tf": {
+    "mtime": 1788204911.520595,
+    "ast_hash": "fed8f9c8fc480886244bb3252ce51672",
+    "semantic_hash": "fed8f9c8fc480886244bb3252ce51672"
+  },
+  "infra/terraform/modules/rds-postgres/versions.tf": {
+    "mtime": 1788204911.5207272,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  "infra/terraform/modules/vpc/main.tf": {
+    "mtime": 1788204911.5209143,
+    "ast_hash": "0d2e7482c94de177dcfc54b02d5ff72a",
+    "semantic_hash": "0d2e7482c94de177dcfc54b02d5ff72a"
+  },
+  "infra/terraform/modules/vpc/outputs.tf": {
+    "mtime": 1788204911.5210617,
+    "ast_hash": "bf77944c982fc7441a2ba9e642090249",
+    "semantic_hash": "bf77944c982fc7441a2ba9e642090249"
+  },
+  "infra/terraform/modules/vpc/variables.tf": {
+    "mtime": 1788204911.5212133,
+    "ast_hash": "ba9520748614e96c661da6eb9ddcd0d2",
+    "semantic_hash": "ba9520748614e96c661da6eb9ddcd0d2"
+  },
+  "infra/terraform/modules/vpc/versions.tf": {
+    "mtime": 1788204911.5213375,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  ".github/workflows/terraform-lint.yml": {
+    "mtime": 1788204911.363309,
+    "ast_hash": "0ca994da14c038667384639bd358a414",
+    "semantic_hash": "0ca994da14c038667384639bd358a414"
+  },
+  "docs/wiki/Daily/2026-08-13.md": {
+    "mtime": 1786649511.9098277,
+    "ast_hash": "22b98e60d07452e9da685023b1c3c1b9",
+    "semantic_hash": "22b98e60d07452e9da685023b1c3c1b9"
+  },
+  "docs/wiki/Daily/2026-08-20.md": {
+    "mtime": 1787249034.3069932,
+    "ast_hash": "1ca73fe1d1a8a3b512bfe35998668bda",
+    "semantic_hash": "1ca73fe1d1a8a3b512bfe35998668bda"
+  },
+  "docs/wiki/Daily/2026-08-31.md": {
+    "mtime": 1788204911.3646533,
+    "ast_hash": "a54ec75ee55f146a3c77797cda459c85",
+    "semantic_hash": "a54ec75ee55f146a3c77797cda459c85"
+  },
+  "infra/terraform/README.md": {
+    "mtime": 1788534527.7300034,
+    "ast_hash": "e6f0d3e311fa8e5b4e965db7a76eaa33",
+    "semantic_hash": "e6f0d3e311fa8e5b4e965db7a76eaa33"
+  },
+  "infra/k8s/addons/install.sh": {
+    "mtime": 1788534527.7290106,
+    "ast_hash": "ba94e69472716e009cf2eec65d138416",
+    "semantic_hash": "ba94e69472716e009cf2eec65d138416"
+  },
+  "infra/terraform/modules/alb-k8s/main.tf": {
+    "mtime": 1788534527.7346017,
+    "ast_hash": "a1cb008e76600d001bb87592f8bccdbe",
+    "semantic_hash": "a1cb008e76600d001bb87592f8bccdbe"
+  },
+  "infra/terraform/modules/alb-k8s/outputs.tf": {
+    "mtime": 1788534527.7347448,
+    "ast_hash": "dcac00f010ea80c4a9efd82e734168e8",
+    "semantic_hash": "dcac00f010ea80c4a9efd82e734168e8"
+  },
+  "infra/terraform/modules/alb-k8s/variables.tf": {
+    "mtime": 1788534527.7348826,
+    "ast_hash": "be4d11e02b43f25afd055deae897ba5c",
+    "semantic_hash": "be4d11e02b43f25afd055deae897ba5c"
+  },
+  "infra/terraform/modules/alb-k8s/versions.tf": {
+    "mtime": 1788534527.7350173,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  "infra/terraform/modules/ecr/main.tf": {
+    "mtime": 1788534527.7355127,
+    "ast_hash": "3f74a970a9f1460b316b2f105c8cbe57",
+    "semantic_hash": "3f74a970a9f1460b316b2f105c8cbe57"
+  },
+  "infra/terraform/modules/ecr/outputs.tf": {
+    "mtime": 1788534527.7356513,
+    "ast_hash": "192369328d4ff7f02fea859101ad1302",
+    "semantic_hash": "192369328d4ff7f02fea859101ad1302"
+  },
+  "infra/terraform/modules/ecr/variables.tf": {
+    "mtime": 1788534527.7358022,
+    "ast_hash": "4fa2a9556b31c24dfa8b92bfbfba8fd7",
+    "semantic_hash": "4fa2a9556b31c24dfa8b92bfbfba8fd7"
+  },
+  "infra/terraform/modules/ecr/versions.tf": {
+    "mtime": 1788534527.7359357,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  "infra/terraform/modules/github-oidc/main.tf": {
+    "mtime": 1788534527.7362902,
+    "ast_hash": "65eb6459837ce73a07e361d1be950e26",
+    "semantic_hash": "65eb6459837ce73a07e361d1be950e26"
+  },
+  "infra/terraform/modules/github-oidc/outputs.tf": {
+    "mtime": 1788534527.736449,
+    "ast_hash": "d7ff67f32a9e28eb87cb836768b244cb",
+    "semantic_hash": "d7ff67f32a9e28eb87cb836768b244cb"
+  },
+  "infra/terraform/modules/github-oidc/variables.tf": {
+    "mtime": 1788534527.7365992,
+    "ast_hash": "f7b11ec80587d9a29f9de1d691772d5b",
+    "semantic_hash": "f7b11ec80587d9a29f9de1d691772d5b"
+  },
+  "infra/terraform/modules/github-oidc/versions.tf": {
+    "mtime": 1788534527.736769,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  "infra/terraform/modules/k8s-cluster/compute.tf": {
+    "mtime": 1788534527.7370625,
+    "ast_hash": "264faf3a7cde6571870ec715fc2eb4f1",
+    "semantic_hash": "264faf3a7cde6571870ec715fc2eb4f1"
+  },
+  "infra/terraform/modules/k8s-cluster/iam.tf": {
+    "mtime": 1788534527.7372522,
+    "ast_hash": "1c174bf6eb7d7284ba59c30614f8b3a7",
+    "semantic_hash": "1c174bf6eb7d7284ba59c30614f8b3a7"
+  },
+  "infra/terraform/modules/k8s-cluster/main.tf": {
+    "mtime": 1788534527.7376506,
+    "ast_hash": "1ac56483a7c43fd08361e3486c03d05c",
+    "semantic_hash": "1ac56483a7c43fd08361e3486c03d05c"
+  },
+  "infra/terraform/modules/k8s-cluster/network.tf": {
+    "mtime": 1788534527.7378094,
+    "ast_hash": "0dcf8eb1737875c56e6473d62e87cdb6",
+    "semantic_hash": "0dcf8eb1737875c56e6473d62e87cdb6"
+  },
+  "infra/terraform/modules/k8s-cluster/outputs.tf": {
+    "mtime": 1788534527.7379558,
+    "ast_hash": "a64cb2db2726c8b17d4f4af434f02657",
+    "semantic_hash": "a64cb2db2726c8b17d4f4af434f02657"
+  },
+  "infra/terraform/modules/k8s-cluster/security-groups.tf": {
+    "mtime": 1788534527.7383153,
+    "ast_hash": "c49e2a7b3aac5a21f800d3eedfb1f995",
+    "semantic_hash": "c49e2a7b3aac5a21f800d3eedfb1f995"
+  },
+  "infra/terraform/modules/k8s-cluster/variables.tf": {
+    "mtime": 1788534527.738853,
+    "ast_hash": "9d0c3e94752f318d0b68fdbb30e772ca",
+    "semantic_hash": "9d0c3e94752f318d0b68fdbb30e772ca"
+  },
+  "infra/terraform/modules/k8s-cluster/versions.tf": {
+    "mtime": 1788534527.7389753,
+    "ast_hash": "a3aff3a342481c9f97b8af833d022bb2",
+    "semantic_hash": "a3aff3a342481c9f97b8af833d022bb2"
+  },
+  ".github/workflows/deploy-prod.yml": {
+    "mtime": 1788534527.5878072,
+    "ast_hash": "d05b2223973d0029a2075f2a3ac1b503",
+    "semantic_hash": "d05b2223973d0029a2075f2a3ac1b503"
+  },
+  ".github/workflows/deploy-staging.yml": {
+    "mtime": 1788534527.5881395,
+    "ast_hash": "e5de6960cb4127eb6bb08fd6b019c884",
+    "semantic_hash": "e5de6960cb4127eb6bb08fd6b019c884"
+  },
+  ".github/workflows/manifests-lint.yml": {
+    "mtime": 1788534527.588357,
+    "ast_hash": "df35f942fac1ef38b7d655c9659af398",
+    "semantic_hash": "df35f942fac1ef38b7d655c9659af398"
+  },
+  "docs/wiki/Daily/2026-09-03.md": {
+    "mtime": 1788534527.5900466,
+    "ast_hash": "825afadae7a09c14b40bd6644c7a6217",
+    "semantic_hash": "825afadae7a09c14b40bd6644c7a6217"
+  },
+  "docs/wiki/Plan/kubernetes.md": {
+    "mtime": 1788534527.592381,
+    "ast_hash": "09ab96d9ddeb6a2f499e2e049c212a49",
+    "semantic_hash": "09ab96d9ddeb6a2f499e2e049c212a49"
+  },
+  "infra/k8s/README.md": {
+    "mtime": 1788534527.7286224,
+    "ast_hash": "df2f59f33b2e55ca2bbca7d92108d513",
+    "semantic_hash": "df2f59f33b2e55ca2bbca7d92108d513"
+  },
+  "infra/k8s/addons/README.md": {
+    "mtime": 1788534527.7288325,
+    "ast_hash": "bce8789505182286678eef6f738493e4",
+    "semantic_hash": "bce8789505182286678eef6f738493e4"
+  },
+  "infra/k8s/manifest-prod.yaml": {
+    "mtime": 1788534527.7293305,
+    "ast_hash": "63ced3cca4453655b5d1cd6553b37eb1",
+    "semantic_hash": "63ced3cca4453655b5d1cd6553b37eb1"
+  },
+  "infra/k8s/manifest-staging.yaml": {
+    "mtime": 1788534527.7296777,
+    "ast_hash": "755fb19950bb3f4baa36b1f8c21e182b",
+    "semantic_hash": "755fb19950bb3f4baa36b1f8c21e182b"
+  },
+  "infra/terraform/modules/alb/README.md": {
+    "mtime": 1788534527.7351708,
+    "ast_hash": "1f8b1f65f76a1e2418faaf3f54d7580a",
+    "semantic_hash": "1f8b1f65f76a1e2418faaf3f54d7580a"
+  },
+  "infra/terraform/modules/bedrock-iam/README.md": {
+    "mtime": 1788534527.7353225,
+    "ast_hash": "010debac6032288116518dfcf8d418dd",
+    "semantic_hash": "010debac6032288116518dfcf8d418dd"
+  },
+  "infra/terraform/modules/ecs-service/README.md": {
+    "mtime": 1788534527.7360904,
+    "ast_hash": "02826c326c3f7972607e1909b9c5c68a",
+    "semantic_hash": "02826c326c3f7972607e1909b9c5c68a"
+  },
+  "modules/server/src/main/resources/local/db/migration/R__seed_local_test_user.sql": {
+    "mtime": 1788534527.7443323,
+    "ast_hash": "c649f55a321a54366eae9cd07125f018",
+    "semantic_hash": "c649f55a321a54366eae9cd07125f018"
+  },
+  "modules/server/src/test/java/com/example/demo_chat/chat/ChatControllerStartChatTest.java": {
+    "mtime": 1788534527.745108,
+    "ast_hash": "cfd7944e40106792a6b484fcc88e051d",
+    "semantic_hash": "cfd7944e40106792a6b484fcc88e051d"
+  },
+  "modules/server/src/test/java/com/example/demo_chat/chat/ChatServiceStartChatTest.java": {
+    "mtime": 1788534527.7455044,
+    "ast_hash": "d83d23793c1a9b853e339a42cb852ebd",
+    "semantic_hash": "d83d23793c1a9b853e339a42cb852ebd"
+  },
+  "scripts/verify-chat.sh": {
+    "mtime": 1788534527.7465146,
+    "ast_hash": "9da776b320500c9405d3e02cad1b2b32",
+    "semantic_hash": "9da776b320500c9405d3e02cad1b2b32"
+  },
+  "modules/server/src/test/java/com/example/demo_chat/rag/SlotFillingServiceTest.java": {
+    "mtime": 1788534527.7461014,
+    "ast_hash": "983983cf10c620c9ef3dde4a2004ff8e",
+    "semantic_hash": "983983cf10c620c9ef3dde4a2004ff8e"
+  },
+  "modules/server/src/main/java/com/example/demo_chat/chat/StartChatResponse.java": {
+    "mtime": 1788534527.7427216,
+    "ast_hash": "281d449920699e38321470124432654d",
+    "semantic_hash": "281d449920699e38321470124432654d"
+  },
+  "docs/wiki/Daily/2026-09-04.md": {
+    "mtime": 1788534527.590326,
+    "ast_hash": "d74550b367af9d72914434de2a2f22ab",
+    "semantic_hash": "d74550b367af9d72914434de2a2f22ab"
+  }
+}

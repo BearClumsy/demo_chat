@@ -330,7 +330,7 @@ this for both the `support_kb` and `semantic_cache` stores.
 
 ## Knowledge Sources
 
-This project has two navigable knowledge sources — prefer them over raw Read/grep:
+This project has two navigable knowledge sources:
 
 - `graphify-out/` — auto-generated code graph (god nodes, communities, cross-file relationships)
 - `docs/wiki/` — Obsidian vault of manually/AI-curated project knowledge (requirements, decisions,
@@ -338,13 +338,47 @@ This project has two navigable knowledge sources — prefer them over raw Read/g
 
 ### graphify
 
-- Use `graphify query "<question>"` when `graphify-out/graph.json` exists. Use
-  `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused
-  concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep
-  output.
-- Read `graphify-out/GRAPH_REPORT.md` only for broad architecture review or when
-  query/path/explain do not surface enough context.
-- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
+graphify answers **where** something lives and **what connects to it** — it does not answer what the
+code does. A query returns a node list (`NODE <label> [src=<path> loc=<line>]`), so you still open the
+files it names. It narrows the set; it does not replace the reads.
+
+Reach for it when:
+
+- the question is about architecture, relationships, or what a change would ripple into
+- the answer likely spans docs and code — grep cannot link `docs/wiki/Plan/rag-pipeline.md` to
+  `ChatPipelineService.java` because they share no literal string; the graph links them by meaning
+- you do not yet know which files matter
+
+Go straight to Grep/Read instead when:
+
+- you already know the file
+- you are after a literal string, symbol, or config key
+- you are editing or debugging specific lines
+
+Commands: `graphify query "<question>"`, `graphify path "<A>" "<B>"` for a relationship between two
+concepts, `graphify explain "<concept>"` for one node. Read `graphify-out/GRAPH_REPORT.md` only for a
+broad architecture review, or when those three do not surface enough.
+
+Measured on this corpus (2026-09-04, 219 files, question: "how does the semantic cache short-circuit
+the pipeline"): the query cost ~1,600 tokens and named the 3 files that answer it. Reading every hit
+of the equivalent `grep` would have cost ~25,000; reading just those 3 files costs ~6,600. So the
+query pays for itself when it stops you opening the wrong files, and is pure overhead when you already
+knew where to look.
+
+**Keeping it current:** `graphify update .` after modifying code — AST-only, 0 tokens. A full
+`/graphify .` rebuild re-runs semantic extraction over `docs/` and costs real tokens: ~270k on this
+corpus with a cold cache, 0 when no doc changed (the semantic cache is keyed by file content hash, so
+`touch` does not invalidate it). Do not rebuild casually. `graphify-out/cost.json` tracks spend per
+run; entries carry `token_source` (`reported` / `measured_total` / `estimated` / `mixed`) saying how
+trustworthy each number is, and `status: extraction-complete` marks a run that spent tokens but never
+finished building a graph.
+
+**Version gotcha:** two graphify installs coexist on this machine, and `which graphify` resolves to the
+older one — `~/.local/bin/graphify` (pipx, 0.8.39) shadows `/opt/homebrew/bin/graphify` (0.9.15).
+Driving the 0.9.15 package with the 0.8.39 skill silently produces a degraded graph: 0.9.15 changed AST
+node ids to path-qualified form and stopped routing code files through semantic extraction, so the two
+layers no longer merge and duplicate each other instead. Pin the interpreter explicitly before a
+rebuild rather than trusting the skill's Step 1 autodetect.
 
 ### Working with this Vault
 
@@ -359,7 +393,9 @@ than per-resource notes, so it has no template; `Plan/README.md` is its own sub-
 `Plan/roadmap.md` tracks what's implemented per phase. `index.md` (vault root) is the overall MOC
 entry point.
 
-Before manually grepping files, first try:
-- `graphify query "<question>"` — broad context/connections on a topic
+For a topic you cannot yet place, try these before grepping. If you already know the note, open it
+directly instead.
+
+- `graphify query "<question>"` — connections across notes and code
 - `obsidian search query="<term>"` — exact search by headings/tags
 - `obsidian links <note>` / `obsidian backlinks <note>` — link graph of a single note

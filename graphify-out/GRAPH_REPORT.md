@@ -1,423 +1,456 @@
-# Graph Report - /Users/dmitriyplatonov/Projects/demo_chat  (2026-09-04)
+# Graph Report - demo_chat  (2026-09-05)
 
 ## Corpus Check
-- 219 files · ~65,860 words
+- 198 files · ~61,870 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1010 nodes · 1890 edges · 101 communities (66 shown, 35 thin omitted)
-- Extraction: 91% EXTRACTED · 9% INFERRED · 0% AMBIGUOUS · INFERRED: 161 edges (avg confidence: 0.73)
+- 1023 nodes · 1723 edges · 111 communities (68 shown, 38 thin omitted)
+- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 118 edges (avg confidence: 0.81)
 - Token cost: 0 input · 0 output
 
+## Graph Freshness
+- Built from commit: `b09b0708`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
+
 ## Community Hubs (Navigation)
-- Obsidian Style Settings Plugin
-- Knowledge Base Indexer & Intents
-- Terraform Modules & Project Rationale
-- Client Package Manifest & ESLint Deps
-- Color Picker Widget Internals
-- User Entity & REST API
-- React App Shell & Auth Context
-- Chat Pipeline Orchestration
-- Chat Controller Endpoints
-- Spring Security User Details & R2DBC Tests
-- Plugin Runtime Helpers
-- Kubernetes Compute Pivot
-- Color Model Utilities
-- Architecture Overview & Roadmap
-- Plugin DOM Utilities
-- Kubernetes Manifests & Scaling
-- Chat Participant Authorization
-- Intent Classification Records
-- Client Features & Config Beans
-- TypeScript Compiler Config
-- Chat Feature Bugs & Fixes
-- 8-Stage RAG Pipeline
-- Repositories & Prompt Components
-- Chat Pipeline Tests
-- User Auth & Flyway Migrations
-- CI/CD GitHub Actions
-- Start Chat Request Flow
-- Qdrant Vector Store & Embeddings
-- AWS Infrastructure Mapping
-- Settings Tree Rendering
-- Settings Persistence & CSS Variables
-- Groundedness Validation Tests
-- Intent JSON Validator Script
-- Dialogue State & Slot Filling
-- Plugin Settings Helpers
-- Validation Exception Handling
-- Slot Filling Service & Tests
-- Plugin Manifest Metadata
-- Semantic Cache Vector Store Bean
-- Semantic Cache Service Tests
-- WebFlux Security Config
-- Start Chat Controller Tests
-- Dialogue Status Enum
-- Knowledge Retrieval Service
-- Semantic Cache Service
-- Text Chunker Tests
-- Chat History Cassandra Entity
-- Chat Message Cassandra UDT
-- Chat Client Configuration
-- Answer Generation Service
-- Query Normalization Service
-- SSE Stream Controller Tests
-- CI Workflows & Build Aliases
-- Obsidian App Settings
-- Obsidian Plugin Manifest
-- Password Encoder Config
-- Response Validator Service
-- Streaming & Guardrail Daily Logs
-- Offline Ollama Profile
-- Vector Store Schema
-- Gradle Wrapper Script
-- Kubernetes Add-on Installer
-- Spring Boot Entry Point
-- Retained ECS Reference Modules
-- Chat Smoke Test Script
-- Root Makefile Aliases
-- React Chat MVP
-- Local Test User Seed
-- Daily Report Skill
-- Cassandra Compose Services
-- GitHub Actions CI Overview
-- Java Rules Skill
-- Spring Profiles
-- Bedrock Embedding Bean Fix
-- Datastore Connection Properties
-- Docker/Colima Reinstall
-- Users Table Migration
-- Graphify Setup
-- JDK 26 Toolchain Fix
-- jdtls LazyVim Fix
-- Postgres search_path Bug
-- Spotless Java Format
-- User Package Build-Out
-- Obsidian Vault Setup
-- Daily Log 2026-07-22
+- ChatPipelineService
+- DemoChatApplicationTests.java
+- Terraform AWS IaC (Phase 3, lint-only)
+- org.junit.jupiter.api.Test
+- App.tsx
+- devDependencies
+- compilerOptions
+- User
+- Plan/README.md (architecture/roadmap sub-index)
+- UserPrincipal
+- infra/k8s/addons README
+- Kubernetes deploy layer (kubeadm on EC2) (wiki doc)
+- DialogueStatus
+- roadmap.md
+- Offline profile: commit `11374d4`, then containerise Ollama and boot it for real
+- manifest-prod.yaml
+- infra/k8s README
+- CLAUDE.md
+- docs/wiki/index.md (vault MOC)
+- gradlew
+- Architecture Overview
+- install.sh
+- DemoChatApplication
+- Running Locally
+- CI/CD: GitHub Actions (wiki doc)
+- CI/CD: GitHub Actions
+- demo_chat
+- AWS Infrastructure (wiki doc)
+- Documentation
+- Chat
+- validate-intents.mjs
+- Architecture Overview (wiki doc)
+- <Feature Name>
+- Feature: User
+- Kubernetes deploy layer (kubeadm on EC2)
+- RAG Pipeline: From User Context to Answer
+- Implementation Roadmap
+- Map of Content
+- Dialogue Session Model (Cassandra)
+- AWS Infrastructure
+- Intent Matching and Slot Filling
+- Prompt Engineering and Guardrails
+- infra/terraform
+- 2026-08-13
+- Frontend Chat MVP: auth, start-chat, SSE streaming
+- 2026-07-13
+- 2026-07-14
+- offline Spring Profile (Ollama, no AWS)
+- Vector Store Schema (Topics + Answers)
+- 2026-07-15
+- 2026-09-04
+- infra/k8s
+- alb Module (retained reference, ECS/Fargate ALB)
+- verify-chat.sh
+- Root Makefile (thin alias layer)
+- React Chat MVP (modules/client)
+- R__seed_local_test_user.sql (local-only Flyway seed)
+- daily-report Skill
+- docker-compose: cassandra service
+- GitHub Actions CI (backend-ci, frontend-ci, knowledge-base-lint)
+- java-rules Skill
+- Spring Profiles (local/staging/prod)
+- Resolved Ambiguous Bedrock EmbeddingModel Bean
+- Configured Postgres/Cassandra/Qdrant/Kafka Connection Properties
+- Reinstalled Docker/Colima, Fixed credsStore Mismatch
+- Added V1__create_users_table.sql Migration
+- Set Up graphify for Codebase
+- Fixed JDK 26 Toolchain Auto-Provisioning
+- Fixed jdtls in LazyVim
+- Postgres search_path Schema Desync Bug
+- Added Google Java Format via Spotless
+- Built com.example.demo_chat.user Package (API)
+- Set Up docs/wiki as Obsidian Vault
 - Feature Note Template
-- Cassandra Note Template
-- Kafka Note Template
-- Postgres Note Template
-- Qdrant Note Template
-- Terraform Lint Workflow
-- ECS Service Reference Module
-- Client HTML Entry Point
-- Kafka Compose Service
-- Ollama Compose Service
-- Postgres Compose Service
-- Qdrant Compose Service
+- Cassandra Table Note Template
+- Kafka Topic Note Template
+- Postgres Table Note Template
+- Qdrant Collection Note Template
+- terraform-lint Workflow
+- ecs-service Module (Retained Reference)
+- Kafka Topic: <topic-name>
+- Client index.html Entry Point
+- Java Backend: Project Structure
+- Local ↔ AWS: Component Mapping
+- docker-compose: kafka service
+- docker-compose: ollama service (offline profile)
+- docker-compose: postgres service
+- docker-compose: qdrant service
+- infra/terraform README
+- Cassandra Table: chat_history
+- Cassandra Table: dialogue_state
+- Cassandra Table: <table_name>
+- 2026-08-31
+- React Frontend: Project Structure
+- Postgres Table: <table_name>
+- Postgres Table: users
+- Qdrant Collection: semantic_cache
+- Qdrant Collection: support_kb
+- Qdrant Collection: <collection_name>
+- 2026-08-12
+- daily-report/SKILL.md
+- 2026-07-22
+- 2026-08-20
+- alb/README.md
+- bedrock-iam/README.md
+- ecs-service/README.md
 
 ## God Nodes (most connected - your core abstractions)
-1. `ChatPipelineService` - 46 edges
-2. `M` - 31 edges
-3. `ChatPipelineServiceTest` - 22 edges
-4. `IntentDefinition` - 21 edges
-5. `AWS Infrastructure (wiki doc)` - 20 edges
-6. `ChatPipelineService` - 20 edges
-7. `DialogueState` - 19 edges
-8. `ChatHistory` - 18 edges
-9. `Kubernetes deploy layer (kubeadm on EC2) (wiki doc)` - 18 edges
-10. `RAG Pipeline Design` - 18 edges
+1. `ChatPipelineService` - 47 edges
+2. `docs/wiki/index.md (vault MOC)` - 28 edges
+3. `Plan/README.md (architecture/roadmap sub-index)` - 24 edges
+4. `AWS Infrastructure (wiki doc)` - 23 edges
+5. `IntentDefinition` - 22 edges
+6. `ChatPipelineServiceTest` - 22 edges
+7. `Kubernetes deploy layer (kubeadm on EC2) (wiki doc)` - 19 edges
+8. `DialogueState` - 18 edges
+9. `ChatService` - 17 edges
+10. `User` - 17 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `DialogueStatus.READY_TO_ANSWER Never Assigned (rationale/gotcha)` --semantically_similar_to--> `Slot-Filling NPE: Empty Cassandra Map Reads Back Null`  [INFERRED] [semantically similar]
-  CLAUDE.md → docs/wiki/Daily/2026-09-03.md
 - `Flyway Dual-Configuration Gotcha (Boot vs Gradle plugin)` --semantically_similar_to--> `Flyway Doesn't Auto-Migrate on bootRun (unresolved bug)`  [INFERRED] [semantically similar]
+  CLAUDE.md → docs/wiki/Daily/2026-09-03.md
+- `DialogueStatus.READY_TO_ANSWER Never Assigned (rationale/gotcha)` --semantically_similar_to--> `Slot-Filling NPE: Empty Cassandra Map Reads Back Null`  [INFERRED] [semantically similar]
   CLAUDE.md → docs/wiki/Daily/2026-09-03.md
 - `Known gaps / TODO list` --conceptually_related_to--> `Amazon Keyspaces (Cassandra-compatible)`  [INFERRED]
   infra/terraform/README.md → docs/wiki/Plan/infrastructure.md
-- `daily-report Skill` --conceptually_related_to--> `2026-07-13 Daily Session Log`  [INFERRED]
-  .claude/skills/daily-report/SKILL.md → docs/wiki/Daily/2026-07-13.md
-- `deploy-prod.yml (skeleton deploy workflow)` --implements--> `SSM Run Command Deploy Mechanism (rationale: CI never opens conn to kube-apiserver)`  [EXTRACTED]
-  .github/workflows/deploy-prod.yml → CLAUDE.md
+- `Deploy flow (what the workflow does)` --references--> `deploy-prod.yml (skeleton)`  [INFERRED]
+  infra/k8s/README.md → docs/wiki/Plan/github-actions.md
+- `Deploy flow (what the workflow does)` --references--> `deploy-staging.yml (skeleton)`  [INFERRED]
+  infra/k8s/README.md → docs/wiki/Plan/github-actions.md
 
 ## Import Cycles
 - None detected.
 
 ## Hyperedges (group relationships)
 - **GitHub Actions CI Suite** — github_workflows_backend_ci, github_workflows_frontend_ci, github_workflows_knowledge_base_lint, github_workflows_terraform_lint [EXTRACTED 0.90]
-- **8-Stage RAG Pipeline Flow** — rag_chatpipelineservice, rag_querynormalizationservice, rag_knowledgeretrievalservice, rag_intentclassificationservice, rag_scopefilter, rag_slotfillingservice, rag_promptbuilder, rag_answergenerationservice, rag_responsevalidator, rag_semanticcacheservice [EXTRACTED 1.00]
 - **Kubernetes Deploy Pipeline (Terraform through SSM Apply)** — claude_k8scluster_module, claude_albk8s_module, claude_ecr_module, claude_githuboidc_module, github_workflows_deploy_staging, github_workflows_deploy_prod, github_workflows_manifests_lint [EXTRACTED 0.95]
 - **var-over-explicit-type Java Convention** — claude_skills_java_rules_skill, claude, docs_wiki_daily_2026_07_22 [EXTRACTED 0.80]
-- **2026-09-04 Chat Visibility Bug-Fix Session** — docs_wiki_daily_2026_09_04_chat_visibility_bugs, docs_wiki_features_chat_chatservice, docs_wiki_features_chat_chatcontroller, rag_chatpipelineservice, rag_textchunker [EXTRACTED 0.90]
-- **CI-to-Kubernetes deploy pipeline via SSM** — docs_wiki_plan_github_actions_deploy_staging, docs_wiki_plan_github_actions_deploy_prod, docs_wiki_plan_kubernetes_ssm_deploy, prod_main_module_k8s_cluster [INFERRED 0.85]
-- **RAG pipeline stage flow orchestrated by ChatPipelineService** — rag_chatpipelineservice, rag_querynormalizationservice, rag_semanticcacheservice, rag_knowledgeretrievalservice, rag_intentclassificationservice, rag_scopefilter, rag_slotfillingservice, rag_promptbuilder, rag_answergenerationservice, rag_responsevalidator [EXTRACTED 1.00]
 - **Cluster add-on stack installed by install.sh** — infra_k8s_addons_readme_calico, infra_k8s_addons_readme_metrics_server, infra_k8s_addons_readme_ingress_nginx, infra_k8s_addons_readme_nth [EXTRACTED 1.00]
 - **Deliberately duplicated per-environment config pattern** — infra_k8s_manifest_prod, infra_k8s_manifest_staging, docs_wiki_plan_kubernetes [EXTRACTED 1.00]
 - **Retained Lint-Clean Reference Modules (Not Instantiated by Any Env)** — infra_terraform_modules_alb_readme_alb, infra_terraform_modules_bedrock_iam_readme_bedrock_iam, infra_terraform_modules_ecs_service_readme_ecs_service [EXTRACTED 1.00]
-- **Retained ECS Fargate Reference (Not Instantiated)** — infra_terraform_modules_ecs_service_readme_ecs_service_module, alb_module, bedrock_iam_module [EXTRACTED 1.00]
 - **local docker-compose services backing the local Spring profile** — modules_server_src_main_resources_local_docker_compose_postgres, modules_server_src_main_resources_local_docker_compose_cassandra, modules_server_src_main_resources_local_docker_compose_cassandra_init, modules_server_src_main_resources_local_docker_compose_qdrant, modules_server_src_main_resources_local_docker_compose_kafka, modules_server_src_main_resources_local_docker_compose_ollama [EXTRACTED 1.00]
 
-## Communities (101 total, 35 thin omitted)
+## Communities (111 total, 38 thin omitted)
 
-### Community 0 - "Obsidian Style Settings Plugin"
-Cohesion: 0.05
-Nodes (22): bc(), bl(), Cl(), Cu(), de(), dn(), fn(), Ji() (+14 more)
-
-### Community 1 - "Knowledge Base Indexer & Intents"
+### Community 0 - "ChatPipelineService"
 Cohesion: 0.07
-Nodes (29): ActiveProfiles, ApplicationArguments, ApplicationRunner, ConfigurableApplicationContext, GenericContainer, IntentDefinitionRegistry, Component, Component (+21 more)
+Nodes (30): ChatHistoryRepository, SendMessageResponse, AnswerGenerationService, AssembledPrompt, ChatPipelineService, PipelineOutcome, DialogueState, DialogueStateRepository (+22 more)
 
-### Community 2 - "Terraform Modules & Project Rationale"
+### Community 1 - "DemoChatApplicationTests.java"
+Cohesion: 0.05
+Nodes (37): io.qdrant.client.QdrantClient, jakarta.annotation.PostConstruct, ChatClientConfig, PasswordEncoderConfig, SecurityConfig, SemanticCacheVectorStoreConfig, IntentDefinitionRegistry, Override (+29 more)
+
+### Community 2 - "Terraform AWS IaC (Phase 3, lint-only)"
+Cohesion: 0.16
+Nodes (20): Terraform module: alb (retained, lint-clean, unused), Terraform module: alb-k8s, Terraform module: bedrock-iam (retained, lint-clean, unused), Terraform module: ecr, Terraform module: ecs-service (retained, lint-clean, unused), Terraform module: github-oidc, graphify-out/ (auto-generated code graph), infra/k8s manifests (manifest-staging.yaml / manifest-prod.yaml) (+12 more)
+
+### Community 3 - "org.junit.jupiter.api.Test"
 Cohesion: 0.06
-Nodes (44): Terraform module: alb (retained, lint-clean, unused), Terraform module: alb-k8s, Terraform module: bedrock-iam (retained, lint-clean, unused), Schedulers.boundedElastic() Bridging (rationale), docs/wiki/ (Obsidian vault knowledge source), Terraform module: ecr, Terraform module: ecs-service (retained, lint-clean, unused), Flyway Dual-Configuration Gotcha (Boot vs Gradle plugin) (+36 more)
+Nodes (18): ChatService, MessageRequest, StartChatResponse, GroundednessCheck, PropertyNamingStrategies.SnakeCaseStrategy, UserRepository, ChatControllerStartChatTest, ChatServiceStartChatTest (+10 more)
 
-### Community 3 - "Client Package Manifest & ESLint Deps"
+### Community 4 - "App.tsx"
+Cohesion: 0.11
+Nodes (25): RFC-7807, App(), AppShell(), AuthContext, AuthContextValue, AuthProvider(), Credentials, useAuth() (+17 more)
+
+### Community 5 - "devDependencies"
 Cohesion: 0.05
 Nodes (37): eslint, @eslint/js, eslint-plugin-react-hooks, eslint-plugin-react-refresh, globals, dependencies, react, react-dom (+29 more)
 
-### Community 4 - "Color Picker Widget Internals"
-Cohesion: 0.12
-Nodes (7): destroy(), ie(), M, Ot(), S(), V(), xe()
-
-### Community 5 - "User Entity & REST API"
-Cohesion: 0.11
-Nodes (23): GetMapping, CreateUserRequest, AllArgsConstructor, Builder, Getter, NoArgsConstructor, Table, User (+15 more)
-
-### Community 6 - "React App Shell & Auth Context"
-Cohesion: 0.12
-Nodes (22): RFC-7807, AppShell(), AuthContext, AuthContextValue, AuthProvider(), Credentials, useAuth(), AuthPage() (+14 more)
-
-### Community 7 - "Chat Pipeline Orchestration"
-Cohesion: 0.18
-Nodes (13): ChatPipelineService, Document, Flux, Mono, ServerSentEvent, Service, PipelineOutcome, DialogueState (+5 more)
-
-### Community 8 - "Chat Controller Endpoints"
-Cohesion: 0.15
-Nodes (15): GrantedAuthority, ChatController, Flux, Mono, PostMapping, RequestMapping, RequiredArgsConstructor, ResponseEntity (+7 more)
-
-### Community 9 - "Spring Security User Details & R2DBC Tests"
-Cohesion: 0.13
-Nodes (16): DataR2dbcTest, Mono, Override, RequiredArgsConstructor, Service, UserDetails, SecurityUserDetailsService, Mono (+8 more)
-
-### Community 10 - "Plugin Runtime Helpers"
-Cohesion: 0.17
-Nodes (24): At(), Bi(), c(), Cr(), dc(), Ee(), Er(), Fc() (+16 more)
-
-### Community 11 - "Kubernetes Compute Pivot"
-Cohesion: 0.11
-Nodes (23): terraform-lint.yml workflow, Compute pivot to kubeadm on EC2 (2026-09-03), ECS Fargate (superseded compute target), Terraform structure (IaC layout), Kubernetes deploy layer (kubeadm on EC2) (wiki doc), modules/alb-k8s (Terraform), Calico CNI (VXLAN mode), cluster-autoscaler (optional) (+15 more)
-
-### Community 12 - "Color Model Utilities"
-Cohesion: 0.14
-Nodes (18): ea(), ec(), f(), gl(), gn(), Il(), ke(), L() (+10 more)
-
-### Community 13 - "Architecture Overview & Roadmap"
-Cohesion: 0.13
-Nodes (21): Semantic cache as read-caching for scale, Local <-> AWS: Component Mapping (wiki doc), Local docker-compose stack, local,offline profile (Ollama, no AWS), Switching via Spring Profiles, Architecture Overview (wiki doc), Design principles, Flow for a single message (+13 more)
-
-### Community 14 - "Plugin DOM Utilities"
-Cohesion: 0.14
-Nodes (20): bu(), du(), gu(), Ht(), hu(), Je(), Ki(), lu() (+12 more)
-
-### Community 15 - "Kubernetes Manifests & Scaling"
-Cohesion: 0.12
-Nodes (18): HPA scaling (CPU 70%), infra/k8s manifests (staging/prod), ConfigMap demo-chat-config (prod), Deployment demo-chat-client (prod, 2 replicas), Deployment demo-chat-server (prod, 3 replicas), HorizontalPodAutoscaler (prod, server 3->10 / client 2->4), Ingress demo-chat-web/api (prod), Job demo-chat-kb-bootstrap (prod) (+10 more)
-
-### Community 16 - "Chat Participant Authorization"
-Cohesion: 0.22
-Nodes (9): ChatService, Mono, RequiredArgsConstructor, Service, UserRepository, ChatServiceValidateParticipantIdsTest, BeforeEach, Test (+1 more)
-
-### Community 17 - "Intent Classification Records"
-Cohesion: 0.18
-Nodes (9): AssembledPrompt, IntentClassification, JsonNaming, IntentClassificationService, ChatClient, Mono, Service, IntentDefinition (+1 more)
-
-### Community 18 - "Client Features & Config Beans"
-Cohesion: 0.12
-Nodes (18): AuthContext (in-memory {userId, login, password}), AuthPage (signup + login form), chatApi (hand-rolled SSE frame parser over fetch), ChatWindow / MessageBubble, StartChatForm, useChatStream hook, Vite dev proxy (/api -> localhost:8080), ValidationExceptionHandler (@RestControllerAdvice) (+10 more)
-
-### Community 19 - "TypeScript Compiler Config"
+### Community 6 - "compilerOptions"
 Cohesion: 0.11
 Nodes (17): compilerOptions, isolatedModules, jsx, lib, module, moduleResolution, noEmit, resolveJsonModule (+9 more)
 
-### Community 20 - "Chat Feature Bugs & Fixes"
-Cohesion: 0.18
-Nodes (17): Chat authorization hole (addParticipant bug, 2026-08-13), DialogueStatus.READY_TO_ANSWER Never Assigned (rationale/gotcha), SSE Streaming Endpoint (buffer-then-chunk), SecurityConfig (WebFlux HTTP Basic), Jackson 3 java.time.Instant Deserialization Bug, participantIds Made Optional (assistant-only chats), Slot-Filling NPE: Empty Cassandra Map Reads Back Null, Three Chat Visibility Bugs Fixed (no reply, duplicate bubble, garbled text) (+9 more)
-
-### Community 21 - "8-Stage RAG Pipeline"
-Cohesion: 0.28
-Nodes (16): 8-Stage RAG Pipeline, Semantic-Cache Lookup (non-numbered short-circuit stage), RAG Pipeline Design, AnswerGenerationService (stage 7), AssembledPrompt record, ChatPipelineService, GroundednessCheck record, IntentClassification record (+8 more)
-
-### Community 22 - "Repositories & Prompt Components"
-Cohesion: 0.17
-Nodes (9): ChatHistoryRepository, DialogueStateRepository, Component, PromptBuilder, Component, ScopeFilter, Component, TextChunker (+1 more)
-
-### Community 23 - "Chat Pipeline Tests"
-Cohesion: 0.28
-Nodes (5): SendMessageResponse, ChatPipelineServiceTest, BeforeEach, ServerSentEvent, Test
-
-### Community 24 - "User Auth & Flyway Migrations"
-Cohesion: 0.25
-Nodes (14): PasswordEncoderConfig (BCrypt), Daily Log 2026-08-13, Daily Log 2026-08-20, User Feature, SecurityUserDetailsService, User R2DBC entity, UserPrincipal, UserRepository (R2dbcRepository) (+6 more)
-
-### Community 25 - "CI/CD GitHub Actions"
-Cohesion: 0.25
-Nodes (14): CI/CD: GitHub Actions (wiki doc), backend-ci.yml workflow, deploy-prod.yml (skeleton), deploy-staging.yml (skeleton), frontend-ci.yml workflow, GitHub Environments & protections, knowledge-base-lint.yml workflow, manifests-lint workflow (+6 more)
-
-### Community 26 - "Start Chat Request Flow"
-Cohesion: 0.25
-Nodes (5): MessageRequest, StartChatRequest, ChatServiceStartChatTest, BeforeEach, Test
-
-### Community 27 - "Qdrant Vector Store & Embeddings"
-Cohesion: 0.26
-Nodes (13): Bedrock Titan embedding model (amazon.titan-embed-text-v2:0, 768d), KB Bootstrap Job (--reindex-and-exit), Qdrant semantic_cache Collection, Qdrant support_kb Collection, Non-UUID Qdrant Point Id Bug (KnowledgeBaseIndexer), semantic_cache (Qdrant collection), support_kb (Qdrant collection), Plan/vector-store-schema.md (+5 more)
-
-### Community 28 - "AWS Infrastructure Mapping"
-Cohesion: 0.22
-Nodes (13): AWS Infrastructure (wiki doc), ALB (load balancing), Amazon Bedrock (managed LLM), CloudFront CDN, CloudWatch (logs/metrics/alarms), ECR (Docker image registry), Amazon Keyspaces (Cassandra-compatible), Qdrant on EC2/ECS (self-managed vector store) (+5 more)
-
-### Community 29 - "Settings Tree Rendering"
-Cohesion: 0.24
-Nodes (12): addExportButton(), addResetButton(), clearFilter(), filter(), getAllChildrenIds(), me(), removeChildren(), render() (+4 more)
-
-### Community 30 - "Settings Persistence & CSS Variables"
-Cohesion: 0.31
-Nodes (11): cleanup(), clearSection(), clearSetting(), getSetting(), initClasses(), removeClasses(), save(), setConfig() (+3 more)
-
-### Community 31 - "Groundedness Validation Tests"
+### Community 7 - "User"
 Cohesion: 0.35
-Nodes (5): GroundednessCheck, JsonNaming, ChatClient, Test, ResponseValidatorTest
+Nodes (10): lombok.AllArgsConstructor, lombok.Builder, lombok.Getter, lombok.NoArgsConstructor, ChatHistory, ChatMessage, User, org.springframework.data.cassandra.core.mapping.Table (+2 more)
 
-### Community 32 - "Intent JSON Validator Script"
-Cohesion: 0.22
-Nodes (10): ARRAY_FIELDS, BOOLEAN_FIELDS, dir, errors, fail(), KNOWN_FIELDS, seenIntentIds, seenQuestions (+2 more)
-
-### Community 33 - "Dialogue State & Slot Filling"
-Cohesion: 0.29
-Nodes (10): dialogue_state (Cassandra table), Dialogue Session Model, Intent Matching and Slot Filling, Prompt Engineering and Guardrails, Output-side groundedness guardrail, SYSTEM/CONTEXT/USER STATE/USER MESSAGE prompt structure, DialogueState entity, DialogueStatus enum (+2 more)
-
-### Community 34 - "Plugin Settings Helpers"
+### Community 8 - "Plan/README.md (architecture/roadmap sub-index)"
 Cohesion: 0.20
-Nodes (10): a(), Aa(), addSettingChild(), Dl(), hl(), Ni(), Rl(), vu() (+2 more)
+Nodes (10): Kubernetes Deploy Target (kubeadm on EC2, not ECS), Plan/README.md (architecture/roadmap sub-index), Plan/dialogue-state.md, Plan/frontend-chat-mvp.md, Plan/github-actions.md, Plan/infrastructure.md, Plan/kubernetes.md, Plan/local-vs-aws.md (+2 more)
 
-### Community 35 - "Validation Exception Handling"
-Cohesion: 0.38
-Nodes (6): ExceptionHandler, ResponseStatus, ValidationExceptionHandler, ProblemDetail, RestControllerAdvice, WebExchangeBindException
+### Community 9 - "UserPrincipal"
+Cohesion: 0.06
+Nodes (30): lombok.RequiredArgsConstructor, ChatController, ParticipantRequest, SendMessageRequest, StartChatRequest, ValidationExceptionHandler, CreateUserRequest, Override (+22 more)
 
-### Community 36 - "Slot Filling Service & Tests"
-Cohesion: 0.36
-Nodes (4): Component, SlotFillingService, Test, SlotFillingServiceTest
-
-### Community 37 - "Plugin Manifest Metadata"
+### Community 10 - "infra/k8s/addons README"
 Cohesion: 0.22
-Nodes (8): author, authorUrl, description, id, isDesktopOnly, minAppVersion, name, version
+Nodes (9): Calico CNI (VXLAN mode), cluster-autoscaler (optional), NGINX Ingress Controller (DaemonSet), infra/k8s/addons README, Calico add-on, cluster-autoscaler add-on (optional), ingress-nginx add-on (DaemonSet), metrics-server add-on (+1 more)
 
-### Community 38 - "Semantic Cache Vector Store Bean"
-Cohesion: 0.39
-Nodes (7): Bean, Configuration, EmbeddingModel, VectorStore, SemanticCacheVectorStoreConfig, QdrantClient, Qualifier
+### Community 11 - "Kubernetes deploy layer (kubeadm on EC2) (wiki doc)"
+Cohesion: 0.28
+Nodes (9): Compute pivot to kubeadm on EC2 (2026-09-03), ECS Fargate (superseded compute target), Kubernetes deploy layer (kubeadm on EC2) (wiki doc), modules/alb-k8s (Terraform), modules/k8s-cluster (Terraform), Cluster bootstrap seed election (SSM lock), Roadmap note: compute pivot to Kubernetes, Terraform modules list (+1 more)
 
-### Community 39 - "Semantic Cache Service Tests"
-Cohesion: 0.39
-Nodes (3): Test, VectorStore, SemanticCacheServiceTest
-
-### Community 40 - "WebFlux Security Config"
-Cohesion: 0.43
-Nodes (6): EnableWebFluxSecurity, Bean, Configuration, SecurityConfig, SecurityWebFilterChain, ServerHttpSecurity
-
-### Community 41 - "Start Chat Controller Tests"
-Cohesion: 0.36
-Nodes (4): StartChatResponse, ChatControllerStartChatTest, Test, WebTestClient
-
-### Community 42 - "Dialogue Status Enum"
+### Community 12 - "DialogueStatus"
 Cohesion: 0.25
 Nodes (7): DialogueStatus, ANSWERED, ESCALATED, NEW, OUT_OF_SCOPE, READY_TO_ANSWER, SLOT_FILLING
 
-### Community 43 - "Knowledge Retrieval Service"
-Cohesion: 0.43
-Nodes (5): Document, Mono, Service, VectorStore, KnowledgeRetrievalService
+### Community 13 - "roadmap.md"
+Cohesion: 0.17
+Nodes (15): Semantic cache as read-caching for scale, Local <-> AWS: Component Mapping (wiki doc), Local docker-compose stack, local,offline profile (Ollama, no AWS), Flow for a single message, System components diagram, Phase 1 - Local prototype, Phase 2 - Reactive + Streaming (+7 more)
 
-### Community 44 - "Semantic Cache Service"
-Cohesion: 0.43
-Nodes (4): Mono, Service, VectorStore, SemanticCacheService
+### Community 14 - "Offline profile: commit `11374d4`, then containerise Ollama and boot it for real"
+Cohesion: 0.10
+Nodes (19): 2026-09-03, App-side changes (small, enabling), Bug found on the first real end-to-end boot: non-UUID Qdrant point id, Chat OOMs on the first turn — Colima VM too small for llama3.1, Chat: `participantIds` now optional — assistant-only chats (not this session), CI, Docs drift fixed, Local dev: seeded test user (+11 more)
 
-### Community 46 - "Chat History Cassandra Entity"
-Cohesion: 0.52
-Nodes (6): ChatHistory, AllArgsConstructor, Builder, Getter, NoArgsConstructor, Table
+### Community 15 - "manifest-prod.yaml"
+Cohesion: 0.13
+Nodes (16): HPA scaling (CPU 70%), ConfigMap demo-chat-config (prod), Deployment demo-chat-client (prod, 2 replicas), Deployment demo-chat-server (prod, 3 replicas), HorizontalPodAutoscaler (prod, server 3->10 / client 2->4), Ingress demo-chat-web/api (prod), Job demo-chat-kb-bootstrap (prod), Namespace demo-chat (prod, PodSecurity restricted) (+8 more)
 
-### Community 47 - "Chat Message Cassandra UDT"
-Cohesion: 0.52
-Nodes (6): ChatMessage, AllArgsConstructor, Builder, Getter, NoArgsConstructor, UserDefinedType
-
-### Community 48 - "Chat Client Configuration"
-Cohesion: 0.48
-Nodes (5): ChatClientConfig, Bean, ChatClient, ChatModel, Configuration
-
-### Community 49 - "Answer Generation Service"
-Cohesion: 0.48
-Nodes (4): AnswerGenerationService, ChatClient, Mono, Service
-
-### Community 50 - "Query Normalization Service"
-Cohesion: 0.48
-Nodes (4): ChatClient, Mono, Service, QueryNormalizationService
-
-### Community 51 - "SSE Stream Controller Tests"
-Cohesion: 0.52
-Nodes (3): ChatControllerStreamTest, Test, WebTestClient
-
-### Community 52 - "CI Workflows & Build Aliases"
-Cohesion: 0.47
-Nodes (5): Daily Log 2026-08-12, backend-ci Workflow, frontend-ci Workflow, knowledge-base-lint Workflow, Thin-Alias Root Makefile
-
-### Community 53 - "Obsidian App Settings"
-Cohesion: 0.33
-Nodes (5): alwaysUpdateLinks, promptDelete, readableLineLength, strictLineBreaks, vimMode
-
-### Community 54 - "Obsidian Plugin Manifest"
-Cohesion: 0.33
-Nodes (5): author, authorUrl, minAppVersion, name, version
-
-### Community 55 - "Password Encoder Config"
-Cohesion: 0.53
-Nodes (4): Bean, Configuration, PasswordEncoder, PasswordEncoderConfig
-
-### Community 56 - "Response Validator Service"
-Cohesion: 0.53
-Nodes (4): ChatClient, Mono, Service, ResponseValidator
-
-### Community 57 - "Streaming & Guardrail Daily Logs"
-Cohesion: 0.60
-Nodes (5): Buffer-Then-Chunk SSE Streaming, Daily Log 2026-07-14, Daily Log 2026-07-15, Output-Side Groundedness Guardrail, JPA-to-R2DBC Migration
-
-### Community 58 - "Offline Ollama Profile"
+### Community 16 - "infra/k8s README"
 Cohesion: 0.40
-Nodes (5): offline Spring Profile (Ollama, no AWS), make verify-chat / scripts/verify-chat.sh, Colima VM Undersized for llama3.1 (OOM fix), Ollama Containerized in local/docker-compose.yml, make colima-offline + make verify-chat tooling
+Nodes (5): manifests-lint workflow, infra/k8s manifests (staging/prod), infra/k8s README, make k8s-lint / k8s-render-staging / k8s-apply-staging, Manifest layout / object table
 
-### Community 59 - "Vector Store Schema"
-Cohesion: 0.83
-Nodes (4): Vector Store Schema (Topics + Answers), Knowledge base reindex process (KnowledgeBaseIndexer.reindex), semantic_cache Qdrant collection, support_kb Qdrant collection
+### Community 17 - "CLAUDE.md"
+Cohesion: 0.11
+Nodes (17): API surface, Architecture (from declared dependencies), Client, Commands, Configuration, Gotchas, graphify, Infrastructure (Kubernetes) (+9 more)
 
-### Community 60 - "Gradle Wrapper Script"
+### Community 18 - "docs/wiki/index.md (vault MOC)"
+Cohesion: 0.06
+Nodes (57): Bedrock Titan embedding model (amazon.titan-embed-text-v2:0, 768d), Buffer-Then-Chunk SSE Streaming, Chat authorization hole (addParticipant bug, 2026-08-13), DialogueStatus.READY_TO_ANSWER Never Assigned (rationale/gotcha), docs/wiki/ (Obsidian vault knowledge source), SSE Streaming Endpoint (buffer-then-chunk), AuthPage (signup + login form), GET /api/users/{id} Endpoint (+49 more)
+
+### Community 19 - "gradlew"
 Cohesion: 0.83
 Nodes (3): gradlew script, die(), warn()
 
-### Community 61 - "Kubernetes Add-on Installer"
+### Community 20 - "Architecture Overview"
+Cohesion: 0.33
+Nodes (5): Architecture Overview, Design principles, Flow for a single message (current implementation), Related documents, System components (current)
+
+### Community 21 - "install.sh"
 Cohesion: 0.83
 Nodes (3): kubectl_apply(), install.sh script, wait_rollout()
 
-### Community 63 - "Retained ECS Reference Modules"
+### Community 23 - "Running Locally"
+Cohesion: 0.15
+Nodes (12): 1. Start the dependencies, 2. Create the Cassandra keyspace (one-time), 3. Export AWS credentials, 4. Run the backend, 5. Run the frontend, Exercising the API directly, Prerequisites, Related documents (+4 more)
+
+### Community 25 - "CI/CD: GitHub Actions (wiki doc)"
+Cohesion: 0.29
+Nodes (12): CI/CD: GitHub Actions (wiki doc), backend-ci.yml workflow, deploy-prod.yml (skeleton), deploy-staging.yml (skeleton), frontend-ci.yml workflow, GitHub Environments & protections, knowledge-base-lint.yml workflow, CI -> cluster via SSM Run Command (+4 more)
+
+### Community 26 - "CI/CD: GitHub Actions"
+Cohesion: 0.18
+Nodes (10): `backend-ci.yml` — stages (implemented), CI/CD: GitHub Actions, `deploy-prod.yml`, `deploy-staging.yml`, `frontend-ci.yml` — stages (implemented), GitHub Environments and protections, `knowledge-base-lint.yml` (implemented), Related documents (+2 more)
+
+### Community 27 - "demo_chat"
+Cohesion: 0.11
+Nodes (19): Schedulers.boundedElastic() Bridging (rationale), Flyway Dual-Configuration Gotcha (Boot vs Gradle plugin), KB Bootstrap Job (--reindex-and-exit), Postgres/JPA to R2DBC Migration (rationale), 8-Stage RAG Pipeline, Qdrant semantic_cache Collection, Semantic-Cache Lookup (non-numbered short-circuit stage), Qdrant support_kb Collection (+11 more)
+
+### Community 28 - "AWS Infrastructure (wiki doc)"
+Cohesion: 0.22
+Nodes (13): AWS Infrastructure (wiki doc), ALB (load balancing), Amazon Bedrock (managed LLM), CloudFront CDN, CloudWatch (logs/metrics/alarms), ECR (Docker image registry), Amazon Keyspaces (Cassandra-compatible), Qdrant on EC2/ECS (self-managed vector store) (+5 more)
+
+### Community 29 - "Documentation"
+Cohesion: 0.18
+Nodes (10): Architecture, AWS, CI/CD, Current repository structure, Data, Documentation, Environments, Plan (+2 more)
+
+### Community 30 - "Chat"
+Cohesion: 0.22
+Nodes (8): Chat, Decisions, Infrastructure Used, Open Questions, Overview, Related Code, Requirements, Source Log
+
+### Community 32 - "validate-intents.mjs"
+Cohesion: 0.20
+Nodes (10): ARRAY_FIELDS, BOOLEAN_FIELDS, dir, errors, fail(), KNOWN_FIELDS, seenIntentIds, seenQuestions (+2 more)
+
+### Community 33 - "Architecture Overview (wiki doc)"
+Cohesion: 0.23
+Nodes (16): AuthContext (in-memory {userId, login, password}), chatApi (hand-rolled SSE frame parser over fetch), ChatWindow / MessageBubble, StartChatForm, useChatStream hook, Vite dev proxy (/api -> localhost:8080), Daily Log 2026-07-14, Java Backend Structure (+8 more)
+
+### Community 34 - "<Feature Name>"
+Cohesion: 0.22
+Nodes (8): Decisions, <Feature Name>, Infrastructure Used, Open Questions, Overview, Related Code, Requirements, Source Log
+
+### Community 35 - "Feature: User"
+Cohesion: 0.22
+Nodes (8): Decisions, Feature: User, Infrastructure Used, Open Questions, Overview, Related Code, Requirements, Source Log
+
+### Community 38 - "Kubernetes deploy layer (kubeadm on EC2)"
+Cohesion: 0.22
+Nodes (8): CI → cluster (SSM Run Command, no inbound exposure), Cluster bootstrap (`modules/k8s-cluster`), Ingress / ALB (`modules/alb-k8s`), Kubernetes deploy layer (kubeadm on EC2), Manifests (`infra/k8s/manifest-{staging,prod}.yaml`), Scaling, Shape, Still deferred (needs an AWS account)
+
+### Community 39 - "RAG Pipeline: From User Context to Answer"
+Cohesion: 0.22
+Nodes (8): Example of a single request going through the pipeline, How it works (quick reference), Known simplifications, Pipeline stages, RAG Pipeline: From User Context to Answer, Related documents, SSE streaming, Where each stage lives in the code
+
+### Community 40 - "Implementation Roadmap"
+Cohesion: 0.22
+Nodes (9): Implementation Roadmap, Phase 1 — Local prototype, Phase 2 — Reactive + Streaming, Phase 3 — Staging in AWS, Phase 3a — profiles, containers, CI (done), Phase 3b — needs an AWS account (open), Phase 4 — Production and scaling, Phase 5 — Quality iteration (+1 more)
+
+### Community 42 - "Map of Content"
+Cohesion: 0.22
+Nodes (8): Daily, demo_chat Wiki, Features, Infrastructure, Linking convention, Map of Content, Plan, Structure
+
+### Community 43 - "Dialogue Session Model (Cassandra)"
+Cohesion: 0.25
+Nodes (7): Dialogue Session Model (Cassandra), Example value, Key structure (implemented), Related documents, Semantic cache — decided (Phase 2), Statuses (`DialogueStatus`), Why Cassandra and not in-memory
+
+### Community 44 - "AWS Infrastructure"
+Cohesion: 0.25
+Nodes (7): AWS Infrastructure, Core AWS services and their roles, Diagram (high level), Network layout (VPC), Related documents, Scaling for 500K+ users, Terraform structure (IaC)
+
+### Community 46 - "Intent Matching and Slot Filling"
+Cohesion: 0.18
+Nodes (10): Output-side groundedness guardrail, Dialogue state diagram for a single intent, Example structure of one "allowed question", Example structured output from the LLM classifier, Intent Matching and Slot Filling, Related documents, Slot filling: collecting missing context, Why two levels of filtering (+2 more)
+
+### Community 47 - "Prompt Engineering and Guardrails"
+Cohesion: 0.22
+Nodes (8): Example of an assembled prompt, Handling "sensitive" messages, Input-side guardrails, Output-side guardrails, Principle behind assembling the final prompt, Prompt Engineering and Guardrails, Related documents, SYSTEM/CONTEXT/USER STATE/USER MESSAGE prompt structure
+
+### Community 48 - "infra/terraform"
+Cohesion: 0.25
+Nodes (7): Deploy path: Kubernetes on EC2, infra/terraform, Known gaps / TODO, Linting locally, Modules, Status: lint-only, The env-var contract
+
+### Community 49 - "2026-08-13"
+Cohesion: 0.29
+Nodes (6): 2026-08-13, Chat authorization hole, Docs & graph, Flyway: standalone migration tasks, Local tooling & tests, Open / uncommitted
+
+### Community 50 - "Frontend Chat MVP: auth, start-chat, SSE streaming"
+Cohesion: 0.29
+Nodes (6): Backend constraints that shaped the design, Context, Frontend Chat MVP: auth, start-chat, SSE streaming, Related documents, Verification, What was built
+
+### Community 54 - "2026-07-13"
+Cohesion: 0.33
+Nodes (5): 2026-07-13, API, Data layer, Documentation, Infrastructure & tooling
+
+### Community 55 - "2026-07-14"
+Cohesion: 0.33
+Nodes (5): 2026-07-14, API — RAG pipeline, Dependencies — Bedrock Converse starter, Documentation, Infrastructure & tooling
+
+### Community 58 - "offline Spring Profile (Ollama, no AWS)"
+Cohesion: 0.40
+Nodes (5): offline Spring Profile (Ollama, no AWS), make verify-chat / scripts/verify-chat.sh, Colima VM Undersized for llama3.1 (OOM fix), Ollama Containerized in local/docker-compose.yml, make colima-offline + make verify-chat tooling
+
+### Community 59 - "Vector Store Schema (Topics + Answers)"
+Cohesion: 0.22
+Nodes (10): Knowledge base reindex process (KnowledgeBaseIndexer.reindex), semantic_cache Qdrant collection, support_kb Qdrant collection, Collection indexes and parameters (Qdrant), Knowledge base update process, Metadata fields, Related documents, `semantic_cache` collection (Phase 2) (+2 more)
+
+### Community 60 - "2026-07-15"
+Cohesion: 0.33
+Nodes (5): 2026-07-15, API — RAG pipeline Phase 2, Data layer — R2DBC migration, Documentation, Infrastructure & tooling
+
+### Community 61 - "2026-09-04"
+Cohesion: 0.33
+Nodes (5): 2026-09-04, Auth: default the login/signup toggle to login, Chat: three visibility bugs found on first real UI use, all fixed, Tooling: `make stop` to kill a foregrounded local run, Working tree at end of day
+
+### Community 62 - "infra/k8s"
+Cohesion: 0.33
+Nodes (5): infra/k8s, Layout, Local check, Status: lint-only, What's in a manifest
+
+### Community 63 - "alb Module (retained reference, ECS/Fargate ALB)"
 Cohesion: 1.00
 Nodes (3): alb Module (retained reference, ECS/Fargate ALB), bedrock-iam Module (retained reference, ECS task/execution roles), ecs-service Module (retained reference)
 
+### Community 92 - "Kafka Topic: <topic-name>"
+Cohesion: 0.33
+Nodes (5): Consumers, Kafka Topic: <topic-name>, Notes, Producers, Schema
+
+### Community 95 - "Java Backend: Project Structure"
+Cohesion: 0.33
+Nodes (5): Actual package tree, Java Backend: Project Structure, Rationale for the current layers, Reactive boundaries, Related documents
+
+### Community 96 - "Local ↔ AWS: Component Mapping"
+Cohesion: 0.33
+Nodes (5): docker-compose (local stack, actual), Local ↔ AWS: Component Mapping, Mapping table, Related documents, Switching via Spring Profiles (implemented)
+
+### Community 101 - "infra/terraform README"
+Cohesion: 0.25
+Nodes (7): Cluster add-ons, Node AMI prerequisites, Running it, terraform-lint.yml workflow, Terraform structure (IaC layout), infra/terraform README, Known gaps / TODO list
+
+### Community 102 - "Cassandra Table: chat_history"
+Cohesion: 0.40
+Nodes (4): Cassandra Table: chat_history, Columns, Notes, Used By
+
+### Community 103 - "Cassandra Table: dialogue_state"
+Cohesion: 0.40
+Nodes (4): Cassandra Table: dialogue_state, Columns, Notes, Used By
+
+### Community 104 - "Cassandra Table: <table_name>"
+Cohesion: 0.40
+Nodes (4): Cassandra Table: <table_name>, Columns, Notes, Used By
+
+### Community 105 - "2026-08-31"
+Cohesion: 0.40
+Nodes (4): 2026-08-31, Code review of the skeleton — follow-ups before an apply, Phase 3b (no-AWS slice): Terraform skeleton + lint CI, Tooling: graphify graph rebuilt for the new infra
+
+### Community 106 - "React Frontend: Project Structure"
+Cohesion: 0.40
+Nodes (4): Backend integration points, React Frontend: Project Structure, Related documents, Tree
+
+### Community 107 - "Postgres Table: <table_name>"
+Cohesion: 0.40
+Nodes (4): Columns, Notes, Postgres Table: <table_name>, Used By
+
+### Community 108 - "Postgres Table: users"
+Cohesion: 0.40
+Nodes (4): Columns, Notes, Postgres Table: users, Used By
+
+### Community 109 - "Qdrant Collection: semantic_cache"
+Cohesion: 0.40
+Nodes (4): Notes, Payload Fields, Qdrant Collection: semantic_cache, Used By
+
+### Community 110 - "Qdrant Collection: support_kb"
+Cohesion: 0.40
+Nodes (4): Notes, Payload Fields, Qdrant Collection: support_kb, Used By
+
+### Community 111 - "Qdrant Collection: <collection_name>"
+Cohesion: 0.40
+Nodes (4): Notes, Payload Fields, Qdrant Collection: <collection_name>, Used By
+
+### Community 113 - "2026-08-12"
+Cohesion: 0.50
+Nodes (3): 2026-08-12, Root Makefile, Wiki & tooling notes
+
+### Community 114 - "daily-report/SKILL.md"
+Cohesion: 0.50
+Nodes (3): Format, Gathering what changed, Saving
+
 ## Knowledge Gaps
-- **157 isolated node(s):** `promptDelete`, `alwaysUpdateLinks`, `strictLineBreaks`, `vimMode`, `readableLineLength` (+152 more)
-  These have ≤1 connection - possible missing edges or undocumented components.
-- **35 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **370 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+365 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 455 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **38 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ChatService` connect `Chat Feature Bugs & Fixes` to `User Auth & Flyway Migrations`, `8-Stage RAG Pipeline`, `Chat History Cassandra Entity`?**
-  _High betweenness centrality (0.129) - this node is a cross-community bridge._
-- **Why does `ChatHistory` connect `Chat History Cassandra Entity` to `Chat Pipeline Orchestration`, `Chat Message Cassandra UDT`, `Chat Participant Authorization`, `Intent Classification Records`, `SSE Stream Controller Tests`, `Repositories & Prompt Components`, `Start Chat Request Flow`?**
-  _High betweenness centrality (0.088) - this node is a cross-community bridge._
-- **Why does `docs/wiki/index.md (vault MOC)` connect `Terraform Modules & Project Rationale` to `Chat Feature Bugs & Fixes`, `Architecture Overview & Roadmap`?**
-  _High betweenness centrality (0.077) - this node is a cross-community bridge._
-- **What connects `promptDelete`, `alwaysUpdateLinks`, `strictLineBreaks` to the rest of the system?**
-  _157 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Obsidian Style Settings Plugin` be split into smaller, more focused modules?**
-  _Cohesion score 0.05142857142857143 - nodes in this community are weakly interconnected._
-- **Should `Knowledge Base Indexer & Intents` be split into smaller, more focused modules?**
-  _Cohesion score 0.07400555041628122 - nodes in this community are weakly interconnected._
-- **Should `Terraform Modules & Project Rationale` be split into smaller, more focused modules?**
-  _Cohesion score 0.05813953488372093 - nodes in this community are weakly interconnected._
+- **Why does `docs/wiki/index.md (vault MOC)` connect `docs/wiki/index.md (vault MOC)` to `Architecture Overview (wiki doc)`, `Terraform AWS IaC (Phase 3, lint-only)`, `Plan/README.md (architecture/roadmap sub-index)`, `roadmap.md`, `demo_chat`?**
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+- **Why does `ChatPipelineService` connect `ChatPipelineService` to `UserPrincipal`, `org.junit.jupiter.api.Test`, `DemoChatApplicationTests.java`?**
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+- **Why does `Plan/README.md (architecture/roadmap sub-index)` connect `Plan/README.md (architecture/roadmap sub-index)` to `Architecture Overview (wiki doc)`, `Kubernetes deploy layer (kubeadm on EC2) (wiki doc)`, `roadmap.md`, `docs/wiki/index.md (vault MOC)`, `CI/CD: GitHub Actions (wiki doc)`, `demo_chat`, `AWS Infrastructure (wiki doc)`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+- **What connects `name`, `private`, `version` to the rest of the system?**
+  _370 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `ChatPipelineService` be split into smaller, more focused modules?**
+  _Cohesion score 0.07350975674953221 - nodes in this community are weakly interconnected._
+- **Should `DemoChatApplicationTests.java` be split into smaller, more focused modules?**
+  _Cohesion score 0.053208137715179966 - nodes in this community are weakly interconnected._
+- **Should `org.junit.jupiter.api.Test` be split into smaller, more focused modules?**
+  _Cohesion score 0.0633879781420765 - nodes in this community are weakly interconnected._
