@@ -187,6 +187,9 @@
   },
   "active": "560e54d5fbfa1a26",
   "lastOpenFiles": [
+    "Plan/running-locally.md.tmp.9311.da21623773ba",
+    "Plan/github-actions.md.tmp.9311.1b7cc5d49c85",
+    "Plan/README.md.tmp.9311.c36dd5866d88",
     "Plan/kubernetes.md",
     "Daily/2026-09-04.md",
     "Daily/2026-09-03.md",
@@ -211,8 +214,6 @@
     "Plan/backend.md",
     "Plan/frontend.md",
     "Plan/frontend-chat-mvp.md",
-    "Plan/frontend.md.tmp.6305.8489853db77d",
-    "Infrastructure/Qdrant/support_kb.md.tmp.6305.9fe8f8fd9ce7",
     "Daily/2026-07-15.md",
     "index.md",
     "Plan/vector-store-schema.md",
@@ -221,7 +222,6 @@
     "Plan/local-vs-aws.md",
     "Plan/intent-matching.md",
     "Plan/infrastructure.md",
-    "Plan/github-actions.md",
-    "Plan/dialogue-state.md"
+    "Plan/github-actions.md"
   ]
 }

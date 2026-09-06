@@ -2,7 +2,7 @@
 # settings.gradle live there:
 #   docker build -f modules/server/Dockerfile -t demo-chat-server .
 
-FROM eclipse-temurin:26-jdk-alpine AS build
+FROM eclipse-temurin:25-jdk-alpine AS build
 WORKDIR /workspace
 
 # Wrapper and build scripts first, so a source-only change doesn't re-resolve dependencies.
@@ -21,7 +21,7 @@ RUN ./gradlew --no-daemon :server:bootJar -x test \
 # dependency layers below.
 RUN java -Djarmode=tools -jar application.jar extract --layers --destination extracted
 
-FROM eclipse-temurin:26-jre-alpine AS runtime
+FROM eclipse-temurin:25-jre-alpine AS runtime
 # Pinned uid so a PodSecurity "restricted" namespace can assert runAsNonRoot / runAsUser.
 RUN addgroup -S -g 10001 demo_chat && adduser -S -u 10001 -G demo_chat demo_chat
 WORKDIR /app

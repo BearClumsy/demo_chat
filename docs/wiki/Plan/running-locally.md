@@ -10,7 +10,7 @@ macOS with Colima; the only machine-specific parts are called out.
 | Need | Notes |
 |---|---|
 | Docker | Postgres, Cassandra, Qdrant, and Kafka all run as containers. Tests need it too. |
-| Java 26 | Provisioned by the Gradle toolchain — use `./gradlew`, don't rely on the system JDK. |
+| Java 25 | Provisioned by the Gradle toolchain — use `./gradlew`, don't rely on the system JDK. |
 | Node 22+ | For the React client and `scripts/validate-intents.mjs`. |
 | AWS credentials with Bedrock access | Required to *start* the app, not just to chat — see step 3. |
 | Docker VM ≥ ~12 GiB (offline profile only) | `make run-offline` runs `llama3.1` (8B) in the Ollama container alongside Postgres/Cassandra/Qdrant/Kafka. The default 2 GiB Colima VM OOM-kills it on the first chat turn — `colima stop && colima start --cpu 6 --memory 16`. |

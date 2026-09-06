@@ -39,7 +39,7 @@ branch in this repo).
 trigger: pull_request, push to main (paths: modules/server/**, gradle/**, settings.gradle, gradlew)
 
 1. checkout
-2. setup-java (temurin 26) + gradle/actions/setup-gradle for dependency caching
+2. setup-java (temurin 25) + gradle/actions/setup-gradle for dependency caching
 3. ./gradlew :server:spotlessCheck :server:build
    - spotlessCheck IS the static analysis here (googleJavaFormat); no Checkstyle/SpotBugs
    - build runs all 8 test classes, including the Testcontainers ones

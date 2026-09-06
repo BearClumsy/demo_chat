@@ -66,7 +66,7 @@ demo_chat/                                  # multi-module Gradle build (root se
 │   └── wiki/                               # Obsidian vault — Features/, Infrastructure/, Daily/, Plan/ (this doc set)
 ├── graphify-out/                           # generated code graph (graphify)
 ├── modules/
-│   ├── server/                             # :server — Spring Boot 4.0.7, Spring AI 2.0.0, Java 26 toolchain
+│   ├── server/                             # :server — Spring Boot 4.0.7, Spring AI 2.0.0, Java 25 toolchain
 │   │   ├── build.gradle                    # Groovy DSL (not Kotlin DSL)
 │   │   └── src/
 │   │       ├── main/

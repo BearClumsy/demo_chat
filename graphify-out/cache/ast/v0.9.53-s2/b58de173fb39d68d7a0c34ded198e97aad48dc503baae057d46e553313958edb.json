@@ -1,0 +1,1 @@
+{"nodes": [{"id": "$graphify-root$_infra_terraform_envs_staging_terraform_tfvars", "label": "terraform.tfvars", "file_type": "code", "source_file": "infra/terraform/envs/staging/terraform.tfvars", "source_location": null}], "edges": []}

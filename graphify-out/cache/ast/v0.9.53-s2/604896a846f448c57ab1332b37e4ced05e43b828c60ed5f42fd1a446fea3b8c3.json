@@ -1,0 +1,1 @@
+{"nodes": [{"id": "$graphify-root$_infra_terraform_modules_k8s_cluster_versions_tf", "label": "versions.tf", "file_type": "code", "source_file": "infra/terraform/modules/k8s-cluster/versions.tf", "source_location": null}], "edges": []}

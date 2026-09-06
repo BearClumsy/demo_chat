@@ -26,7 +26,7 @@ Terraform, ECR, and the deploy workflows — is still outstanding and needs an a
 
 ## Tech stack
 
-- **Java 26**, provisioned via the Gradle toolchain (don't assume your system JDK matches).
+- **Java 25**, provisioned via the Gradle toolchain (don't assume your system JDK matches).
 - **Spring Boot 4.0.7** with **Spring AI 2.0.0** (BOM).
 - **Reactive web**: WebFlux + WebClient — endpoints and outbound calls use `Mono`/`Flux`, not servlet APIs.
 - **LLM**: Amazon Bedrock — `anthropic.claude-3-5-haiku-20241022-v1:0` for chat, `amazon.titan-embed-text-v2:0`

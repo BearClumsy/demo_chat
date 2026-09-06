@@ -4,7 +4,7 @@
 
 Stack: **Spring Boot 4.0.7 + Spring WebFlux + Spring AI 2.0.0 + Spring Security + Spring Data R2DBC
 (Postgres) + Flyway (JDBC, migrations only) + Spring Data Cassandra (reactive) + Kafka**.
-Build tool: Gradle, **Groovy DSL** (`build.gradle`, not Kotlin DSL). Java toolchain: **26**. Lombok is
+Build tool: Gradle, **Groovy DSL** (`build.gradle`, not Kotlin DSL). Java toolchain: **25**. Lombok is
 used throughout for entity/DTO boilerplate.
 
 This is the `:server` Gradle module, at `modules/server/` (multi-module build: `modules/server` for
