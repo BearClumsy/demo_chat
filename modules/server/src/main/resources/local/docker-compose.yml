@@ -15,6 +15,25 @@ services:
       timeout: 5s
       retries: 10
 
+  # GUI for browsing the local Postgres. Gated behind the `tools` Compose profile so plain
+  # `make up` never starts it — run `make pgadmin` instead. Auto-registers the demo_chat
+  # connection via the mounted servers.json; the Postgres password is still typed once at first
+  # connect (optionally checking "Save Password" to persist it in the pgadmin-data volume).
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    profiles: ["tools"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      PGADMIN_DEFAULT_EMAIL: demo_chat@example.com
+      PGADMIN_DEFAULT_PASSWORD: demo_chat
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
+
   cassandra:
     image: cassandra:5
     environment:
@@ -97,6 +116,10 @@ services:
 
 volumes:
   postgres-data:
+  # Holds pgAdmin's own config (saved server list, saved passwords if "Save Password" is checked).
+  # Compose-managed, so `make nuke` wipes it too and the next `make pgadmin` starts from a clean
+  # login with the servers.json connection re-registered.
+  pgadmin-data:
   cassandra-data:
   qdrant-data:
   # Holds the pulled Ollama models. Compose-managed, so `make nuke` (`down -v`) wipes it too and the

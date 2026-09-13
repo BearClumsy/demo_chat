@@ -39,9 +39,13 @@ up-offline: ## Start the local containers + Ollama; on first run pulls its model
 	@echo ">>> Ensuring the offline models are in the Ollama container (first run / post-nuke downloads ~5 GB)..."
 	$(COMPOSE) exec -T ollama sh -c 'until ollama list >/dev/null 2>&1; do sleep 1; done; ollama pull llama3.1 && ollama pull nomic-embed-text'
 
+.PHONY: pgadmin
+pgadmin: ## Start Postgres + pgAdmin (http://localhost:5050) for browsing the local database
+	$(COMPOSE) --profile tools up -d pgadmin
+
 .PHONY: down
 down: ## Stop the local containers (keeps volumes)
-	$(COMPOSE) --profile offline down --remove-orphans
+	$(COMPOSE) --profile offline --profile tools down --remove-orphans
 
 .PHONY: logs
 logs: ## Follow the local container logs
@@ -49,7 +53,7 @@ logs: ## Follow the local container logs
 
 .PHONY: nuke
 nuke: ## Stop the local containers AND delete their data volumes (external ollama-models is kept)
-	$(COMPOSE) --profile offline down -v --remove-orphans
+	$(COMPOSE) --profile offline --profile tools down -v --remove-orphans
 
 .PHONY: colima-offline
 colima-offline: ## Resize the Colima VM to 6 CPU / 16 GiB (what the offline llama3.1 needs) and restart it
