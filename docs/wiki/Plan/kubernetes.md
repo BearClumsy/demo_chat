@@ -39,9 +39,9 @@ ingress-nginx  (DaemonSet, externalTrafficPolicy: Local, HTTP-only, ssl-redirect
 ns demo-chat  (private app subnets, on worker EC2 nodes)
   demo-chat-server  ×2/3   envFrom ConfigMap + Secret    probes → /actuator/health/{liveness,readiness}
   demo-chat-client  ×2     nginx-unprivileged :8080
-  Job demo-chat-kb-bootstrap   server image, --reindex-and-exit → seeds Qdrant support_kb
+  Job demo-chat-kb-bootstrap   server image, --reindex-and-exit → seeds the support_kb pgvector table
   │
-  └── egress → RDS Postgres · Amazon Keyspaces · Qdrant-on-EC2 · MSK · Bedrock  (data tier unchanged)
+  └── egress → RDS Postgres (also hosts pgvector) · Amazon Keyspaces · MSK · Bedrock  (data tier unchanged)
 
 Control plane: 1 (staging) / 3 (prod) EC2 in an ASG, stacked etcd on a dedicated gp3 volume,
   --control-plane-endpoint = internal API NLB DNS.
@@ -106,19 +106,20 @@ HPA bounds, resource requests, the Ingress `host`.
   so `restricted` is satisfiable.
 - **ConfigMap `demo-chat-config`** — non-secret env, keys 1:1 with the Terraform `container_env`
   output and `application-<env>.properties`. `REPLACE_*` values substituted at deploy time.
-- **Secret `demo-chat-secrets`** — `POSTGRES_PASSWORD`, **`CASSANDRA_USER`**, `CASSANDRA_PASSWORD`,
-  `QDRANT_API_KEY`. `CASSANDRA_USER` closes the gap flagged in [[2026-08-31]] (Amazon Keyspaces
+- **Secret `demo-chat-secrets`** — `POSTGRES_PASSWORD`, **`CASSANDRA_USER`**, `CASSANDRA_PASSWORD`.
+  `CASSANDRA_USER` closes the gap flagged in [[2026-08-31]] (Amazon Keyspaces
   issues a username+password pair). Ships with `REPLACE_AT_DEPLOY` placeholders on purpose — a
   deploy that skips the secret-render step then fails fast (the app has no defaults for these).
 - **Probes** — `startupProbe` → `/actuator/health/readiness`, `failureThreshold: 30` (~300 s
   budget: the k8s equivalent of the `health_check_grace_period_seconds` fix that resolved the
   [[2026-08-31]] "ALB killed the task before readiness" incident). `livenessProbe` →
-  `/actuator/health/liveness` (only `livenessState`; stays UP during a Cassandra/Qdrant/Bedrock
+  `/actuator/health/liveness` (only `livenessState`; stays UP during a Cassandra/Postgres/Bedrock
   outage → no restart storm). `readinessProbe` → `/actuator/health/readiness`.
-- **KB bootstrap Job** — staging/prod keep `reindex-on-startup=false` and
-  `QDRANT_INITIALIZE_SCHEMA=false`, so a fresh Qdrant `support_kb` is empty and every RAG turn
-  escalates. `KnowledgeBaseIndexer` gained a `--reindex-and-exit` one-shot mode; the Job runs the
-  server image with that arg, seeds the collection, and exits 0.
+- **KB bootstrap Job** — staging/prod keep `reindex-on-startup=false`; the `support_kb` pgvector
+  table itself is created ahead of the deploy by Flyway
+  (`V2__create_vector_store_tables.sql`), not by this Job, so a fresh deploy's table is empty and
+  every RAG turn escalates until the Job runs. `KnowledgeBaseIndexer` gained a `--reindex-and-exit`
+  one-shot mode; the Job runs the server image with that arg, seeds the table, and exits 0.
 
 ## CI → cluster (SSM Run Command, no inbound exposure)
 
@@ -135,7 +136,7 @@ polls `get-command-invocation` and fails on non-zero.
   blocking on CRITICAL; runs `<name>-kubectl-rollback` via SSM if the smoke test fails.
 
 Both reference GitHub Environment `vars.*` (`AWS_DEPLOY_ROLE_ARN`, `ECR_*`, `K8S_DEPLOY_BUCKET`,
-`SSM_*`, the four `SECRET_ARN_*`, `RDS_ENDPOINT` / `QDRANT_HOST` / `KAFKA_BOOTSTRAP_SERVERS`,
+`SSM_*`, the three `SECRET_ARN_*`, `RDS_ENDPOINT` / `KAFKA_BOOTSTRAP_SERVERS`,
 `CHAT_HOSTNAME`) that only exist once Terraform is applied — see the workflow header comments.
 
 ## Scaling

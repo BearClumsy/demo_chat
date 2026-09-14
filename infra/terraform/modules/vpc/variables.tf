@@ -24,7 +24,7 @@ variable "app_subnet_cidrs" {
 }
 
 variable "data_subnet_cidrs" {
-  description = "One CIDR per AZ for the private data (RDS / Qdrant / MSK) tier."
+  description = "One CIDR per AZ for the private data (RDS / MSK) tier."
   type        = list(string)
 }
 

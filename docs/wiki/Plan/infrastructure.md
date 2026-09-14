@@ -8,6 +8,12 @@
 > rewired; `ecs-service`, `alb` and `bedrock-iam` are retained lint-clean but no longer
 > instantiated. The ECS-shaped diagram and notes below are kept as background; the "ECS Fargate"
 > rows now read as "kubeadm worker nodes".
+>
+> **Vector store swap (2026-09-14).** Qdrant (self-managed on EC2, `modules/qdrant-ec2`) is
+> replaced by pgvector — `support_kb`/`semantic_cache` are now tables in the same RDS Postgres
+> instance as `users`, not a separate service/subnet/security-group. See
+> [postgres-vector-migration.md](postgres-vector-migration.md). Every "Qdrant" row below is
+> background from before that swap.
 
 **Status:** planned, not yet provisioned. A **lint-only Terraform skeleton now exists** under
 `infra/terraform/`, CI-linted by the `terraform-lint` workflow (`fmt` + `validate` + `tflint`, no
@@ -112,7 +118,6 @@ infra/terraform/
 │   ├── ecs-service/               # cluster + Fargate service + task def + task SG + log group
 │   ├── rds-postgres/
 │   ├── keyspaces/                 # keyspace + open_chats_by_bucket only (see README caveat)
-│   ├── qdrant-ec2/               # single EC2 host + data EBS volume
 │   ├── msk/                       # added — the KAFKA_BOOTSTRAP_SERVERS contract needs it
 │   └── bedrock-iam/               # task role (InvokeModel) + execution role
 ├── envs/

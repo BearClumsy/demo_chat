@@ -60,11 +60,11 @@ modules/server/src/
 │   │   │   ├── ResponseValidator.java                      # stage 8: output-side groundedness guardrail
 │   │   │   ├── GroundednessCheck.java                       # record: grounded, reasoning (LLM structured output)
 │   │   │   ├── SemanticCacheService.java                     # semantic cache: lookup()/store() against a
-│   │   │   │                                                 #   second Qdrant collection (semantic_cache)
+│   │   │   │                                                 #   second pgvector table (semantic_cache)
 │   │   │   ├── TextChunker.java                              # splits a validated answer into SSE token chunks
 │   │   │   ├── IntentDefinition.java                       # record loaded from knowledge-base/intents/*.json
 │   │   │   ├── IntentDefinitionRegistry.java                # loads *.json at startup into Map<id, IntentDefinition>
-│   │   │   ├── KnowledgeBaseIndexer.java                     # ApplicationRunner: pushes intents into Qdrant
+│   │   │   ├── KnowledgeBaseIndexer.java                     # ApplicationRunner: pushes intents into pgvector
 │   │   │   ├── DialogueState.java                             # Cassandra @Table("dialogue_state"), PK = chat_id
 │   │   │   ├── DialogueStatus.java                             # enum: NEW/SLOT_FILLING/READY_TO_ANSWER/
 │   │   │   │                                                    #   ANSWERED/OUT_OF_SCOPE/ESCALATED
@@ -79,6 +79,8 @@ modules/server/src/
 │   │       ├── SecurityConfig.java               # @EnableWebFluxSecurity, HTTP Basic, permits POST /api/users
 │   │       ├── PasswordEncoderConfig.java          # BCryptPasswordEncoder bean
 │   │       ├── ChatClientConfig.java                # ChatClient bean over the autoconfigured Bedrock ChatModel
+│   │       ├── JdbcDataSourceConfig.java             # explicit DataSource/JdbcTemplate beans (Boot's own
+│   │       │                                          #   autoconfig backs off when an R2DBC bean is present)
 │   │       └── SemanticCacheVectorStoreConfig.java   # second, qualified VectorStore bean for semantic_cache
 │   │
 │   └── resources/
@@ -86,13 +88,14 @@ modules/server/src/
 │       │                                          #   spring.datasource.* (JDBC, Flyway only) and
 │       │                                          #   spring.r2dbc.* (app data access) both point at Postgres
 │       ├── db/migration/
-│       │   └── V1__create_users_table.sql         # Flyway migration for demo_chat.users
+│       │   ├── V1__create_users_table.sql         # Flyway migration for demo_chat.users
+│       │   └── V2__create_vector_store_tables.sql  # demo_chat.support_kb + semantic_cache (pgvector)
 │       ├── knowledge-base/intents/
 │       │   └── *.json                              # 4 intents (refund_status, order_status,
 │       │                                            #   change_shipping_address, password_reset) — see
 │       │                                            #   vector-store-schema.md
 │       └── local/
-│           └── docker-compose.yml                 # postgres, cassandra, qdrant, kafka (local dev stack)
+│           └── docker-compose.yml                 # postgres (pgvector-enabled), cassandra, kafka (local dev stack)
 │
 └── test/
     └── java/com/example/demo_chat/
@@ -132,13 +135,16 @@ same convention: [rag-pipeline.md](rag-pipeline.md)'s original stage-to-service 
   `ChatController`/`ChatService`.
 - `user/*` is now reactive end-to-end too (Phase 2): migrated from blocking JPA/JDBC to **R2DBC**
   (`R2dbcRepository`), so `UserService`/`SecurityUserDetailsService` call the repository directly with
-  no `Schedulers.boundedElastic()` bridge. Postgres still needs a blocking JDBC `DataSource` for Flyway
-  migrations only (`spring-boot-starter-jdbc`), separate from the R2DBC `ConnectionFactory` the app uses.
+  no `Schedulers.boundedElastic()` bridge. Postgres also has a blocking JDBC `DataSource`/`JdbcTemplate`
+  (`spring-boot-starter-jdbc`, explicit beans in `config/JdbcDataSourceConfig.java` since Boot's own
+  autoconfiguration backs off when an R2DBC `ConnectionFactory` bean is present), separate from the
+  R2DBC `ConnectionFactory` the app uses — used by Flyway migrations **and** the pgvector
+  `support_kb`/`semantic_cache` stores.
 - `ChatService.validateParticipantIds()` was rewritten for `Flux<User>`/`Set` semantics against the
   reactive `UserRepository.findAllById(...)` — no bridging needed either.
-- `rag/*`'s Bedrock/Qdrant calls **remain** on the `Schedulers.boundedElastic()` bridging pattern: the
-  Bedrock `ChatClient` calls (`QueryNormalizationService`, `IntentClassificationService`,
-  `AnswerGenerationService`, `ResponseValidator`) and the Qdrant `VectorStore` calls
+- `rag/*`'s Bedrock/pgvector calls **remain** on the `Schedulers.boundedElastic()` bridging pattern:
+  the Bedrock `ChatClient` calls (`QueryNormalizationService`, `IntentClassificationService`,
+  `AnswerGenerationService`, `ResponseValidator`) and the pgvector `VectorStore` calls
   (`KnowledgeRetrievalService`, `SemanticCacheService`) are all blocking under the hood — neither has a
   reactive-native client in this Spring AI version, so every call site wraps them in
   `Mono.fromCallable(...).subscribeOn(Schedulers.boundedElastic())`. This is an accepted, deliberate

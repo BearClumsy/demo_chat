@@ -1,5 +1,5 @@
 # Non-secret production values. `terraform validate` needs none of this; `terraform plan` needs the
-# TODO-marked variables in variables.tf (acm_certificate_arn, qdrant_ami_id, node_ami_id,
+# TODO-marked variables in variables.tf (acm_certificate_arn, node_ami_id,
 # admin_cidr, github_org, rds_password, task_secret_arns) supplied via a secret mechanism, not
 # this file.
 

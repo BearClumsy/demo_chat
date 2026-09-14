@@ -10,14 +10,16 @@
 │  (frontend) │      not built      │   demo_chat application  │
 └─────────────┘                     └───────────┬───────────────┘
                                                  │
-              ┌───────────────┬──────────────────┼──────────────────┬───────────────┐
-              ▼               ▼                  ▼                  ▼               ▼
-      ┌───────────────┐ ┌────────────┐  ┌────────────────┐ ┌───────────────┐ ┌──────────────┐
-      │  Postgres      │ │ Cassandra   │  │  Qdrant         │ │  Kafka         │ │  Bedrock      │
-      │  (R2DBC, users)│ │ (chat hist.,│  │  (vector store: │ │  (messaging,   │ │  (LLM chat +  │
-      │  Flyway-managed│ │  dialogue   │  │  support_kb +   │ │  dependency    │ │  embeddings,  │
-      │  via JDBC)     │ │  state)     │  │  semantic_cache)│ │  only — unused)│ │  wired by rag)│
-      └───────────────┘ └────────────┘  └────────────────┘ └───────────────┘ └──────────────┘
+              ┌───────────────┬──────────────────┬──────────────────┐
+              ▼               ▼                  ▼                  ▼
+      ┌───────────────┐ ┌────────────┐  ┌───────────────┐ ┌──────────────┐
+      │  Postgres      │ │ Cassandra   │  │  Kafka         │ │  Bedrock      │
+      │  (R2DBC users; │ │ (chat hist.,│  │  (messaging,   │ │  (LLM chat +  │
+      │  + pgvector    │ │  dialogue   │  │  dependency    │ │  embeddings,  │
+      │  support_kb +  │ │  state)     │  │  only — unused)│ │  wired by rag)│
+      │  semantic_cache│ │             │  │                │ │               │
+      │  via JDBC)     │ │             │  │                │ │               │
+      └───────────────┘ └────────────┘  └───────────────┘ └──────────────┘
 ```
 
 There is no Redis in this project — chat/session persistence is Cassandra (a plain reactive
@@ -25,12 +27,15 @@ Cassandra repository for both `ChatHistory` and `DialogueState`; the declared
 `spring-ai-starter-model-chat-memory-repository-cassandra` dependency is not wired up — see
 [dialogue-state.md](dialogue-state.md) for why). The default (and only production) LLM provider is
 Amazon Bedrock; the `local,offline` Spring profile instead points chat + embeddings at a local Ollama
-so the app can run with no AWS — see [local-vs-aws.md](local-vs-aws.md). Qdrant now backs two collections: `support_kb` (the knowledge base) and
-`semantic_cache` (Phase 2's semantic cache, see [vector-store-schema.md](vector-store-schema.md)); both
-are called by the RAG pipeline (see [rag-pipeline.md](rag-pipeline.md)). Postgres is R2DBC-backed for the
-app (Phase 2) but still needs a blocking JDBC `DataSource` for Flyway migrations only. Kafka is still a
-declared dependency with connection settings in `application.properties` that nothing in the codebase
-calls yet.
+so the app can run with no AWS — see [local-vs-aws.md](local-vs-aws.md). pgvector (tables in the same
+Postgres instance, replacing an earlier Qdrant deployment — see
+[postgres-vector-migration.md](postgres-vector-migration.md)) now backs two tables: `support_kb` (the
+knowledge base) and `semantic_cache` (Phase 2's semantic cache, see
+[vector-store-schema.md](vector-store-schema.md)); both are called by the RAG pipeline (see
+[rag-pipeline.md](rag-pipeline.md)). Postgres is R2DBC-backed for the app (Phase 2) and also has a
+blocking JDBC `DataSource`/`JdbcTemplate`, used by both Flyway migrations and the pgvector stores.
+Kafka is still a declared dependency with connection settings in `application.properties` that nothing
+in the codebase calls yet.
 
 ## Flow for a single message (current implementation)
 
@@ -60,11 +65,11 @@ What actually exists today, end to end:
 ## Design principles
 
 - **Reactive end-to-end.** WebFlux controllers/services use `Mono`/`Flux` throughout, including `user/*`
-  since its Phase 2 migration to R2DBC. The remaining exception is the Bedrock/Qdrant calls in `rag/*`,
-  which are blocking and explicitly bridged with `Schedulers.boundedElastic()` per call — a deliberate,
-  accepted trade-off (see [backend.md](backend.md)), since neither has a reactive-native client in this
-  Spring AI version.
-- **RAG as a single source of truth.** The same `support_kb` Qdrant collection answers both "what is
+  since its Phase 2 migration to R2DBC. The remaining exception is the Bedrock/pgvector calls in
+  `rag/*`, which are blocking and explicitly bridged with `Schedulers.boundedElastic()` per call — a
+  deliberate, accepted trade-off (see [backend.md](backend.md)), since neither has a reactive-native
+  client in this Spring AI version.
+- **RAG as a single source of truth.** The same `support_kb` pgvector table answers both "what is
   allowed to be discussed" (the scope filter/whitelist) and "what to answer" (the retrieved
   `knowledge_snippet`) — see [vector-store-schema.md](vector-store-schema.md). Implemented in
   `rag.KnowledgeRetrievalService`/`rag.ScopeFilter`.

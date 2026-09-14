@@ -2,7 +2,13 @@
 
 [← Back to README](README.md) · [RAG pipeline](rag-pipeline.md)
 
-## `support_kb` collection
+Backed by pgvector (`org.springframework.ai:spring-ai-starter-vector-store-pgvector`) — two tables
+in the same Postgres instance as `users`, not a separate Qdrant service. See
+[postgres-vector-migration.md](postgres-vector-migration.md) for the migration itself and
+[[support_kb]] / [[semantic_cache]] in the Obsidian wiki's `Infrastructure/Postgres/` for the
+as-built table shape.
+
+## `support_kb` table
 
 Each record is simultaneously an "allowed topic" (for the scope filter)
 and a "source of the answer" (for generation).
@@ -10,7 +16,7 @@ and a "source of the answer" (for generation).
 ```json
 {
   "id": "refund_status_001",
-  "vector": [0.021, -0.114, "... 768 dims"],
+  "vector": [0.021, -0.114, "... 1024 dims"],
   "text": "Refunds are processed within 3-5 business days from the moment the request is confirmed.",
   "metadata": {
     "topic": "refund_status",
@@ -41,22 +47,22 @@ and a "source of the answer" (for generation).
 | `escalation_fallback` | Text used when there isn't enough information |
 | `version` / `locale` | Versioning of the knowledge base content |
 
-## Collection indexes and parameters (Qdrant)
+## Table indexes and parameters (pgvector)
 
 | Parameter | Value |
 |---|---|
-| Distance | Cosine |
-| Vector size | 768 (depends on the embedding model) |
-| Payload index | `topic`, `allowed`, `locale` — for filtering during search |
-| HNSW `ef_construct` | tuned to the size of the knowledge base (typically 100–200) |
+| Distance | Cosine (`vector_cosine_ops`) |
+| Vector size | 1024 (Bedrock Titan v2; depends on the embedding model — see the offline-profile gotcha in `CLAUDE.md`) |
+| Index | HNSW, Postgres/pgvector defaults (no explicit `m`/`ef_construction` tuning) |
+| Metadata | a single `json` column (`topic`, `allowed`), not indexed — filtering happens in application code (`ScopeFilter`), not pushed down to Postgres |
 
-## `semantic_cache` collection (Phase 2)
+## `semantic_cache` table (Phase 2)
 
-A second, separate Qdrant collection used by `SemanticCacheService` to cache previously-generated,
+A second, separate pgvector table used by `SemanticCacheService` to cache previously-generated,
 guardrail-validated answers — keyed by semantic similarity of the normalized query, not an exact string
 match. Configured via `demo-chat.cache.*` properties; created by a dedicated `VectorStore` bean
 (`SemanticCacheVectorStoreConfig`) alongside the primary `support_kb` `VectorStore` bean, both sharing the
-same underlying Qdrant client/embedding model.
+same underlying `JdbcTemplate`/`EmbeddingModel` beans — no second database connection is opened.
 
 ```json
 {
@@ -87,7 +93,7 @@ knowledge-base/intents/*.json  (source of truth in the repository)
 KnowledgeBaseIndexer.reindex()  (upserts by intent id, idempotent)
         │
         ▼
-Qdrant collection (support_kb)
+pgvector table (support_kb)
 ```
 
 ## Related documents

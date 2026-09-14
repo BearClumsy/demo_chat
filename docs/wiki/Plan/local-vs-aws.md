@@ -10,7 +10,7 @@ the AWS resources themselves are still planned — no Terraform yet.
 
 | Role | Local (docker-compose) | AWS (staging/prod — planned) |
 |---|---|---|
-| Vector store | Qdrant in a container | Qdrant on EC2/ECS (self-managed) or Amazon OpenSearch with vector engine |
+| Vector store | pgvector tables in the same Postgres container as `users` | Same RDS Postgres instance/schema — no separate vector-store service (migrated off Qdrant, see [postgres-vector-migration.md](postgres-vector-migration.md)) |
 | LLM inference | Amazon Bedrock by default; the `local,offline` profile swaps in a local **Ollama** (the `offline`-profile compose service via `make up-offline`, or a native install) so the app runs with no AWS | Amazon Bedrock (managed) |
 | Chat history / dialogue state | Cassandra in a container | Amazon Keyspaces (Cassandra-compatible, managed) or self-managed Cassandra on EC2 |
 | User accounts | Postgres in a container (R2DBC app access, JDBC/Flyway for migrations) | RDS for PostgreSQL |
@@ -34,8 +34,8 @@ SPRING_PROFILES_ACTIVE=staging      → application-staging.properties  (managed
 SPRING_PROFILES_ACTIVE=prod         → application-prod.properties
 ```
 
-`application.properties` keeps only what doesn't vary by environment — Bedrock model ids, Qdrant
-collection names, the `demo-chat.*` tuning knobs — plus `spring.profiles.default=local`, so
+`application.properties` keeps only what doesn't vary by environment — Bedrock model ids, pgvector
+table names, the `demo-chat.*` tuning knobs — plus `spring.profiles.default=local`, so
 `./gradlew :server:bootRun` and IDE runs behave exactly as they did before profiles existed.
 
 No code changed to make this work: the app already depended on Spring Data/Spring AI interfaces
@@ -54,22 +54,23 @@ Two things worth knowing about the staging/prod files:
   (`127.0.0.1:9042` for Cassandra). Two explicit files are easier to trust, and staging/prod diverge
   on pool sizes and log levels anyway.
 
-`spring.ai.vectorstore.qdrant.initialize-schema` now governs **both** Qdrant stores (`support_kb` and
-`semantic_cache`); the semantic-cache store used to hardcode it to `true`. This matters because
-creating a collection asks the embedding model for its dimensions, which is a live Bedrock call —
-staging/prod default it to `false` and expect collections to be provisioned before the deploy.
+`spring.ai.vectorstore.pgvector.initialize-schema` governs **both** pgvector tables (`support_kb` and
+`semantic_cache`). This matters because it still asks the embedding model for its dimensions to build
+its `CREATE TABLE` SQL, even though the table already exists — a live Bedrock call — so staging/prod
+default it to `false`; the tables there are provisioned ahead of the deploy by Flyway
+(`V2__create_vector_store_tables.sql`), not by `PgVectorStore` itself.
 
 ## docker-compose (local stack, actual)
 
 ```
 modules/server/src/main/resources/local/docker-compose.yml
-├── postgres   (port 5432)  — users table (R2DBC app access, JDBC/Flyway for migrations)
+├── postgres   (port 5432, pgvector-enabled image) — users table (R2DBC) + support_kb/semantic_cache
+│                                   pgvector tables (JDBC/Flyway for migrations and the vector store)
 ├── cassandra  (port 9042)  — chat_history + dialogue_state tables
-├── qdrant     (ports 6333/6334) — support_kb (knowledge base) + semantic_cache (Phase 2) collections
 ├── kafka      (port 9092)       — declared, still not used by any code
 └── ollama     (port 11434)      — only under the `offline` Compose profile (`make up-offline`); chat +
                                    embedding provider for the `local,offline` Spring profile. Needs
-                                   ~5 GB RAM in the VM for `llama3.1` on top of the four services
+                                   ~5 GB RAM in the VM for `llama3.1` on top of the three services
                                    above — the Docker VM must be >= ~12 GiB (Colima defaults to 2).
 ```
 

@@ -16,8 +16,8 @@ import reactor.test.StepVerifier;
 /**
  * Unit-tests {@link SemanticCacheService} against a hand-built {@link VectorStore} fake, since a
  * real similarity lookup would need a live embedding model (Bedrock Titan) that isn't reachable in
- * this environment. The real Qdrant round-trip is covered by a manual smoke test against the local
- * docker-compose stack instead (see the plan's verification section).
+ * this environment. The real pgvector round-trip is covered by a manual smoke test against the
+ * local docker-compose stack instead (see the plan's verification section).
  */
 class SemanticCacheServiceTest {
 

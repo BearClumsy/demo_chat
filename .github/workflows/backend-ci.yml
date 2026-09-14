@@ -38,8 +38,8 @@ jobs:
       - uses: gradle/actions/setup-gradle@v6
 
       # spotlessCheck is the project's static analysis (Google Java Format); build runs the tests,
-      # which spin up Postgres/Cassandra/Qdrant through Testcontainers using the runner's Docker.
-      # Bedrock is stubbed in the tests, so no AWS credentials are needed.
+      # which spin up Postgres (pgvector-enabled) and Cassandra through Testcontainers using the
+      # runner's Docker. Bedrock is stubbed in the tests, so no AWS credentials are needed.
       - name: Check formatting and run tests
         run: ./gradlew --no-daemon :server:spotlessCheck :server:build
 

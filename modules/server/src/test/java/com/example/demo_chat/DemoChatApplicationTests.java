@@ -35,10 +35,10 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 
 /**
- * Full-context wiring test. The three data stores run as containers so this passes on a clean
- * machine with nothing but Docker; only Bedrock is stubbed, because reaching it would need AWS
- * credentials that CI does not have. Anything that breaks the bean graph — a missing property, a
- * broken Flyway migration, a vector store that can't initialize its collection — fails here.
+ * Full-context wiring test. The two data stores run as containers so this passes on a clean machine
+ * with nothing but Docker; only Bedrock is stubbed, because reaching it would need AWS credentials
+ * that CI does not have. Anything that breaks the bean graph — a missing property, a broken Flyway
+ * migration, a vector store that can't initialize its table — fails here.
  */
 @Testcontainers
 @SpringBootTest
@@ -49,8 +49,10 @@ class DemoChatApplicationTests {
   private static final String LOCAL_DATACENTER = "datacenter1";
   private static final int EMBEDDING_DIMENSIONS = 1024;
 
+  // pgvector/pgvector, not plain postgres, because the vector extension must be available for
+  // PgVectorStore's schema initialization (and this same container backs Flyway + R2DBC too).
   @Container
-  static final PostgreSQLContainer POSTGRES = new PostgreSQLContainer("postgres:16-alpine");
+  static final PostgreSQLContainer POSTGRES = new PostgreSQLContainer("pgvector/pgvector:pg16");
 
   @Container
   static final GenericContainer<?> CASSANDRA =
@@ -64,12 +66,6 @@ class DemoChatApplicationTests {
           .waitingFor(
               Wait.forLogMessage(".*Starting listening for CQL clients.*", 1)
                   .withStartupTimeout(Duration.ofMinutes(5)));
-
-  @Container
-  static final GenericContainer<?> QDRANT =
-      new GenericContainer<>("qdrant/qdrant:latest")
-          .withExposedPorts(6333, 6334)
-          .waitingFor(Wait.forHttp("/readyz").forPort(6333));
 
   @DynamicPropertySource
   static void containerProperties(DynamicPropertyRegistry registry) {
@@ -87,9 +83,6 @@ class DemoChatApplicationTests {
 
     registry.add("spring.cassandra.contact-points", CASSANDRA::getHost);
     registry.add("spring.cassandra.port", () -> CASSANDRA.getMappedPort(9042));
-
-    registry.add("spring.ai.vectorstore.qdrant.host", QDRANT::getHost);
-    registry.add("spring.ai.vectorstore.qdrant.port", () -> QDRANT.getMappedPort(6334));
   }
 
   /**
@@ -119,8 +112,8 @@ class DemoChatApplicationTests {
       var vector = new float[EMBEDDING_DIMENSIONS];
       Arrays.fill(vector, 0.1f);
       var embeddingModel = mock(EmbeddingModel.class);
-      // Qdrant sizes its collection from dimensions() while the vector store bean initializes, so
-      // this has to be stubbed here rather than inside a test method.
+      // PgVectorStore sizes its table from dimensions() while the vector store bean initializes,
+      // so this has to be stubbed here rather than inside a test method.
       when(embeddingModel.dimensions()).thenReturn(EMBEDDING_DIMENSIONS);
       when(embeddingModel.embed(anyString())).thenReturn(vector);
       when(embeddingModel.embed(any(Document.class))).thenReturn(vector);

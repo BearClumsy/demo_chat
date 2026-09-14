@@ -63,10 +63,10 @@ rejected it, so the intent's `escalationFallback` text is returned instead.
 
 The original draft of this doc put a query-result cache (`semcache:{queryHash}`) in Redis alongside
 dialogue state. Since Redis isn't part of this project, this ended up **not** living alongside
-`DialogueState` in Cassandra either: `SemanticCacheService` uses a **second Qdrant collection**
+`DialogueState` in Cassandra either: `SemanticCacheService` uses a **second pgvector table**
 (`semantic_cache`, separate from the `support_kb` knowledge base) instead, so cache lookups match on
 semantic similarity of the normalized query rather than an exact key — see
-[vector-store-schema.md](vector-store-schema.md) for the collection schema. Rate limiting
+[vector-store-schema.md](vector-store-schema.md) for the table schema. Rate limiting
 (`ratelimit:{userId}` in the original draft) is still undecided — Resilience4j is still not a dependency
 in `build.gradle`, and no rate-limiting mechanism is implemented as of Phase 2.
 

@@ -46,12 +46,6 @@ variable "acm_certificate_arn" {
   # TODO: issue a cert for the staging hostname.
 }
 
-variable "qdrant_ami_id" {
-  description = "AMI id for the Qdrant EC2 host."
-  type        = string
-  # TODO: build or select an AL2023/Ubuntu AMI running the Qdrant container.
-}
-
 variable "node_ami_id" {
   description = "AMI id for the kubeadm control-plane and worker nodes."
   type        = string
@@ -92,9 +86,9 @@ variable "task_secret_arns" {
   description = <<-EOT
     Map of container env var name -> Secrets Manager secret ARN. Keys mirror the secret entries in
     application-staging.properties plus CASSANDRA_USER (Amazon Keyspaces issues a username+password
-    pair): POSTGRES_PASSWORD, CASSANDRA_USER, CASSANDRA_PASSWORD, QDRANT_API_KEY. The values feed
-    the GitHub deploy role's secretsmanager:GetSecretValue scope; the deploy workflow reads them
-    and renders the k8s Secret. Left empty here; populated once the secrets exist.
+    pair): POSTGRES_PASSWORD, CASSANDRA_USER, CASSANDRA_PASSWORD. The values feed the GitHub deploy
+    role's secretsmanager:GetSecretValue scope; the deploy workflow reads them and renders the k8s
+    Secret. Left empty here; populated once the secrets exist.
   EOT
   type    = map(string)
   default = {}

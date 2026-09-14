@@ -19,6 +19,6 @@ output "app_subnet_ids" {
 }
 
 output "data_subnet_ids" {
-  description = "IDs of the private data (RDS / Qdrant / MSK) subnets."
+  description = "IDs of the private data (RDS / MSK) subnets."
   value       = aws_subnet.data[*].id
 }

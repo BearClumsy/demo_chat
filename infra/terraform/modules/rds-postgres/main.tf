@@ -40,8 +40,10 @@ resource "aws_db_instance" "this" {
   storage_type          = "gp3"
   storage_encrypted     = true
 
-  # Only the database is provisioned here; the demo_chat schema inside it is created by the app's
-  # Flyway migration on first boot (V1__create_users_table.sql hardcodes it).
+  # Only the database is provisioned here; the demo_chat schema inside it, the `users` table, and
+  # the pgvector-backed `support_kb`/`semantic_cache` tables are all created by the app's Flyway
+  # migrations on first boot (V1__create_users_table.sql, V2__create_vector_store_tables.sql).
+  # engine_version 16 already ships the pgvector extension; no separate provisioning step needed.
   db_name  = var.db_name
   username = var.username
   password = var.password # TODO: switch to manage_master_user_password + Secrets Manager

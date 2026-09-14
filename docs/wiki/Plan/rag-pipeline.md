@@ -15,10 +15,10 @@ For a new turn, `ChatPipelineService` runs through these stages, each handled by
 1. **Normalize** (`QueryNormalizationService`) — rewrites the raw message into a clean query via a
    Bedrock LLM call.
 2. **Semantic-cache check** (`SemanticCacheService.lookup`) — embeds the normalized query and matches it
-   (`topK=1`, similarity ≥ `demo-chat.cache.similarity-threshold`) against the Qdrant `semantic_cache`
-   collection. A hit returns the cached answer immediately and skips everything below.
+   (`topK=1`, similarity ≥ `demo-chat.cache.similarity-threshold`) against the `semantic_cache` pgvector
+   table. A hit returns the cached answer immediately and skips everything below.
 3. **Retrieve** (`KnowledgeRetrievalService`) — on a cache miss, `VectorStore.similaritySearch` pulls the
-   top-K candidate intents from the Qdrant `support_kb` collection.
+   top-K candidate intents from the `support_kb` pgvector table.
 4. **Classify** (`IntentClassificationService`) — an LLM call picks a single `intent_id` from those
    candidates (or `out_of_scope`), with a confidence score.
 5. **Scope-check** (`ScopeFilter`) — rejects the classification if confidence is below
@@ -38,7 +38,7 @@ queries. Every turn's status/intent/slots persist to `DialogueState` (Cassandra)
 message and the bot's reply get appended to `ChatHistory`.
 
 Two things worth knowing about *how* this executes, not just what it does:
-- Bedrock and Qdrant calls are blocking under the hood, so every call site wraps them in
+- Bedrock and pgvector (JDBC) calls are blocking under the hood, so every call site wraps them in
   `Mono.fromCallable(...).subscribeOn(Schedulers.boundedElastic())` rather than being truly
   non-blocking — a deliberate scope choice (see [backend.md](backend.md)), not an oversight.
 - The SSE endpoint (`/messages/stream`) runs this exact same pipeline; it does not stream tokens live
@@ -100,7 +100,7 @@ after a stage-[8] guardrail pass, so a rejected answer is never cached.
 "Refund status for an order"
 ```
 
-**[2]–[3] Retrieval (top-1 from Qdrant):**
+**[2]–[3] Retrieval (top-1 from pgvector):**
 ```json
 {
   "id": "refund_status_001",
@@ -149,14 +149,14 @@ Supporting components, not pipeline stages themselves:
 
 - `IntentDefinition` / `IntentDefinitionRegistry` — loads `knowledge-base/intents/*.json` at startup into
   an in-memory map; single source of truth for both indexing and post-classification lookup.
-- `KnowledgeBaseIndexer` — `ApplicationRunner` that pushes every `IntentDefinition` into the Qdrant
-  `support_kb` collection on startup (see [vector-store-schema.md](vector-store-schema.md)).
+- `KnowledgeBaseIndexer` — `ApplicationRunner` that pushes every `IntentDefinition` into the
+  `support_kb` pgvector table on startup (see [vector-store-schema.md](vector-store-schema.md)).
 - `DialogueState` / `DialogueStatus` / `DialogueStateRepository` — the pipeline's per-chat working state
   (status, current intent, slots); see [dialogue-state.md](dialogue-state.md) for the schema and how it
   differs from the original draft. `DialogueStatus` gained an `ESCALATED` value in Phase 2 for the
   guardrail-rejected case (distinct from `OUT_OF_SCOPE`, which is pre-generation).
 - `SemanticCacheService` — checked right after stage [1] (`ChatPipelineService.startNewTurn`); backed by
-  a second Qdrant collection (`semantic_cache`, see [vector-store-schema.md](vector-store-schema.md)),
+  a second pgvector table (`semantic_cache`, see [vector-store-schema.md](vector-store-schema.md)),
   not Redis or Cassandra, so lookups match on semantic similarity rather than an exact string.
 - `TextChunker` — splits the already stage-[8]-validated answer into word chunks for the SSE streaming
   endpoint; a pure function, not itself a pipeline stage.

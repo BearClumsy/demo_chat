@@ -18,8 +18,10 @@ import reactor.test.StepVerifier;
 @DataR2dbcTest
 class UserRepositoryTest {
 
+  // pgvector/pgvector, not plain postgres, because V2__create_vector_store_tables.sql (run below)
+  // needs the vector extension available, even though this test only exercises the users table.
   @Container
-  static final PostgreSQLContainer POSTGRES = new PostgreSQLContainer("postgres:16-alpine");
+  static final PostgreSQLContainer POSTGRES = new PostgreSQLContainer("pgvector/pgvector:pg16");
 
   @DynamicPropertySource
   static void r2dbcProperties(DynamicPropertyRegistry registry) {

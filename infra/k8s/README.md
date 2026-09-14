@@ -29,13 +29,13 @@ infra/k8s/
 |--------|-------|
 | `Namespace demo-chat` | PodSecurity `enforce: restricted`. Both images run as non-root (server uid 10001, client `nginx-unprivileged` uid 101). |
 | `ConfigMap demo-chat-config` | non-secret env — keys mirror `infra/terraform/envs/<env>` `container_env` and `application-<env>.properties`. `REPLACE_*` values are patched at deploy time from the Terraform outputs. |
-| `Secret demo-chat-secrets` | **placeholders committed.** The deploy workflow overwrites it with real values from AWS Secrets Manager. Keys: `POSTGRES_PASSWORD`, `CASSANDRA_USER`, `CASSANDRA_PASSWORD`, `QDRANT_API_KEY` (`CASSANDRA_USER` closes the gap noted in `docs/wiki/Daily/2026-08-31.md`). |
+| `Secret demo-chat-secrets` | **placeholders committed.** The deploy workflow overwrites it with real values from AWS Secrets Manager. Keys: `POSTGRES_PASSWORD`, `CASSANDRA_USER`, `CASSANDRA_PASSWORD` (`CASSANDRA_USER` closes the gap noted in `docs/wiki/Daily/2026-08-31.md`). |
 | `Deployment demo-chat-server` | `startupProbe` → `/actuator/health/readiness` (~300 s budget); `livenessProbe` → `/actuator/health/liveness` (no restart storm on a downstream outage); `readinessProbe` → `/actuator/health/readiness`. `terminationGracePeriodSeconds: 300` for in-flight SSE. Image `IMAGE_PLACEHOLDER_SERVER`. |
 | `Deployment demo-chat-client` | nginx on 8080, probe `GET /healthz`. Image `IMAGE_PLACEHOLDER_CLIENT`. |
 | `Ingress demo-chat-web` / `demo-chat-api` | two objects sharing the host: `/` → client, `/api` → server. SSE annotations (`proxy-buffering off`, `proxy-read-timeout 300`, …) are on the API one only. `ssl-redirect: "false"` — the ALB already did 80→443. |
 | `HorizontalPodAutoscaler` ×2 | CPU 70%. server 2→6 (staging) / 3→10 (prod); client 2→4. Needs metrics-server. |
 | `PodDisruptionBudget` ×2, `NetworkPolicy` ×3 | default-deny ingress, allow from `ingress-nginx` ns, allow-list egress (DNS, data-tier VPC CIDR, 443). |
-| `Job demo-chat-kb-bootstrap` | one-shot: runs the server image with `--reindex-and-exit` to seed Qdrant `support_kb` (staging/prod have `reindex-on-startup=false`). `activeDeadlineSeconds: 600`, `ttlSecondsAfterFinished: 1d`. |
+| `Job demo-chat-kb-bootstrap` | one-shot: runs the server image with `--reindex-and-exit` to seed the `support_kb` pgvector table (staging/prod have `reindex-on-startup=false`). `activeDeadlineSeconds: 600`, `ttlSecondsAfterFinished: 1d`. |
 
 ## Deploy flow (what the workflow does)
 

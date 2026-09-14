@@ -9,8 +9,8 @@ locals {
   # Non-secret container environment. Every key here must line up with a property in
   # modules/server/src/main/resources/application-prod.properties and with the ConfigMap in
   # infra/k8s/manifest-prod.yaml. Secret values (POSTGRES_PASSWORD, CASSANDRA_USER,
-  # CASSANDRA_PASSWORD, QDRANT_API_KEY) come from Secrets Manager, are rendered into the k8s
-  # Secret by the deploy workflow, and are intentionally absent here.
+  # CASSANDRA_PASSWORD) come from Secrets Manager, are rendered into the k8s Secret by the deploy
+  # workflow, and are intentionally absent here.
   plaintext_env = {
     SPRING_PROFILES_ACTIVE = "prod"
 
@@ -23,11 +23,6 @@ locals {
     CASSANDRA_PORT             = "9142"
     CASSANDRA_LOCAL_DATACENTER = var.region
     CASSANDRA_KEYSPACE         = module.keyspaces.keyspace_name
-
-    QDRANT_HOST              = module.qdrant.qdrant_host
-    QDRANT_PORT              = "6334"
-    QDRANT_USE_TLS           = "false"
-    QDRANT_INITIALIZE_SCHEMA = "false"
 
     KAFKA_BOOTSTRAP_SERVERS = module.msk.bootstrap_brokers_tls
   }
@@ -87,19 +82,6 @@ module "keyspaces" {
 
   keyspace_name = "demo_chat"
   tags          = local.tags
-}
-
-module "qdrant" {
-  source = "../../modules/qdrant-ec2"
-
-  name                = local.name
-  vpc_id              = module.vpc.vpc_id
-  subnet_id           = module.vpc.data_subnet_ids[0]
-  ami_id              = var.qdrant_ami_id
-  instance_type       = "m6i.large"
-  data_volume_size_gb = 100
-  allowed_cidr_blocks = var.app_subnet_cidrs
-  tags                = local.tags
 }
 
 module "msk" {

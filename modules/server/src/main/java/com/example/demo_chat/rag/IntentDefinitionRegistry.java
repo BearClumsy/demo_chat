@@ -16,8 +16,8 @@ import tools.jackson.databind.ObjectMapper;
 /**
  * Loads every {@code knowledge-base/intents/*.json} file at startup into an in-memory map. This is
  * the single source of truth used both by {@link KnowledgeBaseIndexer} (what gets pushed into
- * Qdrant) and by the RAG pipeline (looking up the full {@link IntentDefinition} once an intent has
- * been classified).
+ * pgvector) and by the RAG pipeline (looking up the full {@link IntentDefinition} once an intent
+ * has been classified).
  */
 @Component
 public class IntentDefinitionRegistry {

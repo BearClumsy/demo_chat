@@ -30,7 +30,7 @@ resource "aws_security_group" "task" {
   }
 
   egress {
-    description = "Bedrock, Qdrant, RDS, Keyspaces, MSK, Secrets Manager"
+    description = "Bedrock, RDS, Keyspaces, MSK, Secrets Manager"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"

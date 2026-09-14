@@ -9,11 +9,11 @@ macOS with Colima; the only machine-specific parts are called out.
 
 | Need | Notes |
 |---|---|
-| Docker | Postgres, Cassandra, Qdrant, and Kafka all run as containers. Tests need it too. |
+| Docker | Postgres (pgvector-enabled image), Cassandra, and Kafka all run as containers. Tests need it too. |
 | Java 25 | Provisioned by the Gradle toolchain — use `./gradlew`, don't rely on the system JDK. |
 | Node 22+ | For the React client and `scripts/validate-intents.mjs`. |
 | AWS credentials with Bedrock access | Required to *start* the app, not just to chat — see step 3. |
-| Docker VM ≥ ~12 GiB (offline profile only) | `make run-offline` runs `llama3.1` (8B) in the Ollama container alongside Postgres/Cassandra/Qdrant/Kafka. The default 2 GiB Colima VM OOM-kills it on the first chat turn — `colima stop && colima start --cpu 6 --memory 16`. |
+| Docker VM ≥ ~12 GiB (offline profile only) | `make run-offline` runs `llama3.1` (8B) in the Ollama container alongside Postgres/Cassandra/Kafka. The default 2 GiB Colima VM OOM-kills it on the first chat turn — `colima stop && colima start --cpu 6 --memory 16`. |
 
 ## 1. Start the dependencies
 
@@ -45,15 +45,18 @@ export AWS_ACCESS_KEY_ID=...
 export AWS_SECRET_ACCESS_KEY=...
 ```
 
-These are needed at **startup**, not only per chat turn: on first boot the app creates the `support_kb`
-and `semantic_cache` Qdrant collections, and creating a collection asks the embedding model for its
-dimensions — a live Bedrock call. `KnowledgeBaseIndexer` then embeds every intent
+These are needed at **startup**, not only per chat turn: the `support_kb` and `semantic_cache`
+pgvector tables themselves are created by Flyway (`V2__create_vector_store_tables.sql`,
+`vector(1024)` columns, no Bedrock call needed), but `PgVectorStore`'s own schema-init pass
+(`spring.ai.vectorstore.pgvector.initialize-schema=true` locally, a redundant no-op safety net) still
+asks the embedding model for its dimensions to build the same `CREATE TABLE` SQL — a live Bedrock
+call — before finding the table already exists. `KnowledgeBaseIndexer` then embeds every intent
 (`demo-chat.rag.reindex-on-startup=true` under `local`).
 
 **Without Bedrock access** the backend can still be booted, but no chat will work:
 
 ```bash
-./gradlew :server:bootRun --args='--spring.ai.vectorstore.qdrant.initialize-schema=false --demo-chat.rag.reindex-on-startup=false'
+./gradlew :server:bootRun --args='--spring.ai.vectorstore.pgvector.initialize-schema=false --demo-chat.rag.reindex-on-startup=false'
 ```
 
 Useful for working on auth, the HTTP layer, or the frontend shell. Any message sent to the pipeline
@@ -132,8 +135,6 @@ docker run --rm --network local_default -p 8080:8080 \
   -e POSTGRES_HOST=local-postgres-1 -e POSTGRES_USER=demo_chat -e POSTGRES_PASSWORD=demo_chat \
   -e CASSANDRA_CONTACT_POINTS=local-cassandra-1 -e CASSANDRA_LOCAL_DATACENTER=datacenter1 \
   -e CASSANDRA_USER=cassandra -e CASSANDRA_PASSWORD=cassandra \
-  -e QDRANT_HOST=local-qdrant-1 -e QDRANT_USE_TLS=false -e QDRANT_API_KEY= \
-  -e QDRANT_INITIALIZE_SCHEMA=false \
   -e KAFKA_BOOTSTRAP_SERVERS=local-kafka-1:9092 \
   -e AWS_REGION -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY \
   demo-chat-server
@@ -159,7 +160,7 @@ immediately with `host not found in upstream` rather than starting and failing p
 ```
 
 Needs Docker but **not** AWS credentials, and **not** the compose stack — Testcontainers starts its own
-Postgres, Cassandra, and Qdrant, and `application-test.properties` switches Bedrock off
+pgvector-enabled Postgres and Cassandra, and `application-test.properties` switches Bedrock off
 (`spring.ai.model.chat=none` / `spring.ai.model.embedding=none`) in favour of stub beans. Expect
 ~90 seconds, most of it Cassandra starting.
 
@@ -185,7 +186,7 @@ cd modules/client && npm run lint            # ESLint
 | `Could not reach any contact point ... 9042` | The `demo_chat` keyspace doesn't exist — step 2. |
 | Cassandra container `Exited (137)` | OOM-killed; raise the Docker VM's memory. |
 | `llama-server process has terminated: exit status 1 ... ggml_aligned_malloc: insufficient memory` (offline profile, first chat turn, at `QueryNormalizationService`) | Colima VM too small to load `llama3.1` — `colima stop && colima start --cpu 6 --memory 16`, or switch the offline profile to `llama3.2:3b`. |
-| `Unable to load region from any of the providers` at startup | No `AWS_REGION`/credentials, and the Qdrant collections don't exist yet — step 3. |
+| `Unable to load region from any of the providers` at startup | No `AWS_REGION`/credentials, and `PgVectorStore`'s schema-init still needs the embedding model's dimensions — step 3. |
 | Startup reaches Bedrock and gets 403 | Credentials resolve but lack Bedrock model access. |
 | `DockerClientProviderStrategy` failure in tests | Non-default Docker socket — set `DOCKER_HOST`. |
 | Backend up, frontend shows network errors | The dev server proxies `/api` to `:8080`; check the backend is actually on that port. |

@@ -1,16 +1,23 @@
-# Qdrant Collection: semantic_cache
+# Postgres Table: semantic_cache
+
+**Migration:** `V2__create_vector_store_tables.sql` (pgvector, replacing the earlier Qdrant
+`semantic_cache` collection — see `docs/wiki/Plan/postgres-vector-migration.md`)
 
 **Embedding model:** Bedrock Titan (`amazon.titan-embed-text-v2:0`) — same model/bean as [[support_kb]]
-**Dimensions:** 768 (same embedding model as [[support_kb]])
-**Distance metric:** cosine
+**Dimensions:** 1024 (same embedding model as [[support_kb]])
+**Distance metric:** cosine (`vector_cosine_ops`, HNSW index)
 
-## Payload Fields
+## Columns
 
-- `answer` — the guardrail-validated generated answer text to return on a cache hit.
-- `intentId` — the intent the cached answer was generated for.
-- `cachedAt` — ISO-8601 timestamp of when the entry was written; not yet used for eviction (see Notes).
+- `id` — `uuid`, PK, `DEFAULT uuid_generate_v4()` (the app supplies a random UUID explicitly on write)
+- `content` — `text`, the embedded text (the **normalized user query**, not the answer — see below)
+- `metadata` — `json`:
+  - `answer` — the guardrail-validated generated answer text to return on a cache hit
+  - `intentId` — the intent the cached answer was generated for
+  - `cachedAt` — ISO-8601 timestamp of when the entry was written; not yet used for eviction (see Notes)
+- `embedding` — `vector(1024)`
 
-The embedded `text` is the **normalized user query** — this is what a future query is matched against,
+The embedded `content` is the **normalized user query** — this is what a future query is matched against,
 not the answer itself.
 
 ## Used By
@@ -24,9 +31,10 @@ not the answer itself.
 
 ## Notes
 
-- Added in Phase 2 (`docs/wiki/Plan/roadmap.md`). A second, `@Qualifier`-disambiguated `VectorStore`
-  bean (`SemanticCacheVectorStoreConfig`), separate from the primary [[support_kb]] bean, but sharing the
-  same underlying Qdrant client and `EmbeddingModel` — no second Qdrant connection is opened.
+- Added in Phase 2 (`docs/wiki/Plan/roadmap.md`), originally on Qdrant, migrated to pgvector — see
+  `docs/wiki/Plan/postgres-vector-migration.md`. A second, `@Qualifier`-disambiguated `VectorStore` bean
+  (`SemanticCacheVectorStoreConfig`), separate from the primary [[support_kb]] bean, but sharing the
+  same underlying `JdbcTemplate` and `EmbeddingModel` — no second database connection is opened.
 - Chosen over a Redis cache (no Redis in this project) or an exact-string-match Cassandra cache, so hits
   catch **semantically similar** repeat queries (paraphrases), not just literal string repeats.
 - **Cache-poisoning risk**: this is exactly why writes are gated on the guardrail passing — a false
@@ -40,4 +48,4 @@ not the answer itself.
   be scoped by slot values or excluded for those intents, or it will leak one user's data to another's
   semantically-similar query.
 - Config: `demo-chat.cache.enabled`, `demo-chat.cache.similarity-threshold`,
-  `demo-chat.cache.qdrant-collection` (default `semantic_cache`).
+  `demo-chat.cache.pgvector-table` (default `semantic_cache`).

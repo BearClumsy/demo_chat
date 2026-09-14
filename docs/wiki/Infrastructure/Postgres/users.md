@@ -31,9 +31,13 @@ Lives in the `demo_chat` schema (not `public` — see Notes).
   single canonical "username" field.
 - **Access is R2DBC, not JPA** (migrated in Phase 2 — see `docs/wiki/Plan/roadmap.md`):
   `UserRepository extends R2dbcRepository<User, UUID>`, called directly from `UserService`/
-  `SecurityUserDetailsService`/`ChatService` with no `Schedulers.boundedElastic()` bridge. Postgres still
-  needs a **separate blocking JDBC `DataSource`** purely so Flyway can run migrations
-  (`spring.datasource.*` in `application.properties`, alongside `spring.r2dbc.*` for the app) — the two
+  `SecurityUserDetailsService`/`ChatService` with no `Schedulers.boundedElastic()` bridge. Postgres also
+  has a **separate blocking JDBC `DataSource`** (`spring.datasource.*` in `application.properties`,
+  alongside `spring.r2dbc.*` for the app) — originally added just so Flyway could run migrations, and
+  now, since the pgvector migration (`docs/wiki/Plan/postgres-vector-migration.md`), also used by the
+  `support_kb`/`semantic_cache` `PgVectorStore` beans (via a `JdbcTemplate`). The `DataSource`/
+  `JdbcTemplate` beans are declared explicitly in `config/JdbcDataSourceConfig.java` because Boot's own
+  `DataSourceAutoConfiguration` backs off whenever an R2DBC `ConnectionFactory` bean is present. The two
   connection configs point at the same database but serve different purposes; don't assume removing one
   is safe without checking the other still works.
 - The R2DBC connection URL carries `?schema=demo_chat` (`spring.r2dbc.url`) instead of a JPA

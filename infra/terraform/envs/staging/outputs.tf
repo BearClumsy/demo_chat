@@ -8,8 +8,8 @@ output "container_env" {
     The non-secret container environment Terraform resolves. Every key must line up with
     modules/server/src/main/resources/application-staging.properties and the ConfigMap in
     infra/k8s/manifest-staging.yaml. Secret keys (POSTGRES_PASSWORD, CASSANDRA_USER,
-    CASSANDRA_PASSWORD, QDRANT_API_KEY) come from Secrets Manager via the deploy workflow and are
-    intentionally absent here.
+    CASSANDRA_PASSWORD) come from Secrets Manager via the deploy workflow and are intentionally
+    absent here.
   EOT
   value       = local.plaintext_env
 }
@@ -57,11 +57,6 @@ output "k8s_ssm_rollback_document" {
 output "rds_endpoint" {
   description = "RDS Postgres endpoint hostname."
   value       = module.rds_postgres.db_host
-}
-
-output "qdrant_host" {
-  description = "Private DNS of the Qdrant host."
-  value       = module.qdrant.qdrant_host
 }
 
 output "msk_bootstrap_brokers_tls" {

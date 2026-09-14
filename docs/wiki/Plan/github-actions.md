@@ -47,9 +47,10 @@ trigger: pull_request, push to main (paths: modules/server/**, gradle/**, settin
 5. docker build of modules/server/Dockerfile (no push - no ECR yet)
 ```
 
-Testcontainers uses the runner's Docker for Postgres (`user/UserRepositoryTest`) and for Postgres +
-Cassandra + Qdrant (`DemoChatApplicationTests`). Bedrock is stubbed in the tests, so the job needs no
-AWS credentials. Still to add in Phase 3b: ECR push (tag = git sha) and a Trivy scan of the image.
+Testcontainers uses the runner's Docker for pgvector-enabled Postgres (`user/UserRepositoryTest`) and
+for Postgres + Cassandra (`DemoChatApplicationTests`). Bedrock is stubbed in the tests, so the job
+needs no AWS credentials. Still to add in Phase 3b: ECR push (tag = git sha) and a Trivy scan of the
+image.
 
 ## `frontend-ci.yml` — stages (implemented)
 

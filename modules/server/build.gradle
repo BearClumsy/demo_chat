@@ -61,7 +61,7 @@ dependencies {
 	// Only used by the `offline` profile (local Ollama for chat + embeddings, no AWS). Inert
 	// otherwise: application.properties pins spring.ai.model.{chat,embedding} to the Bedrock values.
 	implementation 'org.springframework.ai:spring-ai-starter-model-ollama'
-	implementation 'org.springframework.ai:spring-ai-starter-vector-store-qdrant'
+	implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector'
 	implementation 'org.springframework.ai:spring-ai-vector-store-advisor'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'

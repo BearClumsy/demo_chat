@@ -4,7 +4,7 @@ A support chatbot backend built with Spring Boot (WebFlux) + Spring AI, where RA
 the single source of truth for both allowed topics and answers. Phases 1 and 2 (see
 [roadmap.md](roadmap.md)) are implemented: the chat/user backend (now R2DBC-backed, no more blocking
 JPA), the 4-intent knowledge base, the RAG pipeline itself (normalize → retrieve → classify → slot-fill
-→ generate), an output-side groundedness guardrail, a Qdrant-backed semantic cache, and SSE-streamed
+→ generate), an output-side groundedness guardrail, a pgvector-backed semantic cache, and SSE-streamed
 replies (buffer-then-chunk). A React frontend chat MVP (signup/login, start a chat, SSE-streamed
 replies) is also implemented, though not yet verified against a live backend — see
 [frontend-chat-mvp.md](frontend-chat-mvp.md). Still planned: AWS deployment and CI/CD (see the
@@ -25,9 +25,10 @@ replies) is also implemented, though not yet verified against a live backend —
   [Frontend Chat MVP: auth, start-chat, SSE streaming](frontend-chat-mvp.md) for the plan behind it
 
 ### Data
-- [Vector Store schema (topics/answers)](vector-store-schema.md) — implemented (Qdrant `support_kb`
-  collection, reindexed on every app startup, plus a second `semantic_cache` collection for the
-  semantic cache); CI-triggered reindex-on-merge is *planned*
+- [Vector Store schema (topics/answers)](vector-store-schema.md) — implemented (pgvector `support_kb`
+  table, reindexed on every app startup, plus a second `semantic_cache` table for the semantic
+  cache — migrated off Qdrant, see [postgres-vector-migration.md](postgres-vector-migration.md));
+  CI-triggered reindex-on-merge is *planned*
 - [Dialogue session model](dialogue-state.md) — implemented (Phase 1); Cassandra-backed, not Redis as
   originally drafted here
 
@@ -48,6 +49,8 @@ replies) is also implemented, though not yet verified against a live backend —
 ### Plan
 - [Phased implementation roadmap](roadmap.md)
 - [Frontend Chat MVP: auth, start-chat, SSE streaming](frontend-chat-mvp.md) — implemented
+- [Replace Qdrant with PostgreSQL (pgvector)](postgres-vector-migration.md) — *planned, not yet
+  implemented*
 
 ---
 

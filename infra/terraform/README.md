@@ -29,7 +29,9 @@ Internet ─▶ ALB (alb-k8s, instance target, TLS/ACM, 300s idle+drain for SSE)
          ─▶ worker ASG :30080  ─▶ ingress-nginx (DaemonSet)  ─▶ Service ─▶ Deployment
 ```
 
-Backing services are unchanged and external: `rds-postgres`, `keyspaces`, `qdrant-ec2`, `msk`.
+Backing services are unchanged and external: `rds-postgres`, `keyspaces`, `msk`. The two pgvector
+tables (`support_kb`, `semantic_cache`) live in the same RDS Postgres instance as `users`, created
+by Flyway — no dedicated vector-store infra to provision.
 
 ### Modules
 
@@ -47,7 +49,6 @@ infra/terraform/
 │   ├── github-oidc/         GitHub OIDC provider + deploy role (ECR push, secrets read, SSM send)
 │   ├── rds-postgres/        RDS Postgres 16, subnet group, SG (5432 from app CIDRs)
 │   ├── keyspaces/           Amazon Keyspaces keyspace + one modelled table (see caveat below)
-│   ├── qdrant-ec2/          single EC2 Qdrant host + data EBS volume + SG (6333/6334 from app CIDRs)
 │   ├── msk/                 MSK cluster + SG (9092/9094 from app CIDRs)
 │   ├── ecs-service/         RETAINED REFERENCE — the old ECS Fargate path, not instantiated
 │   ├── alb/                 RETAINED REFERENCE — ip target group for Fargate, not instantiated
@@ -71,10 +72,11 @@ Each env's `main.tf` builds a `plaintext_env` map and its `outputs.tf` exposes i
 |------------------------------|-------------------------------------------|
 | `POSTGRES_HOST` / `_PORT` / `_DB` / `_USER` | `module.rds_postgres`             |
 | `CASSANDRA_CONTACT_POINTS` / `_PORT` / `_LOCAL_DATACENTER` / `_KEYSPACE` | Keyspaces endpoint + `module.keyspaces` |
-| `QDRANT_HOST`                | `module.qdrant`                           |
-| `QDRANT_PORT` / `_USE_TLS` / `_INITIALIZE_SCHEMA` | constants (6334 / false / false)  |
 | `KAFKA_BOOTSTRAP_SERVERS`    | `module.msk`                              |
-| `POSTGRES_PASSWORD`, `CASSANDRA_USER`, `CASSANDRA_PASSWORD`, `QDRANT_API_KEY` | Secrets Manager via `task_secret_arns` — rendered into the k8s Secret by the deploy workflow, **not** in `container_env` |
+| `POSTGRES_PASSWORD`, `CASSANDRA_USER`, `CASSANDRA_PASSWORD` | Secrets Manager via `task_secret_arns` — rendered into the k8s Secret by the deploy workflow, **not** in `container_env` |
+
+pgvector needs no env vars of its own: `spring.ai.vectorstore.pgvector.*` reuses the `POSTGRES_*`
+connection settings above (same RDS instance, same schema).
 
 `CASSANDRA_USER` joins the secret set (it was missing from the ECS contract — see
 `docs/wiki/Daily/2026-08-31.md`): Amazon Keyspaces issues a service-specific username+password
@@ -102,9 +104,9 @@ schema `demo_chat`, so it is fixed, not configurable.
 - **Keyspaces tables** — only `open_chats_by_bucket` is modelled. `chat_history` /
   `dialogue_state` use the `ChatMessage` UDT; port them (plus an `aws_keyspaces_type`) before an
   apply.
-- **Data-tier ingress by CIDR, not SG** — `rds-postgres`, `qdrant-ec2`, `msk` allow the app
-  subnet CIDRs. The worker SG id (`module.k8s_cluster.worker_security_group_id`) is now available
-  to tighten these to SG references.
+- **Data-tier ingress by CIDR, not SG** — `rds-postgres`, `msk` allow the app subnet CIDRs. The
+  worker SG id (`module.k8s_cluster.worker_security_group_id`) is now available to tighten these
+  to SG references.
 - **RDS password** — plain `variable`; switch to `manage_master_user_password` + Secrets Manager.
 - **No `s3-cloudfront` module** — the client image is served from a pod, not S3/CloudFront.
 

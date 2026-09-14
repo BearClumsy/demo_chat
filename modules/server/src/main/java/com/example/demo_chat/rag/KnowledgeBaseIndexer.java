@@ -14,11 +14,11 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 /**
- * Pushes every {@link IntentDefinition} into the Qdrant {@code support_kb} collection on startup.
- * Document ids are a name-based UUID derived from the intent id (Qdrant requires point ids to be an
- * unsigned integer or a UUID), so re-running this on every restart just upserts the same points
- * rather than duplicating them. The intent id itself is kept in the {@code topic} metadata, which
- * is what the pipeline reads back.
+ * Pushes every {@link IntentDefinition} into the {@code support_kb} pgvector table on startup.
+ * Document ids are a name-based UUID derived from the intent id (the table's {@code id} column is
+ * {@code uuid}), so re-running this on every restart just upserts the same rows rather than
+ * duplicating them. The intent id itself is kept in the {@code topic} metadata, which is what the
+ * pipeline reads back.
  *
  * <p>Staging/prod disable startup reindexing ({@code demo-chat.rag.reindex-on-startup=false}). The
  * Kubernetes bootstrap Job (see {@code infra/k8s/manifest-*.yaml}) instead starts the server image
@@ -71,9 +71,9 @@ public class KnowledgeBaseIndexer implements ApplicationRunner {
   }
 
   /**
-   * Maps an intent id to a stable name-based (v3) UUID. Qdrant point ids must be an unsigned
-   * integer or a UUID, so the intent id can't be used verbatim; deriving it keeps re-indexing
-   * idempotent.
+   * Maps an intent id to a stable name-based (v3) UUID. The pgvector table's {@code id} column is
+   * {@code uuid}, so the intent id can't be used verbatim; deriving it keeps re-indexing idempotent
+   * (upsert-by-id).
    */
   private static String deterministicId(String intentId) {
     return UUID.nameUUIDFromBytes(intentId.getBytes(StandardCharsets.UTF_8)).toString();

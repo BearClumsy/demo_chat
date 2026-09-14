@@ -23,7 +23,7 @@ underlying commands are in the sections below.
 
 | Task | Command |
 |---|---|
-| Start local infra (Postgres, Cassandra, Qdrant) | `make up` |
+| Start local infra (Postgres, Cassandra) | `make up` |
 | Run the backend | `./gradlew :server:bootRun` (or `make run`) |
 | Run all backend tests | `./gradlew :server:test` |
 | Format backend code | `./gradlew :server:spotlessApply` |
@@ -62,8 +62,11 @@ plugins/dependencies live in each module's own `build.gradle`, wired via the roo
 Package-by-feature under `com.example.demo_chat`:
 
 - `config/` — `SecurityConfig` (WebFlux security), `ChatClientConfig`, `PasswordEncoderConfig`,
-  and `SemanticCacheVectorStoreConfig`, which declares the **second** Qdrant `VectorStore` bean
-  (qualified `semanticCacheVectorStore`) alongside the autoconfigured knowledge-base one.
+  `JdbcDataSourceConfig` (explicit `DataSource`/`JdbcTemplate` beans — Boot's own autoconfiguration
+  backs off whenever an R2DBC `ConnectionFactory` bean is present, which this app already has for
+  `users`), and `SemanticCacheVectorStoreConfig`, which declares the **second** pgvector
+  `VectorStore` bean (qualified `semanticCacheVectorStore`) alongside the autoconfigured
+  knowledge-base one.
 - `common/` — `ValidationExceptionHandler`, the single `@RestControllerAdvice`.
 - `user/` — R2DBC `User`/`UserRepository`, `UserService`, `UserController`,
   `SecurityUserDetailsService` + `UserPrincipal`, request/response records.
@@ -103,10 +106,10 @@ are disabled (`config/SecurityConfig.java`).
 
 ### Storage split
 
-**Both** chat history and dialogue state are Cassandra. Postgres holds only `users`. Qdrant holds
-two vector collections (`support_kb` for retrieval, `semantic_cache` for the cache short-circuit).
-When adding persistent state, decide whether it's chat memory (Cassandra) or vector data (Qdrant)
-before defaulting to Postgres.
+**Both** chat history and dialogue state are Cassandra. Postgres holds `users` plus, via pgvector,
+two vector tables (`support_kb` for retrieval, `semantic_cache` for the cache short-circuit) —
+there is no separate vector-store service. When adding persistent state, decide whether it's chat
+memory (Cassandra) or vector data (pgvector) before introducing a new store.
 
 ## Conventions
 
@@ -119,10 +122,12 @@ before defaulting to Postgres.
 - DTOs are `record`s. Lombok is available (`compileOnly` + annotation processor).
 - Formatted with **Spotless + Google Java Format**: `./gradlew :server:spotlessApply` before
   committing; `:server:spotlessCheck` is what CI runs.
-- Reactive `Mono`/`Flux` endpoints and outbound calls. Bedrock and Qdrant calls bridge through
-  `Schedulers.boundedElastic()` — neither has a reactive-native client in this Spring AI version.
-  That is the correct way to wrap blocking I/O, not a shortcut; only Postgres had a real reactive
-  alternative (R2DBC) and was migrated. Don't "fix" the bridging.
+- Reactive `Mono`/`Flux` endpoints and outbound calls. Bedrock and pgvector (JDBC) calls bridge
+  through `Schedulers.boundedElastic()` — neither has a reactive-native client in this Spring AI
+  version. That is the correct way to wrap blocking I/O, not a shortcut; only the `users` table had
+  a real reactive alternative (R2DBC) and was migrated. pgvector's JDBC `DataSource` is an
+  intentionally separate, blocking connection style to the same Postgres instance, coexisting with
+  the R2DBC pool. Don't "fix" the bridging.
 - One `@RestControllerAdvice` — `common/ValidationExceptionHandler`.
 - Pipeline stage classes carry a numbered javadoc; keep the numbering consistent when adding or
   reordering stages.
@@ -131,8 +136,10 @@ before defaulting to Postgres.
 
 ### Tests
 
-- JUnit 5. Require a running Docker daemon (`DemoChatApplicationTests` starts Postgres, Cassandra,
-  Qdrant via Testcontainers; `UserRepositoryTest` starts Postgres alone) but **never** AWS
+- JUnit 5. Require a running Docker daemon (`DemoChatApplicationTests` starts Postgres and
+  Cassandra via Testcontainers; `UserRepositoryTest` starts Postgres alone — both use a
+  `pgvector/pgvector` image, not plain `postgres`, since `V2__create_vector_store_tables.sql` needs
+  the extension) but **never** AWS
   credentials — `application-test.properties` sets `spring.ai.model.{chat,embedding}=none` and the
   tests supply stub Bedrock beans.
 - The stub Bedrock `ChatModel`/`EmbeddingModel` beans live in a nested
@@ -186,7 +193,7 @@ Intent JSON under `knowledge-base/intents/*.json`. `node scripts/validate-intent
 Split by Spring Profile under `src/main/resources/`. Open the relevant file for the actual keys;
 what matters here is the cross-file contract:
 
-- `application.properties` — environment-independent only (Bedrock model IDs, Qdrant collection
+- `application.properties` — environment-independent only (Bedrock model IDs, pgvector table
   names, the `demo-chat.{rag,guardrail,cache,streaming}.*` tuning props — kebab-case,
   `@Value("${...:default}")`, no `@ConfigurationProperties` class). Sets
   `spring.profiles.default=local` and pins `spring.ai.model.{chat,embedding}` explicitly (needed
@@ -195,7 +202,7 @@ what matters here is the cross-file contract:
 - `application-staging.properties` / `application-prod.properties` — the same keys bound to env
   vars. These two **duplicate each other on purpose**: `spring.config.import` of a shared file
   does not take effect from a profile-specific document and fails silently to Boot's defaults.
-  Secrets (`POSTGRES_PASSWORD`, `CASSANDRA_PASSWORD`, `QDRANT_API_KEY`) have **no default** so a
+  Secrets (`POSTGRES_PASSWORD`, `CASSANDRA_PASSWORD`) have **no default** so a
   missing one fails startup instead of falling back to a dev value.
 - `application-offline.properties` — deltas only, activated as `local,offline`
   (`make run-offline`); points `spring.ai.model.{chat,embedding}` at a local Ollama server so the
@@ -206,8 +213,10 @@ When adding a connection setting, add it to **all** the environment files, not j
 ConfigMap in `infra/k8s/manifest-*.yaml` must stay in sync with this env-var contract.
 
 Bedrock credentials never live in these files (AWS credential chain). Startup needs Bedrock unless
-the Qdrant collections already exist, because creating one calls the embedding model for its
-dimensions (`spring.ai.vectorstore.qdrant.initialize-schema` governs this for both stores).
+`spring.ai.vectorstore.pgvector.initialize-schema` is off (it governs both pgvector stores),
+because even a no-op schema check calls the embedding model for its dimensions to build the
+`CREATE TABLE` SQL. In staging/prod the tables are Flyway-managed
+(`V2__create_vector_store_tables.sql`) and this flag stays `false`.
 
 ## Build & toolchain
 
@@ -248,7 +257,7 @@ EC2), not ECS**. Details: `infra/terraform/README.md`, `docs/wiki/Plan/kubernete
   `application-{staging,prod}.properties`).
 - `deploy-staging.yml` / `deploy-prod.yml` are skeletons — they reference GitHub Environment
   `vars.*` that only exist once Terraform is applied. The KB bootstrap `Job` runs the server image
-  with `--reindex-and-exit` to seed Qdrant `support_kb` (staging/prod keep
+  with `--reindex-and-exit` to seed the `support_kb` pgvector table (staging/prod keep
   `reindex-on-startup=false`).
 
 ## Gotchas
@@ -258,10 +267,11 @@ EC2), not ECS**. Details: `infra/terraform/README.md`, `docs/wiki/Plan/kubernete
 - **`demo-chat.rag.reindex-on-startup` is the one `demo-chat.*` key not in
   `application.properties`.** Its code default is `true` (in `rag/KnowledgeBaseIndexer`); it is
   set per-profile instead — `true` in local, `false` in staging, prod, and test.
-- **`offline` profile uses 768-dim embeddings** (`nomic-embed-text`) vs Bedrock Titan's 1024.
-  Switching a machine between `make run` and `make run-offline` against the same Qdrant volume
-  fails on insert (collection dimension mismatch) — `make nuke` then `make up` / `make up-offline`
-  between the two.
+- **`offline` profile uses 768-dim embeddings** (`nomic-embed-text`) vs Bedrock Titan's 1024, but
+  the `support_kb`/`semantic_cache` pgvector columns are fixed at `vector(1024)`
+  (`V2__create_vector_store_tables.sql`). Switching a machine between `make run` and
+  `make run-offline` against the same Postgres volume fails on insert (dimension mismatch) —
+  `make nuke` then `make up` / `make up-offline` between the two.
 - **Flyway is configured in two places and they must agree** — Boot's startup migration
   (`spring.flyway.schemas` in the profile properties) and the `flyway {}` block in `build.gradle`
   (backs the standalone `flywayMigrate`/`flywayInfo` tasks). Divergent `schemas` values build
@@ -299,7 +309,9 @@ Two navigable sources beyond the code:
     rebuild casually; `graphify-out/cost.json` tracks spend per run.
 - `docs/wiki/` — an Obsidian vault of curated project knowledge (requirements, decisions, notes),
   distinct from graphify's auto-generated graph. Structure: `Features/<name>.md`,
-  `Infrastructure/{Kafka,Postgres,Cassandra,Qdrant}/<resource>.md`, `Daily/<YYYY-MM-DD>.md` (each
+  `Infrastructure/{Kafka,Postgres,Cassandra}/<resource>.md` (`Postgres/` includes the
+  pgvector-backed `support_kb`/`semantic_cache` tables, not just plain relational ones),
+  `Daily/<YYYY-MM-DD>.md` (each
   folder has a `_template.md` to copy); `Plan/<topic>.md` is architecture / roadmap-level
   (`Plan/README.md` is its sub-index, `Plan/roadmap.md` tracks per-phase status); `index.md` is
   the MOC entry point. Use the Obsidian CLI (`obsidian ...`) for reading / searching / writing

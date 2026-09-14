@@ -13,8 +13,8 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 /**
- * Caches previously-generated, guardrail-validated answers in a dedicated Qdrant collection, keyed
- * by semantic similarity of the normalized query rather than an exact string match.
+ * Caches previously-generated, guardrail-validated answers in a dedicated pgvector table, keyed by
+ * semantic similarity of the normalized query rather than an exact string match.
  */
 @Service
 public class SemanticCacheService {

@@ -13,9 +13,10 @@ auto-generated code graph of what's actually implemented.
 - **Infrastructure** — one note per concrete technical resource, grouped by system. Feature notes link
   into these instead of restating config inline:
   - `Infrastructure/Kafka/<topic-name>.md` — one note per topic (partitions, key, schema, producers, consumers)
-  - `Infrastructure/Postgres/<table-name>.md` — one note per table (schema, migration file, columns)
+  - `Infrastructure/Postgres/<table-name>.md` — one note per table (schema, migration file, columns);
+    includes the pgvector-backed `support_kb`/`semantic_cache` tables (embedding model, dims, distance
+    metric), not just plain relational tables
   - `Infrastructure/Cassandra/<table-name>.md` — one note per table (partition/clustering keys, TTL)
-  - `Infrastructure/Qdrant/<collection-name>.md` — one note per collection (embedding model, dims, distance metric)
 - **Plan** — `Plan/<topic>.md`, architecture/roadmap-level rather than per-resource: system overview,
   RAG pipeline design, phased roadmap, AWS/CI-CD plans. `Plan/README.md` is its own entry point/index
   (same role as this file, one level down); `Plan/roadmap.md` tracks what's actually implemented per

@@ -60,10 +60,6 @@ data:
   CASSANDRA_PORT: "9142"
   CASSANDRA_LOCAL_DATACENTER: "eu-central-1"
   CASSANDRA_KEYSPACE: "demo_chat"
-  QDRANT_HOST: "REPLACE_qdrant_private_dns"
-  QDRANT_PORT: "6334"
-  QDRANT_USE_TLS: "false"
-  QDRANT_INITIALIZE_SCHEMA: "false"
   KAFKA_BOOTSTRAP_SERVERS: "REPLACE_msk_bootstrap_brokers_tls"
 ---
 apiVersion: v1
@@ -82,7 +78,6 @@ stringData:
   POSTGRES_PASSWORD: "REPLACE_AT_DEPLOY"
   CASSANDRA_USER: "REPLACE_AT_DEPLOY"
   CASSANDRA_PASSWORD: "REPLACE_AT_DEPLOY"
-  QDRANT_API_KEY: "REPLACE_AT_DEPLOY"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -456,8 +451,6 @@ spec:
         - protocol: TCP
           port: 9142
         - protocol: TCP
-          port: 6334
-        - protocol: TCP
           port: 9094
     - to:
         - ipBlock:
@@ -501,8 +494,6 @@ spec:
             - secretRef:
                 name: demo-chat-secrets
           env:
-            - name: QDRANT_INITIALIZE_SCHEMA
-              value: "true"
             - name: DEMO_CHAT_RAG_REINDEX_ON_STARTUP
               value: "true"
           resources:

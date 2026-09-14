@@ -8,9 +8,9 @@
 #   vars.AWS_REGION  vars.AWS_DEPLOY_ROLE_ARN
 #   vars.ECR_SERVER_REPO  vars.ECR_CLIENT_REPO
 #   vars.K8S_DEPLOY_BUCKET  vars.SSM_DEPLOY_DOCUMENT  vars.SSM_ROLLBACK_DOCUMENT
-#   vars.RDS_ENDPOINT  vars.QDRANT_HOST  vars.KAFKA_BOOTSTRAP_SERVERS
+#   vars.RDS_ENDPOINT  vars.KAFKA_BOOTSTRAP_SERVERS
 #   vars.SECRET_ARN_POSTGRES_PASSWORD  vars.SECRET_ARN_CASSANDRA_USER
-#   vars.SECRET_ARN_CASSANDRA_PASSWORD vars.SECRET_ARN_QDRANT_API_KEY
+#   vars.SECRET_ARN_CASSANDRA_PASSWORD
 #   vars.CHAT_HOSTNAME
 name: deploy-prod
 
@@ -73,7 +73,6 @@ jobs:
             -e "s#IMAGE_PLACEHOLDER_SERVER#${SERVER_IMAGE}#g" \
             -e "s#IMAGE_PLACEHOLDER_CLIENT#${CLIENT_IMAGE}#g" \
             -e "s#REPLACE_rds_endpoint#${{ vars.RDS_ENDPOINT }}#g" \
-            -e "s#REPLACE_qdrant_private_dns#${{ vars.QDRANT_HOST }}#g" \
             -e "s#REPLACE_msk_bootstrap_brokers_tls#${{ vars.KAFKA_BOOTSTRAP_SERVERS }}#g" \
             -e "s#chat.demo-chat.example.com#${{ vars.CHAT_HOSTNAME }}#g" \
             infra/k8s/manifest-prod.yaml > out/manifest.yaml
@@ -86,7 +85,6 @@ jobs:
             --from-literal=POSTGRES_PASSWORD="$(get "${{ vars.SECRET_ARN_POSTGRES_PASSWORD }}")" \
             --from-literal=CASSANDRA_USER="$(get "${{ vars.SECRET_ARN_CASSANDRA_USER }}")" \
             --from-literal=CASSANDRA_PASSWORD="$(get "${{ vars.SECRET_ARN_CASSANDRA_PASSWORD }}")" \
-            --from-literal=QDRANT_API_KEY="$(get "${{ vars.SECRET_ARN_QDRANT_API_KEY }}")" \
             --dry-run=client -o yaml > out/secret.yaml
 
       - name: Stage rendered manifests in S3

@@ -2,6 +2,12 @@
 
 [← Back to README](README.md)
 
+> **Vector store swap (2026-09-14).** Qdrant is replaced by pgvector (`support_kb`/`semantic_cache`
+> are now tables in the same Postgres instance as `users`) — see
+> [postgres-vector-migration.md](postgres-vector-migration.md). Phase 1/2 items below mention
+> Qdrant because that's what was true when they were completed; they're left as historical record,
+> not updated in place.
+
 ## Phase 1 — Local prototype
 
 - [x] docker-compose: **Postgres + Cassandra + Qdrant + Kafka** (`modules/server/src/main/resources/local/docker-compose.yml`)
@@ -114,9 +120,11 @@ EC2** behind the NGINX Ingress Controller, not ECS Fargate. See [kubernetes.md](
 ECS modules (`ecs-service`, `alb`, `bedrock-iam`) are retained lint-clean but no longer
 instantiated.
 
-- [~] Terraform: VPC, RDS (Postgres), Amazon Keyspaces/Cassandra, Qdrant on EC2, MSK — plus the
-      Kubernetes layer: `modules/{k8s-cluster, alb-k8s, ecr, github-oidc}`, `envs/{staging,prod}`
-      rewired. **Code skeleton done, not applied**, CI-linted by `terraform-lint`. Still needs an
+- [~] Terraform: VPC, RDS (Postgres, now also hosting the pgvector `support_kb`/`semantic_cache`
+      tables — see [postgres-vector-migration.md](postgres-vector-migration.md)), Amazon
+      Keyspaces/Cassandra, MSK — plus the Kubernetes layer: `modules/{k8s-cluster, alb-k8s, ecr,
+      github-oidc}`, `envs/{staging,prod}` rewired. **Code skeleton done, not applied**, CI-linted
+      by `terraform-lint`. Still needs an
       account: `terraform apply`, the S3/DynamoDB state backend, real `node_ami_id` / cert / secret
       ARNs / `github_org` / `admin_cidr`, the actual `kubeadm init` + `make k8s-addons`, and
       porting the full `chat_history`/`dialogue_state` Keyspaces schemas. See
@@ -130,8 +138,9 @@ instantiated.
       control-plane node; no inbound kube-apiserver). They reference GitHub Environment `vars.*`
       that only exist once Terraform is applied.
 - [x] Knowledge-base reindexing off the startup path — `KnowledgeBaseIndexer` gained a
-      `--reindex-and-exit` one-shot mode; the `demo-chat-kb-bootstrap` Job runs it to seed Qdrant
-      `support_kb`. (A CI-triggered reindex on KB changes is still a possible future refinement.)
+      `--reindex-and-exit` one-shot mode; the `demo-chat-kb-bootstrap` Job runs it to seed the
+      `support_kb` pgvector table. (A CI-triggered reindex on KB changes is still a possible
+      future refinement.)
 - [ ] Validate intent matching and prompts against real Bedrock
 - [ ] Load testing of the pipeline (retrieval + generation latency)
 

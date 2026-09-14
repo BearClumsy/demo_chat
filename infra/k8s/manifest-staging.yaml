@@ -59,10 +59,6 @@ data:
   CASSANDRA_PORT: "9142"
   CASSANDRA_LOCAL_DATACENTER: "eu-central-1"
   CASSANDRA_KEYSPACE: "demo_chat"
-  QDRANT_HOST: "REPLACE_qdrant_private_dns"
-  QDRANT_PORT: "6334"
-  QDRANT_USE_TLS: "false"
-  QDRANT_INITIALIZE_SCHEMA: "false"
   KAFKA_BOOTSTRAP_SERVERS: "REPLACE_msk_bootstrap_brokers_tls"
 ---
 apiVersion: v1
@@ -81,7 +77,6 @@ stringData:
   POSTGRES_PASSWORD: "REPLACE_AT_DEPLOY"
   CASSANDRA_USER: "REPLACE_AT_DEPLOY"
   CASSANDRA_PASSWORD: "REPLACE_AT_DEPLOY"
-  QDRANT_API_KEY: "REPLACE_AT_DEPLOY"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -147,7 +142,7 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 5
             failureThreshold: 30
-          # liveness = livenessState only: stays UP during a Cassandra/Qdrant/Bedrock outage, so a
+          # liveness = livenessState only: stays UP during a Cassandra/Postgres/Bedrock outage, so a
           # downstream blip does not trigger a fleet-wide restart storm.
           livenessProbe:
             httpGet:
@@ -459,7 +454,7 @@ spec:
           port: 53
         - protocol: TCP
           port: 53
-    # Data tier (RDS 5432, Keyspaces 9142, Qdrant gRPC 6334, MSK TLS 9094) within the VPC.
+    # Data tier (RDS 5432, Keyspaces 9142, MSK TLS 9094) within the VPC.
     - to:
         - ipBlock:
             cidr: 10.20.0.0/16
@@ -468,8 +463,6 @@ spec:
           port: 5432
         - protocol: TCP
           port: 9142
-        - protocol: TCP
-          port: 6334
         - protocol: TCP
           port: 9094
     # Bedrock, Secrets Manager, ECR — AWS public endpoints over TLS.
@@ -480,10 +473,11 @@ spec:
         - protocol: TCP
           port: 443
 ---
-# One-shot: seed the Qdrant support_kb collection. Both profiles have reindex-on-startup=false and
-# QDRANT_INITIALIZE_SCHEMA=false, so without this the RAG pipeline has no allowed topics and every
-# turn escalates/denies. Runs the server image with --reindex-and-exit (KnowledgeBaseIndexer stops
-# the app with exit 0 when done).
+# One-shot: seed the support_kb pgvector table. Both profiles have reindex-on-startup=false, so
+# without this the RAG pipeline has no allowed topics and every turn escalates/denies. Runs the
+# server image with --reindex-and-exit (KnowledgeBaseIndexer stops the app with exit 0 when done).
+# The table itself already exists — Flyway (V2__create_vector_store_tables.sql) creates it ahead
+# of the deploy — so this Job only needs to populate rows, not initialize schema.
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -519,9 +513,6 @@ spec:
             - secretRef:
                 name: demo-chat-secrets
           env:
-            # First run against an empty Qdrant also needs the collections created.
-            - name: QDRANT_INITIALIZE_SCHEMA
-              value: "true"
             - name: DEMO_CHAT_RAG_REINDEX_ON_STARTUP
               value: "true"
           resources:
